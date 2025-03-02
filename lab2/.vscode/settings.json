@@ -8,6 +8,7 @@
   "editor.wordWrapColumn": 100,
   "files.associations": {
     "lcf.h": "c",
-    "timer.h": "c"
+    "timer.h": "c",
+    "i8254.h": "c"
   },
 }

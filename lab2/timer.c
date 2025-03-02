@@ -6,10 +6,21 @@
 #include "i8254.h"
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  uint8_t status;
+  int ret = timer_get_conf(timer,&status);
+  if(ret!=0) return ret;
+  uint8_t control_word = status & 0xF;
+  control_word |= (BIT(4) | BIT(5));
+  control_word |= (timer<<6);
+  ret = sys_outb(TIMER_CTRL,control_word);
+  if(ret!=0) return ret;
+  uint16_t final_freq = TIMER_FREQ / freq;
+  uint8_t bits;
+  util_get_LSB(final_freq,&bits);
+  ret = sys_outb(TIMER_0 + timer,bits);
+  if(ret!=0) return ret;
+  util_get_MSB(final_freq,&bits);
+  return sys_outb(TIMER_0 + timer,bits);
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
