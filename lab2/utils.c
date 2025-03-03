@@ -14,8 +14,10 @@ int(util_get_MSB)(uint16_t val, uint8_t *msb) {
 
 int (util_sys_inb)(int port, uint8_t *value) {
   uint32_t val;
-  int ret = sys_inb(port,&val);
-  if (ret != 0) return ret;
+  if(sys_inb(port,&val) != 0) {
+    printf("Failed in call sys_inb.\n");
+    return 1;
+  }
   *value = (uint8_t)(val & 0xFF);
   return 0;
 }
