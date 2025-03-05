@@ -80,6 +80,7 @@ int(timer_test_int)(uint8_t time) {
             if (count % 60 == 0){
               timer_print_elapsed_time();
               time--;
+              count = 0;
             }
           }
           break;
