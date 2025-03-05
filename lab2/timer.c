@@ -9,7 +9,7 @@ static int hook_id;
 unsigned int count = 0;
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
-  if (freq <= 19 || freq >= TIMER_FREQ) {
+  if (freq < 19 || freq >= TIMER_FREQ) {
     printf("Invalid frequency\n");
     return 1;
   }
