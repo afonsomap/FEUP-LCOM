@@ -25,5 +25,9 @@
 #define KBC_PAR_ERR BIT(7) /**< @brief Parity Error */
 #define KBC_TO_ERR BIT(6) /**< @brief Timeout Error */
 
+#define ESC_BREAKCODE 0x81 /**< @brief Breakcode of the ESC key */
+#define TWO_BYTE_CODE 0xE0 /**< @brief First byte of a two byte scancode */
+#define MAKECODE BIT(7) /**< @brief Breakcode bit */
+
 
 #endif /* _LCOM_I8254_H */
