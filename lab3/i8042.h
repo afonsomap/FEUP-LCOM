@@ -1,0 +1,29 @@
+#ifndef _LCOM_I8042_H_
+#define _LCOM_I8042_H_
+
+#include <lcom/lcf.h>
+
+/** @defgroup i8042 i8042
+ * @{
+ *
+ * Constants for programming the i8042 KDB.
+ */
+
+
+#define KBD_IRQ 1 /**< @brief Keyboard IRQ line */
+
+
+/* I/O port addresses */
+#define KBC_ST_REG 0x64 /**< @brief Status Register */
+#define KBC_CMD_REG 0x64 /**< @brief Command Register */
+#define KBC_OUT_BUF 0x60 /**< @brief Output Buffer */
+#define KBC_IN_BUF 0x60 /**< @brief Input Buffer */ /**Not used */
+
+
+#define KBC_OBF BIT(0) /**< @brief Output Buffer Full */
+#define KBC_IBF BIT(1) /**< @brief Input Buffer Full */
+#define KBC_PAR_ERR BIT(7) /**< @brief Parity Error */
+#define KBC_TO_ERR BIT(6) /**< @brief Timeout Error */
+
+
+#endif /* _LCOM_I8254_H */
