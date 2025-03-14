@@ -29,5 +29,10 @@
 #define TWO_BYTE_CODE 0xE0 /**< @brief First byte of a two byte scancode */
 #define MAKECODE BIT(7) /**< @brief Breakcode bit */
 
+#define WAIT_KBC 20000 /**< @brief Delay in microseconds */
+#define MAX_TRIES 10 /**< @brief Maximum number of tries */
+#define KBC_READ_CMD 0x20 /**< @brief Read Command Byte */
+#define KBC_WRITE_CMD 0x60 /**< @brief Write Command Byte */
+
 
 #endif /* _LCOM_I8254_H */

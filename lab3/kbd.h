@@ -43,13 +43,36 @@ int (kbd_get_status)(uint8_t *st);
  */
 void (kbc_ih)();
 
+/**
+ * @brief Checks if a scancode is complete
+ * 
+ * @param scancode_array Array to store the scancode
+ * @param index Pointer to the index of the array
+ * @return 0 if the scancode is complete, 1 otherwise
+ */
 int (check_scancode_complete)(uint8_t* scancode_array, uint8_t *index);
 
 /**
- * @brief Reads the scancode from the keyboard controller
+ * @brief Reads a byte from the keyboard controller
  * 
+ * @param port Port to read from
+ * @param data Pointer to store the read byte
  * @return 0 on success, 1 on failure
  */
-int (kbd_get_scancode)();
+int (kbc_read_data)(uint8_t port, uint8_t *data);
+
+/**
+ * @brief Writes a command to the keyboard controller
+ * 
+ * @param port Port to write to
+ * @param cmd Command to write
+ * @return 0 on success, 1 on failure
+ */
+int (kbc_write_command)(uint8_t port, uint8_t cmd);
+
+/**
+ * @brief Enables keyboard interrupts
+ */
+int (kbd_enable_interrupts)();
 
 #endif /* KEYBOARD_H */

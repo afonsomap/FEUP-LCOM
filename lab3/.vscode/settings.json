@@ -9,4 +9,5 @@
   "files.associations": {
     "lcf.h": "c"
   },
+  "makefile.configureOnOpen": false,
 }

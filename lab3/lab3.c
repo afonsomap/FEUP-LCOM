@@ -81,10 +81,23 @@ int(kbd_test_scan)() {
 }
 
 int(kbd_test_poll)() {
-  /* To be completed by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  uint8_t code[2];
+  uint8_t index = 0;
 
-  return 1;
+  while(scancode != ESC_BREAKCODE) {
+    if(kbc_read_data(KBC_OUT_BUF, &scancode) != 0) {
+      return 1;
+    }
+    if (check_scancode_complete(code, &index) == 0) {
+      kbd_print_scancode(!(scancode & MAKECODE), index+1, code);
+      index = 0;
+    }
+  }
+  kbd_print_no_sysinb(sys_counter);
+  if(kbd_enable_interrupts() != 0) {
+    return 1;
+  }
+  return 0;
 }
 
 int(kbd_test_timed_scan)(uint8_t n) {
