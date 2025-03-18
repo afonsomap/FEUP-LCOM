@@ -9,7 +9,6 @@
  * Constants for programming the i8042 KDB.
  */
 
-
 #define KBD_IRQ 1 /**< @brief Keyboard IRQ line */
 
 
@@ -17,7 +16,7 @@
 #define KBC_ST_REG 0x64 /**< @brief Status Register */
 #define KBC_CMD_REG 0x64 /**< @brief Command Register */
 #define KBC_OUT_BUF 0x60 /**< @brief Output Buffer */
-#define KBC_IN_BUF 0x60 /**< @brief Input Buffer */ /**Not used */
+#define KBC_IN_BUF 0x60 /**< @brief Input Buffer */ /**Not used in lab3 */
 
 
 #define KBC_OBF BIT(0) /**< @brief Output Buffer Full */
