@@ -8,7 +8,7 @@
  *
  * Functions to interact with the count variable of the timer.c
  * 
- * This file contains the functions that allow the lab2.c to interact with the count variable of the timer.c file, instead of directly accessing it using the extern keyword.
+ * This file contains the functions that allow the lab2.c to interact with the count variable of    the timer.c file, instead of directly accessing it using the extern keyword.
  */
 
 
