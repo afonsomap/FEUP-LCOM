@@ -4,9 +4,18 @@
 #include <stdint.h>
 
 #include "i8254.h"
+#include "timer_count.h"
 
 static int hook_id;
-unsigned int count = 0;
+static unsigned int count = 0;
+
+unsigned int timer_get_count() {
+  return count;
+}
+
+void timer_reset_count() {
+  count = 0;
+}
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   if (freq < 19 || freq >= TIMER_FREQ) {

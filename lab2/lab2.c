@@ -3,8 +3,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-
-extern unsigned int count;
+#include "timer_count.h"
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -77,10 +76,10 @@ int(timer_test_int)(uint8_t time) {
           if (msg.m_notify.interrupts & irq_set){
 
             timer_int_handler();
-            if (count % 60 == 0){
+            if (timer_get_count() % 60 == 0){
               timer_print_elapsed_time();
               time--;
-              count = 0;
+              timer_reset_count();
             }
           }
           break;
