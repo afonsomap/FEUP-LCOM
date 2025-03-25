@@ -24,17 +24,33 @@
 #define KBC_IBF BIT(1) /**< @brief Input Buffer Full */
 #define KBC_PAR_ERR BIT(7) /**< @brief Parity Error */
 #define KBC_TO_ERR BIT(6) /**< @brief Timeout Error */
-
-/* Keyboard */
-#define ESC_BREAKCODE 0x81 /**< @brief Breakcode of the ESC key */
-#define TWO_BYTE_CODE 0xE0 /**< @brief First byte of a two byte scancode */
-#define MAKECODE BIT(7) /**< @brief Breakcode bit */
-
+#define KBC_AUX BIT(5) /**< @brief Mouse Data */
 
 #define WAIT_KBC 20000 /**< @brief Delay in microseconds */
 #define MAX_TRIES 10 /**< @brief Maximum number of tries */
 #define KBC_READ_CMD 0x20 /**< @brief Read Command Byte */
 #define KBC_WRITE_CMD 0x60 /**< @brief Write Command Byte */
 
+#define KBC_ENABLE_DATA_REPORT 0xF4 /**< @brief Enable Data Reporting */
+#define KBC_DISABLE_DATA_REPORT 0xF5 /**< @brief Disable Data Reporting */
+#define KBC_ACK 0xFA /**< @brief Acknowledgment */
+#define WRITE_BYTE_TO_MOUSE 0xD4 /**< @brief Write Byte to Mouse */
+
+
+/* Keyboard */
+#define ESC_BREAKCODE 0x81 /**< @brief Breakcode of the ESC key */
+#define TWO_BYTE_CODE 0xE0 /**< @brief First byte of a two byte scancode */
+#define MAKECODE BIT(7) /**< @brief Breakcode bit */
+
+/* Mouse */
+#define MOUSE_ENABLE_DATA_REPORT 0xF4 /**< @brief Enable Data Reporting */
+#define MOUSE_DISABLE_DATA_REPORT 0xF5 /**< @brief Disable Data Reporting */
+#define MOUSE_LB BIT(0) /**< @brief Left Button */
+#define MOUSE_RB BIT(1) /**< @brief Right Button */
+#define MOUSE_MB BIT(2) /**< @brief Middle Button */
+#define MOUSE_XOVF BIT(6) /**< @brief X Overflow */
+#define MOUSE_YOVF BIT(7) /**< @brief Y Overflow */
+#define MOUSE_XSIGN BIT(4) /**< @brief X Sign */
+#define MOUSE_YSIGN BIT(5) /**< @brief Y Sign */
 
 #endif /* _LCOM_I8254_H */

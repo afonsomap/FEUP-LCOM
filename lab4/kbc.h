@@ -3,6 +3,7 @@
 
 #include <lcom/lcf.h>
 #include "i8042.h"
+#include "utils.h"
 
 /** @defgroup kbc kbc
  * @{
@@ -24,9 +25,10 @@ int (kbc_get_status)(uint8_t *st);
  * 
  * @param port Port to read from
  * @param data Variable to store the read byte
+ * @param mouseData Flag to check if the data is from the mouse or the keyboard
  * @return Return 0 upon success and non-zero otherwise
  */
-int (kbc_read_data)(uint8_t port, uint8_t *data);
+int (kbc_read_data)(uint8_t port, uint8_t *data, uint8_t mouseData);
 
 /**
  * @brief Writes a command to a given port of the kbc.
