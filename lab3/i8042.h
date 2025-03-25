@@ -6,7 +6,7 @@
 /** @defgroup i8042 i8042
  * @{
  *
- * Constants for programming the i8042 KDB.
+ * Constants for programming the i8042 KDC.
  */
 
 #define KBD_IRQ 1 /**< @brief Keyboard IRQ line */

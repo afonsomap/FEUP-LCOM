@@ -7,11 +7,25 @@
 #include "kbc.h"
 
 /**
- * @brief Returns a pointer to the scancode variable
+ * @brief Returns a pointer to the scancode byte read
  * 
- * @return Pointer to the scancode variable
+ * @return Pointer to the scancode byte
  */
 uint8_t* get_scancode();
+
+/**
+ * @brief Returns a pointer to the scancode array
+ * 
+ * @return Pointer to the scancode array
+ */
+uint8_t* get_scancode_array();
+
+/**
+ * @brief Returns the index of the scancode array
+ * 
+ * @return Index of the scancode array
+ */
+uint8_t get_scancode_index();
 
 /**
  * @brief Wrapper for sys_inb with counter support
@@ -45,11 +59,9 @@ void (kbc_ih)();
 /**
  * @brief Checks if a scancode is complete
  * 
- * @param scancode_array Array to store the scancode
- * @param index Pointer to the index of the array
  * @return 0 if the scancode is complete, 1 otherwise
  */
-int (check_scancode_complete)(uint8_t* scancode_array, uint8_t *index);
+int (check_scancode_complete)();
 
 /**
  * @brief Enables keyboard interrupts

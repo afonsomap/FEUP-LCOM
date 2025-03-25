@@ -4,8 +4,19 @@
 static int hook_id = 1;
 static uint8_t scancode = 0;
 
+static uint8_t scancode_array[2]; 
+static uint8_t scancode_index = 0;
+
 uint8_t* get_scancode(){
   return &scancode;
+}
+
+uint8_t* get_scancode_array(){
+  return scancode_array;
+}
+
+uint8_t get_scancode_index(){
+  return scancode_index;
 }
 
 int (kbd_subscribe_int)(uint8_t *bit_no){
@@ -31,13 +42,14 @@ void (kbc_ih)(void){
 }
 
 
-int (check_scancode_complete)(uint8_t* scancode_array, uint8_t *index){
+int (check_scancode_complete)(){
   if (scancode == TWO_BYTE_CODE) {
-    scancode_array[*index] = scancode;
-    (*index)++;
+    scancode_array[scancode_index] = scancode;
+    scancode_index++;
     return 1;
   }else{
-    scancode_array[*index] = scancode;
+    scancode_array[scancode_index] = scancode;
+    scancode_index=0;
     return 0;
   } 
 }

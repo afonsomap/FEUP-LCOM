@@ -37,9 +37,6 @@ int(kbd_test_scan)() {
   uint8_t bit_no = 0;
   int ipc_status,r;
   message msg;
-  uint8_t code[2];
-  uint8_t index = 0;
-
 
   if (kbd_subscribe_int(&bit_no)!=0) {
     printf("Failed to subscribe kbd interrupts.\n");
@@ -62,11 +59,12 @@ int(kbd_test_scan)() {
 
             kbc_ih();
 
-            if (check_scancode_complete(code, &index) == 0) {
-              kbd_print_scancode(!(*scancode & MAKECODE), index+1, code);
-              index = 0;
-            }
-          }  
+            if (check_scancode_complete() == 0) {
+              uint8_t* code = get_scancode_array();
+              uint8_t index = get_scancode_index();
+              kbd_print_scancode(!(*scancode & MAKECODE), (index == 0) ? 1 : 2, code);
+            }  
+          }
           break;
         default:
           break; 
@@ -79,17 +77,15 @@ int(kbd_test_scan)() {
 }
 
 int(kbd_test_poll)() {
-  uint8_t code[2];
-  uint8_t index = 0;
-
   uint8_t* scancode = get_scancode();
   while(*scancode != ESC_BREAKCODE) {
     if(kbc_read_data(KBC_OUT_BUF, scancode) != 0) {
       return 1;
     }
-    if (check_scancode_complete(code, &index) == 0) {
-      kbd_print_scancode(!(*scancode & MAKECODE), index+1, code);
-      index = 0;
+    if (check_scancode_complete() == 0) {
+      uint8_t* code = get_scancode_array();
+      uint8_t index = get_scancode_index();
+      kbd_print_scancode(!(*scancode & MAKECODE), (index == 0) ? 1 : 2, code);
     }
   }
   kbd_print_no_sysinb(get_sys_counter());
@@ -102,9 +98,7 @@ int(kbd_test_poll)() {
 int(kbd_test_timed_scan)(uint8_t n) {
   uint8_t bit_no_kbd, bit_no_timer;
   int ipc_status,r;
-  message msg;
-  uint8_t code[2];
-  uint8_t index = 0;  
+  message msg; 
 
   if (kbd_subscribe_int(&bit_no_kbd)!=0) {
     printf("Failed to subscribe kbd interrupts.\n");
@@ -132,10 +126,10 @@ int(kbd_test_timed_scan)(uint8_t n) {
         case HARDWARE: 
           if (msg.m_notify.interrupts & irq_set_kbd) {
             kbc_ih();
-            if (check_scancode_complete(code, &index) == 0) {
-              kbd_print_scancode(!(*scancode & MAKECODE), index+1, code);
-              index = 0;
-              
+            if (check_scancode_complete() == 0) {
+              uint8_t* code = get_scancode_array();
+              uint8_t index = get_scancode_index();
+              kbd_print_scancode(!(*scancode & MAKECODE), (index == 0) ? 1 : 2, code);
             }
             time_left = n;
             timer_reset_count();
