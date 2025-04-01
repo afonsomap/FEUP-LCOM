@@ -36,9 +36,7 @@ void (mouse_ih)(){
 }
 
 void packet_parse(){
-  packet.bytes[0] = packet_array[0];
-  packet.bytes[1] = packet_array[1];
-  packet.bytes[2] = packet_array[2];
+  memcpy(packet.bytes, packet_array, 3);
   packet.lb = packet_array[0] & MOUSE_LB;
   packet.rb = packet_array[0] & MOUSE_RB;
   packet.mb = packet_array[0] & MOUSE_MB;
