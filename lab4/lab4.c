@@ -169,7 +169,7 @@ static int16_t y_displacement = 0;
 void update_state(struct packet* packet, uint8_t x_len, uint8_t tolerance) {
   switch (current_state) {
     case START:
-      // Start detecting the gesture when only the left button is pressed
+      // Check if the left button is pressed
       if (packet->lb == 1 && packet->rb == 0 && packet->mb == 0) {
         x_displacement = 0;
         y_displacement = 0;
@@ -178,46 +178,68 @@ void update_state(struct packet* packet, uint8_t x_len, uint8_t tolerance) {
       break;
 
     case UP_RIGHT:
-      // Check for movement tolerance
+      // Check if only the left button is pressed
       if (packet->lb == 1 && packet->rb == 0 && packet->mb == 0) {
+        // Check if the movement is within the tolerance
         if (packet->delta_x >= -tolerance && packet->delta_y <= tolerance) {
           x_displacement += packet->delta_x;
           y_displacement += packet->delta_y;
-
         }else{
-          current_state = START;  // Movement outside tolerance
+          // Movement outside tolerance
+          current_state = START;
         }
-      } else if (packet->lb == 0 && packet->rb ==0 && packet->mb==0 && x_displacement>=x_len && abs(packet->delta_y) <= tolerance &&  abs(packet->delta_x) <= tolerance) { 
-        current_state = VERTEX; // Left button released, sufficient displacement, only small movement with no buttons pressed
+      } else if (
+        packet->lb == 0 && packet->rb ==0 && packet->mb==0 // No buttons pressed
+        && x_displacement>=x_len // Sufficient x displacement
+        && abs(packet->delta_y) <= tolerance // Movement within tolerance
+        &&  abs(packet->delta_x) <= tolerance // Movement within tolerance
+        && (abs(y_displacement)/abs(x_displacement)) > 1) // Check if slope (y/x) is greater than 1
+        { 
+        // All conditions met, we can move to the vertex state
+        current_state = VERTEX;
       } else {
-        current_state = START;  // Left button released too early
+        // Some condition not met, reset state
+        current_state = START;
       }
       break;
 
     case VERTEX:
-      // Left button must be released and no buttons should be pressed
+      // Only the right button should be pressed and movement should be within tolerance
       if (packet->lb == 0 && packet->rb == 1 && packet->mb == 0 && abs(packet->delta_y) <= tolerance &&  abs(packet->delta_x) <= tolerance) {
         x_displacement = 0;
         y_displacement = 0;
-        current_state = DOWN_RIGHT; // Right button pressed, only small movement
+        current_state = DOWN_RIGHT;
       } else if (packet->lb == 0 && packet->rb == 0 && packet->mb == 0 && abs(packet->delta_y) <= tolerance &&  abs(packet->delta_x) <= tolerance) { 
-        current_state = VERTEX; // No buttons pressed, only small movement
+        // No buttons pressed and movement within tolerance, stay in vertex state
+        current_state = VERTEX; 
       } else {
-        current_state = START;  // Pressed wrong buttons or movement outside tolerance
+        // Some condition not met, reset state
+        current_state = START; 
       }
       break;
 
     case DOWN_RIGHT:
-      // Now only the right button should be pressed
+      // Check if only the right button is pressed
       if (packet->lb == 0 && packet->rb == 1 && packet->mb == 0) {
+        // Check if the movement is within the tolerance
         if (packet->delta_x >= -tolerance && packet->delta_y >= -tolerance) {
           x_displacement += packet->delta_x;
           y_displacement += packet->delta_y;
-
+        }else{
+          // Movement outside tolerance
+          current_state = START;
         }
-      } else if (packet->lb == 0 && packet->rb ==0 && packet->mb==0 && x_displacement>=x_len && abs(packet->delta_y) <= tolerance &&  abs(packet->delta_x) <= tolerance) {
+      } else if (
+        packet->lb == 0 && packet->rb ==0 && packet->mb==0 // No buttons pressed
+        && x_displacement>=x_len // Sufficient x displacement
+        && abs(packet->delta_y) <= tolerance // Movement within tolerance
+        &&  abs(packet->delta_x) <= tolerance // Movement within tolerance
+        && (abs(y_displacement)/abs(x_displacement)) > 1) // Check if slope (y/x) is greater than 1
+        {
+        // All conditions met, we can move to the end state
         current_state = END;
       } else {
+        // Some condition not met, reset state
         current_state = START;  
       }
       break;
