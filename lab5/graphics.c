@@ -1,8 +1,12 @@
 #include <lcom/lcf.h>
-#include "vbe.h"
+#include "graphics.h"
 
 vbe_mode_info_t mode_info;
 uint8_t *video_mem;
+
+vbe_mode_info_t get_mode_info() {
+  return mode_info;
+}
 
 void set_video_mode(uint16_t mode) {
   struct reg86 args;
@@ -56,3 +60,36 @@ void draw_rectangle(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uin
     draw_hline(x, y + i, width, color);
   }
 }
+
+uint32_t (direct_model)(uint32_t R, uint32_t G, uint32_t B) {
+  return (R << mode_info.RedFieldPosition) | (G << mode_info.GreenFieldPosition) | (B << mode_info.BlueFieldPosition);
+}
+
+uint32_t (indexed_model)(uint16_t col, uint16_t row,uint32_t first, uint8_t step, uint8_t n) {
+  return (first + (row * n + col) * step) % (1 << mode_info.BitsPerPixel);
+}
+
+uint32_t (Red)(unsigned col, uint8_t step, uint32_t first) {
+  return (R(first) + col * step) % (1 << mode_info.RedMaskSize);
+}
+
+uint32_t (Green)(unsigned row, uint8_t step, uint32_t first) {
+  return (G(first) + row * step) % (1 << mode_info.GreenMaskSize);
+}
+
+uint32_t (Blue)(unsigned col, unsigned row, uint8_t step, uint32_t first) {
+  return (B(first) + (col + row) * step) % (1 << mode_info.BlueMaskSize);
+}
+
+uint32_t (R)(uint32_t first){
+  return ((1 << mode_info.RedMaskSize) - 1) & (first >> mode_info.RedFieldPosition);
+}
+
+uint32_t (G)(uint32_t first){
+  return ((1 << mode_info.GreenMaskSize) - 1) & (first >> mode_info.GreenFieldPosition);
+}
+
+uint32_t (B)(uint32_t first){
+  return ((1 << mode_info.BlueMaskSize) - 1) & (first >> mode_info.BlueFieldPosition);
+}
+

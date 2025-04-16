@@ -5,10 +5,7 @@
 
 #include <stdint.h>
 #include <stdio.h>
-
-// Any header files included below this line should have been created by you
-
-#include "vbe.h"
+#include "graphics.h"
 #include "kbc.h"
 #include "kbd.h"
 #include "i8042.h"
@@ -39,20 +36,17 @@ int main(int argc, char *argv[]) {
 }
 
 int(video_test_init)(uint16_t mode, uint8_t delay) {
-    set_video_mode(mode);
-    sleep(delay); // wait for delay seconds
-    vg_exit(); // exit graphics mode
+
+    set_video_mode(mode); 
+
+    sleep(delay);
+
+    vg_exit();
+    
     return 0;
 }
 
-
-int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
-
-  map_graphics_vram(mode);
-  set_video_mode(mode);
-  draw_rectangle(x, y, width, height, color);
-
-  // wait for ESC key to be pressed
+int wait_for_ESC_press(){
   uint8_t bit_no = 0;
   int ipc_status,r;
   message msg;
@@ -84,18 +78,70 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y, uint16_t width,
     }
   }
   if (kbd_unsubscribe_int()!=0) {return 1;}
-  
-  // exit graphics mode
+  return 0;
+}
+
+
+int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
+
+  map_graphics_vram(mode);
+  set_video_mode(mode);
+
+  draw_rectangle(x, y, width, height, color);
+
+  if (wait_for_ESC_press() != 0) {
+    printf("Failed to wait for ESC press.\n");
+    return 1;
+  }
+
   vg_exit();
+
   return 0;
 }
 
 int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
-  /* To be completed */
-  printf("%s(0x%03x, %u, 0x%08x, %d): under construction\n", __func__,
-         mode, no_rectangles, first, step);
 
-  return 1;
+  map_graphics_vram(mode);
+  set_video_mode(mode);
+  
+  vbe_mode_info_t mode_info = get_mode_info();
+
+  int rectangle_vertical_size = mode_info.YResolution / no_rectangles;
+  int rectangle_horizontal_size = mode_info.XResolution / no_rectangles;
+
+  for (int row = 0; row < no_rectangles; row++) {
+    for (int col = 0; col < no_rectangles; col++) {
+
+      uint32_t final_color;
+
+      if (mode_info.MemoryModel == DIRECT_MODEL){
+
+        uint32_t R = Red(col, step, first);
+        uint32_t G = Green(row, step, first);
+        uint32_t B = Blue(col, row, step, first);
+
+        final_color = direct_model(R, G, B);
+
+      }else if( mode_info.MemoryModel == INDEXED_MODEL){
+
+        final_color = indexed_model(col, row, first, step, no_rectangles);
+
+      }else{
+        panic("Invalid Memory Model");
+      }
+
+      draw_rectangle(col * rectangle_horizontal_size, row * rectangle_vertical_size, rectangle_horizontal_size, rectangle_vertical_size, final_color);
+    }
+  }
+
+  if (wait_for_ESC_press() != 0) {
+    printf("Failed to wait for ESC press.\n");
+    return 1;
+  }
+
+  vg_exit();
+
+  return 0;
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
