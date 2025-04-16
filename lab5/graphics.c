@@ -93,3 +93,21 @@ uint32_t (B)(uint32_t first){
   return ((1 << mode_info.BlueMaskSize) - 1) & (first >> mode_info.BlueFieldPosition);
 }
 
+int draw_xpm(xpm_map_t xpm, uint16_t x, uint16_t y) {
+  xpm_image_t img;
+  uint8_t *map = xpm_load(xpm, XPM_INDEXED, &img);
+
+  if (map == NULL) {
+    return -1;
+  }
+
+  for (uint16_t i = 0; i < img.height; i++) {
+    for (uint16_t j = 0; j < img.width; j++) {
+      uint32_t color = map[i * img.width + j];
+      draw_pixel(x + j, y + i, color);
+    }
+  }
+
+  return 0;
+}
+

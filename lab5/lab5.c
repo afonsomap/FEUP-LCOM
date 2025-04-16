@@ -145,10 +145,22 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
+  map_graphics_vram(VBE_768p_INDEXED);
+  set_video_mode(VBE_768p_INDEXED);
 
-  return 1;
+  if ( draw_xpm(xpm, x, y) == 1 ) {
+    printf("Failed to draw xpm.\n");
+    return 1;
+  }
+
+  if (wait_for_ESC_press() != 0) {
+    printf("Failed to wait for ESC press.\n");
+    return 1;
+  }
+
+  vg_exit();
+  
+  return 0;
 }
 
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
