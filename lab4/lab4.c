@@ -5,7 +5,7 @@
 
 // Any header files included below this line should have been created by you
 #include "mouse.h"
-#include "timer.h"
+#include "timer_count.h"
 
 
 int main(int argc, char *argv[]) {
@@ -34,6 +34,7 @@ int main(int argc, char *argv[]) {
 
 
 int (mouse_test_packet)(uint32_t cnt) {
+
   uint8_t bit_no;
   int ipc_status,r;
   message msg;
@@ -43,7 +44,6 @@ int (mouse_test_packet)(uint32_t cnt) {
     return 1;
   }
   if (mouse_subscribe_int(&bit_no)!=0) {
-    printf("Failed to subscribe mouse interrupts.\n");
     return 1;
   }
   
@@ -74,8 +74,8 @@ int (mouse_test_packet)(uint32_t cnt) {
       }
     }
   }
+
   if (mouse_unsubscribe_int()!=0) {
-    printf("Failed to unsubscribe mouse interrupts.\n");
     return 1;
   }
   if (mouse_write_command(KBC_DISABLE_DATA_REPORT)!=0) {
@@ -87,6 +87,7 @@ int (mouse_test_packet)(uint32_t cnt) {
 }
 
 int (mouse_test_async)(uint8_t idle_time) {
+
   int ipc_status;
   message msg;
   uint8_t bit_no_timer, bit_no_mouse;
@@ -98,11 +99,9 @@ int (mouse_test_async)(uint8_t idle_time) {
   }
 
   if (timer_subscribe_int(&bit_no_timer) != 0) {
-    printf("Failed to subscribe timer interrupts.\n");
     return 1;
   }
   if (mouse_subscribe_int(&bit_no_mouse)!=0) {
-    printf("Failed to subscribe mouse interrupts.\n");
     return 1;
   }
 
@@ -146,11 +145,9 @@ int (mouse_test_async)(uint8_t idle_time) {
   }
   
   if (mouse_unsubscribe_int()!=0) {
-    printf("Failed to unsubscribe mouse interrupts.\n");
     return 1;
   }
   if (timer_unsubscribe_int()!=0) {
-    printf("Failed to unsubscribe timer interrupts.\n");
     return 1;
   }
 
@@ -264,7 +261,6 @@ int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
     return 1;
   }
   if (mouse_subscribe_int(&bit_no)!=0) {
-    printf("Failed to subscribe mouse interrupts.\n");
     return 1;
   }
   
@@ -295,8 +291,8 @@ int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
       }
     }
   }
+  
   if (mouse_unsubscribe_int()!=0) {
-    printf("Failed to unsubscribe mouse interrupts.\n");
     return 1;
   }
   if (mouse_write_command(KBC_DISABLE_DATA_REPORT)!=0) {

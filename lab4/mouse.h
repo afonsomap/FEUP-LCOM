@@ -7,6 +7,13 @@
 #include "kbc.h"
 
 /**
+ * @defgroup mouse mouse
+ * @{
+ * 
+ * Functions to interact with the mouse.
+ */
+
+/**
  * @brief Returns a pointer to the packet struct
  */
 struct packet* get_packet();
@@ -47,5 +54,7 @@ int check_packet_complete();
  * @brief Writes a command to the mouse, used for enabling and disabling data reporting
  */
 int mouse_write_command(uint8_t command);
+
+/**@}*/
 
 #endif /* KEYBOARD_H */
