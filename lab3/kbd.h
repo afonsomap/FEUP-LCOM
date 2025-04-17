@@ -7,6 +7,13 @@
 #include "kbc.h"
 
 /**
+ * @defgroup KBD Keyboard
+ * @{
+ * 
+ * Functions to interact with the keyboard.
+ */
+
+/**
  * @brief Returns a pointer to the scancode byte read
  * 
  * @return Pointer to the scancode byte
@@ -26,15 +33,6 @@ uint8_t* get_scancode_array();
  * @return Index of the scancode array
  */
 uint8_t get_scancode_index();
-
-/**
- * @brief Wrapper for sys_inb with counter support
- * 
- * @param port Port to read from
- * @param value Pointer to store the read value
- * @return 0 on success, 1 on failure
- */
-int (util_sys_inb)(int port, uint8_t *value);
 
 /**
  * @brief Subscribes keyboard interrupts
@@ -68,4 +66,6 @@ int (check_scancode_complete)();
  */
 int (kbd_enable_interrupts)();
 
-#endif /* KEYBOARD_H */
+/**@}*/
+
+#endif /* KBD_H */

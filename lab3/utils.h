@@ -4,6 +4,13 @@
 #include <lcom/lcf.h>
 
 /**
+ * @defgroup utils utils
+ * @{
+ * 
+ * Functions for utility operations
+ */
+
+/**
  * @brief Returns the value of the sys_counter
  * 
  * @return Value of the sys_counter
@@ -18,5 +25,7 @@ int get_sys_counter();
  * @return Return 0 upon success and non-zero otherwise
  */
 int (util_sys_inb)(int port, uint8_t *value);
+
+/**@}*/
 
 #endif

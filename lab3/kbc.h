@@ -5,10 +5,10 @@
 #include "i8042.h"
 #include "utils.h"
 
-/** @defgroup kbc kbc
+/** @ingroup KBD
  * @{
  *
- * Functions to interact with the i8042 KBC.
+ * Functions to interact with the keyboard using the i8042 KBC.
  */
 
 
@@ -37,6 +37,8 @@ int (kbc_read_data)(uint8_t port, uint8_t *data);
  * @return Return 0 upon success and non-zero otherwise
  */
 int (kbc_write_command)(uint8_t port, uint8_t cmd);
+
+/**@}*/
 
 #endif /* _KBC_H */
 

@@ -1,5 +1,6 @@
 #include <lcom/lcf.h>
-#include "timer.h"
+#include "i8254.h"
+#include "timer_count.h"
 
 static int hook_id;
 static unsigned int count = 0;

@@ -43,6 +43,7 @@ void (kbc_ih)(void){
 
 
 int (check_scancode_complete)(){
+  
   if (scancode == TWO_BYTE_CODE) {
     scancode_array[scancode_index] = scancode;
     scancode_index++;
@@ -60,16 +61,21 @@ int (kbd_enable_interrupts)(){
   if(kbc_write_command(KBC_CMD_REG, KBC_READ_CMD) != 0){
     return 1;
   }
+
   if(kbc_read_data(KBC_OUT_BUF, &cmd) != 0){
     return 1;
   }
+
   cmd = cmd | BIT(0);
+
   if(kbc_write_command(KBC_CMD_REG, KBC_WRITE_CMD) != 0){
     return 1;
   }
+  
   if(kbc_write_command(KBC_OUT_BUF, cmd) != 0){
     return 1;
   }
+
   return 0;
 }
 
