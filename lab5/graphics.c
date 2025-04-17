@@ -13,7 +13,7 @@ void set_video_mode(uint16_t mode) {
   memset(&args, 0, sizeof(args)); 
   args.ah = 0x4F; // VBE function
   args.al = 0x02; // "set mode" function
-  args.bx = BIT(14) | mode; 
+  args.bx = VBE_LINEAR_FB | mode; 
   args.intno = 0x10; // BIOS video service
   sys_int86(&args);
 
@@ -37,7 +37,7 @@ void map_graphics_vram(uint16_t mode) {
 
 void draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
   if (x >= mode_info.XResolution || y >= mode_info.YResolution) {
-    panic("invalid coordinate"); 
+    panic("Coordinates out of bounds");
   }
 
   unsigned bytesPixel = (mode_info.BitsPerPixel + 7) / 8;
@@ -45,13 +45,13 @@ void draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
   unsigned int index = (mode_info.XResolution * y + x) * bytesPixel;
 
   if (memcpy(video_mem + index, &color, bytesPixel) == NULL) {
-    panic("memcpy failed");
+    panic("Failed to copy color to video memory");
   }
 }
 
 void draw_hline(uint16_t x, uint16_t y, uint16_t length, uint32_t color) {
   for (uint16_t i = 0; i < length; i++) {
-    draw_pixel(x + i, y, color);
+     draw_pixel(x + i, y, color);
   }
 }
 
@@ -61,11 +61,11 @@ void draw_rectangle(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uin
   }
 }
 
-uint32_t (direct_model)(uint32_t R, uint32_t G, uint32_t B) {
+uint32_t (direct_mode)(uint32_t R, uint32_t G, uint32_t B) {
   return (R << mode_info.RedFieldPosition) | (G << mode_info.GreenFieldPosition) | (B << mode_info.BlueFieldPosition);
 }
 
-uint32_t (indexed_model)(uint16_t col, uint16_t row,uint32_t first, uint8_t step, uint8_t n) {
+uint32_t (indexed_mode)(uint16_t col, uint16_t row,uint32_t first, uint8_t step, uint8_t n) {
   return (first + (row * n + col) * step) % (1 << mode_info.BitsPerPixel);
 }
 

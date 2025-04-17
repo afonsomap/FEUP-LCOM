@@ -38,23 +38,19 @@ int main(int argc, char *argv[]) {
 }
 
 int(video_test_init)(uint16_t mode, uint8_t delay) {
-
     set_video_mode(mode); 
-
     sleep(delay);
-
     vg_exit();
-    
     return 0;
 }
 
 int wait_for_ESC_press(){
-  uint8_t bit_no = 0;
+
+  uint8_t bit_no;
   int ipc_status,r;
   message msg;
 
   if (kbd_subscribe_int(&bit_no)!=0) {
-    printf("Failed to subscribe kbd interrupts.\n");
     return 1;
   }
 
@@ -79,7 +75,9 @@ int wait_for_ESC_press(){
       }
     }
   }
-  if (kbd_unsubscribe_int()!=0) {return 1;}
+  if (kbd_unsubscribe_int()!=0) {
+    return 1;
+  }
   return 0;
 }
 
@@ -116,17 +114,17 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 
       uint32_t final_color;
 
-      if (mode_info.MemoryModel == DIRECT_MODEL){
+      if (mode_info.MemoryModel == DIRECT_MODE){
 
         uint32_t R = Red(col, step, first);
         uint32_t G = Green(row, step, first);
         uint32_t B = Blue(col, row, step, first);
 
-        final_color = direct_model(R, G, B);
+        final_color = direct_mode(R, G, B);
 
-      }else if( mode_info.MemoryModel == INDEXED_MODEL){
+      }else if( mode_info.MemoryModel == INDEXED_MODE){
 
-        final_color = indexed_model(col, row, first, step, no_rectangles);
+        final_color = indexed_mode(col, row, first, step, no_rectangles);
 
       }else{
         panic("Invalid Memory Model");
@@ -166,9 +164,10 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 }
 
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf, int16_t speed, uint8_t fr_rate) {
+
+  uint8_t bit_no_timer, bit_no_KBC;
   int ipc_status;
   message msg;
-  uint8_t irq_set_timer, irq_set_KBC;
 
   uint8_t horizontal_movement;
   if (xi == xf && yi < yf) {
@@ -179,12 +178,10 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
     return 1;
   }  
 
-  if (kbd_subscribe_int(&irq_set_KBC) != 0){
-    printf("Failed to subscribe kbd interrupts.\n");
+  if (kbd_subscribe_int(&bit_no_KBC) != 0){
     return 1;
   }
-  if (timer_subscribe_int(&irq_set_timer) != 0) {
-    printf("Failed to subscribe timer interrupts.\n");
+  if (timer_subscribe_int(&bit_no_timer) != 0) {
     return 1;
   }
 
@@ -193,12 +190,15 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
     return 1;
   }  
 
+  uint32_t irq_set_timer = BIT(bit_no_timer);
+  uint32_t irq_set_KBC = BIT(bit_no_KBC);
+
   map_graphics_vram(VBE_768p_INDEXED);
   set_video_mode(VBE_768p_INDEXED); 
 
   if (draw_xpm(xpm, xi, yi) != 0) return 1;
 
-   uint8_t *scancode = get_scancode();
+  uint8_t *scancode = get_scancode();
 
   while (*scancode != ESC_BREAKCODE && (xi < xf || yi < yf)) {
     if( driver_receive(ANY, &msg, &ipc_status) != 0 ){
@@ -212,9 +212,11 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
           if (msg.m_notify.interrupts & irq_set_KBC) {
             kbc_ih();
           }
+
           if (msg.m_notify.interrupts & irq_set_timer) {
 
-            if (vg_draw_rectangle(xi, yi, 100, 100, 0xFFFFFF) != 0) return 1;
+            draw_rectangle(xi, yi, 100, 100, 0xFFFFFF);
+             
 
             if (horizontal_movement) {
                 xi += speed;
@@ -223,8 +225,13 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
                 yi += speed;
                 if (yi > yf) yi = yf;
             }
-            if (draw_xpm(xpm, xi, yi) != 0) return 1;
+            if (draw_xpm(xpm, xi, yi) != 0) {
+              return 1;
+            }
           }
+          break;
+        default:
+          break;
       }
     }
   }
@@ -232,11 +239,9 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
   vg_exit();
 
   if (timer_unsubscribe_int() != 0){
-    printf("Failed to unsubscribe timer interrupts.\n");
     return 1;
   }
   if (kbd_unsubscribe_int() != 0){
-    printf("Failed to unsubscribe kbd interrupts.\n");
     return 1;
   }
 

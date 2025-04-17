@@ -14,22 +14,16 @@ int (util_sys_inb)(int port, uint8_t *value){
     return 1;
   }
 
-  #ifdef LAB3
-  sys_counter++;  
-  #endif
-
   *value = (uint8_t)(val & 0xFF);
   return 0;
 }
 
-// LSB -> Less Significant Bits
 int(util_get_LSB)(uint16_t val, uint8_t *lsb) {
   if (lsb == NULL) return 1; 
   *lsb = 0xFF & val;    
   return 0;
 }
 
-// MSB -> Most Significant Bits
 int(util_get_MSB)(uint16_t val, uint8_t *msb) {
   if (msb == NULL) return 1;
   *msb = val >> 8;

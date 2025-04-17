@@ -4,6 +4,14 @@
 #include <lcom/lcf.h>
 
 /**
+ * @defgroup utils utils
+ * 
+ * @{
+ * 
+ * Utility functions.
+ */
+
+/**
  * @brief Returns the value of the sys_counter
  * 
  * @return Value of the sys_counter
@@ -36,5 +44,7 @@ int(util_get_LSB)(uint16_t val, uint8_t *lsb);
  * @return Return 0 upon success and non-zero otherwise
  */
 int(util_get_MSB)(uint16_t val, uint8_t *msb);
+
+/**@} */
 
 #endif

@@ -39,4 +39,6 @@ int (kbc_read_data)(uint8_t port, uint8_t *data, uint8_t mouseData);
  */
 int (kbc_write_command)(uint8_t port, uint8_t cmd);
 
+/**@} */
+
 #endif /* _KBC_H */
