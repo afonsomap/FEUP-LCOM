@@ -98,7 +98,7 @@ int draw_xpm(xpm_map_t xpm, uint16_t x, uint16_t y) {
   uint8_t *map = xpm_load(xpm, XPM_INDEXED, &img);
 
   if (map == NULL) {
-    return -1;
+    return 1;
   }
 
   for (uint16_t i = 0; i < img.height; i++) {

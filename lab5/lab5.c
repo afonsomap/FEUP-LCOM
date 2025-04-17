@@ -9,6 +9,8 @@
 #include "kbc.h"
 #include "kbd.h"
 #include "i8042.h"
+#include "i8254.h"
+#include "timer_count.h"
 #include "utils.h"
 
 int main(int argc, char *argv[]) {
@@ -163,13 +165,82 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
   return 0;
 }
 
-int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
-                     int16_t speed, uint8_t fr_rate) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
-         __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
+int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf, int16_t speed, uint8_t fr_rate) {
+  int ipc_status;
+  message msg;
+  uint8_t irq_set_timer, irq_set_KBC;
 
-  return 1;
+  uint8_t horizontal_movement;
+  if (xi == xf && yi < yf) {
+    horizontal_movement = 0;
+  }else if (yi == yf && xi < xf){
+    horizontal_movement = 1;
+  }else {
+    return 1;
+  }  
+
+  if (kbd_subscribe_int(&irq_set_KBC) != 0){
+    printf("Failed to subscribe kbd interrupts.\n");
+    return 1;
+  }
+  if (timer_subscribe_int(&irq_set_timer) != 0) {
+    printf("Failed to subscribe timer interrupts.\n");
+    return 1;
+  }
+
+  if (timer_set_frequency(0, fr_rate) != 0) {
+    printf("Failed to set timer frequency.\n");
+    return 1;
+  }  
+
+  map_graphics_vram(VBE_768p_INDEXED);
+  set_video_mode(VBE_768p_INDEXED); 
+
+  if (draw_xpm(xpm, xi, yi) != 0) return 1;
+
+   uint8_t *scancode = get_scancode();
+
+  while (*scancode != ESC_BREAKCODE && (xi < xf || yi < yf)) {
+    if( driver_receive(ANY, &msg, &ipc_status) != 0 ){
+      printf("Error");
+      continue;
+    }
+    if(is_ipc_notify(ipc_status)) {
+      switch(_ENDPOINT_P(msg.m_source)){
+        case HARDWARE:
+
+          if (msg.m_notify.interrupts & irq_set_KBC) {
+            kbc_ih();
+          }
+          if (msg.m_notify.interrupts & irq_set_timer) {
+
+            if (vg_draw_rectangle(xi, yi, 100, 100, 0xFFFFFF) != 0) return 1;
+
+            if (horizontal_movement) {
+                xi += speed;
+                if (xi > xf) xi = xf;
+            } else {
+                yi += speed;
+                if (yi > yf) yi = yf;
+            }
+            if (draw_xpm(xpm, xi, yi) != 0) return 1;
+          }
+      }
+    }
+  }
+
+  vg_exit();
+
+  if (timer_unsubscribe_int() != 0){
+    printf("Failed to unsubscribe timer interrupts.\n");
+    return 1;
+  }
+  if (kbd_unsubscribe_int() != 0){
+    printf("Failed to unsubscribe kbd interrupts.\n");
+    return 1;
+  }
+
+  return 0;
 }
 
 int(video_test_controller)() {
