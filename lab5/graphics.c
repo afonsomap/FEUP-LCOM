@@ -111,3 +111,21 @@ int draw_xpm(xpm_map_t xpm, uint16_t x, uint16_t y) {
   return 0;
 }
 
+int clean_xpm(xpm_map_t xpm, uint16_t x, uint16_t y) {
+  xpm_image_t img;
+  uint8_t *map = xpm_load(xpm, XPM_INDEXED, &img);
+
+  if (map == NULL) {
+    return 1;
+  }
+
+  uint32_t color = 0x000000;
+  for (uint16_t i = 0; i < img.height; i++) {
+    for (uint16_t j = 0; j < img.width; j++) {
+      draw_pixel(x + j, y + i, color);
+    }
+  }
+
+  return 0;
+}
+

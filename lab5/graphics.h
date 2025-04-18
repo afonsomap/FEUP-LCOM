@@ -161,5 +161,15 @@ uint32_t (B)(uint32_t first);
  */
 int draw_xpm(xpm_map_t xpm, uint16_t x, uint16_t y);
 
+/**
+ * @brief Erases an xpm image from the screen
+ * 
+ * @param xpm XPM image to erase
+ * @param x X coordinate of the top left corner
+ * @param y Y coordinate of the top left corner
+ * @return 0 on success, 1 on failure
+ */
+int clean_xpm(xpm_map_t xpm, uint16_t x, uint16_t y);
+
 #endif
 

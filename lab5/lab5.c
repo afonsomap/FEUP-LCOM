@@ -185,10 +185,7 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
     return 1;
   }
 
-  if (timer_set_frequency(0, fr_rate) != 0) {
-    printf("Failed to set timer frequency.\n");
-    return 1;
-  }  
+  timer_set_frequency(0, fr_rate);
 
   uint32_t irq_set_timer = BIT(bit_no_timer);
   uint32_t irq_set_KBC = BIT(bit_no_KBC);
@@ -198,9 +195,13 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
 
   if (draw_xpm(xpm, xi, yi) != 0) return 1;
 
+  uint16_t current_x = xi;
+  uint16_t current_y = yi;
+  uint8_t frame_count = 0;
+
   uint8_t *scancode = get_scancode();
 
-  while (*scancode != ESC_BREAKCODE && (xi < xf || yi < yf)) {
+  while (*scancode != ESC_BREAKCODE && (current_x < xf || current_y < yf)) {
     if( driver_receive(ANY, &msg, &ipc_status) != 0 ){
       printf("Error");
       continue;
@@ -215,19 +216,48 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
 
           if (msg.m_notify.interrupts & irq_set_timer) {
 
-            draw_rectangle(xi, yi, 100, 100, 0xFFFFFF);
-             
-
-            if (horizontal_movement) {
-                xi += speed;
-                if (xi > xf) xi = xf;
-            } else {
-                yi += speed;
-                if (yi > yf) yi = yf;
-            }
-            if (draw_xpm(xpm, xi, yi) != 0) {
+            if (clean_xpm(xpm, current_x, current_y) != 0) {
               return 1;
             }
+
+            frame_count++;
+
+            if ( speed > 0){
+
+              if (horizontal_movement) {
+
+                current_x += speed;
+
+                if (current_x > xf) {
+                  current_x = xf;
+                }
+              } else {
+
+                current_y += speed;
+
+                if (current_y > yf){
+                  current_y = yf;
+                }
+
+              }
+            }else if ( speed < 0 && (frame_count % abs(speed) == 0)){
+
+              if (horizontal_movement) {
+
+                current_x += 1;
+
+              } else {
+                
+                current_y += 1;
+              }
+
+              frame_count = 0;
+            }
+
+            if (draw_xpm(xpm, current_x, current_y) != 0) {
+              return 1;
+            }
+
           }
           break;
         default:
