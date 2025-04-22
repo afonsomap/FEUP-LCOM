@@ -6,7 +6,7 @@ SRCS = lab5.c kbd.c kbc.c utils.c  graphics.c timer.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
-CPPFLAGS += -pedantic -DLAB5
+CPPFLAGS += -DLAB5
 CPPFLAGS += -D LAB5
 
 # list of library dependencies

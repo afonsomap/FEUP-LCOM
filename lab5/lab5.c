@@ -185,23 +185,23 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
     return 1;
   }
 
-  timer_set_frequency(0, fr_rate);
-
   uint32_t irq_set_timer = BIT(bit_no_timer);
   uint32_t irq_set_KBC = BIT(bit_no_KBC);
 
   map_graphics_vram(VBE_768p_INDEXED);
   set_video_mode(VBE_768p_INDEXED); 
 
-  if (draw_xpm(xpm, xi, yi) != 0) return 1;
-
   uint16_t current_x = xi;
   uint16_t current_y = yi;
+
+  if (draw_xpm(xpm, current_x, current_y) != 0) {
+    return 1;
+  }
   uint8_t frame_count = 0;
 
   uint8_t *scancode = get_scancode();
 
-  while (*scancode != ESC_BREAKCODE && (current_x < xf || current_y < yf)) {
+  while (*scancode != ESC_BREAKCODE ) {
     if( driver_receive(ANY, &msg, &ipc_status) != 0 ){
       printf("Error");
       continue;
@@ -215,49 +215,56 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
           }
 
           if (msg.m_notify.interrupts & irq_set_timer) {
+            timer_int_handler();
+            uint8_t timer_count = timer_get_count();
 
-            if (clean_xpm(xpm, current_x, current_y) != 0) {
-              return 1;
-            }
-
-            frame_count++;
-
-            if ( speed > 0){
-
-              if (horizontal_movement) {
-
-                current_x += speed;
-
-                if (current_x > xf) {
-                  current_x = xf;
-                }
-              } else {
-
-                current_y += speed;
-
-                if (current_y > yf){
-                  current_y = yf;
-                }
-
+            if (timer_count % (60 / fr_rate) == 0) {
+              
+              if (clean_xpm(xpm, current_x, current_y) != 0) {
+                return 1;
               }
-            }else if ( speed < 0 && (frame_count % abs(speed) == 0)){
-
-              if (horizontal_movement) {
-
-                current_x += 1;
-
-              } else {
-                
-                current_y += 1;
+              
+  
+              frame_count++;
+  
+              if ( speed > 0){
+  
+                if (horizontal_movement) {
+  
+                  current_x += speed;
+  
+                  if (current_x > xf) {
+                    current_x = xf;
+                  }
+                } else {
+  
+                  current_y += speed;
+  
+                  if (current_y > yf){
+                    current_y = yf;
+                  }
+  
+                }
+              }else if ( speed < 0 && (frame_count % abs(speed) == 0)){
+  
+                if (horizontal_movement) {
+  
+                  current_x += 1;
+  
+                } else {
+                  
+                  current_y += 1;
+                }
+  
+                frame_count = 0;
               }
 
-              frame_count = 0;
-            }
+              timer_reset_count();
 
-            if (draw_xpm(xpm, current_x, current_y) != 0) {
-              return 1;
+              if (draw_xpm(xpm, current_x, current_y) != 0) {
+                return 1;
+              }
             }
-
           }
           break;
         default:

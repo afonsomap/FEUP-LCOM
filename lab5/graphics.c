@@ -119,7 +119,7 @@ int clean_xpm(xpm_map_t xpm, uint16_t x, uint16_t y) {
     return 1;
   }
 
-  uint32_t color = 0x000000;
+  uint32_t color = 0; //Black color
   for (uint16_t i = 0; i < img.height; i++) {
     for (uint16_t j = 0; j < img.width; j++) {
       draw_pixel(x + j, y + i, color);
