@@ -250,10 +250,18 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
                 if (horizontal_movement) {
   
                   current_x += 1;
+
+                  if (current_x > xf) {
+                    current_x = xf;
+                  }
   
                 } else {
                   
                   current_y += 1;
+
+                  if (current_y > yf){
+                    current_y = yf;
+                  }
                 }
   
                 frame_count = 0;
