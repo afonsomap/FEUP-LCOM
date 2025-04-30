@@ -1,8 +1,8 @@
 #include <lcom/lcf.h>
 #include "graphics.h"
 
-vbe_mode_info_t mode_info;
-uint8_t *video_mem;
+static vbe_mode_info_t mode_info;
+static uint8_t *video_mem;
 
 vbe_mode_info_t get_mode_info() {
   return mode_info;
