@@ -1,14 +1,14 @@
 static xpm_row_t const bomb_xpm[] = {
-  "64 64 9",
-  "  0",
-  ". 15",
-  "+ 8",
-  "@ 14",
-  "# 4",
-  "$ 6",
-  "% 7",
-  "& 9",
-  "* 1",
+  "64 64 9 1",  // Width, height, number of colors, characters per pixel
+  "  c #000000",  // Space represents black (background)
+  ". c #FFFFFF",  // White
+  "+ c #808080",  // Gray
+  "@ c #FF0000",  // Red
+  "# c #00FF00",  // Green
+  "$ c #0000FF",  // Blue
+  "% c #FFFF00",  // Yellow
+  "& c #FFA500",  // Orange
+  "* c #800080",  // Purple
   "                                                                ",
   "                                                                ",
   "                           +#++#&+#+                            ",

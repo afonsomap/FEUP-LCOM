@@ -29,7 +29,7 @@ Sprite *create_sprite(const xpm_map_t pic) {
 
   // read the sprite pixmap
 
-  sp->map = xpm_load(pic, XPM_INDEXED, &img);
+  sp->map = xpm_load(pic, XPM_8_8_8, &img);
 
   if( sp->map == NULL ) {
     free(sp);

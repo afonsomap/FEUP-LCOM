@@ -156,9 +156,9 @@ void interrups_loop() {
 
 int (proj_main_loop)(int argc, char *argv[]) {
 
-  map_graphics_vram(VBE_1024p_INDEXED);
+  map_graphics_vram(VBE_1024p_DC);
   allocate_buffer();
-  set_video_mode(VBE_1024p_INDEXED);
+  set_video_mode(VBE_1024p_DC);
 
   loader = load_sprites();
   sm = create_singleMode(loader);

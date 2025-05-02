@@ -16,6 +16,7 @@
 #define VBE_480p_DC 0x110
 #define VBE_600p_DC 0x115
 #define VBE_1024p_DC 0x11B
+#define VBE_768p_DC 0x118
 #define VBE_864p_DC 0x14C
 
 /* Frame buffer*/

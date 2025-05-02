@@ -67,7 +67,7 @@ void draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
   
   unsigned int index = (mode_info.XResolution * y + x) * bytesPixel;
 
-  if (color == 10101010) { // Preciso definir uma cor para o transparente
+  if (color == CHROMA_KEY_GREEN_888) { // Preciso definir uma cor para o transparente
     return; // Skip drawing transparent color
   }
 
@@ -93,9 +93,16 @@ int vg_draw_xpm(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16
     return 1;
   }
 
+  unsigned bytes_per_pixel = (mode_info.BitsPerPixel + 7) / 8;
+
   for (uint16_t i = 0; i < height; i++) {
     for (uint16_t j = 0; j < width; j++) {
-      uint32_t color = xpm_map[i * width + j];
+
+      unsigned int index = (i * width + j) * bytes_per_pixel;
+
+      uint32_t color = 0;
+      memcpy(&color, &xpm_map[index], bytes_per_pixel);
+
       draw_pixel(x + j, y + i, color);
     }
   }

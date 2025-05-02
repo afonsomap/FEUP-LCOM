@@ -43,7 +43,7 @@ AnimSprite *create_anim_sprite(uint8_t no_pic, const xpm_map_t pic1, ...) {
   asp->map = malloc(no_pic * sizeof(char *));
 
   xpm_image_t img;
-  asp->map[0] = xpm_load(pic1, XPM_INDEXED, &img);
+  asp->map[0] = xpm_load(pic1, XPM_8_8_8, &img);
   if (asp->map[0] == NULL) {
       free(asp->map);
       free(asp);
@@ -58,8 +58,8 @@ AnimSprite *create_anim_sprite(uint8_t no_pic, const xpm_map_t pic1, ...) {
   va_list ap;
   va_start(ap, pic1);
   for (int i = 1; i < no_pic; i++) {
-      const char* tmp = va_arg(ap, const char *);
-      asp->map[i] = xpm_load((xpm_map_t)tmp, XPM_INDEXED, &img);
+      const xpm_map_t tmp = va_arg(ap, xpm_map_t);
+      asp->map[i] = xpm_load(tmp, XPM_8_8_8, &img);
       if (asp->map[i] == NULL || img.width != asp->width || img.height != asp->height) {
           for (int j = 0; j < i; j++) {
             free(asp->map[j]);

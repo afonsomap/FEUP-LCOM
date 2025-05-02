@@ -142,7 +142,7 @@ void process_input(SingleMode *sm, bool* keys) {
     return;
   }
 
-  if (keys[0]){
+  if (keys[0]){ // Up
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1), get_player_Ypos(sm->player1) - 1)){
         player_move_up(sm->player1);
@@ -151,7 +151,7 @@ void process_input(SingleMode *sm, bool* keys) {
       }
     }
   }
-  if (keys[1]){
+  if (keys[1]){ // Down
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1), get_player_Ypos(sm->player1) + 1)){
         player_move_down(sm->player1);
@@ -160,7 +160,7 @@ void process_input(SingleMode *sm, bool* keys) {
       }
     }
   }
-  if (keys[2]){
+  if (keys[2]){ // Left
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1) - 1, get_player_Ypos(sm->player1))){
         player_move_left(sm->player1);
@@ -169,7 +169,7 @@ void process_input(SingleMode *sm, bool* keys) {
       }
     }
   }
-  if (keys[3]){
+  if (keys[3]){ // Right
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1) + 1, get_player_Ypos(sm->player1))){
         player_move_right(sm->player1);
