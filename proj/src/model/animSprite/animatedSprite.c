@@ -52,7 +52,7 @@ AnimSprite *create_anim_sprite(uint8_t no_pic, const xpm_map_t pic1, ...) {
   asp->width = img.width;
   asp->height = img.height;
   asp->num_images = no_pic;
-  asp->aspeed = 5; // default animation speed
+  asp->aspeed = 1; // default animation speed
 
   // load pixmaps
   va_list ap;

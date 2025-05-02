@@ -22,18 +22,54 @@ SpriteLoader* load_sprites() {
   }
 
   // Load player sprites
-  loader->player1_standing = create_sprite((xpm_map_t)player_xpm);
-  loader->player2_standing = create_sprite((xpm_map_t)player_xpm);
-  loader->player1_left = create_anim_sprite(2, (xpm_map_t)player_xpm, (xpm_map_t)player_xpm);
-  loader->player1_right = create_anim_sprite(2, (xpm_map_t)player_xpm, (xpm_map_t)player_xpm);
-  loader->player1_up = create_anim_sprite(2, (xpm_map_t)player_xpm, (xpm_map_t)player_xpm);
-  loader->player1_down = create_anim_sprite(2, (xpm_map_t)player_xpm, (xpm_map_t)player_xpm);
-  loader->player2_left = create_anim_sprite(2, (xpm_map_t)player_xpm, (xpm_map_t)player_xpm);
-  loader->player2_right = create_anim_sprite(2, (xpm_map_t)player_xpm, (xpm_map_t)player_xpm);
-  loader->player2_up = create_anim_sprite(2, (xpm_map_t)player_xpm, (xpm_map_t)player_xpm);
-  loader->player2_down = create_anim_sprite(2, (xpm_map_t)player_xpm, (xpm_map_t)player_xpm);
+  loader->player1_standing = create_sprite((xpm_map_t)p1_front_0);
+  loader->player2_standing = create_sprite((xpm_map_t)p1_front_0);
+  loader->player1_left = create_anim_sprite(10, (xpm_map_t)p1_left_0, (xpm_map_t)p1_left_1,
+                                           (xpm_map_t)p1_left_2, (xpm_map_t)p1_left_3,
+                                           (xpm_map_t)p1_left_4, (xpm_map_t)p1_left_5,
+                                           (xpm_map_t)p1_left_6, (xpm_map_t)p1_left_7,
+                                           (xpm_map_t)p1_left_8, (xpm_map_t)p1_left_9);
+  loader->player1_right = create_anim_sprite(10, (xpm_map_t)p1_right_0, (xpm_map_t)p1_right_1,
+                                            (xpm_map_t)p1_right_2, (xpm_map_t)p1_right_3,
+                                            (xpm_map_t)p1_right_4, (xpm_map_t)p1_right_5,
+                                            (xpm_map_t)p1_right_6, (xpm_map_t)p1_right_7,
+                                            (xpm_map_t)p1_right_8, (xpm_map_t)p1_right_9);
+  loader->player1_up = create_anim_sprite(10, (xpm_map_t)p1_back_0, (xpm_map_t)p1_back_1,
+                                          (xpm_map_t)p1_back_2, (xpm_map_t)p1_back_3, 
+                                          (xpm_map_t)p1_back_4, (xpm_map_t)p1_back_5,
+                                          (xpm_map_t)p1_back_6, (xpm_map_t)p1_back_7,
+                                          (xpm_map_t)p1_back_8, (xpm_map_t)p1_back_9);
+  loader->player1_down = create_anim_sprite(10, (xpm_map_t)p1_front_0, (xpm_map_t)p1_front_1,
+                                            (xpm_map_t)p1_front_2, (xpm_map_t)p1_front_3,
+                                            (xpm_map_t)p1_front_4, (xpm_map_t)p1_front_5,
+                                            (xpm_map_t)p1_front_6, (xpm_map_t)p1_front_7,
+                                            (xpm_map_t)p1_front_8, (xpm_map_t)p1_front_9);
+      
+  // Load player 2 sprites
+  loader->player2_standing = create_sprite((xpm_map_t)p1_front_0);
+  loader->player2_left = create_anim_sprite(10, (xpm_map_t)p1_left_0, (xpm_map_t)p1_left_1,
+                                           (xpm_map_t)p1_left_2, (xpm_map_t)p1_left_3,
+                                           (xpm_map_t)p1_left_4, (xpm_map_t)p1_left_5,
+                                           (xpm_map_t)p1_left_6, (xpm_map_t)p1_left_7,
+                                           (xpm_map_t)p1_left_8, (xpm_map_t)p1_left_9);
+  loader->player2_right = create_anim_sprite(10, (xpm_map_t)p1_right_0, (xpm_map_t)p1_right_1,
+                                            (xpm_map_t)p1_right_2, (xpm_map_t)p1_right_3,
+                                            (xpm_map_t)p1_right_4, (xpm_map_t)p1_right_5,
+                                            (xpm_map_t)p1_right_6, (xpm_map_t)p1_right_7,
+                                            (xpm_map_t)p1_right_8, (xpm_map_t)p1_right_9);
+  loader->player2_up = create_anim_sprite(10, (xpm_map_t)p1_back_0, (xpm_map_t)p1_back_1,
+                                          (xpm_map_t)p1_back_2, (xpm_map_t)p1_back_3, 
+                                          (xpm_map_t)p1_back_4, (xpm_map_t)p1_back_5,
+                                          (xpm_map_t)p1_back_6, (xpm_map_t)p1_back_7,
+                                          (xpm_map_t)p1_back_8, (xpm_map_t)p1_back_9);
+  loader->player2_down = create_anim_sprite(10, (xpm_map_t)p1_front_0, (xpm_map_t)p1_front_1,
+                                            (xpm_map_t)p1_front_2, (xpm_map_t)p1_front_3,
+                                            (xpm_map_t)p1_front_4, (xpm_map_t)p1_front_5,
+                                            (xpm_map_t)p1_front_6, (xpm_map_t)p1_front_7,
+                                            (xpm_map_t)p1_front_8, (xpm_map_t)p1_front_9);
+  // Load bomb and wall sprites
   loader->bomb = create_anim_sprite(2, (xpm_map_t)bomb_xpm, (xpm_map_t)bomb_xpm);
-  loader->wall = create_sprite( (xpm_map_t)wall_xpm);
+  loader->wall = create_sprite( (xpm_map_t)wall);
   return loader;
 }
 

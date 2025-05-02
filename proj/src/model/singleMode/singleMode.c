@@ -25,7 +25,7 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
   sm->x_initial_grid = 0; // Initialize grid position
   sm->y_initial_grid = 0; // Initialize grid position
   sm->grid_square_width = get_sprite_width(get_wall(loader)); // Get the width of the grid square
-  sm->grid_square_height = get_sprite_height(get_wall(loader)); // Get the height of the grid square
+  sm->grid_square_height = sm->grid_square_width; // Get the height of the grid square
 
 
   // Create player
