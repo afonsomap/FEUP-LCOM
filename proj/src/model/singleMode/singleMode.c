@@ -1,7 +1,7 @@
 #include "singleMode.h"
 
-#define GRID_WIDTH 17
-#define GRID_HEIGHT 15
+#define GRID_WIDTH 15
+#define GRID_HEIGHT 13
 
 struct singleMode_imp {
   Player *player1;
@@ -10,6 +10,7 @@ struct singleMode_imp {
   uint16_t grid_square_width; // Width of each grid square
   uint16_t x_initial_grid; // X coordinate of the initial grid
   uint16_t y_initial_grid; // Y coordinate of the initial grid
+  Sprite *grid_background; // Background sprite
 };
 
 
@@ -22,6 +23,7 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
   sm->x_initial_grid = 0; // Initialize grid position
   sm->y_initial_grid = 0; // Initialize grid position
   sm->grid_square_width = get_sprite_width(get_wall(loader)); // Get the width of the grid square
+  sm->grid_background = get_grid_background(loader); // Get the background sprite
 
 
   // Create player
@@ -62,6 +64,7 @@ void destroy_singleMode(SingleMode *sm) {
   // Destroy player
   destroy_player(sm->player1);
 
+
   // Destroy walls
   for (int i = 0; i < GRID_HEIGHT; i++) {
     for (int j = 0; j < GRID_WIDTH; j++) {
@@ -69,6 +72,7 @@ void destroy_singleMode(SingleMode *sm) {
       destroy_bomb(sm->bomb_matrix[j][i]);
     }
   }
+  destroy_sprite(sm->grid_background); // Destroy background sprite
 
   free(sm);
 }
@@ -77,6 +81,8 @@ void draw_singleMode(SingleMode *sm) {
   if (sm == NULL) {
     return;
   }
+  // Draw background
+  draw_sprite(sm->grid_background, sm->x_initial_grid+30, sm->y_initial_grid+50);
 
   // Draw walls
   for (int i = 0; i < GRID_HEIGHT; i++) {

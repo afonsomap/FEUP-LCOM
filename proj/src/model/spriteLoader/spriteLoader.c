@@ -14,6 +14,7 @@ struct sprite_loader_imp {
   AnimSprite *bomb;
   Sprite *wall;
   Sprite *solid_wall;
+  Sprite *grid_background;
 };
 
 SpriteLoader* load_sprites() {
@@ -72,6 +73,7 @@ SpriteLoader* load_sprites() {
   loader->bomb = create_anim_sprite(2, (xpm_map_t)bomb_xpm, (xpm_map_t)bomb_xpm);
   loader->wall = create_sprite( (xpm_map_t)wall_xpm);
   loader->solid_wall = create_sprite( (xpm_map_t)solid_wall_xpm);
+  loader->grid_background = create_sprite((xpm_map_t)grid_background);
   return loader;
 }
 
@@ -91,6 +93,7 @@ void destroy_sprites(SpriteLoader *loader) {
   destroy_anim_sprite(loader->bomb);
   destroy_sprite(loader->wall);
   destroy_sprite(loader->solid_wall);
+  destroy_sprite(loader->grid_background);
 
   free(loader);
 }
@@ -135,5 +138,8 @@ Sprite* get_wall(SpriteLoader *loader) {
 }
 Sprite* get_solid_wall(SpriteLoader *loader) {
   return loader->solid_wall;
+}
+Sprite* get_grid_background(SpriteLoader *loader) {
+  return loader->grid_background;
 }
 
