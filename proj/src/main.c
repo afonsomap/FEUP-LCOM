@@ -5,9 +5,11 @@
 #include "timer_count.h"
 #include "spriteLoader.h"
 #include "singleMode.h"
+#include "cursor.h"
 
 static SpriteLoader *loader;
 static SingleMode *sm;
+static Cursor *c;
 static bool key_pressed[4] = {false, false, false, false}; // UP, DOWN, LEFT, RIGHT
 static bool running = true;
 
@@ -117,6 +119,7 @@ void interrups_loop() {
             timer_int_handler();
             if (timer_get_count() % 2 == 0) { //Timer works at 60 Hz, this will the game will be 30 fps
               clear_buffer();
+              draw_cursor(c)
               process_input(sm, key_pressed);
               draw_singleMode(sm);
               copy_buffer_vram();
