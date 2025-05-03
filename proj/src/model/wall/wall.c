@@ -78,13 +78,13 @@ void destroy_wall(Wall *w) {
   w = NULL;
 }
 
-void draw_wall(Wall *w, uint16_t x_initial_grid, uint16_t y_initial_grid) {
+void draw_wall(Wall *w, uint16_t x_initial_grid, uint16_t y_initial_grid, uint16_t grid_square_width) {
   if (w == NULL || w->active==0) { // Check if the wall is NULL or inactive
     return;
   }
   
-  uint16_t x_pos = (w->x*get_sprite_width(w->img) + x_initial_grid);
-  uint16_t y_pos = (w->y*get_sprite_height(w->img) + y_initial_grid);
+  uint16_t x_pos = (w->x*grid_square_width + x_initial_grid);
+  uint16_t y_pos = (w->y*grid_square_width + y_initial_grid); 
 
   draw_sprite(w->img, x_pos, y_pos);
 }

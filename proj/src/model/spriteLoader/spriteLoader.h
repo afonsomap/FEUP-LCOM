@@ -53,6 +53,7 @@
 
 #include "images/bomb.xpm"
 #include "images/wall.xpm"
+#include "images/solid_wall.xpm"
 
 
 struct sprite_loader_imp;
@@ -74,5 +75,6 @@ AnimSprite* get_player2_up(SpriteLoader *loader);
 AnimSprite* get_player2_down(SpriteLoader *loader);
 AnimSprite* get_bomb(SpriteLoader *loader);
 Sprite* get_wall(SpriteLoader *loader);
+Sprite* get_solid_wall(SpriteLoader *loader);
 
 #endif
