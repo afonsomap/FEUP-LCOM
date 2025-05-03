@@ -1,0 +1,81 @@
+#include "bomb.h"
+
+struct bomb_imp {
+  uint8_t x, y; // position in the game grid
+  AnimSprite* img; // pointer to the animated sprite
+  uint8_t current_frame; // current frame of the animation
+  uint8_t current_image; // current image of the animation
+};
+
+uint8_t get_bomb_Xpos(Bomb *b) { 
+  if (b == NULL) {
+    return 0;
+  }
+  return b->x;
+}
+
+uint8_t get_bomb_Ypos(Bomb *b) {
+  if (b == NULL) {
+    return 0;
+  }
+  return b->y;
+}
+
+bool is_bomb_exploded(Bomb *b) {
+  if (b == NULL) {
+    return false;
+  }
+  return b->current_image == get_anim_sprite_num_images(b->img);
+}
+
+Bomb *create_bomb(uint8_t x, uint8_t y, AnimSprite* img) {
+  // allocate space for the "object"
+  Bomb *bomb = (Bomb *) malloc(sizeof(Bomb));
+  if (bomb == NULL) {
+    return NULL;
+  }
+
+  bomb->x = x;
+  bomb->y = y;
+  bomb->img = img;
+  bomb->current_frame = 0;
+  bomb->current_image = 0;
+
+  return bomb;
+}
+
+void destroy_bomb(Bomb *b) {
+  if (b == NULL) {
+    return;
+  }
+  destroy_anim_sprite(b->img);
+  free(b);
+  b = NULL;
+}
+
+static void update_bomb_frame(Bomb *b) {
+  if (b == NULL) {
+    return;
+  }
+
+  b->current_frame++;
+  if (b->current_frame == get_anim_sprite_aspeed(b->img)) {
+    b->current_frame = 0;
+    b->current_image++;
+  }
+}
+
+void draw_bomb(Bomb *b, uint16_t x_initial_grid, uint16_t y_initial_grid) {
+  if (b == NULL) {
+    return;
+  }
+  // Calculate the pixel position based on the grid position
+  uint16_t x_pos = b->x + x_initial_grid;
+  uint16_t y_pos = b->y + y_initial_grid;
+
+  draw_anim_sprite(b->img, x_pos, y_pos, b->current_image);
+  update_bomb_frame(b);
+}
+
+
+
