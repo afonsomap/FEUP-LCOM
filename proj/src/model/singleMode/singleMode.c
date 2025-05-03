@@ -20,8 +20,8 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
     return NULL;
   }
 
-  sm->x_initial_grid = 0; // Initialize grid position
-  sm->y_initial_grid = 0; // Initialize grid position
+  sm->x_initial_grid = 268; // Initialize grid position
+  sm->y_initial_grid = 80; // Initialize grid position
   sm->grid_square_width = get_sprite_width(get_wall(loader)); // Get the width of the grid square
   sm->grid_background = get_grid_background(loader); // Get the background sprite
 
