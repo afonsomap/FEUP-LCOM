@@ -82,8 +82,9 @@ void destroy_wall(Wall *w);
  * @param w Pointer to the wall to be drawn
  * @param x_initial_grid The initial X coordinate of the grid
  * @param y_initial_grid The initial Y coordinate of the grid
+ * @param grid_square_width The width of the grid square
  */
-void draw_wall(Wall *w, uint16_t x_initial_grid, uint16_t y_initial_grid);
+void draw_wall(Wall *w, uint16_t x_initial_grid, uint16_t y_initial_grid, uint16_t grid_square_width);
 
 #endif /* __WALL_H */
 

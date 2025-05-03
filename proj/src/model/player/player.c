@@ -122,7 +122,7 @@ void draw_player(Player *p, uint16_t x_initial_grid, uint16_t y_initial_grid) {
 
   // Calculate the position in pixels based on the grid position
   uint16_t x_pos = (p->x + x_initial_grid);
-  uint16_t y_pos = (p->y + y_initial_grid);
+  uint16_t y_pos = (p->y + y_initial_grid) - 20;
 
   // Draw the player based on the current direction
   switch (p->current_d) {

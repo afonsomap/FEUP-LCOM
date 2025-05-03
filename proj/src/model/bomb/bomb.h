@@ -27,6 +27,22 @@ uint8_t get_bomb_Xpos(Bomb *b);
 uint8_t get_bomb_Ypos(Bomb *b);
 
 /**
+ * @brief Checks if the bomb is active
+ *
+ * @param b Pointer to the bomb to be checked
+ * @return true if the bomb is active, false otherwise
+ */
+bool is_bomb_active(Bomb *b);
+
+/**
+ * @brief Sets the bomb's active status
+ *
+ * @param b Pointer to the bomb to be modified
+ * @param active The new active status of the bomb
+ */
+void set_bomb_active(Bomb *b, bool active);
+
+/**
  * @brief Checks if the bomb has exploded
  *
  * @param b Pointer to the bomb to be checked
@@ -40,9 +56,10 @@ bool is_bomb_exploded(Bomb *b);
  * @param x The x-coordinate of the bomb in the game grid
  * @param y The y-coordinate of the bomb in the game grid
  * @param img The sprite for the bomb
+ * @param active The initial active status of the bomb
  * @return Pointer to the created bomb, or NULL if the pixmap is invalid
  */
-Bomb *create_bomb(uint8_t x, uint8_t y, AnimSprite *img);
+Bomb *create_bomb(uint8_t x, uint8_t y, AnimSprite *img, bool active);
 
 
 /**
@@ -53,7 +70,7 @@ Bomb *create_bomb(uint8_t x, uint8_t y, AnimSprite *img);
 void destroy_bomb(Bomb *b); 
 
 /**
- * @brief Draws the bomb on the screen
+ * @brief Draws the bomb on the screen, if active
  *
  * @param b Pointer to the bomb to be drawn
  * @param x_initial_grid The initial X coordinate of the grid

@@ -5,6 +5,7 @@ struct bomb_imp {
   AnimSprite* img; // pointer to the animated sprite
   uint8_t current_frame; // current frame of the animation
   uint8_t current_image; // current image of the animation
+  bool active;
 };
 
 uint8_t get_bomb_Xpos(Bomb *b) { 
@@ -21,6 +22,20 @@ uint8_t get_bomb_Ypos(Bomb *b) {
   return b->y;
 }
 
+bool is_bomb_active(Bomb *b) {
+  if (b == NULL) {
+    return false;
+  }
+  return b->active;
+}
+
+void set_bomb_active(Bomb *b, bool active) {
+  if (b == NULL) {
+    return;
+  }
+  b->active = active;
+}
+
 bool is_bomb_exploded(Bomb *b) {
   if (b == NULL) {
     return false;
@@ -28,7 +43,7 @@ bool is_bomb_exploded(Bomb *b) {
   return b->current_image == get_anim_sprite_num_images(b->img);
 }
 
-Bomb *create_bomb(uint8_t x, uint8_t y, AnimSprite* img) {
+Bomb *create_bomb(uint8_t x, uint8_t y, AnimSprite* img, bool active) {
   // allocate space for the "object"
   Bomb *bomb = (Bomb *) malloc(sizeof(Bomb));
   if (bomb == NULL) {
@@ -40,6 +55,7 @@ Bomb *create_bomb(uint8_t x, uint8_t y, AnimSprite* img) {
   bomb->img = img;
   bomb->current_frame = 0;
   bomb->current_image = 0;
+  bomb->active = active;
 
   return bomb;
 }
@@ -66,7 +82,7 @@ static void update_bomb_frame(Bomb *b) {
 }
 
 void draw_bomb(Bomb *b, uint16_t x_initial_grid, uint16_t y_initial_grid) {
-  if (b == NULL) {
+  if (b == NULL || (b->active == false)) {
     return;
   }
   // Calculate the pixel position based on the grid position
