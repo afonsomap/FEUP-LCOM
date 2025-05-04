@@ -35,7 +35,7 @@ uint8_t get_anim_sprite_num_images(AnimSprite *sp) {
   return sp->num_images;
 }
 
-AnimSprite *create_anim_sprite(uint8_t no_pic, const xpm_map_t pic1, ...) {
+AnimSprite *create_anim_sprite(uint8_t anim_speed, uint8_t no_pic, const xpm_map_t pic1, ...) {
   // allocate space for the "object"
   AnimSprite *asp = malloc(sizeof(AnimSprite));
 
@@ -52,7 +52,7 @@ AnimSprite *create_anim_sprite(uint8_t no_pic, const xpm_map_t pic1, ...) {
   asp->width = img.width;
   asp->height = img.height;
   asp->num_images = no_pic;
-  asp->aspeed = 1; // default animation speed
+  asp->aspeed = anim_speed;
 
   // load pixmaps
   va_list ap;

@@ -31,7 +31,12 @@
 #include "images/player1/right/p1_right4.xpm"
 #include "images/player1/right/p1_right5.xpm"
 
-#include "images/bomb.xpm"
+#include "images/bomb/bomb1.xpm"
+#include "images/bomb/bomb2.xpm"  
+#include "images/bomb/bomb3.xpm"
+#include "images/bomb/bomb4.xpm"
+#include "images/bomb/bomb5.xpm"
+
 #include "images/wall.xpm"
 #include "images/solid_wall.xpm"
 #include "images/grid_background.xpm"
