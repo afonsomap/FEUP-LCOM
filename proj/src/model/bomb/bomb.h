@@ -75,8 +75,9 @@ void destroy_bomb(Bomb *b);
  * @param b Pointer to the bomb to be drawn
  * @param x_initial_grid The initial X coordinate of the grid
  * @param y_initial_grid The initial Y coordinate of the grid
+ * @param grid_square_width The width of each grid square
  */
-void draw_bomb(Bomb *b, uint16_t x_initial_grid, uint16_t y_initial_grid);
+void draw_bomb(Bomb *b, uint16_t x_initial_grid, uint16_t y_initial_grid, uint16_t grid_square_width);
 
 #endif /* __BOMB_H */
 

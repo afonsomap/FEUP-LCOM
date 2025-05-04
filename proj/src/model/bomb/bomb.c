@@ -78,16 +78,21 @@ static void update_bomb_frame(Bomb *b) {
   if (b->current_frame == get_anim_sprite_aspeed(b->img)) {
     b->current_frame = 0;
     b->current_image++;
+    if (b->current_image >= get_anim_sprite_num_images(b->img)) {
+      b->current_image = 0;
+      b->current_frame = 0;
+      b->active = false; // Reset the bomb to inactive after the animation
+    }
   }
 }
 
-void draw_bomb(Bomb *b, uint16_t x_initial_grid, uint16_t y_initial_grid) {
+void draw_bomb(Bomb *b, uint16_t x_initial_grid, uint16_t y_initial_grid, uint16_t grid_square_width) {
   if (b == NULL || (b->active == false)) {
     return;
   }
   // Calculate the pixel position based on the grid position
-  uint16_t x_pos = b->x + x_initial_grid;
-  uint16_t y_pos = b->y + y_initial_grid;
+  uint16_t x_pos = b->x*grid_square_width + x_initial_grid;
+  uint16_t y_pos = b->y*grid_square_width + y_initial_grid + 10;
 
   draw_anim_sprite(b->img, x_pos, y_pos, b->current_image);
   update_bomb_frame(b);

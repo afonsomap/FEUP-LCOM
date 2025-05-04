@@ -60,7 +60,7 @@ uint8_t get_anim_sprite_num_images(AnimSprite *sp);
  * @param ... The rest of the XPM images to be loaded
  * @return Pointer to the created animated sprite, or NULL if the pixmap is invalid
  */
-AnimSprite *create_anim_sprite(uint8_t no_pic, xpm_map_t pic1, ...);
+AnimSprite *create_anim_sprite(uint8_t anim_speed, uint8_t no_pic, xpm_map_t pic1, ...);
 
 /**
  * @brief Frees the memory allocated for the animated sprite

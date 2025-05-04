@@ -88,11 +88,11 @@ void draw_singleMode(SingleMode *sm) {
   for (int i = 0; i < GRID_HEIGHT; i++) {
     for (int j = 0; j < GRID_WIDTH; j++) {
 
-      if ( get_player_Xpos(sm->player1)/sm->grid_square_width == j && get_player_Ypos(sm->player1)/sm->grid_square_width == i) {
-        draw_player(sm->player1, sm->x_initial_grid, sm->y_initial_grid);
-      }
       draw_wall(sm->wall_matrix[j][i], sm->x_initial_grid, sm->y_initial_grid, sm->grid_square_width);
-      draw_bomb(sm->bomb_matrix[j][i], sm->x_initial_grid, sm->y_initial_grid);
+      draw_bomb(sm->bomb_matrix[j][i], sm->x_initial_grid, sm->y_initial_grid, sm->grid_square_width);
+    }
+    if ( get_player_Ypos(sm->player1)/sm->grid_square_width == i) {
+      draw_player(sm->player1, sm->x_initial_grid, sm->y_initial_grid);
     }
   }
 }
