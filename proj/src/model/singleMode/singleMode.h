@@ -2,12 +2,14 @@
 #define _SINGLEMODE_H_
 #include <lcom/lcf.h>
 #include <stddef.h>
+#include <math.h>
 #include "player.h"
 #include "bomb.h"
 #include "wall.h"
 #include "spriteLoader.h"
 #include "animatedSprite.h"
 #include "sprite.h"
+#include "cursor.h"
 
 
 struct singleMode_imp;
@@ -40,8 +42,26 @@ void draw_singleMode(SingleMode *sm);
  * 
  * @param sm Pointer to the SingleMode object
  * @param keys Array of boolean values representing the state of the keys
+ * @return true if the game should exit, false otherwise
  */
-void process_input(SingleMode *sm, bool* keys);
+bool process_input_kbd(SingleMode *sm, bool* keys);
+
+/**
+ * @brief Processes the input from the mouse
+ * 
+ * @param sm Pointer to the SingleMode object
+ * @param c Pointer to the Cursor object
+ * @return true if the game should exit, false otherwise
+ */
+bool process_input_mouse(SingleMode *sm, Cursor *c);
+
+/**
+ * @brief Checks if the bomb has exploded and if the player is in the same position, destroys wall if it is destroyable
+ * 
+ * @param sm Pointer to the SingleMode object
+ * @return true if the bomb has exploded and the player is in the same position, false otherwise
+ */
+bool check_bomb_exploded(SingleMode *sm);
 
 #endif /* _SINGLEMODE_H_ */
 

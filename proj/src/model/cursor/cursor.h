@@ -4,7 +4,7 @@
 #include <lcom/lcf.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include "animatedSprite.h"
+#include "sprite.h"
 
 struct cursor_imp;
 typedef struct cursor_imp Cursor;
@@ -15,37 +15,48 @@ typedef struct cursor_imp Cursor;
  * @param c Pointer to the cursor
  * @return The X coordinate of the cursor
  */
-uint8_t get_cursor_Xpos(Cursor *c);
+uint16_t get_cursor_Xpos(Cursor *c);
+
 /**
  * @brief Returns the Y coordinate of the cursor
  *
  * @param c Pointer to the cursor
  * @return The Y coordinate of the cursor
  */
-uint8_t get_cursor_Ypos(Cursor *c);
+uint16_t get_cursor_Ypos(Cursor *c);
+
+/**
+ * @brief Returns the button pressed state of the cursor
+ *
+ * @param c Pointer to the cursor
+ * @param button The button to check (0, 1, or 2)
+ * @return True if the button is pressed, false otherwise
+ */
+bool get_cursor_button_pressed(Cursor *c, uint8_t button);
+
 /**
  * @brief Creates a new cursor with the specified sprite
  *
- * @param x The x-coordinate of the cursor in the game grid
- * @param y The y-coordinate of the cursor in the game grid
  * @param img The sprite for the cursor
+ * @param screen_width The width of the screen
+ * @param screen_height The height of the screen
  * @return Pointer to the created cursor, or NULL if the pixmap is invalid
  */
-Cursor *create_cursor(uint8_t x, uint8_t y, AnimSprite *img);
+Cursor *create_cursor(Sprite *img, uint16_t screen_width, uint16_t screen_height);
+
 /**
  * @brief Frees the memory allocated for the cursor
  *
  * @param c Pointer to the cursor to be destroyed
  */
 void destroy_cursor(Cursor *c);
+
 /**
  * @brief Draws the cursor on the screen
  *
  * @param c Pointer to the cursor to be drawn
- * @param x_initial_grid The initial X coordinate of the grid
- * @param y_initial_grid The initial Y coordinate of the grid
  */
-void draw_cursor(Cursor *c, uint8_t x_initial_grid, uint8_t y_initial_grid);
+void draw_cursor(Cursor *c);
 
 /**
  * @brief Updates the cursor position based on mouse input
@@ -54,7 +65,6 @@ void draw_cursor(Cursor *c, uint8_t x_initial_grid, uint8_t y_initial_grid);
  * @param mouse_packet Pointer to the mouse packet containing the movement data
  */
 void update_cursor_with_mouse(Cursor *cursor, struct packet *mouse_packet);
-
 
  #endif
  

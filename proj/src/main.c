@@ -10,7 +10,7 @@
 static SpriteLoader *loader;
 static SingleMode *sm;
 static Cursor *c;
-static bool key_pressed[4] = {false, false, false, false}; // UP, DOWN, LEFT, RIGHT
+static bool key_pressed[5] = {false, false, false, false, false}; // UP, DOWN, LEFT, RIGHT, ESC
 static bool running = true;
 
 int main(int argc, char *argv[]) {
@@ -38,7 +38,6 @@ int main(int argc, char *argv[]) {
 }
 
 void interrups_loop() {
-  
   if ( mouse_write_command(KBC_ENABLE_DATA_REPORT) != 0 ) {
     printf("Error enabling data reporting\n");
     return;
@@ -82,8 +81,11 @@ void interrups_loop() {
             if (check_scancode_complete() == 0){
               switch (*scancode)
               {
+              case ESC_MAKE_CODE:
+                key_pressed[4] = true;
+                break;
               case ESC_BREAK_CODE:
-                running = false;
+                key_pressed[4] = false;
                 break;
               case W_MAKE_CODE:
                 key_pressed[0] = true;
@@ -119,9 +121,17 @@ void interrups_loop() {
             timer_int_handler();
             if (timer_get_count() % 2 == 0) { //Timer works at 60 Hz, this will the game will be 30 fps
               clear_buffer();
-              draw_cursor(c)
-              process_input(sm, key_pressed);
+              if ( process_input_kbd(sm, key_pressed) ) {
+                running = false;
+              }
+              if ( process_input_mouse(sm, c) ) {
+                running = false;
+              }
+              if ( check_bomb_exploded(sm) ) {
+                running = false;
+              }
               draw_singleMode(sm);
+              draw_cursor(c);
               copy_buffer_vram();
               timer_reset_count();
             }
@@ -129,6 +139,12 @@ void interrups_loop() {
 
           if (msg.m_notify.interrupts & irq_set_mouse) {
             mouse_ih();
+
+            if (check_packet_complete() == 1) {
+              packet_parse();
+              struct packet *pp = get_packet();
+              update_cursor_with_mouse(c, pp);
+            }
           }
 
           break;
@@ -165,13 +181,15 @@ int (proj_main_loop)(int argc, char *argv[]) {
 
   loader = load_sprites();
   sm = create_singleMode(loader);
+  c = create_cursor(get_cursor(loader), get_mode_info().XResolution, get_mode_info().YResolution);
 
   interrups_loop();
   
+  destroy_cursor(c);
   destroy_singleMode(sm);
-  free_buffer();
   destroy_sprites(loader);
 
+  free_buffer();
   vg_exit();
 
   return 0;

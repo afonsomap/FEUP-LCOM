@@ -6,6 +6,7 @@ struct bomb_imp {
   uint8_t current_frame; // current frame of the animation
   uint8_t current_image; // current image of the animation
   bool active;
+  bool exploded; // Indicates if the bomb has exploded
 };
 
 uint8_t get_bomb_Xpos(Bomb *b) { 
@@ -37,10 +38,15 @@ void set_bomb_active(Bomb *b, bool active) {
 }
 
 bool is_bomb_exploded(Bomb *b) {
-  if (b == NULL) {
+  if (b == NULL || b->active) {
     return false;
   }
-  return b->current_image == get_anim_sprite_num_images(b->img);
+  if (b->exploded) {
+    b->exploded = false; // Reset exploded status for the next use
+    return true;
+  }else{
+    return false;
+  }
 }
 
 Bomb *create_bomb(uint8_t x, uint8_t y, AnimSprite* img, bool active) {
@@ -56,6 +62,7 @@ Bomb *create_bomb(uint8_t x, uint8_t y, AnimSprite* img, bool active) {
   bomb->current_frame = 0;
   bomb->current_image = 0;
   bomb->active = active;
+  bomb->exploded = false; // Initialize exploded status to false
 
   return bomb;
 }
@@ -82,6 +89,7 @@ static void update_bomb_frame(Bomb *b) {
       b->current_image = 0;
       b->current_frame = 0;
       b->active = false; // Reset the bomb to inactive after the animation
+      b->exploded = true;
     }
   }
 }
