@@ -40,6 +40,7 @@
 #include "images/wall.xpm"
 #include "images/solid_wall.xpm"
 #include "images/grid_background.xpm"
+#include "images/cursor.xpm"
 
 
 struct sprite_loader_imp;
@@ -63,5 +64,6 @@ AnimSprite* get_bomb(SpriteLoader *loader);
 Sprite* get_wall(SpriteLoader *loader);
 Sprite* get_solid_wall(SpriteLoader *loader);
 Sprite* get_grid_background(SpriteLoader *loader);
+Sprite* get_cursor(SpriteLoader *loader);
 
 #endif

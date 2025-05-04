@@ -14,9 +14,10 @@ PROG=proj
 .PATH: ${.CURDIR}/images
 .PATH: ${.CURDIR}/model/singleMode
 .PATH: ${.CURDIR}/model/spriteLoader
+.PATH: ${.CURDIR}/model/cursor
 
 # source code files
-SRCS = 	main.c kbc.c kbd.c mouse.c timer.c utils.c graphics.c animatedSprite.c sprite.c bomb.c player.c wall.c singleMode.c spriteLoader.c
+SRCS = 	main.c kbc.c kbd.c mouse.c timer.c utils.c graphics.c animatedSprite.c sprite.c bomb.c player.c wall.c singleMode.c spriteLoader.c cursor.c
 
 # additional compilation flags
 CFLAGS += -pedantic -D_LCOM_OPTIMIZED_
@@ -34,6 +35,7 @@ CFLAGS += -pedantic -D_LCOM_OPTIMIZED_ \
           -I${.CURDIR}/images \
           -I${.CURDIR}/model/singleMode \
           -I${.CURDIR}/model/spriteLoader \
+          -I${.CURDIR}/model/cursor \
 
 
 # list of library dependencies
