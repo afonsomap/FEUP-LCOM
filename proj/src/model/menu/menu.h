@@ -15,8 +15,9 @@ typedef enum {
   GAME_MENU
 } GameState;
 
-static GameState current_state = GAME_PLAYING; // Default state
-static GameState previous_state = GAME_MENU; // Default state
+
+
+extern GameState current_state; // Declare it as an external variable
 
 
 

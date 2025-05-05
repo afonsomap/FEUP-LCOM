@@ -6,12 +6,15 @@
 #include "spriteLoader.h"
 #include "singleMode.h"
 #include "cursor.h"
+#include "menu.h"
 
 static SpriteLoader *loader;
 static SingleMode *sm;
 static Cursor *c;
+static Menu *m;
 static bool key_pressed[5] = {false, false, false, false, false}; // UP, DOWN, LEFT, RIGHT, ESC
 static bool running = true;
+GameState current_state = GAME_PLAYING;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -119,22 +122,33 @@ void interrups_loop() {
 
           if (msg.m_notify.interrupts & irq_set_timer) {
             timer_int_handler();
-            if (timer_get_count() % 2 == 0) { //Timer works at 60 Hz, this will the game will be 30 fps
+            if (timer_get_count() % 2 == 0) { // 30 FPS
               clear_buffer();
-              if ( process_input_kbd(sm, key_pressed) ) {
-                running = false;
-                break;
+          
+              switch (current_state) {
+                case GAME_PLAYING:
+                  if (process_input_kbd(sm, key_pressed)) {
+                    current_state = GAME_MENU; // Open menu
+                  }
+                  if (process_input_mouse(sm, c)) {
+                    running = false; // Exit game
+                  }
+                  if (check_bomb_exploded(sm)) {
+                    running = false; // Exit game
+                  }
+                  draw_singleMode(sm);
+                  draw_cursor(c);
+                  break;
+          
+                case GAME_MENU:
+                  draw_menu(m);
+                  draw_cursor(c);
+                  break;
+          
+                default:
+                  break;
               }
-              if ( process_input_mouse(sm, c) ) {
-                running = false;
-                break;
-              }
-              if ( check_bomb_exploded(sm) ) {
-                running = false;
-                break;
-              }
-              draw_singleMode(sm);
-              draw_cursor(c);
+          
               copy_buffer_vram();
               timer_reset_count();
             }
@@ -147,6 +161,14 @@ void interrups_loop() {
               packet_parse();
               struct packet *pp = get_packet();
               update_cursor_with_mouse(c, pp);
+            }
+
+            if (current_state == GAME_MENU) {
+              if (process_menu_input(c)) {
+                running = false; // Exit game
+                break;
+              }
+              current_state = GAME_PLAYING; // Resume game
             }
           }
 
@@ -185,9 +207,11 @@ int (proj_main_loop)(int argc, char *argv[]) {
   loader = load_sprites();
   sm = create_singleMode(loader);
   c = create_cursor(get_cursor(loader), get_mode_info().XResolution, get_mode_info().YResolution);
+  m = create_menu();
 
   interrups_loop();
   
+  destroy_menu(m);
   destroy_cursor(c);
   destroy_singleMode(sm);
   destroy_sprites(loader);

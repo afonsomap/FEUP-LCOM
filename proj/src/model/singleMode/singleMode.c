@@ -1,5 +1,6 @@
 #include "singleMode.h"
 
+
 #define GRID_WIDTH 15
 #define GRID_HEIGHT 13
 
@@ -186,7 +187,7 @@ bool process_input_kbd(SingleMode *sm, bool* keys) {
     player_stand(sm->player1);
   }
   if (keys[4]){ 
-    return true; // Exit game
+    return true; // Opens Menu
   }
   return false; // Continue game
 }
@@ -214,6 +215,25 @@ bool process_input_mouse(SingleMode *sm, Cursor *c) {
   }
 
   return false; // Continue game
+}
+
+bool process_menu_input(Cursor *cursor) {
+  if (get_cursor_button_pressed(cursor, 0)) { // Left mouse button pressed
+    uint16_t cursor_x = get_cursor_Xpos(cursor);
+    uint16_t cursor_y = get_cursor_Ypos(cursor);
+
+    // Check if the cursor is over the "Resume" button
+    if (cursor_x >= 100 && cursor_x <= 300 && cursor_y >= 100 && cursor_y <= 150) {
+      current_state = GAME_PLAYING; // Resume the game
+      return false; // Continue the game
+    }
+
+    // Check if the cursor is over the "Exit" button
+    if (cursor_x >= 100 && cursor_x <= 300 && cursor_y >= 200 && cursor_y <= 250) {
+      return true; // Exit the game
+    }
+  }
+  return false: // Continue the game
 }
 
 bool check_bomb_exploded(SingleMode *sm) {

@@ -11,6 +11,7 @@
 #include "sprite.h"
 #include "cursor.h"
 #include "explosion.h"
+#include "menu.h"
 
 
 struct singleMode_imp;
@@ -56,6 +57,14 @@ bool process_input_kbd(SingleMode *sm, bool* keys);
  */
 bool process_input_mouse(SingleMode *sm, Cursor *c);
 
+/**
+ * @brief Processes the input from the menu
+ * 
+ * @param sm Pointer to the SingleMode object
+ * @param cursor Pointer to the Cursor object
+ * @return true if the game should exit, false otherwise
+ */
+bool process_menu_input(Cursor *cursor);
 /**
  * @brief Checks if the bomb has exploded and if the player is in the same position, destroys wall if it is destroyable
  * 
