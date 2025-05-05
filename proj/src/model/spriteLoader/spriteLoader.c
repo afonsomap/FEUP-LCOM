@@ -16,6 +16,7 @@ struct sprite_loader_imp {
   Sprite *solid_wall;
   Sprite *grid_background;
   Sprite *cursor;
+  AnimSprite *explosion;
 };
 
 SpriteLoader* load_sprites() {
@@ -68,9 +69,21 @@ SpriteLoader* load_sprites() {
                                             (xpm_map_t)p1_front_1, (xpm_map_t)p1_front_4,
                                             (xpm_map_t)p1_front_5, (xpm_map_t)p1_front_4);
   // Load bomb and wall sprites
-  loader->bomb = create_anim_sprite(12, 5, (xpm_map_t)bomb_xpm_1, (xpm_map_t)bomb_xpm_2, 
+  loader->bomb = create_anim_sprite(6, 10, (xpm_map_t)bomb_xpm_1, (xpm_map_t)bomb_xpm_2, 
                                     (xpm_map_t)bomb_xpm_3, (xpm_map_t)bomb_xpm_4,
-                                    (xpm_map_t)bomb_xpm_5);
+                                    (xpm_map_t)bomb_xpm_5, (xpm_map_t)bomb_xpm_6,
+                                    (xpm_map_t)bomb_xpm_7, (xpm_map_t)bomb_xpm_8,
+                                    (xpm_map_t)bomb_xpm_9, (xpm_map_t)bomb_xpm_10);
+
+  loader->explosion = create_anim_sprite(1, 18, (xpm_map_t)explosion_xpm_9, (xpm_map_t)explosion_xpm_8,
+                                          (xpm_map_t)explosion_xpm_7, (xpm_map_t)explosion_xpm_6,
+                                          (xpm_map_t)explosion_xpm_5, (xpm_map_t)explosion_xpm_4,
+                                          (xpm_map_t)explosion_xpm_3, (xpm_map_t)explosion_xpm_2,
+                                          (xpm_map_t)explosion_xpm_1, (xpm_map_t)explosion_xpm_1,
+                                          (xpm_map_t)explosion_xpm_2, (xpm_map_t)explosion_xpm_3,
+                                          (xpm_map_t)explosion_xpm_4, (xpm_map_t)explosion_xpm_5,
+                                          (xpm_map_t)explosion_xpm_6, (xpm_map_t)explosion_xpm_7,
+                                          (xpm_map_t)explosion_xpm_8, (xpm_map_t)explosion_xpm_9);
   loader->wall = create_sprite( (xpm_map_t)wall_xpm);
   loader->solid_wall = create_sprite( (xpm_map_t)solid_wall_xpm);
   loader->grid_background = create_sprite((xpm_map_t)grid_background);
@@ -145,5 +158,8 @@ Sprite* get_grid_background(SpriteLoader *loader) {
 }
 Sprite* get_cursor(SpriteLoader *loader) {
   return loader->cursor;
+}
+AnimSprite* get_explosion(SpriteLoader *loader) {
+  return loader->explosion;
 }
 

@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.xpm": "c",
+        "compare": "c"
+    }
+}

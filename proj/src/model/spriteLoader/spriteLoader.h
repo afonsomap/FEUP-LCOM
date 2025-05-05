@@ -36,6 +36,21 @@
 #include "images/bomb/bomb3.xpm"
 #include "images/bomb/bomb4.xpm"
 #include "images/bomb/bomb5.xpm"
+#include "images/bomb/bomb6.xpm"
+#include "images/bomb/bomb7.xpm"
+#include "images/bomb/bomb8.xpm"
+#include "images/bomb/bomb9.xpm"
+#include "images/bomb/bomb10.xpm"
+
+#include "images/explosion/explosion1.xpm"
+#include "images/explosion/explosion2.xpm"  
+#include "images/explosion/explosion3.xpm"
+#include "images/explosion/explosion4.xpm"
+#include "images/explosion/explosion5.xpm"  
+#include "images/explosion/explosion6.xpm"
+#include "images/explosion/explosion7.xpm"
+#include "images/explosion/explosion8.xpm"
+#include "images/explosion/explosion9.xpm"
 
 #include "images/wall.xpm"
 #include "images/solid_wall.xpm"
@@ -65,5 +80,5 @@ Sprite* get_wall(SpriteLoader *loader);
 Sprite* get_solid_wall(SpriteLoader *loader);
 Sprite* get_grid_background(SpriteLoader *loader);
 Sprite* get_cursor(SpriteLoader *loader);
-
+AnimSprite* get_explosion(SpriteLoader *loader);
 #endif

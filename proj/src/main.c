@@ -123,12 +123,15 @@ void interrups_loop() {
               clear_buffer();
               if ( process_input_kbd(sm, key_pressed) ) {
                 running = false;
+                break;
               }
               if ( process_input_mouse(sm, c) ) {
                 running = false;
+                break;
               }
               if ( check_bomb_exploded(sm) ) {
                 running = false;
+                break;
               }
               draw_singleMode(sm);
               draw_cursor(c);
