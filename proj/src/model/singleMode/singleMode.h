@@ -10,6 +10,7 @@
 #include "animatedSprite.h"
 #include "sprite.h"
 #include "cursor.h"
+#include "explosion.h"
 
 
 struct singleMode_imp;
