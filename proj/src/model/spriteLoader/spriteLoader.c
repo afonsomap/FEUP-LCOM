@@ -17,6 +17,9 @@ struct sprite_loader_imp {
   Sprite *grid_background;
   Sprite *cursor;
   AnimSprite *explosion;
+  Sprite *menu_background;
+  Sprite *single_mode_button;
+  Sprite *exit_button;
 };
 
 SpriteLoader* load_sprites() {
@@ -86,8 +89,13 @@ SpriteLoader* load_sprites() {
                                           (xpm_map_t)explosion_xpm_8, (xpm_map_t)explosion_xpm_9);
   loader->wall = create_sprite( (xpm_map_t)wall_xpm);
   loader->solid_wall = create_sprite( (xpm_map_t)solid_wall_xpm);
+
   loader->grid_background = create_sprite((xpm_map_t)grid_background);
   loader->cursor = create_sprite((xpm_map_t)cursor_xpm);
+
+  loader->menu_background = create_sprite((xpm_map_t)grid_background); // USING OTHER SPRITE FOR TESTING
+  loader->single_mode_button = create_sprite((xpm_map_t)solid_wall_xpm); // USING OTHER SPRITE FOR TESTING
+  loader->exit_button = create_sprite((xpm_map_t)wall_xpm); // USING OTHER SPRITE FOR TESTING
   return loader;
 }
 
@@ -108,6 +116,10 @@ void destroy_sprites(SpriteLoader *loader) {
   destroy_sprite(loader->wall);
   destroy_sprite(loader->solid_wall);
   destroy_sprite(loader->grid_background);
+  destroy_sprite(loader->cursor);
+  destroy_sprite(loader->menu_background);
+  destroy_sprite(loader->single_mode_button);
+  destroy_sprite(loader->exit_button);
 
   free(loader);
 }
@@ -161,5 +173,14 @@ Sprite* get_cursor(SpriteLoader *loader) {
 }
 AnimSprite* get_explosion(SpriteLoader *loader) {
   return loader->explosion;
+}
+Sprite* get_menu_background(SpriteLoader *loader) {
+  return loader->menu_background;
+}
+Sprite* get_single_mode_button(SpriteLoader *loader) {
+  return loader->single_mode_button;
+}
+Sprite* get_exit_button(SpriteLoader *loader) {
+  return loader->exit_button;
 }
 

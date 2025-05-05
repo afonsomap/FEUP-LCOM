@@ -8,13 +8,18 @@
 #include "cursor.h"
 #include "menu.h"
 
-static SpriteLoader *loader;
-static SingleMode *sm;
-static Cursor *c;
-static Menu *m;
+typedef enum {
+  MENU,
+  SINGLE_MODE,
+  EXIT
+} GameState;
+
+static SpriteLoader *loader = NULL;
+static SingleMode *sm = NULL;
+static Menu *m = NULL;
+static Cursor *c = NULL;
 static bool key_pressed[5] = {false, false, false, false, false}; // UP, DOWN, LEFT, RIGHT, ESC
-static bool running = true;
-GameState current_state = GAME_PLAYING;
+GameState current_state = MENU;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -69,7 +74,7 @@ void interrups_loop() {
 
   uint8_t *scancode = get_scancode();
 
-  while ( running ) {
+  while ( current_state != EXIT ) {
     if( driver_receive(ANY, &msg, &ipc_status) != 0 ){
       printf("Error");
       continue;
@@ -125,22 +130,78 @@ void interrups_loop() {
             if (timer_get_count() % 2 == 0) { // 30 FPS
               clear_buffer();
           
+              int menu_return;
               switch (current_state) {
-                case GAME_PLAYING:
-                  if (process_input_kbd(sm, key_pressed)) {
-                    current_state = GAME_MENU; // Open menu
+                case SINGLE_MODE:
+
+                  if (process_single_mode_kbd(sm, key_pressed) == 1) {
+
+                    current_state = MENU; // Go back to menu
+                    printf("Destorying single mode due to keyboard press\n");
+                    destroy_singleMode(sm);
+                    sm = NULL;
+                    m = create_menu(loader);
+                    memset(key_pressed, false, sizeof(key_pressed));
+                    reset_cursor_button_pressed(c);
+                    draw_menu(m);
+                    draw_cursor(c);
+                    break;
+
                   }
-                  if (process_input_mouse(sm, c)) {
-                    running = false; // Exit game
+
+                  if (process_single_mode_mouse(sm, c) == 1) {
+
+                    current_state = MENU; // Go back to menu
+                    printf("Destorying single mode due to mouse press\n");
+                    destroy_singleMode(sm);
+                    sm = NULL;
+                    m = create_menu(loader);
+                    memset(key_pressed, false, sizeof(key_pressed));
+                    reset_cursor_button_pressed(c);
+                    draw_menu(m);
+                    draw_cursor(c);
+                    break;
+
                   }
-                  if (check_bomb_exploded(sm)) {
-                    running = false; // Exit game
+                  
+                  if (check_bomb_exploded(sm) == 1) {
+                    current_state = MENU; // Go back to menu
+                    destroy_singleMode(sm);
+                    sm = NULL;
+                    m = create_menu(loader);
+                    memset(key_pressed, false, sizeof(key_pressed));
+                    reset_cursor_button_pressed(c);
+                    draw_menu(m);
+                    draw_cursor(c);
+                    break;
                   }
+
                   draw_singleMode(sm);
                   draw_cursor(c);
                   break;
           
-                case GAME_MENU:
+                case MENU:
+                  menu_return = process_menu_input(c);
+                  if (menu_return == 1) {
+
+                    current_state = EXIT; // Exit game
+                    destroy_menu(m);
+                    m = NULL;
+                    break;
+
+                  } else if (menu_return == 2) {
+
+                    current_state = SINGLE_MODE; // Go to single mode
+                    destroy_menu(m);
+                    m = NULL;
+                    sm = create_singleMode(loader);
+                    memset(key_pressed, false, sizeof(key_pressed));
+                    reset_cursor_button_pressed(c);
+                    draw_singleMode(sm);
+                    draw_cursor(c);
+                    break;
+                  }
+
                   draw_menu(m);
                   draw_cursor(c);
                   break;
@@ -161,14 +222,6 @@ void interrups_loop() {
               packet_parse();
               struct packet *pp = get_packet();
               update_cursor_with_mouse(c, pp);
-            }
-
-            if (current_state == GAME_MENU) {
-              if (process_menu_input(c)) {
-                running = false; // Exit game
-                break;
-              }
-              current_state = GAME_PLAYING; // Resume game
             }
           }
 
@@ -205,15 +258,12 @@ int (proj_main_loop)(int argc, char *argv[]) {
   set_video_mode(VBE_1024p_DC);
 
   loader = load_sprites();
-  sm = create_singleMode(loader);
   c = create_cursor(get_cursor(loader), get_mode_info().XResolution, get_mode_info().YResolution);
-  m = create_menu();
+  m = create_menu(loader);
 
   interrups_loop();
   
-  destroy_menu(m);
   destroy_cursor(c);
-  destroy_singleMode(sm);
   destroy_sprites(loader);
 
   free_buffer();

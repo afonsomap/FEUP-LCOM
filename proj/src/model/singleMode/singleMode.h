@@ -44,34 +44,26 @@ void draw_singleMode(SingleMode *sm);
  * 
  * @param sm Pointer to the SingleMode object
  * @param keys Array of boolean values representing the state of the keys
- * @return true if the game should exit, false otherwise
+ * @return 0 if the game should continue, 1 go back to the menu
  */
-bool process_input_kbd(SingleMode *sm, bool* keys);
+int process_single_mode_kbd(SingleMode *sm, bool* keys);
 
 /**
  * @brief Processes the input from the mouse
  * 
  * @param sm Pointer to the SingleMode object
  * @param c Pointer to the Cursor object
- * @return true if the game should exit, false otherwise
+ * @return 0 if the game should continue, 1 go back to the menu
  */
-bool process_input_mouse(SingleMode *sm, Cursor *c);
+int process_single_mode_mouse(SingleMode *sm, Cursor *c);
 
-/**
- * @brief Processes the input from the menu
- * 
- * @param sm Pointer to the SingleMode object
- * @param cursor Pointer to the Cursor object
- * @return true if the game should exit, false otherwise
- */
-bool process_menu_input(Cursor *cursor);
 /**
  * @brief Checks if the bomb has exploded and if the player is in the same position, destroys wall if it is destroyable
  * 
  * @param sm Pointer to the SingleMode object
- * @return true if the bomb has exploded and the player is in the same position, false otherwise
+ * @return 0 if the game should continue, 1 go back to the menu
  */
-bool check_bomb_exploded(SingleMode *sm);
+int check_bomb_exploded(SingleMode *sm);
 
 #endif /* _SINGLEMODE_H_ */
 

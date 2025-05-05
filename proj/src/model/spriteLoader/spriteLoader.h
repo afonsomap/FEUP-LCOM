@@ -81,4 +81,7 @@ Sprite* get_solid_wall(SpriteLoader *loader);
 Sprite* get_grid_background(SpriteLoader *loader);
 Sprite* get_cursor(SpriteLoader *loader);
 AnimSprite* get_explosion(SpriteLoader *loader);
+Sprite* get_menu_background(SpriteLoader *loader);
+Sprite* get_single_mode_button(SpriteLoader *loader);
+Sprite* get_exit_button(SpriteLoader *loader);
 #endif

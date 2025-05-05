@@ -71,7 +71,7 @@ void destroy_bomb(Bomb *b) {
   if (b == NULL) {
     return;
   }
-  destroy_anim_sprite(b->img);
+
   free(b);
   b = NULL;
 }
