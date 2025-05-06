@@ -96,13 +96,11 @@ SpriteLoader* load_sprites() {
   loader->cursor = create_sprite((xpm_map_t)cursor_xpm);
 
 
-  loader->menu_background = create_sprite((xpm_map_t)back_menu_xpm); // USING OTHER SPRITE FOR TESTING
-  
-  loader->menu_title = create_sprite((xpm_map_t)title_menu_xpm); // USING OTHER SPRITE FOR TESTING
-
-  loader->single_mode_button = create_sprite((xpm_map_t)single_menu_xpm); // USING OTHER SPRITE FOR TESTING
-
-  loader->exit_button = create_sprite((xpm_map_t)exit_menu_xpm); // USING OTHER SPRITE FOR TESTING
+  loader->menu_background = create_sprite((xpm_map_t)back_menu_xpm); 
+  loader->menu_title = create_sprite((xpm_map_t)title_menu_xpm); 
+  loader->single_mode_button = create_sprite((xpm_map_t)single_menu_xpm); 
+  loader->multiplayer_mode_button = create_sprite((xpm_map_t)multi_menu_xpm);
+  loader->exit_button = create_sprite((xpm_map_t)exit_menu_xpm); 
   return loader;
 }
 
@@ -125,7 +123,9 @@ void destroy_sprites(SpriteLoader *loader) {
   destroy_sprite(loader->grid_background);
   destroy_sprite(loader->cursor);
   destroy_sprite(loader->menu_background);
+  destroy_sprite(loader->menu_title);
   destroy_sprite(loader->single_mode_button);
+  destroy_sprite(loader->multiplayer_mode_button);
   destroy_sprite(loader->exit_button);
 
   free(loader);
@@ -184,12 +184,14 @@ AnimSprite* get_explosion(SpriteLoader *loader) {
 Sprite* get_menu_background(SpriteLoader *loader) {
   return loader->menu_background;
 }
-
 Sprite* get_menu_title(SpriteLoader *loader) {
   return loader->menu_title;
 }
 Sprite* get_single_mode_button(SpriteLoader *loader) {
   return loader->single_mode_button;
+}
+Sprite* get_multi_mode_button(SpriteLoader *loader) {
+  return loader->multiplayer_mode_button;
 }
 Sprite* get_exit_button(SpriteLoader *loader) {
   return loader->exit_button;

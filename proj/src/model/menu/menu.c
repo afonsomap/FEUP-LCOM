@@ -4,6 +4,7 @@ struct menu_imp {
   Sprite *background;     // Background image of the menu
   Sprite *menu_title;   // Title image of the menu
   Sprite *single_mode_button;  // "Single mode" button sprite
+  Sprite *multi_mode_button;   // "Multiplayer mode" button sprite
   Sprite *exit_button;    // "Exit" button sprite
 };
 
@@ -21,6 +22,7 @@ Menu* create_menu(SpriteLoader *loader) {
   m->background = get_menu_background(loader);
   m->menu_title = get_menu_title(loader);
   m->single_mode_button = get_single_mode_button(loader);
+  m->multi_mode_button = get_multi_mode_button(loader);
   m->exit_button = get_exit_button(loader);
 
   if (m->background == NULL || m->single_mode_button == NULL || m->exit_button == NULL) {
@@ -50,7 +52,7 @@ void draw_menu(Menu *m) {
   draw_sprite(m->menu_title, center_x - 25, center_y); // Draw the title at (100, 50)
 
   draw_sprite(m->single_mode_button, center_x, center_y + 200); // Draw the "Single Mode" button below the title
-  
+  draw_sprite(m->multi_mode_button, center_x, center_y + 350); // Draw the "Multiplayer Mode" button below the title
   draw_sprite(m->exit_button, center_x, center_y + 500);   
 }
 
@@ -59,18 +61,19 @@ void draw_menu(Menu *m) {
 // 1 Leave game  
 // 2 Single mode game
 int process_menu_input(Cursor *cursor) {
-
   if (get_cursor_button_pressed(cursor, 0)) { // Left mouse button pressed
     uint16_t cursor_x = get_cursor_Xpos(cursor);
     uint16_t cursor_y = get_cursor_Ypos(cursor);
 
     // Check if the cursor is over the "Single Mode" button
-    if (cursor_x >= 100 && cursor_x <= 300 && cursor_y >= 100 && cursor_y <= 150) {
+    if (cursor_x >= center_x && cursor_x <= center_x + 200 &&
+        cursor_y >= center_y + 200 && cursor_y <= center_y + 200 + 200) {
       return 2; // Goes to single mode
     }
 
     // Check if the cursor is over the "Exit" button
-    if (cursor_x >= 100 && cursor_x <= 300 && cursor_y >= 200 && cursor_y <= 250) {
+    if (cursor_x >= center_x && cursor_x <= center_x + 200 &&
+        cursor_y >= center_y + 500 && cursor_y <= center_y + 500 + 200) {
       return 1; // Exit the game
     }
   }

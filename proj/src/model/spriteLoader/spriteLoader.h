@@ -89,5 +89,6 @@ AnimSprite* get_explosion(SpriteLoader *loader);
 Sprite* get_menu_background(SpriteLoader *loader);
 Sprite* get_menu_title(SpriteLoader *loader);
 Sprite* get_single_mode_button(SpriteLoader *loader);
+Sprite* get_multi_mode_button(SpriteLoader *loader);
 Sprite* get_exit_button(SpriteLoader *loader);
 #endif
