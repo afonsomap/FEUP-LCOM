@@ -2,6 +2,7 @@
 
 struct menu_imp {
   Sprite *background;     // Background image of the menu
+  Sprite *menu_title;   // Title image of the menu
   Sprite *single_mode_button;  // "Single mode" button sprite
   Sprite *exit_button;    // "Exit" button sprite
 };
@@ -15,6 +16,7 @@ Menu* create_menu(SpriteLoader *loader) {
   printf("Creating menu\n");
 
   m->background = get_menu_background(loader);
+  m->menu_title = get_menu_title(loader);
   m->single_mode_button = get_single_mode_button(loader);
   m->exit_button = get_exit_button(loader);
 
@@ -40,8 +42,14 @@ void draw_menu(Menu *m) {
     return;
   }
 
+  uint16_t center_x = (1280 - 250) / 2;
+  uint16_t center_y = 50; 
+
   draw_sprite(m->background, 0, 0);
+  draw_sprite(m->menu_title, center_x, center_y); // Draw the title at (100, 50)
+
   draw_sprite(m->single_mode_button, 100, 100); 
+  
   draw_sprite(m->exit_button, 100, 200);   
 }
 

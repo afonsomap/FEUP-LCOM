@@ -18,7 +18,9 @@ struct sprite_loader_imp {
   Sprite *cursor;
   AnimSprite *explosion;
   Sprite *menu_background;
+  Sprite *menu_title;
   Sprite *single_mode_button;
+  Sprite *multiplayer_mode_button;
   Sprite *exit_button;
 };
 
@@ -93,8 +95,13 @@ SpriteLoader* load_sprites() {
   loader->grid_background = create_sprite((xpm_map_t)grid_background);
   loader->cursor = create_sprite((xpm_map_t)cursor_xpm);
 
-  loader->menu_background = create_sprite((xpm_map_t)grid_background); // USING OTHER SPRITE FOR TESTING
-  loader->single_mode_button = create_sprite((xpm_map_t)start_menu_xpm); // USING OTHER SPRITE FOR TESTING
+
+  loader->menu_background = create_sprite((xpm_map_t)back_menu_xpm); // USING OTHER SPRITE FOR TESTING
+  
+  loader->menu_title = create_sprite((xpm_map_t)title_menu_xpm); // USING OTHER SPRITE FOR TESTING
+
+  loader->single_mode_button = create_sprite((xpm_map_t)single_menu_xpm); // USING OTHER SPRITE FOR TESTING
+
   loader->exit_button = create_sprite((xpm_map_t)exit_menu_xpm); // USING OTHER SPRITE FOR TESTING
   return loader;
 }
@@ -176,6 +183,10 @@ AnimSprite* get_explosion(SpriteLoader *loader) {
 }
 Sprite* get_menu_background(SpriteLoader *loader) {
   return loader->menu_background;
+}
+
+Sprite* get_menu_title(SpriteLoader *loader) {
+  return loader->menu_title;
 }
 Sprite* get_single_mode_button(SpriteLoader *loader) {
   return loader->single_mode_button;
