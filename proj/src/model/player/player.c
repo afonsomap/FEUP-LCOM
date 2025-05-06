@@ -70,21 +70,6 @@ void destroy_player(Player *p) {
     return;
   }
   
-  if( p->left_movement ){
-    destroy_anim_sprite(p->left_movement);
-  }
-  if( p->right_movement ){
-    destroy_anim_sprite(p->right_movement);
-  }
-  if( p->up_movement ){
-    destroy_anim_sprite(p->up_movement);
-  }
-  if( p->down_movement ){
-    destroy_anim_sprite(p->down_movement);
-  }
-  if( p->standing ){
-    destroy_sprite(p->standing);
-  }
   free(p);
   p = NULL;
 }

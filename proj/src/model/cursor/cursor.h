@@ -35,6 +35,13 @@ uint16_t get_cursor_Ypos(Cursor *c);
 bool get_cursor_button_pressed(Cursor *c, uint8_t button);
 
 /**
+ * @brief Resets the button pressed state of the cursor
+ *
+ * @param c Pointer to the cursor
+ */
+void reset_cursor_button_pressed(Cursor *c);
+
+/**
  * @brief Creates a new cursor with the specified sprite
  *
  * @param img The sprite for the cursor

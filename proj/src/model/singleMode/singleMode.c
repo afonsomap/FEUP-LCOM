@@ -1,5 +1,6 @@
 #include "singleMode.h"
 
+
 #define GRID_WIDTH 15
 #define GRID_HEIGHT 13
 
@@ -20,6 +21,8 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
   if (sm == NULL) {
     return NULL;
   }
+
+  printf("Creating single mode\n");
 
   sm->x_initial_grid = 268; // Initialize grid position
   sm->y_initial_grid = 80; // Initialize grid position
@@ -65,6 +68,8 @@ void destroy_singleMode(SingleMode *sm) {
     return;
   }
 
+  printf("Destroying single mode\n");
+
   // Destroy player
   destroy_player(sm->player1);
 
@@ -77,7 +82,6 @@ void destroy_singleMode(SingleMode *sm) {
       destroy_explosion(sm->explosion_matrix[j][i]);
     }
   }
-  destroy_sprite(sm->grid_background); // Destroy background sprite
 
   free(sm);
 }
@@ -141,9 +145,12 @@ static bool check_wall_collision(SingleMode *sm, uint16_t x, uint16_t y) {
   return false; // No wall collision
 }
 
-bool process_input_kbd(SingleMode *sm, bool* keys) {
+
+// 0 Continue game
+// 1 Goes back to menu
+int process_single_mode_kbd(SingleMode *sm, bool* keys) {
   if (sm == NULL) {
-    return true;
+    return 1; // Go back to menu
   }
 
   if (keys[0]){ // Up
@@ -186,15 +193,16 @@ bool process_input_kbd(SingleMode *sm, bool* keys) {
     player_stand(sm->player1);
   }
   if (keys[4]){ 
-    return true; // Exit game
+    return 1; // Goes back to menu
   }
-  return false; // Continue game
+  return 0; // Continue game, no action
 }
 
-
-bool process_input_mouse(SingleMode *sm, Cursor *c) {
+// 0 Continue game
+// 1 Goes back to menu
+int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
   if (sm == NULL || c == NULL) {
-    return true;
+    return 1; // Goes back to menu
   }
   
   // Rigth mouse button pressed
@@ -210,15 +218,18 @@ bool process_input_mouse(SingleMode *sm, Cursor *c) {
   }
   // Left mouse button pressed
   if (get_cursor_button_pressed(c, 0)) {
-    return true; // Exit game
+    return 1; // Goes back to menu
   }
 
-  return false; // Continue game
+  return 0; // Continue game
 }
 
-bool check_bomb_exploded(SingleMode *sm) {
+
+// 0 Continue game
+// 1 Goes back to menu
+int check_bomb_exploded(SingleMode *sm) {
   if (sm == NULL) {
-    return false;
+    return 1;
   }
 
   for (int i = 1; i < GRID_HEIGHT-1; i++) {
@@ -233,25 +244,25 @@ bool check_bomb_exploded(SingleMode *sm) {
         uint16_t grid_y_bottom_right = (get_player_Ypos(sm->player1) + (sm->grid_square_width-1)) / sm->grid_square_width;
 
         if (grid_x_top_left == j && grid_y_top_left == i) {
-          return true; // Player is in the same position as the bomb, exit game
+          return 1; // Player is in the same position as the bomb, go to menu
         }else if( grid_x_top_left == j+1 && grid_y_top_left == i) {
-          return true; // In the right square
+          return 1; // In the right square
         }else if( grid_x_top_left == j && grid_y_top_left == i+1) {
-          return true; // In the bottom square
+          return 1; // In the bottom square
         }else if( grid_x_top_left == j-1 && grid_y_top_left == i) {
-          return true; // In the left square
+          return 1; // In the left square
         }else if( grid_x_top_left == j && grid_y_top_left == i-1) {
-          return true; // In the top square
+          return 1; // In the top square
         }else if( grid_x_bottom_right == j && grid_y_bottom_right == i) {
-          return true; // Player is in the same position as the bomb, exit game
+          return 1; // Player is in the same position as the bomb, exit game
         }else if( grid_x_bottom_right == j+1 && grid_y_bottom_right == i) {
-          return true; // In the right square
+          return 1; // In the right square
         }else if( grid_x_bottom_right == j && grid_y_bottom_right == i+1) {
-          return true; // In the bottom square
+          return 1; // In the bottom square
         }else if( grid_x_bottom_right == j-1 && grid_y_bottom_right == i) {
-          return true; // In the left square
+          return 1; // In the left square
         }else if( grid_x_bottom_right == j && grid_y_bottom_right == i-1) {
-          return true; // In the top square
+          return 1; // In the top square
         }
 
         
@@ -284,6 +295,6 @@ bool check_bomb_exploded(SingleMode *sm) {
       }
     }
   }
-  return false;
+  return 0;
 }
 

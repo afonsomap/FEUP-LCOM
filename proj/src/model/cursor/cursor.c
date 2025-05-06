@@ -30,6 +30,11 @@ bool get_cursor_button_pressed(Cursor *c, uint8_t button) {
   return c->button_pressed[button];
 }
 
+void reset_cursor_button_pressed(Cursor *c) {
+  if (c == NULL) return;
+  memset(c->button_pressed, 0, sizeof(c->button_pressed));
+}
+
 Cursor *create_cursor(Sprite *img, uint16_t screen_width, uint16_t screen_height) {
   Cursor *c = malloc(sizeof(Cursor));
   if (c == NULL) {
@@ -47,9 +52,7 @@ Cursor *create_cursor(Sprite *img, uint16_t screen_width, uint16_t screen_height
 
 void destroy_cursor(Cursor *c) {
   if (c == NULL) return;
-  if (c->img != NULL) {
-    destroy_sprite(c->img);
-  }
+
   free(c);
 }
 

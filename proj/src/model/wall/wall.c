@@ -73,7 +73,7 @@ void destroy_wall(Wall *w) {
   if (w == NULL) {
     return;
   }
-  destroy_sprite(w->img);
+  
   free(w);
   w = NULL;
 }

@@ -57,6 +57,11 @@
 #include "images/grid_background.xpm"
 #include "images/cursor.xpm"
 
+#include "images/menu/menu_background.xpm"
+#include "images/menu/menu_single.xpm"
+#include "images/menu/menu_multi.xpm"
+#include "images/menu/menu_exit.xpm"
+#include "images/menu/menu_title.xpm"
 
 struct sprite_loader_imp;
 typedef struct sprite_loader_imp SpriteLoader;
@@ -81,4 +86,9 @@ Sprite* get_solid_wall(SpriteLoader *loader);
 Sprite* get_grid_background(SpriteLoader *loader);
 Sprite* get_cursor(SpriteLoader *loader);
 AnimSprite* get_explosion(SpriteLoader *loader);
+Sprite* get_menu_background(SpriteLoader *loader);
+Sprite* get_menu_title(SpriteLoader *loader);
+Sprite* get_single_mode_button(SpriteLoader *loader);
+Sprite* get_multi_mode_button(SpriteLoader *loader);
+Sprite* get_exit_button(SpriteLoader *loader);
 #endif

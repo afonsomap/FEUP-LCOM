@@ -9,6 +9,7 @@
   "files.associations": {
     "animatedsprite.h": "c",
     "stdarg.h": "c",
-    "*.xpm": "c"
+    "*.xpm": "c",
+    "lcf.h": "c"
   },
 }
