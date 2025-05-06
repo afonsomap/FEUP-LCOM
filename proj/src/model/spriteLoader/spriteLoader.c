@@ -94,8 +94,8 @@ SpriteLoader* load_sprites() {
   loader->cursor = create_sprite((xpm_map_t)cursor_xpm);
 
   loader->menu_background = create_sprite((xpm_map_t)grid_background); // USING OTHER SPRITE FOR TESTING
-  loader->single_mode_button = create_sprite((xpm_map_t)solid_wall_xpm); // USING OTHER SPRITE FOR TESTING
-  loader->exit_button = create_sprite((xpm_map_t)wall_xpm); // USING OTHER SPRITE FOR TESTING
+  loader->single_mode_button = create_sprite((xpm_map_t)start_menu_xpm); // USING OTHER SPRITE FOR TESTING
+  loader->exit_button = create_sprite((xpm_map_t)exit_menu_xpm); // USING OTHER SPRITE FOR TESTING
   return loader;
 }
 
