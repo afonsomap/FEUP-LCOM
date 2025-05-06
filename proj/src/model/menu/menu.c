@@ -8,7 +8,7 @@ struct menu_imp {
   Sprite *exit_button;    // "Exit" button sprite
 };
 
-uint16_t center_x = (1024 - 250) / 2;
+uint16_t center_x = (1280 - 250) / 2;
 uint16_t center_y = 50; 
 
 Menu* create_menu(SpriteLoader *loader) {
