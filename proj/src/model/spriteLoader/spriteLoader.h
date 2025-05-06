@@ -57,8 +57,8 @@
 #include "images/grid_background.xpm"
 #include "images/cursor.xpm"
 
-#include "images/menu/menu_start.xpm"
 #include "images/menu/menu_exit.xpm"
+#include "images/menu/menu_start.xpm"
 
 struct sprite_loader_imp;
 typedef struct sprite_loader_imp SpriteLoader;
