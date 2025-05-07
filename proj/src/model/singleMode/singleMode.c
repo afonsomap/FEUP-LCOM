@@ -13,6 +13,8 @@ struct singleMode_imp {
   uint16_t x_initial_grid; // X coordinate of the initial grid
   uint16_t y_initial_grid; // Y coordinate of the initial grid
   Sprite *grid_background; // Background sprite
+  BombOptions *bomb_options; // Bomb options
+  BombType player1_bomb_option; // Bomb option for player 1
 };
 
 
@@ -21,9 +23,7 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
   if (sm == NULL) {
     return NULL;
   }
-
-  printf("Creating single mode\n");
-
+  
   sm->x_initial_grid = 268; // Initialize grid position
   sm->y_initial_grid = 80; // Initialize grid position
   sm->grid_square_width = get_sprite_width(get_wall(loader)); // Get the width of the grid square
@@ -60,6 +60,9 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
     }
   }
 
+  sm->bomb_options = create_bomb_options(get_bomb_options(loader), get_selected_options(loader));
+  sm->player1_bomb_option = NORMAL;
+
   return sm;
 }
 
@@ -68,13 +71,10 @@ void destroy_singleMode(SingleMode *sm) {
     return;
   }
 
-  printf("Destroying single mode\n");
-
   // Destroy player
   destroy_player(sm->player1);
 
-
-  // Destroy walls
+  // Destroy walls, bombs, and explosions
   for (int i = 0; i < GRID_HEIGHT; i++) {
     for (int j = 0; j < GRID_WIDTH; j++) {
       destroy_wall(sm->wall_matrix[j][i]);
@@ -82,6 +82,9 @@ void destroy_singleMode(SingleMode *sm) {
       destroy_explosion(sm->explosion_matrix[j][i]);
     }
   }
+
+  // Destroy bomb options
+  destroy_bomb_options(sm->bomb_options);
 
   free(sm);
 }
@@ -105,6 +108,8 @@ void draw_singleMode(SingleMode *sm) {
       draw_player(sm->player1, sm->x_initial_grid, sm->y_initial_grid);
     }
   }
+
+  draw_bomb_options(sm->bomb_options, sm->player1_bomb_option);
 }
 
 static bool check_wall_collision(SingleMode *sm, uint16_t x, uint16_t y) {
@@ -213,12 +218,23 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
     uint16_t grid_y =  (get_player_Ypos(sm->player1)+30) / sm->grid_square_width;
 
     if (!is_bomb_active(sm->bomb_matrix[grid_x][grid_y])) {
-      set_bomb_active(sm->bomb_matrix[grid_x][grid_y], true); // Activate the bomb
+      set_bomb_active(sm->bomb_matrix[grid_x][grid_y], true, sm->player1_bomb_option); // Activate the bomb
     }
   }
   // Left mouse button pressed
   if (get_cursor_button_pressed(c, 0)) {
-    return 1; // Goes back to menu
+    
+    // Check if the cursor is within the bomb options x range
+    if ( get_cursor_Xpos(c) > get_options_x_initial(sm->bomb_options) && get_cursor_Xpos(c) < get_options_x_final(sm->bomb_options)) {
+
+      if (get_cursor_Ypos(c) > get_options_y_initial(sm->bomb_options, 0) && get_cursor_Ypos(c) < get_options_y_final(sm->bomb_options, 0)) {
+        sm->player1_bomb_option = NORMAL; // Set the bomb option for player 1
+      }else if (get_cursor_Ypos(c) > get_options_y_initial(sm->bomb_options, 1) && get_cursor_Ypos(c) < get_options_y_final(sm->bomb_options, 1)) {
+        sm->player1_bomb_option = FULL_LINE; // Set the bomb option for player 1
+      }else if (get_cursor_Ypos(c) > get_options_y_initial(sm->bomb_options, 2) && get_cursor_Ypos(c) < get_options_y_final(sm->bomb_options, 2)) {
+        sm->player1_bomb_option = CONSTRUCTIVE; // Set the bomb option for player 1
+      }
+    }  
   }
 
   return 0; // Continue game
@@ -243,55 +259,212 @@ int check_bomb_exploded(SingleMode *sm) {
         uint16_t grid_x_bottom_right = (get_player_Xpos(sm->player1) + (sm->grid_square_width-1)) / sm->grid_square_width;
         uint16_t grid_y_bottom_right = (get_player_Ypos(sm->player1) + (sm->grid_square_width-1)) / sm->grid_square_width;
 
-        if (grid_x_top_left == j && grid_y_top_left == i) {
-          return 1; // Player is in the same position as the bomb, go to menu
-        }else if( grid_x_top_left == j+1 && grid_y_top_left == i) {
-          return 1; // In the right square
-        }else if( grid_x_top_left == j && grid_y_top_left == i+1) {
-          return 1; // In the bottom square
-        }else if( grid_x_top_left == j-1 && grid_y_top_left == i) {
-          return 1; // In the left square
-        }else if( grid_x_top_left == j && grid_y_top_left == i-1) {
-          return 1; // In the top square
-        }else if( grid_x_bottom_right == j && grid_y_bottom_right == i) {
-          return 1; // Player is in the same position as the bomb, exit game
-        }else if( grid_x_bottom_right == j+1 && grid_y_bottom_right == i) {
-          return 1; // In the right square
-        }else if( grid_x_bottom_right == j && grid_y_bottom_right == i+1) {
-          return 1; // In the bottom square
-        }else if( grid_x_bottom_right == j-1 && grid_y_bottom_right == i) {
-          return 1; // In the left square
-        }else if( grid_x_bottom_right == j && grid_y_bottom_right == i-1) {
-          return 1; // In the top square
-        }
+        BombType bomb_type = get_bomb_type(sm->bomb_matrix[j][i]);
+        if (bomb_type == NORMAL) {
+          if (grid_x_top_left == j && grid_y_top_left == i) {
+            return 1; // Player is in the same position as the bomb, go to menu
+          }else if( grid_x_top_left == j+1 && grid_y_top_left == i) {
+            return 1; // In the right square
+          }else if( grid_x_top_left == j && grid_y_top_left == i+1) {
+            return 1; // In the bottom square
+          }else if( grid_x_top_left == j-1 && grid_y_top_left == i) {
+            return 1; // In the left square
+          }else if( grid_x_top_left == j && grid_y_top_left == i-1) {
+            return 1; // In the top square
+          }else if( grid_x_bottom_right == j && grid_y_bottom_right == i) {
+            return 1; // Player is in the same position as the bomb, exit game
+          }else if( grid_x_bottom_right == j+1 && grid_y_bottom_right == i) {
+            return 1; // In the right square
+          }else if( grid_x_bottom_right == j && grid_y_bottom_right == i+1) {
+            return 1; // In the bottom square
+          }else if( grid_x_bottom_right == j-1 && grid_y_bottom_right == i) {
+            return 1; // In the left square
+          }else if( grid_x_bottom_right == j && grid_y_bottom_right == i-1) {
+            return 1; // In the top square
+          }
+  
+          if ( is_wall_destroyable(sm->wall_matrix[j+1][i]) && is_wall_active(sm->wall_matrix[j+1][i])) {
+            set_wall_active(sm->wall_matrix[j+1][i], false); // Deactivate the wall, bomb destroyed it
+          }
+          if ( is_wall_destroyable(sm->wall_matrix[j][i+1]) && is_wall_active(sm->wall_matrix[j][i+1])) {
+            set_wall_active(sm->wall_matrix[j][i+1], false); // Deactivate the wall, bomb destroyed it
+          }
+          if ( is_wall_destroyable(sm->wall_matrix[j-1][i]) && is_wall_active(sm->wall_matrix[j-1][i])) {
+            set_wall_active(sm->wall_matrix[j-1][i], false); // Deactivate the wall, bomb destroyed it
+          }
+          if ( is_wall_destroyable(sm->wall_matrix[j][i-1]) && is_wall_active(sm->wall_matrix[j][i-1])) {
+            set_wall_active(sm->wall_matrix[j][i-1], false); // Deactivate the wall, bomb destroyed it
+          }
+  
+          set_explosion_active(sm->explosion_matrix[j][i], true); // Activate the explosion, in the bomb position
+          if (is_wall_destroyable(sm->wall_matrix[j+1][i])) {
+            set_explosion_active(sm->explosion_matrix[j+1][i], true); // Activate the explosion, if it is not a solid wall
+          }
+          if (is_wall_destroyable(sm->wall_matrix[j][i+1])) {
+            set_explosion_active(sm->explosion_matrix[j][i+1], true); // Activate the explosion, if it is not a solid wall
+          }
+          if (is_wall_destroyable(sm->wall_matrix[j-1][i])) {
+            set_explosion_active(sm->explosion_matrix[j-1][i], true); // Activate the explosion, if it is not a solid wall
+          }
+          if (is_wall_destroyable(sm->wall_matrix[j][i-1])) {
+            set_explosion_active(sm->explosion_matrix[j][i-1], true); // Activate the explosion, if it is not a solid wall
+          }
 
-        
-        if ( is_wall_destroyable(sm->wall_matrix[j+1][i]) && is_wall_active(sm->wall_matrix[j+1][i])) {
-          set_wall_active(sm->wall_matrix[j+1][i], false); // Deactivate the wall, bomb destroyed it
-        }
-        if ( is_wall_destroyable(sm->wall_matrix[j][i+1]) && is_wall_active(sm->wall_matrix[j][i+1])) {
-          set_wall_active(sm->wall_matrix[j][i+1], false); // Deactivate the wall, bomb destroyed it
-        }
-        if ( is_wall_destroyable(sm->wall_matrix[j-1][i]) && is_wall_active(sm->wall_matrix[j-1][i])) {
-          set_wall_active(sm->wall_matrix[j-1][i], false); // Deactivate the wall, bomb destroyed it
-        }
-        if ( is_wall_destroyable(sm->wall_matrix[j][i-1]) && is_wall_active(sm->wall_matrix[j][i-1])) {
-          set_wall_active(sm->wall_matrix[j][i-1], false); // Deactivate the wall, bomb destroyed it
-        }
+        }else if ( bomb_type == FULL_LINE) {
 
-        set_explosion_active(sm->explosion_matrix[j][i], true); // Activate the explosion, in the bomb position
-        if (is_wall_destroyable(sm->wall_matrix[j+1][i])) {
-          set_explosion_active(sm->explosion_matrix[j+1][i], true); // Activate the explosion, if it is not a solid wall
-        }
-        if (is_wall_destroyable(sm->wall_matrix[j][i+1])) {
-          set_explosion_active(sm->explosion_matrix[j][i+1], true); // Activate the explosion, if it is not a solid wall
-        }
-        if (is_wall_destroyable(sm->wall_matrix[j-1][i])) {
-          set_explosion_active(sm->explosion_matrix[j-1][i], true); // Activate the explosion, if it is not a solid wall
-        }
-        if (is_wall_destroyable(sm->wall_matrix[j][i-1])) {
-          set_explosion_active(sm->explosion_matrix[j][i-1], true); // Activate the explosion, if it is not a solid wall
-        }
+          bool up_collision = false;
+          bool down_collision = false;
+          bool left_collision = false;
+          bool right_collision = false;
+
+          // It is done in this way to check the closer positions to the explosion first
+          for ( int k = 0; k < GRID_WIDTH - 2; k++) { // The -2 is to avoid the walls at the borders
+
+            if ( j + k < GRID_WIDTH - 1 &&  !right_collision) { // Right direction
+
+              if (grid_x_top_left == j + k && grid_y_top_left == i) {
+                return 1; 
+              }else if( grid_x_bottom_right == j + k && grid_y_bottom_right == i) {
+                return 1;
+              }
+
+              if ( is_wall_destroyable(sm->wall_matrix[j + k][i])) {
+
+                set_explosion_active(sm->explosion_matrix[j + k][i], true); // Activate the explosion
+
+                if ( is_wall_active(sm->wall_matrix[j + k][i]) ){
+                  set_wall_active(sm->wall_matrix[j + k][i], false); // Deactivate the wall, bomb destroyed
+                  right_collision = true;
+                }
+              }else {
+                right_collision = true; // It is a solid wall, stop the explosion in this direction
+              }
+
+            }
+
+            if ( j - k > 0 && !left_collision) { // Left direction
+
+              if (grid_x_top_left == j - k && grid_y_top_left == i) {
+                return 1; 
+              }else if( grid_x_bottom_right == j - k && grid_y_bottom_right == i) {
+                return 1;
+              }
+
+              if ( is_wall_destroyable(sm->wall_matrix[j - k][i])) {
+
+                set_explosion_active(sm->explosion_matrix[j - k][i], true); // Activate the explosion
+
+                if ( is_wall_active(sm->wall_matrix[j - k][i]) ){
+                  set_wall_active(sm->wall_matrix[j - k][i], false); // Deactivate the wall, bomb destroyed
+                  left_collision = true;
+                }
+              }else {
+                left_collision = true; // It is a solid wall, stop the explosion in this direction
+              }
+              
+            }
+            if ( i + k < GRID_HEIGHT - 1 && !down_collision) { // Down direction
+
+              if (grid_x_top_left == j && grid_y_top_left == i + k) {
+                return 1; 
+              }else if( grid_x_bottom_right == j && grid_y_bottom_right == i + k) {
+                return 1;
+              }
+
+              if ( is_wall_destroyable(sm->wall_matrix[j][i + k])) {
+
+                set_explosion_active(sm->explosion_matrix[j][i + k], true); // Activate the explosion
+
+                if ( is_wall_active(sm->wall_matrix[j][i + k]) ){
+                  set_wall_active(sm->wall_matrix[j][i + k], false); // Deactivate the wall, bomb destroyed
+                  down_collision = true;
+                }
+              }else {
+                down_collision = true; // It is a solid wall, stop the explosion in this direction
+              }
+              
+            }
+            if ( i - k > 0 && !up_collision) { // Up direction
+
+              if (grid_x_top_left == j && grid_y_top_left == i - k) {
+                return 1; 
+              }else if( grid_x_bottom_right == j && grid_y_bottom_right == i - k) {
+                return 1;
+              }
+
+              if ( is_wall_destroyable(sm->wall_matrix[j][i - k])) {
+
+                set_explosion_active(sm->explosion_matrix[j][i - k], true); // Activate the explosion
+
+                if ( is_wall_active(sm->wall_matrix[j][i - k]) ){
+                  set_wall_active(sm->wall_matrix[j][i - k], false); // Deactivate the wall, bomb destroyed
+                  up_collision = true;
+                }
+              }else {
+                up_collision = true; // It is a solid wall, stop the explosion in this direction
+              }
+            }
+
+            if ( up_collision && down_collision && left_collision && right_collision) {
+              break;
+            }
+          }
+
+        }else if ( bomb_type == CONSTRUCTIVE) {
+
+          if (grid_x_top_left == j && grid_y_top_left == i) {
+            return 1; // Player is in the same position as the bomb, go to menu
+          }else if( grid_x_top_left == j+1 && grid_y_top_left == i) {
+            return 1; // In the right square
+          }else if( grid_x_top_left == j && grid_y_top_left == i+1) {
+            return 1; // In the bottom square
+          }else if( grid_x_top_left == j-1 && grid_y_top_left == i) {
+            return 1; // In the left square
+          }else if( grid_x_top_left == j && grid_y_top_left == i-1) {
+            return 1; // In the top square
+          }else if( grid_x_bottom_right == j && grid_y_bottom_right == i) {
+            return 1; // Player is in the same position as the bomb, exit game
+          }else if( grid_x_bottom_right == j+1 && grid_y_bottom_right == i) {
+            return 1; // In the right square
+          }else if( grid_x_bottom_right == j && grid_y_bottom_right == i+1) {
+            return 1; // In the bottom square
+          }else if( grid_x_bottom_right == j-1 && grid_y_bottom_right == i) {
+            return 1; // In the left square
+          }else if( grid_x_bottom_right == j && grid_y_bottom_right == i-1) {
+            return 1; // In the top square
+          }
+          
+          if ( is_wall_destroyable(sm->wall_matrix[j][i]) && !is_wall_active(sm->wall_matrix[j][i])) {
+            set_wall_active(sm->wall_matrix[j][i], true); // Activate the wall
+          }
+          if ( is_wall_destroyable(sm->wall_matrix[j+1][i]) && !is_wall_active(sm->wall_matrix[j+1][i])) {
+            set_wall_active(sm->wall_matrix[j+1][i], true); // Activate the wall
+          }
+          if ( is_wall_destroyable(sm->wall_matrix[j][i+1]) && !is_wall_active(sm->wall_matrix[j][i+1])) {
+            set_wall_active(sm->wall_matrix[j][i+1], true); // Activate the wall
+          }
+          if ( is_wall_destroyable(sm->wall_matrix[j-1][i]) && !is_wall_active(sm->wall_matrix[j-1][i])) {
+            set_wall_active(sm->wall_matrix[j-1][i], true); // ACtivate the wall
+          }
+          if ( is_wall_destroyable(sm->wall_matrix[j][i-1]) && !is_wall_active(sm->wall_matrix[j][i-1])) {
+            set_wall_active(sm->wall_matrix[j][i-1], true); // Activate the wall
+          }
+  
+          set_explosion_active(sm->explosion_matrix[j][i], true); // Activate the explosion, in the bomb position
+          if (is_wall_destroyable(sm->wall_matrix[j+1][i])) {
+            set_explosion_active(sm->explosion_matrix[j+1][i], true); // Activate the explosion, if it is not a solid wall
+          }
+          if (is_wall_destroyable(sm->wall_matrix[j][i+1])) {
+            set_explosion_active(sm->explosion_matrix[j][i+1], true); // Activate the explosion, if it is not a solid wall
+          }
+          if (is_wall_destroyable(sm->wall_matrix[j-1][i])) {
+            set_explosion_active(sm->explosion_matrix[j-1][i], true); // Activate the explosion, if it is not a solid wall
+          }
+          if (is_wall_destroyable(sm->wall_matrix[j][i-1])) {
+            set_explosion_active(sm->explosion_matrix[j][i-1], true); // Activate the explosion, if it is not a solid wall
+          }
+
+        }    
       }
     }
   }

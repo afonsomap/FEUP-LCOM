@@ -22,6 +22,8 @@ struct sprite_loader_imp {
   Sprite *single_mode_button;
   Sprite *multiplayer_mode_button;
   Sprite *exit_button;
+  Sprite *bomb_options[3];
+  Sprite *selected_options[3];
 };
 
 SpriteLoader* load_sprites() {
@@ -101,6 +103,13 @@ SpriteLoader* load_sprites() {
   loader->single_mode_button = create_sprite((xpm_map_t)single_menu_xpm); 
   loader->multiplayer_mode_button = create_sprite((xpm_map_t)multi_menu_xpm);
   loader->exit_button = create_sprite((xpm_map_t)exit_menu_xpm); 
+
+  loader->bomb_options[0] = create_sprite((xpm_map_t)bomb_option_1);
+  loader->bomb_options[1] = create_sprite((xpm_map_t)bomb_option_2);
+  loader->bomb_options[2] = create_sprite((xpm_map_t)bomb_option_3);
+  loader->selected_options[0] = create_sprite((xpm_map_t)bomb_option_1);
+  loader->selected_options[1] = create_sprite((xpm_map_t)bomb_option_2);
+  loader->selected_options[2] = create_sprite((xpm_map_t)bomb_option_3);
   return loader;
 }
 
@@ -127,6 +136,10 @@ void destroy_sprites(SpriteLoader *loader) {
   destroy_sprite(loader->single_mode_button);
   destroy_sprite(loader->multiplayer_mode_button);
   destroy_sprite(loader->exit_button);
+  for (int i = 0; i < 3; i++) {
+    destroy_sprite(loader->bomb_options[i]);
+    destroy_sprite(loader->selected_options[i]);
+  }
 
   free(loader);
 }
@@ -195,5 +208,11 @@ Sprite* get_multi_mode_button(SpriteLoader *loader) {
 }
 Sprite* get_exit_button(SpriteLoader *loader) {
   return loader->exit_button;
+}
+Sprite** get_bomb_options(SpriteLoader *loader) {
+  return loader->bomb_options;
+}
+Sprite** get_selected_options(SpriteLoader *loader) {
+  return loader->selected_options;
 }
 

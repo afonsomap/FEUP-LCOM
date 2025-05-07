@@ -7,6 +7,7 @@ struct bomb_imp {
   uint8_t current_image; // current image of the animation
   bool active;
   bool exploded; // Indicates if the bomb has exploded
+  BombType type; // Type of bomb
 };
 
 uint8_t get_bomb_Xpos(Bomb *b) { 
@@ -30,11 +31,12 @@ bool is_bomb_active(Bomb *b) {
   return b->active;
 }
 
-void set_bomb_active(Bomb *b, bool active) {
+void set_bomb_active(Bomb *b, bool active, BombType type) {
   if (b == NULL) {
     return;
   }
   b->active = active;
+  b->type = type;
 }
 
 bool is_bomb_exploded(Bomb *b) {
@@ -47,6 +49,13 @@ bool is_bomb_exploded(Bomb *b) {
   }else{
     return false;
   }
+}
+
+BombType get_bomb_type(Bomb *b) {
+  if (b == NULL) {
+    return NORMAL; // Default type
+  }
+  return b->type;
 }
 
 Bomb *create_bomb(uint8_t x, uint8_t y, AnimSprite* img, bool active) {
@@ -63,6 +72,7 @@ Bomb *create_bomb(uint8_t x, uint8_t y, AnimSprite* img, bool active) {
   bomb->current_image = 0;
   bomb->active = active;
   bomb->exploded = false; // Initialize exploded status to false
+  bomb->type = NORMAL; // Default bomb type
 
   return bomb;
 }

@@ -9,6 +9,11 @@
 struct bomb_imp;
 typedef struct bomb_imp Bomb;
 
+typedef enum {
+  NORMAL,
+  FULL_LINE,
+  CONSTRUCTIVE
+} BombType;
 
 /**
  * @brief Returns the X coordinate of the bomb
@@ -39,8 +44,9 @@ bool is_bomb_active(Bomb *b);
  *
  * @param b Pointer to the bomb to be modified
  * @param active The new active status of the bomb
+ * @param type The type of the bomb
  */
-void set_bomb_active(Bomb *b, bool active);
+void set_bomb_active(Bomb *b, bool active, BombType type);
 
 /**
  * @brief Checks if the bomb has exploded
@@ -49,6 +55,14 @@ void set_bomb_active(Bomb *b, bool active);
  * @return true if the bomb has exploded, false otherwise
  */
 bool is_bomb_exploded(Bomb *b);
+
+/**
+ * @brief Gets the type of the bomb
+ *
+ * @param b Pointer to the bomb to be checked
+ * @return The type of the bomb
+ */
+BombType get_bomb_type(Bomb *b);
 
 /**
  * @brief Creates a new bomb with the specified sprite

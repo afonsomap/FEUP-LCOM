@@ -52,6 +52,10 @@
 #include "images/explosion/explosion8.xpm"
 #include "images/explosion/explosion9.xpm"
 
+#include "images/bomb_options/bomb_option1.xpm"
+#include "images/bomb_options/bomb_option2.xpm"
+#include "images/bomb_options/bomb_option3.xpm"
+
 #include "images/wall.xpm"
 #include "images/solid_wall.xpm"
 #include "images/grid_background.xpm"
@@ -91,4 +95,6 @@ Sprite* get_menu_title(SpriteLoader *loader);
 Sprite* get_single_mode_button(SpriteLoader *loader);
 Sprite* get_multi_mode_button(SpriteLoader *loader);
 Sprite* get_exit_button(SpriteLoader *loader);
+Sprite** get_bomb_options(SpriteLoader *loader);
+Sprite** get_selected_options(SpriteLoader *loader);
 #endif

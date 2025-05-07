@@ -17,8 +17,6 @@ Menu* create_menu(SpriteLoader *loader) {
     return NULL;
   }
 
-  printf("Creating menu\n");
-
   m->background = get_menu_background(loader);
   m->menu_title = get_menu_title(loader);
   m->single_mode_button = get_single_mode_button(loader);
@@ -37,7 +35,6 @@ void destroy_menu(Menu *m) {
   if (m == NULL) {
     return;
   }
-  printf("Destroying menu\n");
 
   free(m);
 }
