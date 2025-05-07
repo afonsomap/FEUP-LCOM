@@ -12,6 +12,7 @@
 #include "cursor.h"
 #include "explosion.h"
 #include "menu.h"
+#include "bomb_options.h"
 
 
 struct singleMode_imp;

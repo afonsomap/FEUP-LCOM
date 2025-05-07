@@ -137,7 +137,6 @@ void interrups_loop() {
                   if (process_single_mode_kbd(sm, key_pressed) == 1) {
 
                     current_state = MENU; // Go back to menu
-                    printf("Destorying single mode due to keyboard press\n");
                     destroy_singleMode(sm);
                     sm = NULL;
                     m = create_menu(loader);
@@ -152,7 +151,6 @@ void interrups_loop() {
                   if (process_single_mode_mouse(sm, c) == 1) {
 
                     current_state = MENU; // Go back to menu
-                    printf("Destorying single mode due to mouse press\n");
                     destroy_singleMode(sm);
                     sm = NULL;
                     m = create_menu(loader);
