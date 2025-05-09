@@ -1,8 +1,8 @@
 #include "singleMode.h"
 
 
-#define GRID_WIDTH 15
-#define GRID_HEIGHT 13
+#define GRID_WIDTH 17
+#define GRID_HEIGHT 15
 
 struct singleMode_imp {
   Player *player1;
@@ -12,7 +12,8 @@ struct singleMode_imp {
   uint16_t grid_square_width; // Width of each grid square
   uint16_t x_initial_grid; // X coordinate of the initial grid
   uint16_t y_initial_grid; // Y coordinate of the initial grid
-  Sprite *grid_background; // Background sprite
+  Sprite *game_background; // Game background sprite
+  Sprite *grid_background; // Background of the grid sprite
   BombOptions *bomb_options; // Bomb options
   BombType player1_bomb_option; // Bomb option for player 1
 };
@@ -24,10 +25,11 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
     return NULL;
   }
   
-  sm->x_initial_grid = 268; // Initialize grid position
-  sm->y_initial_grid = 80; // Initialize grid position
+  sm->x_initial_grid = 208; // Initialize grid position
+  sm->y_initial_grid = 52; // Initialize grid position
   sm->grid_square_width = get_sprite_width(get_wall(loader)); // Get the width of the grid square
   sm->grid_background = get_grid_background(loader); // Get the background sprite
+  sm->game_background = get_game_background(loader); // Get the game background sprite
 
   sm->player1 = create_player(1* sm->grid_square_width, 1 * sm->grid_square_width, get_player1_left(loader), get_player1_right(loader), get_player1_up(loader), get_player1_down(loader), get_player1_standing(loader));
 
@@ -93,8 +95,9 @@ void draw_singleMode(SingleMode *sm) {
   if (sm == NULL) {
     return;
   }
+  
   // Draw background
-  draw_sprite(sm->grid_background, sm->x_initial_grid+30, sm->y_initial_grid+50);
+  draw_sprite(sm->grid_background, sm->x_initial_grid+33, sm->y_initial_grid+50);
 
   // Draw walls
   for (int i = 0; i < GRID_HEIGHT; i++) {
@@ -436,34 +439,24 @@ int check_bomb_exploded(SingleMode *sm) {
           
           if ( is_wall_destroyable(sm->wall_matrix[j][i]) && !is_wall_active(sm->wall_matrix[j][i])) {
             set_wall_active(sm->wall_matrix[j][i], true); // Activate the wall
+            set_explosion_active(sm->explosion_matrix[j][i], true); // Activate the explosion,
           }
           if ( is_wall_destroyable(sm->wall_matrix[j+1][i]) && !is_wall_active(sm->wall_matrix[j+1][i])) {
             set_wall_active(sm->wall_matrix[j+1][i], true); // Activate the wall
+            set_explosion_active(sm->explosion_matrix[j+1][i], true); // Activate the explosion
           }
           if ( is_wall_destroyable(sm->wall_matrix[j][i+1]) && !is_wall_active(sm->wall_matrix[j][i+1])) {
             set_wall_active(sm->wall_matrix[j][i+1], true); // Activate the wall
+            set_explosion_active(sm->explosion_matrix[j][i+1], true); // Activate the explosion
           }
           if ( is_wall_destroyable(sm->wall_matrix[j-1][i]) && !is_wall_active(sm->wall_matrix[j-1][i])) {
             set_wall_active(sm->wall_matrix[j-1][i], true); // ACtivate the wall
+            set_explosion_active(sm->explosion_matrix[j-1][i], true); // Activate the explosion
           }
           if ( is_wall_destroyable(sm->wall_matrix[j][i-1]) && !is_wall_active(sm->wall_matrix[j][i-1])) {
             set_wall_active(sm->wall_matrix[j][i-1], true); // Activate the wall
+            set_explosion_active(sm->explosion_matrix[j][i-1], true); // Activate the explosion
           }
-  
-          set_explosion_active(sm->explosion_matrix[j][i], true); // Activate the explosion, in the bomb position
-          if (is_wall_destroyable(sm->wall_matrix[j+1][i])) {
-            set_explosion_active(sm->explosion_matrix[j+1][i], true); // Activate the explosion, if it is not a solid wall
-          }
-          if (is_wall_destroyable(sm->wall_matrix[j][i+1])) {
-            set_explosion_active(sm->explosion_matrix[j][i+1], true); // Activate the explosion, if it is not a solid wall
-          }
-          if (is_wall_destroyable(sm->wall_matrix[j-1][i])) {
-            set_explosion_active(sm->explosion_matrix[j-1][i], true); // Activate the explosion, if it is not a solid wall
-          }
-          if (is_wall_destroyable(sm->wall_matrix[j][i-1])) {
-            set_explosion_active(sm->explosion_matrix[j][i-1], true); // Activate the explosion, if it is not a solid wall
-          }
-
         }    
       }
     }

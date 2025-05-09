@@ -24,6 +24,7 @@ struct sprite_loader_imp {
   Sprite *exit_button;
   Sprite *bomb_options[3];
   Sprite *selected_options[3];
+  Sprite *game_background;
 };
 
 SpriteLoader* load_sprites() {
@@ -94,9 +95,9 @@ SpriteLoader* load_sprites() {
   loader->wall = create_sprite( (xpm_map_t)wall_xpm);
   loader->solid_wall = create_sprite( (xpm_map_t)solid_wall_xpm);
 
+  loader->game_background = create_sprite((xpm_map_t)game_background);
   loader->grid_background = create_sprite((xpm_map_t)grid_background);
   loader->cursor = create_sprite((xpm_map_t)cursor_xpm);
-
 
   loader->menu_background = create_sprite((xpm_map_t)back_menu_xpm); 
   loader->menu_title = create_sprite((xpm_map_t)title_menu_xpm); 
@@ -110,6 +111,7 @@ SpriteLoader* load_sprites() {
   loader->selected_options[0] = create_sprite((xpm_map_t)bomb_option_1);
   loader->selected_options[1] = create_sprite((xpm_map_t)bomb_option_2);
   loader->selected_options[2] = create_sprite((xpm_map_t)bomb_option_3);
+
   return loader;
 }
 
@@ -129,6 +131,7 @@ void destroy_sprites(SpriteLoader *loader) {
   destroy_anim_sprite(loader->bomb);
   destroy_sprite(loader->wall);
   destroy_sprite(loader->solid_wall);
+  destroy_sprite(loader->game_background);
   destroy_sprite(loader->grid_background);
   destroy_sprite(loader->cursor);
   destroy_sprite(loader->menu_background);
@@ -214,5 +217,8 @@ Sprite** get_bomb_options(SpriteLoader *loader) {
 }
 Sprite** get_selected_options(SpriteLoader *loader) {
   return loader->selected_options;
+}
+Sprite* get_game_background(SpriteLoader *loader) {
+  return loader->game_background;
 }
 
