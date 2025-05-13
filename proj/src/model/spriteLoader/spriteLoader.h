@@ -70,6 +70,8 @@
 #include "images/menu/menu_exit.xpm"
 #include "images/menu/menu_title.xpm"
 
+#include "images/Died/YouDied.xpm"
+
 struct sprite_loader_imp;
 typedef struct sprite_loader_imp SpriteLoader;
 
@@ -101,4 +103,6 @@ Sprite* get_exit_button(SpriteLoader *loader);
 Sprite** get_bomb_options(SpriteLoader *loader);
 Sprite** get_selected_options(SpriteLoader *loader);
 Sprite* get_game_background(SpriteLoader *loader);
+Sprite* get_died_title(SpriteLoader *loader);
+
 #endif

@@ -25,6 +25,7 @@ struct sprite_loader_imp {
   Sprite *bomb_options[3];
   Sprite *selected_options[3];
   Sprite *game_background;
+  Sprite *died_title;
 };
 
 SpriteLoader* load_sprites() {
@@ -112,6 +113,8 @@ SpriteLoader* load_sprites() {
   loader->selected_options[1] = create_sprite((xpm_map_t)bomb_option_2);
   loader->selected_options[2] = create_sprite((xpm_map_t)bomb_option_3);
 
+  loader->died_title = create_sprite((xpm_map_t)died_title_xpm);
+
   return loader;
 }
 
@@ -139,6 +142,7 @@ void destroy_sprites(SpriteLoader *loader) {
   destroy_sprite(loader->single_mode_button);
   destroy_sprite(loader->multiplayer_mode_button);
   destroy_sprite(loader->exit_button);
+  destroy_sprite(loader->died_title);
   for (int i = 0; i < 3; i++) {
     destroy_sprite(loader->bomb_options[i]);
     destroy_sprite(loader->selected_options[i]);
@@ -222,3 +226,6 @@ Sprite* get_game_background(SpriteLoader *loader) {
   return loader->game_background;
 }
 
+Sprite* get_died_title(SpriteLoader *loader) {
+  return loader->menu_title;
+}
