@@ -8,7 +8,7 @@ struct menu_imp {
   Sprite *exit_button;    // "Exit" button sprite
 };
 
-uint16_t center_x = (1280 - 250) / 2;
+uint16_t center_x = 1280 / 2;
 uint16_t center_y = 50; 
 
 Menu* create_menu(SpriteLoader *loader) {
@@ -46,11 +46,11 @@ void draw_menu(Menu *m) {
 
 
   draw_sprite(m->background, 0, 0);
-  draw_sprite(m->menu_title, center_x - 25, center_y); // Draw the title at (100, 50)
+  draw_sprite(m->menu_title, center_x - 250 / 2, center_y); // Draw the title at (100, 50)
 
-  draw_sprite(m->single_mode_button, center_x, center_y + 200); // Draw the "Single Mode" button below the title
-  draw_sprite(m->multi_mode_button, center_x, center_y + 350); // Draw the "Multiplayer Mode" button below the title
-  draw_sprite(m->exit_button, center_x, center_y + 500);   
+  draw_sprite(m->single_mode_button, center_x - 200 / 2, center_y + 200); // Draw the "Single Mode" button below the title
+  draw_sprite(m->multi_mode_button, center_x - 200 / 2, center_y + 350); // Draw the "Multiplayer Mode" button below the title
+  draw_sprite(m->exit_button, center_x - 200 / 2, center_y + 500);   
 }
 
 
