@@ -1,7 +1,7 @@
 #include "Died.h"
 
-uint16_t center_x = 1280 / 2;
-uint16_t center_y = 50; 
+uint16_t center2_x = 1280 / 2;
+uint16_t center2_y = 50; 
 
 struct died_imp {
   Sprite *background;
@@ -41,8 +41,8 @@ void draw_died(Died *d) {
   }
 
   draw_sprite(d->background, 0, 0);
-  draw_sprite(d->died_title, center_x - 250 / 2, center_y); // Draw the title at (100, 50)
-  draw_sprite(d->exit_button, center_x - 200 / 2, center_y + 500);   
+  draw_sprite(d->died_title, center2_x - 250 / 2, center2_y); // Draw the title at (100, 50)
+  draw_sprite(d->exit_button, center2_x - 200 / 2, center2_y + 500);   
 }
 
 int process_died_input(Cursor *cursor) {
@@ -51,8 +51,8 @@ int process_died_input(Cursor *cursor) {
     uint16_t cursor_y = get_cursor_Ypos(cursor);
 
     // Check if the cursor is over the "Exit" button
-    if (cursor_x >= center_x - 200 / 2 && cursor_x <= center_x + 200 / 2 &&
-        cursor_y >= center_y + 500 && cursor_y <= center_y + 500 + 200) {
+    if (cursor_x >= center2_x - 200 / 2 && cursor_x <= center2_x + 200 / 2 &&
+        cursor_y >= center2_y + 500 && cursor_y <= center2_y + 500 + 200) {
       return 1; // Exit the game
     }
   }

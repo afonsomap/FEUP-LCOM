@@ -215,6 +215,11 @@ void interrups_loop() {
                     current_state = MENU; // Exit to the menu
                     destroy_died(d);
                     d = NULL;
+                    m = create_menu(loader);
+                    memset(key_pressed, false, sizeof(key_pressed));
+                    reset_cursor_button_pressed(c);
+                    draw_menu(m);
+                    draw_cursor(c);
                     break;
 
                   }

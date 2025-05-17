@@ -227,5 +227,5 @@ Sprite* get_game_background(SpriteLoader *loader) {
 }
 
 Sprite* get_died_title(SpriteLoader *loader) {
-  return loader->menu_title;
+  return loader->died_title;
 }
