@@ -127,8 +127,8 @@ void interrups_loop() {
 
           if (msg.m_notify.interrupts & irq_set_timer) {
             timer_int_handler();
-            if (timer_get_count() % 2 == 0) { // 30 FPS
-              clear_buffer();
+            if (timer_get_count() % 2 == 0) { // 30 FPSc
+              clear_back_buffer();
           
               int menu_return;
               switch (current_state) {
@@ -207,8 +207,7 @@ void interrups_loop() {
                 default:
                   break;
               }
-          
-              copy_buffer_vram();
+              vg_flip_buffer();
               timer_reset_count();
             }
           }
@@ -252,7 +251,6 @@ void interrups_loop() {
 int (proj_main_loop)(int argc, char *argv[]) {
 
   map_graphics_vram(VBE_1024p_DC);
-  allocate_buffer();
   set_video_mode(VBE_1024p_DC);
 
   loader = load_sprites();
@@ -264,7 +262,6 @@ int (proj_main_loop)(int argc, char *argv[]) {
   destroy_cursor(c);
   destroy_sprites(loader);
 
-  free_buffer();
   vg_exit();
 
   return 0;

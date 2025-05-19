@@ -10,7 +10,6 @@
  * Functions to interact with the graphics card.
  */
 
-
 /**
  * @brief Returns the structure that holds the VBE mode information
  * 
@@ -28,7 +27,7 @@ vbe_mode_info_t get_mode_info();
 void set_video_mode(uint16_t mode);
 
 /**
- * @brief Allocates physical memory and maps it to the virtual address space
+ * @brief Allocates and maps double the needed VRAM for page flipping
  * 
  * Panic if the allocation fails.
  * 
@@ -37,30 +36,26 @@ void set_video_mode(uint16_t mode);
 void map_graphics_vram(uint16_t mode);
 
 /**
- * @brief Allocates a buffer to store the graphics data
+ * @brief Toggles the front and back VRAM buffers and updates the display start
+ */
+void vg_flip_buffer();
+
+/**
+ * @brief Sets the display start to the given buffer (for page flipping)
  * 
- * Panic if the allocation fails.
+ * @param addr Pointer to the buffer to display
  */
-void allocate_buffer();
+void set_display_start(uint32_t addr);
 
 /**
- * @brief Copies the buffer to the video memory
+ * @brief Clears the back buffer
+ * 
  */
-void copy_buffer_vram();
+void clear_back_buffer();
+
 
 /**
- * @brief Frees the buffer
- */
-void free_buffer();
-
-/**
- * @brief Clears the buffer
-
- */
-void clear_buffer();
-
-/**
- * @brief Draws a pixel on the screen
+ * @brief Draws a pixel on the current back buffer
  * 
  * Panic if something goes wrong.
  * 
@@ -71,7 +66,7 @@ void clear_buffer();
 void draw_pixel(uint16_t x, uint16_t y, uint32_t color);
 
 /**
- * @brief Draws a horizontal line on the screen
+ * @brief Draws a horizontal line on the current back buffer
  * 
  * Panic if something goes wrong.
  * 
@@ -84,7 +79,7 @@ void draw_pixel(uint16_t x, uint16_t y, uint32_t color);
 void draw_hline(uint16_t x, uint16_t y, uint16_t length, uint32_t color);
 
 /**
- * @brief Draws a rectangle on the screen
+ * @brief Draws a rectangle on the current back buffer
  * 
  * Panic if something goes wrong.
  * 
@@ -98,14 +93,15 @@ void draw_hline(uint16_t x, uint16_t y, uint16_t length, uint32_t color);
 void draw_rectangle(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color);
 
 /**
- * @brief Draws an xpm image on the screen
+ * @brief Draws an xpm image on the current back buffer
  * 
- * @param xpm XPM image to draw
+ * @param xpm_map XPM image pixel map to draw
  * @param x X coordinate of the top left corner
  * @param y Y coordinate of the top left corner
+ * @param width Width of the image
+ * @param height Height of the image
  * @return 0 on success, 1 on failure
  */
 int vg_draw_xpm(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
 
 #endif
-
