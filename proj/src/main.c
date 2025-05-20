@@ -5,18 +5,21 @@
 #include "timer_count.h"
 #include "spriteLoader.h"
 #include "singleMode.h"
+#include "died_state.h"
 #include "cursor.h"
 #include "menu.h"
 
 typedef enum {
   MENU,
   SINGLE_MODE,
+  DIED,
   EXIT
 } GameState;
 
 static SpriteLoader *loader = NULL;
 static SingleMode *sm = NULL;
 static Menu *m = NULL;
+static Died *d = NULL;
 static Cursor *c = NULL;
 static bool key_pressed[5] = {false, false, false, false, false}; // UP, DOWN, LEFT, RIGHT, ESC
 GameState current_state = MENU;
@@ -163,15 +166,17 @@ void interrups_loop() {
                   }
                   
                   if (check_bomb_exploded(sm) == 1) {
-                    current_state = MENU; // Go back to menu
+
+                    current_state = DIED; // Go back to "You died" page
                     destroy_singleMode(sm);
                     sm = NULL;
-                    m = create_menu(loader);
+                    d = create_Died_Page(loader);
                     memset(key_pressed, false, sizeof(key_pressed));
                     reset_cursor_button_pressed(c);
-                    draw_menu(m);
+                    draw_died(d);
                     draw_cursor(c);
                     break;
+
                   }
 
                   draw_singleMode(sm);
@@ -203,9 +208,29 @@ void interrups_loop() {
                   draw_menu(m);
                   draw_cursor(c);
                   break;
-          
+
+                case DIED:
+                  if (process_died_input(c) == 1) {
+
+                    current_state = MENU; // Exit to the menu
+                    destroy_died(d);
+                    d = NULL;
+                    m = create_menu(loader);
+                    memset(key_pressed, false, sizeof(key_pressed));
+                    reset_cursor_button_pressed(c);
+                    draw_menu(m);
+                    draw_cursor(c);
+                    break;
+
+                  }
+
+                  draw_died(d);
+                  draw_cursor(c);
+                  break;
+
                 default:
                   break;
+
               }
               vg_flip_buffer();
               timer_reset_count();
