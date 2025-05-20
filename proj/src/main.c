@@ -5,7 +5,7 @@
 #include "timer_count.h"
 #include "spriteLoader.h"
 #include "singleMode.h"
-#include "Died.h"
+#include "died_state.h"
 #include "cursor.h"
 #include "menu.h"
 

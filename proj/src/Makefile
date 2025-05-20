@@ -18,11 +18,11 @@ PROG=proj
 .PATH: ${.CURDIR}/model/explosion
 .PATH: ${.CURDIR}/model/menu
 .PATH: ${.CURDIR}/model/bomb_options
-.PATH: ${.CURDIR}/model/Died_State
+.PATH: ${.CURDIR}/model/died_state
 
 
 # source code files
-SRCS = 	main.c kbc.c kbd.c mouse.c timer.c utils.c graphics.c animatedSprite.c sprite.c bomb.c player.c wall.c singleMode.c spriteLoader.c cursor.c explosion.c menu.c bomb_options.c Died.c
+SRCS = 	main.c kbc.c kbd.c mouse.c timer.c utils.c graphics.c animatedSprite.c sprite.c bomb.c player.c wall.c singleMode.c spriteLoader.c cursor.c explosion.c menu.c bomb_options.c died_state.c
 
 # additional compilation flags
 CFLAGS += -pedantic -D_LCOM_OPTIMIZED_
@@ -44,7 +44,7 @@ CFLAGS += -pedantic -D_LCOM_OPTIMIZED_ \
           -I${.CURDIR}/model/explosion \
           -I${.CURDIR}/model/menu \
           -I${.CURDIR}/model/bomb_options \
-          -I${.CURDIR}/model/Died_State \
+          -I${.CURDIR}/model/died_state \
 
 
 

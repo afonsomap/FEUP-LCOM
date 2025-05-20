@@ -1,4 +1,4 @@
-#include "Died.h"
+#include "died_state.h"
 
 uint16_t center2_x = 1280 / 2;
 uint16_t center2_y = 50; 
