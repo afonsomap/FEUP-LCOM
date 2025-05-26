@@ -1,5 +1,6 @@
 #ifndef _SINGLEMODE_H_
 #define _SINGLEMODE_H_
+
 #include <lcom/lcf.h>
 #include <stddef.h>
 #include <math.h>
