@@ -9,7 +9,7 @@ struct died_imp {
   Sprite *exit_button;
 };
 
-Died* create_Died_Page(SpriteLoader *loader) {
+Died* create_died_page(SpriteLoader *loader) {
   Died *d = (Died *) malloc(sizeof(Died));
   if (d == NULL) {
     return NULL;
