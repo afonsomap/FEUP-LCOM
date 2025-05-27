@@ -98,35 +98,51 @@ void draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
   }
 }
 
-void draw_hline(uint16_t x, uint16_t y, uint16_t length, uint32_t color) {
-  for (uint16_t i = 0; i < length; i++) {
-    draw_pixel(x + i, y, color);
-  }
-}
-
-void draw_rectangle(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
-  for (uint16_t i = 0; i < height; i++) {
-    draw_hline(x, y + i, width, color);
-  }
-}
-
 int vg_draw_xpm(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height){
   if (xpm_map == NULL) {
     return 1;
   }
 
-  uint8_t *pixel_ptr = xpm_map;
-
   for (uint16_t i = 0; i < height; i++) {
     for (uint16_t j = 0; j < width; j++) {
 
       uint32_t color = 0;
-      memcpy(&color, pixel_ptr, bytes_per_pixel);
+      memcpy(&color, xpm_map, bytes_per_pixel);
+      
       draw_pixel(x + j, y + i, color);
-      pixel_ptr += bytes_per_pixel;
+      xpm_map += bytes_per_pixel;
     }
   }
 
   return 0;
+}
+
+int vg_draw_xpm_by_line(uint8_t* xpm_map, uint16_t x,uint16_t y, uint16_t width, uint16_t height) {
+  if (xpm_map == NULL) {
+    return 1;
+  }
+
+  if (x + width > mode_info.XResolution || y + height > mode_info.YResolution) {
+    return 1; // Out of bounds
+  }
+
+  size_t offset = (mode_info.XResolution * y + x) * bytes_per_pixel;
+
+  for (uint16_t i = 0; i < height; i++) {
+    memcpy(back_buffer + offset, xpm_map, width * bytes_per_pixel);
+    xpm_map += width * bytes_per_pixel;
+    offset += mode_info.BytesPerScanLine;
+  }
+
+  return 0;
+}
+
+int vg_draw_xpm_by_image(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height) {
+  if(xpm_map == NULL || width != mode_info.XResolution || height != mode_info.YResolution) {
+    return 1; // Invalid parameters
+  }
+
+  memcpy(back_buffer, xpm_map, screen_size);
+  return 0; // Success
 }
 
