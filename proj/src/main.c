@@ -121,9 +121,7 @@ void interrups_loop() {
             if (timer_get_count() % 2 == 0) { // 30 FPSc
               clear_back_buffer();
           
-              update_state_kbd(state, key_pressed);
-              update_state_mouse(state, c);
-              update_state_others(state);
+              update_state(state, key_pressed, c);
               draw_state(state);
 
               vg_flip_buffer();

@@ -43,6 +43,16 @@ void destroy_state(State *state) {
   free(state);
 }
 
+void update_state(State *state, bool* keys, Cursor *c) {
+  if (state == NULL) {
+    panic("State is NULL");
+  }
+
+  update_state_kbd(state, keys);
+  update_state_mouse(state, c);
+  update_state_without_event(state);
+}
+
 void update_state_kbd(State *state, bool* keys) {
   if (state == NULL) {
     panic("State is NULL");
@@ -132,7 +142,7 @@ void update_state_mouse(State *state, Cursor *c) {
   }
 }
 
-void update_state_others(State *state) {
+void update_state_without_event(State *state) {
   if (state == NULL) {
     panic("State is NULL");
   }
