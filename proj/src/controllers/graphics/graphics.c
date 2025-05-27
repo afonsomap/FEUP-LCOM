@@ -98,18 +98,7 @@ void draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
   }
 }
 
-void draw_hline(uint16_t x, uint16_t y, uint16_t length, uint32_t color) {
-  for (uint16_t i = 0; i < length; i++) {
-    draw_pixel(x + i, y, color);
-  }
-}
 
-
-void draw_rectangle(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
-  for (uint16_t i = 0; i < height; i++) {
-    draw_hline(x, y + i, width, color);
-  }
-}
 
 int vg_draw_xpm(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height){
   if (xpm_map == NULL) {
