@@ -46,11 +46,11 @@ void draw_menu(Menu *m) {
 
 
   draw_sprite(m->background, 0, 0);
-  draw_sprite(m->menu_title, center_x - 250 / 2, center_y); // Draw the title at (100, 50)
+  draw_sprite(m->menu_title, center_x - 406 / 2, center_y + 50); // Draw the title at (100, 50)
 
-  draw_sprite(m->single_mode_button, center_x - 200 / 2, center_y + 200); // Draw the "Single Mode" button below the title
-  draw_sprite(m->multi_mode_button, center_x - 200 / 2, center_y + 350); // Draw the "Multiplayer Mode" button below the title
-  draw_sprite(m->exit_button, center_x - 200 / 2, center_y + 500);   
+  draw_sprite(m->single_mode_button, center_x - 356 / 2, center_y + 300); // Draw the "Single Mode" button below the title
+  draw_sprite(m->multi_mode_button, center_x - 356 / 2, center_y + 450); // Draw the "Multiplayer Mode" button below the title
+  draw_sprite(m->exit_button, center_x - 356 / 2, center_y + 600);   
 }
 
 
@@ -63,14 +63,14 @@ int process_menu_input(Cursor *cursor) {
     uint16_t cursor_y = get_cursor_Ypos(cursor);
 
     // Check if the cursor is over the "Single Mode" button
-    if (cursor_x >= center_x - 200 / 2 && cursor_x <= center_x + 200 / 2 &&
-        cursor_y >= center_y + 200 && cursor_y <= center_y + 200 + 200) {
+    if (cursor_x >= center_x - 356 / 2 && cursor_x <= center_x + 356 / 2 &&
+        cursor_y >= center_y + 300 && cursor_y <= center_y + 300 + 200) {
       return 2; // Goes to single mode
     }
 
     // Check if the cursor is over the "Exit" button
-    if (cursor_x >= center_x - 200 / 2 && cursor_x <= center_x + 200 / 2 &&
-        cursor_y >= center_y + 500 && cursor_y <= center_y + 500 + 200) {
+    if (cursor_x >= center_x - 356 / 2 && cursor_x <= center_x + 356 / 2 &&
+        cursor_y >= center_y + 600 && cursor_y <= center_y + 600 + 200) {
       return 1; // Exit the game
     }
   }
