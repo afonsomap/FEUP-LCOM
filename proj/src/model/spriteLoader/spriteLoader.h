@@ -70,7 +70,7 @@
 #include "images/menu/menu_exit.xpm"
 #include "images/menu/menu_title.xpm"
 
-#include "images/Died/YouDied.xpm"
+#include "images/died/YouDied.xpm"
 
 struct sprite_loader_imp;
 typedef struct sprite_loader_imp SpriteLoader;
