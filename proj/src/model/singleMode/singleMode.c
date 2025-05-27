@@ -163,12 +163,14 @@ static bool check_wall_collision(SingleMode *sm, uint16_t x, uint16_t y) {
 
 // 0 Continue game
 // 1 Goes back to menu
-int process_single_mode_kbd(SingleMode *sm, bool* keys) {
+int process_single_mode_kbd(SingleMode *sm, KeyPressed * key) {
   if (sm == NULL) {
     return 1; // Go back to menu
   }
 
-  if (keys[0]){ // Up
+  bool is_some_key_pressed = false;
+  if ( is_up_pressed(key) ){ // Up
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1), get_player_Ypos(sm->player1) - 1)){
         player_move_up(sm->player1);
@@ -177,7 +179,8 @@ int process_single_mode_kbd(SingleMode *sm, bool* keys) {
       }
     }
   }
-  if (keys[1]){ // Down
+  if ( is_down_pressed(key) ){ // Down
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1), get_player_Ypos(sm->player1) + 1)){
         player_move_down(sm->player1);
@@ -186,7 +189,8 @@ int process_single_mode_kbd(SingleMode *sm, bool* keys) {
       }
     }
   }
-  if (keys[2]){ // Left
+  if ( is_left_pressed(key) ){ // Left
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1) - 1, get_player_Ypos(sm->player1))){
         player_move_left(sm->player1);
@@ -195,7 +199,8 @@ int process_single_mode_kbd(SingleMode *sm, bool* keys) {
       }
     }
   }
-  if (keys[3]){ // Right
+  if ( is_right_pressed(key)){ // Right
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1) + 1, get_player_Ypos(sm->player1))){
         player_move_right(sm->player1);
@@ -204,12 +209,12 @@ int process_single_mode_kbd(SingleMode *sm, bool* keys) {
       }
     }
   }
-  if (!keys[0] && !keys[1] && !keys[2] && !keys[3]){
+  if ( !is_some_key_pressed ) { // If no key is pressed
     player_stand(sm->player1);
-  }
-  if (keys[4]){ 
+  } else if ( is_esc_pressed(key) ) { // Exit key
     return 1; // Goes back to menu
   }
+
   return 0; // Continue game, no action
 }
 

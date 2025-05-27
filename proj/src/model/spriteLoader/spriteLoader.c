@@ -100,7 +100,7 @@ SpriteLoader* load_sprites() {
   loader->grid_background = create_sprite((xpm_map_t)grid_background, BY_LINE);
   loader->cursor = create_sprite((xpm_map_t)cursor_xpm, BY_PIXEL);
 
-  loader->menu_background = create_sprite((xpm_map_t)back_menu_xpm, FULL_IMAGE´); 
+  loader->menu_background = create_sprite((xpm_map_t)back_menu_xpm, FULL_IMAGE); 
   loader->menu_title = create_sprite((xpm_map_t)title_menu_xpm, BY_PIXEL); 
   loader->single_mode_button = create_sprite((xpm_map_t)single_menu_xpm, BY_PIXEL); 
   loader->multiplayer_mode_button = create_sprite((xpm_map_t)multi_menu_xpm, BY_PIXEL);
