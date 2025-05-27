@@ -35,6 +35,15 @@ State *create_state(SpriteLoader *loader, Cursor *c);
 void destroy_state(State *state);
 
 /**
+ * @brief Updates the state of the game based on keyboard and mouse input
+ * 
+ * @param state Pointer to the State object
+ * @param keys Array of boolean values representing the state of the keys
+ * @param c Pointer to the Cursor object
+ */
+void update_state(State *state, bool* keys, Cursor *c);
+
+/**
  * @brief Updates the state of the game based on the input from the keyboard
  * 
  * @param state Pointer to the State object
@@ -57,7 +66,7 @@ void update_state_mouse(State *state, Cursor *c);
  * 
  * @param state Pointer to the State object
  */
-void update_state_others(State *state);
+void update_state_without_event(State *state);
 
 /**
  * @brief Draws the current state of the game on the screen
