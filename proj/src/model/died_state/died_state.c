@@ -1,12 +1,12 @@
 #include "died_state.h"
 
-uint16_t center2_x = 1280 / 2;
-uint16_t center2_y = 50; 
-
 struct died_imp {
   Sprite *background;
   Sprite *died_title;
   Sprite *exit_button;
+  uint16_t xPos_title;
+  uint16_t xPos_button;
+  uint16_t yPos_button;
 };
 
 Died* create_died_page(SpriteLoader *loader) {
@@ -23,6 +23,10 @@ Died* create_died_page(SpriteLoader *loader) {
     destroy_died(d);
     return NULL;
   }
+
+  d->xPos_title = (get_mode_info().XResolution - get_sprite_width(d->died_title)) / 2;
+  d->xPos_button = (get_mode_info().XResolution - get_sprite_width(d->exit_button)) / 2;
+  d->yPos_button = 700; // Fixed position for the button
 
   return d;
 }
@@ -41,18 +45,18 @@ void draw_died(Died *d) {
   }
 
   draw_sprite(d->background, 0, 0);
-  draw_sprite(d->died_title, center2_x - 250 / 2, center2_y); // Draw the title at (100, 50)
-  draw_sprite(d->exit_button, center2_x - 200 / 2, center2_y + 500);   
+  draw_sprite(d->died_title, d->xPos_title, 100);
+  draw_sprite(d->exit_button, d->xPos_button, d->yPos_button);  
 }
 
-int process_died_input(Cursor *cursor) {
+int process_died_input(Died *d, Cursor *cursor) {
   if (get_cursor_button_pressed(cursor, 0)) { // Left mouse button pressed
     uint16_t cursor_x = get_cursor_Xpos(cursor);
     uint16_t cursor_y = get_cursor_Ypos(cursor);
 
     // Check if the cursor is over the "Exit" button
-    if (cursor_x >= center2_x - 200 / 2 && cursor_x <= center2_x + 200 / 2 &&
-        cursor_y >= center2_y + 500 && cursor_y <= center2_y + 500 + 200) {
+    if (cursor_x >= d->xPos_button && cursor_x <= d->xPos_button + get_sprite_width(d->exit_button) &&
+        cursor_y >=  d->yPos_button && cursor_y <= d->yPos_button + get_sprite_height(d->exit_button)) {
       return 1; // Exit the game
     }
   }

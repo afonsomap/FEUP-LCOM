@@ -1,13 +1,13 @@
 #ifndef DIED_H
 #define DIED_H
 
-
 #include <lcom/lcf.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include "sprite.h"
 #include "spriteLoader.h"
 #include "cursor.h"
+
 
 struct died_imp;
 typedef struct died_imp Died;
@@ -40,6 +40,6 @@ void draw_died(Died *d);
  * @param c Pointer to the Cursor object
  * @return 1 if the game should exit, 0 otherwise
  */
-int process_died_input(Cursor *c);
+int process_died_input(Died *d, Cursor *c);
 
 #endif

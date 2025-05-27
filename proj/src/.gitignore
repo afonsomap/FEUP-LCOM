@@ -1,3 +1,4 @@
 *.o
 .gdbinit
 proj
+*core*

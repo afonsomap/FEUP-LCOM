@@ -7,6 +7,7 @@
 #include "menu.h"
 #include "died_state.h"
 #include "spriteLoader.h"
+#include "key_pressed.h"
 
 struct state_imp;
 typedef struct state_imp State;
@@ -41,7 +42,7 @@ void destroy_state(State *state);
  * @param keys Array of boolean values representing the state of the keys
  * @param c Pointer to the Cursor object
  */
-void update_state(State *state, bool* keys, Cursor *c);
+void update_state(State *state, KeyPressed *key, Cursor *c);
 
 /**
  * @brief Updates the state of the game based on the input from the keyboard
@@ -50,7 +51,7 @@ void update_state(State *state, bool* keys, Cursor *c);
  * @param keys Array of boolean values representing the state of the keys
  * @return 0 if the game should continue, 1 if the game should exit
  */
-void update_state_kbd(State *state, bool* keys);
+void update_state_kbd(State *state, KeyPressed *key);
 
 /**
  * @brief Updates the state of the game based on the input from the mouse
