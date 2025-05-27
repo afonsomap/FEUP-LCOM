@@ -33,7 +33,7 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
   sm->grid_square_width = get_sprite_width(get_wall(loader)); // Get the width of the grid square
   sm->grid_background = get_grid_background(loader); // Get the background sprite
   sm->game_background = get_game_background(loader); // Get the game background sprite
-  sm->exit_button_sprite = get_exit_button(loader);
+  sm->exit_button_sprite = get_exit(loader);
 
   sm->player1 = create_player(1* sm->grid_square_width, 1 * sm->grid_square_width, get_player1_left(loader), get_player1_right(loader), get_player1_up(loader), get_player1_down(loader), get_player1_standing(loader));
 
