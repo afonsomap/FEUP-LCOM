@@ -104,4 +104,9 @@ void draw_rectangle(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uin
  */
 int vg_draw_xpm(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
 
+int vg_draw_xpm_by_image(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
+
+int vg_draw_xpm_by_line(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
+
+
 #endif

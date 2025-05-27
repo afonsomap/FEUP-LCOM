@@ -35,8 +35,8 @@ SpriteLoader* load_sprites() {
   }
 
   // Load player sprites
-  loader->player1_standing = create_sprite((xpm_map_t)p1_front_1);
-  loader->player2_standing = create_sprite((xpm_map_t)p1_front_1);
+  loader->player1_standing = create_sprite((xpm_map_t)p1_front_1, BY_PIXEL);
+  loader->player2_standing = create_sprite((xpm_map_t)p1_front_1, BY_PIXEL);
   loader->player1_left = create_anim_sprite(2, 8, (xpm_map_t)p1_left_1, (xpm_map_t)p1_left_2,
                                            (xpm_map_t)p1_left_3, (xpm_map_t)p1_left_2,
                                            (xpm_map_t)p1_left_1, (xpm_map_t)p1_left_4,
@@ -93,27 +93,27 @@ SpriteLoader* load_sprites() {
                                           (xpm_map_t)explosion_xpm_4, (xpm_map_t)explosion_xpm_5,
                                           (xpm_map_t)explosion_xpm_6, (xpm_map_t)explosion_xpm_7,
                                           (xpm_map_t)explosion_xpm_8, (xpm_map_t)explosion_xpm_9);
-  loader->wall = create_sprite( (xpm_map_t)wall_xpm);
-  loader->solid_wall = create_sprite( (xpm_map_t)solid_wall_xpm);
+  loader->wall = create_sprite( (xpm_map_t)wall_xpm, BY_PIXEL);
+  loader->solid_wall = create_sprite( (xpm_map_t)solid_wall_xpm, BY_PIXEL);
 
-  loader->game_background = create_sprite((xpm_map_t)game_background);
-  loader->grid_background = create_sprite((xpm_map_t)grid_background);
-  loader->cursor = create_sprite((xpm_map_t)cursor_xpm);
+  loader->game_background = create_sprite((xpm_map_t)game_background, FULL_IMAGE);
+  loader->grid_background = create_sprite((xpm_map_t)grid_background, BY_LINE);
+  loader->cursor = create_sprite((xpm_map_t)cursor_xpm, BY_PIXEL);
 
-  loader->menu_background = create_sprite((xpm_map_t)back_menu_xpm); 
-  loader->menu_title = create_sprite((xpm_map_t)title_menu_xpm); 
-  loader->single_mode_button = create_sprite((xpm_map_t)single_menu_xpm); 
-  loader->multiplayer_mode_button = create_sprite((xpm_map_t)multi_menu_xpm);
-  loader->exit_button = create_sprite((xpm_map_t)exit_menu_xpm); 
+  loader->menu_background = create_sprite((xpm_map_t)back_menu_xpm, FULL_IMAGE); 
+  loader->menu_title = create_sprite((xpm_map_t)title_menu_xpm, BY_PIXEL); 
+  loader->single_mode_button = create_sprite((xpm_map_t)single_menu_xpm, BY_PIXEL); 
+  loader->multiplayer_mode_button = create_sprite((xpm_map_t)multi_menu_xpm, BY_PIXEL);
+  loader->exit_button = create_sprite((xpm_map_t)exit_menu_xpm, BY_PIXEL); 
 
-  loader->bomb_options[0] = create_sprite((xpm_map_t)bomb_option_1);
-  loader->bomb_options[1] = create_sprite((xpm_map_t)bomb_option_2);
-  loader->bomb_options[2] = create_sprite((xpm_map_t)bomb_option_3);
-  loader->selected_options[0] = create_sprite((xpm_map_t)bomb_option_1);
-  loader->selected_options[1] = create_sprite((xpm_map_t)bomb_option_2);
-  loader->selected_options[2] = create_sprite((xpm_map_t)bomb_option_3);
+  loader->bomb_options[0] = create_sprite((xpm_map_t)bomb_option_1, BY_PIXEL);
+  loader->bomb_options[1] = create_sprite((xpm_map_t)bomb_option_2, BY_PIXEL);
+  loader->bomb_options[2] = create_sprite((xpm_map_t)bomb_option_3, BY_PIXEL);
+  loader->selected_options[0] = create_sprite((xpm_map_t)bomb_option_1, BY_PIXEL);
+  loader->selected_options[1] = create_sprite((xpm_map_t)bomb_option_2, BY_PIXEL);
+  loader->selected_options[2] = create_sprite((xpm_map_t)bomb_option_3, BY_PIXEL);
 
-  loader->died_title = create_sprite((xpm_map_t)died_title_xpm);
+  loader->died_title = create_sprite((xpm_map_t)died_title_xpm, BY_PIXEL);
 
   return loader;
 }
