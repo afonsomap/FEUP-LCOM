@@ -81,7 +81,15 @@ void set_bomb_unavailable(BombOptions *b, BombType type);
 
 bool isBombAvailable(BombOptions *b, BombType type);
 
-void decrease_time(BombOptions *b);
+void decrease_time_availability(BombOptions *b);
+
+void decrease_time_spawning(BombOptions *b);
+
+bool is_spawning(BombOptions *b);
+
+void set_spawn_rate(BombOptions *b);
+
+BombType get_random_bomb();
 
 
 

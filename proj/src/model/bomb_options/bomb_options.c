@@ -9,6 +9,7 @@ struct bomb_options_imp {
   uint16_t options_y_final[3];
   uint8_t number_of_options;
   uint8_t availability_counter[3]; // 0: available, 1: unavailable
+  uint8_t spawn_counter;
   BombType selectedBomb;
 };
 
@@ -111,7 +112,7 @@ void set_bomb_unavailable(BombOptions *b, BombType type) {
   else if (type == CONSTRUCTIVE) {
     b->availability_counter[1] = 180; 
   }
-  else if (type == DESTRUCTIVE) {
+  else if (type == FULL_LINE) {
     b->availability_counter[2] = 180; 
   }
 }
@@ -127,14 +128,14 @@ bool isBombAvailable(BombOptions *b, BombType type) {
   else if (type == CONSTRUCTIVE) {
     return b->availability_counter[1] == 0;
   }
-  else if (type == DESTRUCTIVE) {
+  else if (type == FULL_LINE) {
     return b->availability_counter[2] == 0;
   }
   
   return false; // Default case
 }
 
-void decrease_time(BombOptions *b) {
+void decrease_time_availability(BombOptions *b) {
   if (b == NULL) {
     return;
   }
@@ -144,5 +145,36 @@ void decrease_time(BombOptions *b) {
       b->availability_counter[i]--;
     }
   }
+}
+
+void decrease_time_spawning(BombOptions *b) {
+  if (b == NULL) {
+    return;
+  }
+
+  if (b->spawn_counter > 0) {
+    b->spawn_counter--;
+  }
+}
+
+bool is_spawning(BombOptions *b) {
+  if (b == NULL) {
+    return false;
+  }
+  return b->spawn_counter == 0;
+}
+
+void set_spawn_rate(BombOptions *b) {
+  if (b == NULL) {
+    return;
+  }
+  b->spawn_counter = 60; 
+}
+
+BombType get_random_bomb() {
+  int r = rand() % 3; // generates 0, 1, or 2
+  if (r == 0) return NORMAL;
+  else if (r == 1) return FULL_LINE;
+  else return CONSTRUCTIVE;
 }
 

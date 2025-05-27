@@ -212,8 +212,23 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
   if (sm == NULL || c == NULL) {
     return 1; // Goes back to menu
   }
-  
-  decrease_time(sm->bomb_options); // Decrease the time of the bomb options
+
+  decrease_time_availability(sm->bomb_options); // Decrease the time of the bomb options
+
+  if (is_spawning(sm->bomb_options)) {
+    uint16_t randomX = (rand() % 16) + 1; 
+    uint16_t randomY = (rand() % 14) + 1; 
+    while (is_wall_active(sm->wall_matrix[randomX][randomY]) || is_bomb_active(sm->bomb_matrix[randomX][randomY])) {
+      randomX = (rand() % 16) + 1; // Generate a random X coordinate
+      randomY = (rand() % 14) + 1; // Generate a random Y coordinate
+    }
+    BombType random_bomb = get_random_bomb(); 
+    set_bomb_active(sm->bomb_matrix[randomX][randomY], true, random_bomb); // Activate the bomb
+    set_spawn_rate(sm->bomb_options); // Reset the spawn rate
+  }
+  else {
+    decrease_time_spawning(sm->bomb_options); // Decrease the time of the bomb spawning
+  }
 
   // Rigth mouse button pressed
   if (get_cursor_button_pressed(c, 2)) {
