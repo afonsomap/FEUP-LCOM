@@ -8,6 +8,8 @@ struct bomb_options_imp {
   uint16_t options_y_initial[3]; 
   uint16_t options_y_final[3];
   uint8_t number_of_options;
+  uint8_t availability_counter[3]; // 0: available, 1: unavailable
+  BombType selectedBomb;
 };
 
 uint16_t get_options_x_initial(BombOptions *b) {
@@ -99,5 +101,48 @@ void draw_bomb_options(BombOptions *b, int selected_option) {
   }
 }
 
+void set_bomb_unavailable(BombOptions *b, BombType type) {
+  if (b == NULL) {
+    return;
+  }
+  if (type == NORMAL) {
+    b->availability_counter[0] = 180; 
+  }
+  else if (type == CONSTRUCTIVE) {
+    b->availability_counter[1] = 180; 
+  }
+  else if (type == DESTRUCTIVE) {
+    b->availability_counter[2] = 180; 
+  }
+}
 
+bool isBombAvailable(BombOptions *b, BombType type) {
+  if (b == NULL) {
+    return false;
+  }
+
+  if (type == NORMAL) {
+    return b->availability_counter[0] == 0;
+  }
+  else if (type == CONSTRUCTIVE) {
+    return b->availability_counter[1] == 0;
+  }
+  else if (type == DESTRUCTIVE) {
+    return b->availability_counter[2] == 0;
+  }
+  
+  return false; // Default case
+}
+
+void decrease_time(BombOptions *b) {
+  if (b == NULL) {
+    return;
+  }
+
+  for (int i = 0; i < b->number_of_options; i++) {
+    if (b->availability_counter[i] > 0) {
+      b->availability_counter[i]--;
+    }
+  }
+}
 

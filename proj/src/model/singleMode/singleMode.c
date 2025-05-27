@@ -213,6 +213,8 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
     return 1; // Goes back to menu
   }
   
+  decrease_time(sm->bomb_options); // Decrease the time of the bomb options
+
   // Rigth mouse button pressed
   if (get_cursor_button_pressed(c, 2)) {
     
@@ -221,7 +223,13 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
     uint16_t grid_y =  (get_player_Ypos(sm->player1)+30) / sm->grid_square_width;
 
     if (!is_bomb_active(sm->bomb_matrix[grid_x][grid_y])) {
-      set_bomb_active(sm->bomb_matrix[grid_x][grid_y], true, sm->player1_bomb_option); // Activate the bomb
+      if (!isBombAvailable(sm->bomb_options, sm->player1_bomb_option)) {
+        return 0; // Continue game, no action
+      }
+      else {
+        set_bomb_active(sm->bomb_matrix[grid_x][grid_y], true, sm->player1_bomb_option); // Activate the bomb
+        set_bomb_unavailable(sm->bomb_options, sm->player1_bomb_option); // Set the bomb option as unavailable
+      }
     }
   }
   // Left mouse button pressed
@@ -241,8 +249,8 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
   }
 
   return 0; // Continue game
+  
 }
-
 
 // 0 Continue game
 // 1 Goes back to menu
