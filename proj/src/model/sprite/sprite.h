@@ -7,6 +7,12 @@
 #include "graphics.h"
 
 
+typedef enum {
+    FULL_IMAGE,
+    BY_LINE,
+    BY_PIXEL
+} SpriteType;
+
 /** @defgroup sprite Sprite
  * @{
  *
@@ -40,7 +46,7 @@ uint16_t get_sprite_height(Sprite *sp);
  * @param pic The XPM image to be loaded
  * @return Pointer to the created sprite, or NULL if the pixmap is invalid
 */
-Sprite *create_sprite(const xpm_map_t pic);
+Sprite *create_sprite(const xpm_map_t pic, SpriteType type);
 
 /**
  * @brief Frees the memory allocated for the sprite

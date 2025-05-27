@@ -116,3 +116,33 @@ int vg_draw_xpm(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16
 
   return 0;
 }
+
+int vg_draw_xpm_by_line(uint8_t* xpm_map, uint16_t x,uint16_t y, uint16_t width, uint16_t height) {
+  if (xpm_map == NULL) {
+    return 1;
+  }
+
+  if (x + width > mode_info.XResolution || y + height > mode_info.YResolution) {
+    return 1; // Out of bounds
+  }
+
+  size_t offset = (mode_info.XResolution * y + x) * bytes_per_pixel;
+
+  for (uint16_t i = 0; i < height; i++) {
+    memcpy(back_buffer + offset, xpm_map, width * bytes_per_pixel);
+    xpm_map += width * bytes_per_pixel;
+    offset += mode_info.BytesPerScanLine;
+  }
+
+  return 0;
+}
+
+int vg_draw_xpm_by_image(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height) {
+  if(xpm_map == NULL || width != mode_info.XResolution || height != mode_info.YResolution) {
+    return 1; // Invalid parameters
+  }
+
+  memcpy(back_buffer, xpm_map, screen_size);
+  return 0; // Success
+}
+
