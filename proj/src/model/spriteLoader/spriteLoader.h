@@ -56,6 +56,10 @@
 #include "images/bomb_options/bomb_option2.xpm"
 #include "images/bomb_options/bomb_option3.xpm"
 
+#include "images/bomb_options/selected_bomb1.xpm"
+#include "images/bomb_options/selected_bomb2.xpm"
+#include "images/bomb_options/selected_bomb3.xpm"
+
 #include "images/wall/wall.xpm"
 #include "images/wall/solid_wall.xpm"
 

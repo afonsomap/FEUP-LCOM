@@ -109,9 +109,9 @@ SpriteLoader* load_sprites() {
   loader->bomb_options[0] = create_sprite((xpm_map_t)bomb_option_1);
   loader->bomb_options[1] = create_sprite((xpm_map_t)bomb_option_2);
   loader->bomb_options[2] = create_sprite((xpm_map_t)bomb_option_3);
-  loader->selected_options[0] = create_sprite((xpm_map_t)bomb_option_1);
-  loader->selected_options[1] = create_sprite((xpm_map_t)bomb_option_2);
-  loader->selected_options[2] = create_sprite((xpm_map_t)bomb_option_3);
+  loader->selected_options[0] = create_sprite((xpm_map_t)selected_bomb1);
+  loader->selected_options[1] = create_sprite((xpm_map_t)selected_bomb2);
+  loader->selected_options[2] = create_sprite((xpm_map_t)selected_bomb3);
 
   loader->died_title = create_sprite((xpm_map_t)died_title_xpm);
 
