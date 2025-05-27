@@ -98,22 +98,19 @@ void draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
   }
 }
 
-
-
 int vg_draw_xpm(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height){
   if (xpm_map == NULL) {
     return 1;
   }
 
-  uint8_t *pixel_ptr = xpm_map;
-
   for (uint16_t i = 0; i < height; i++) {
     for (uint16_t j = 0; j < width; j++) {
 
       uint32_t color = 0;
-      memcpy(&color, pixel_ptr, bytes_per_pixel);
+      memcpy(&color, xpm_map, bytes_per_pixel);
+      
       draw_pixel(x + j, y + i, color);
-      pixel_ptr += bytes_per_pixel;
+      xpm_map += bytes_per_pixel;
     }
   }
 
