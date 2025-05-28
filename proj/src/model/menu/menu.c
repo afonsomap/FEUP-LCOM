@@ -61,13 +61,13 @@ int process_menu_input(Cursor *cursor) {
     uint16_t cursor_y = get_cursor_Ypos(cursor);
 
     // Check if the cursor is over the "Single Mode" button
-    if (cursor_x >= SCREEN_CENTER_X - 240 / 2 && cursor_x <= SCREEN_CENTER_X + 210 / 2 &&
+    if (cursor_x >= CURSOR_BUTTON_LEFT_X_POSITION && cursor_x <= CURSOR_BUTTON_RIGHT_X_POSITION &&
         cursor_y >= SCREEN_STARTING_Y + 400 && cursor_y <= SCREEN_STARTING_Y + 400 + 90) {
       return 2; // Goes to single mode
     }
 
     // Check if the cursor is over the "Exit" button
-    if (cursor_x >= SCREEN_CENTER_X - 240 / 2 && cursor_x <= SCREEN_CENTER_X + 210 / 2 &&
+    if (cursor_x >= CURSOR_BUTTON_X_LEFT_POSITION && cursor_x <= SCREEN_CENTER_X + 210 / 2 &&
         cursor_y >= SCREEN_STARTING_Y + 700 && cursor_y <= SCREEN_STARTING_Y + 700 + 90) {
       return 1; // Exit the game
     }
