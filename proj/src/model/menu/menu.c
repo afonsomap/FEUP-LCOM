@@ -62,13 +62,13 @@ int process_menu_input(Cursor *cursor) {
 
     // Check if the cursor is over the "Single Mode" button
     if (cursor_x >= CURSOR_BUTTON_LEFT_X_POSITION && cursor_x <= CURSOR_BUTTON_RIGHT_X_POSITION &&
-        cursor_y >= SCREEN_STARTING_Y + 400 && cursor_y <= SCREEN_STARTING_Y + 400 + 90) {
+        cursor_y >= CURSOR_BUTTON_TOP_SINGLE_Y_POSITION && cursor_y <= CURSOR_BUTTON_BOTTOM_SINGLE_Y_POSITION) {
       return 2; // Goes to single mode
     }
 
     // Check if the cursor is over the "Exit" button
     if (cursor_x >= CURSOR_BUTTON_X_LEFT_POSITION && cursor_x <= SCREEN_CENTER_X + 210 / 2 &&
-        cursor_y >= SCREEN_STARTING_Y + 700 && cursor_y <= SCREEN_STARTING_Y + 700 + 90) {
+        cursor_y >= CURSOR_BUTTON_TOP_EXIT_Y_POSITION && cursor_y <= CURSOR_BUTTON_BOTTOM_EXIT_Y_POSITION) {
       return 1; // Exit the game
     }
   }
