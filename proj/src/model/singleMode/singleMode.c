@@ -16,8 +16,11 @@ struct singleMode_imp {
   Sprite *grid_background; // Background of the grid sprite
   BombOptions *bomb_options; // Bomb options
   BombType player1_bomb_option; // Bomb option for player 1
+  Sprite* exit_button_sprite;
 };
 
+uint16_t EXIT_BTN_X = 20;
+uint16_t EXIT_BTN_Y = 20;
 
 SingleMode *create_singleMode(SpriteLoader *loader) {
   SingleMode *sm = (SingleMode *) malloc(sizeof(SingleMode));
@@ -30,6 +33,7 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
   sm->grid_square_width = get_sprite_width(get_wall(loader)); // Get the width of the grid square
   sm->grid_background = get_grid_background(loader); // Get the background sprite
   sm->game_background = get_game_background(loader); // Get the game background sprite
+  sm->exit_button_sprite = get_exit(loader);
 
   sm->player1 = create_player(1* sm->grid_square_width, 1 * sm->grid_square_width, get_player1_left(loader), get_player1_right(loader), get_player1_up(loader), get_player1_down(loader), get_player1_standing(loader));
 
@@ -97,17 +101,20 @@ void draw_singleMode(SingleMode *sm) {
   }
   
   // Draw background
-  draw_sprite(sm->grid_background, sm->x_initial_grid+33, sm->y_initial_grid+50);
+  draw_sprite(sm->grid_background, sm->x_initial_grid + 33, sm->y_initial_grid + 50);
 
-  // Draw walls
+  //Draw Exit Button
+  draw_sprite(sm->exit_button_sprite, EXIT_BTN_X, EXIT_BTN_Y);
+
+  // Draw walls, bombs, explosions and player
   for (int i = 0; i < GRID_HEIGHT; i++) {
     for (int j = 0; j < GRID_WIDTH; j++) {
-
       draw_wall(sm->wall_matrix[j][i], sm->x_initial_grid, sm->y_initial_grid, sm->grid_square_width);
       draw_bomb(sm->bomb_matrix[j][i], sm->x_initial_grid, sm->y_initial_grid, sm->grid_square_width);
       draw_explosion(sm->explosion_matrix[j][i], sm->x_initial_grid, sm->y_initial_grid, sm->grid_square_width);
     }
-    if ( get_player_Ypos(sm->player1)/sm->grid_square_width == i) {
+
+    if (get_player_Ypos(sm->player1) / sm->grid_square_width == i) {
       draw_player(sm->player1, sm->x_initial_grid, sm->y_initial_grid);
     }
   }
@@ -156,12 +163,14 @@ static bool check_wall_collision(SingleMode *sm, uint16_t x, uint16_t y) {
 
 // 0 Continue game
 // 1 Goes back to menu
-int process_single_mode_kbd(SingleMode *sm, bool* keys) {
+int process_single_mode_kbd(SingleMode *sm, KeyPressed * key) {
   if (sm == NULL) {
     return 1; // Go back to menu
   }
 
-  if (keys[0]){ // Up
+  bool is_some_key_pressed = false;
+  if ( is_up_pressed(key) ){ // Up
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1), get_player_Ypos(sm->player1) - 1)){
         player_move_up(sm->player1);
@@ -170,7 +179,8 @@ int process_single_mode_kbd(SingleMode *sm, bool* keys) {
       }
     }
   }
-  if (keys[1]){ // Down
+  if ( is_down_pressed(key) ){ // Down
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1), get_player_Ypos(sm->player1) + 1)){
         player_move_down(sm->player1);
@@ -179,7 +189,8 @@ int process_single_mode_kbd(SingleMode *sm, bool* keys) {
       }
     }
   }
-  if (keys[2]){ // Left
+  if ( is_left_pressed(key) ){ // Left
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1) - 1, get_player_Ypos(sm->player1))){
         player_move_left(sm->player1);
@@ -188,7 +199,8 @@ int process_single_mode_kbd(SingleMode *sm, bool* keys) {
       }
     }
   }
-  if (keys[3]){ // Right
+  if ( is_right_pressed(key)){ // Right
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(sm->player1); i++) {
       if (!check_wall_collision(sm, get_player_Xpos(sm->player1) + 1, get_player_Ypos(sm->player1))){
         player_move_right(sm->player1);
@@ -197,12 +209,12 @@ int process_single_mode_kbd(SingleMode *sm, bool* keys) {
       }
     }
   }
-  if (!keys[0] && !keys[1] && !keys[2] && !keys[3]){
+  if ( !is_some_key_pressed ) { // If no key is pressed
     player_stand(sm->player1);
-  }
-  if (keys[4]){ 
+  } else if ( is_esc_pressed(key) ) { // Exit key
     return 1; // Goes back to menu
   }
+
   return 0; // Continue game, no action
 }
 
@@ -237,18 +249,33 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
   }
   // Left mouse button pressed
   if (get_cursor_button_pressed(c, 0)) {
-    
-    // Check if the cursor is within the bomb options x range
-    if ( get_cursor_Xpos(c) > get_options_x_initial(sm->bomb_options) && get_cursor_Xpos(c) < get_options_x_final(sm->bomb_options)) {
 
-      if (get_cursor_Ypos(c) > get_options_y_initial(sm->bomb_options, 0) && get_cursor_Ypos(c) < get_options_y_final(sm->bomb_options, 0)) {
-        sm->player1_bomb_option = NORMAL; // Set the bomb option for player 1
-      }else if (get_cursor_Ypos(c) > get_options_y_initial(sm->bomb_options, 1) && get_cursor_Ypos(c) < get_options_y_final(sm->bomb_options, 1)) {
-        sm->player1_bomb_option = FULL_LINE; // Set the bomb option for player 1
-      }else if (get_cursor_Ypos(c) > get_options_y_initial(sm->bomb_options, 2) && get_cursor_Ypos(c) < get_options_y_final(sm->bomb_options, 2)) {
-        sm->player1_bomb_option = CONSTRUCTIVE; // Set the bomb option for player 1
+    // --- Exit button check ---
+    uint16_t exit_x_min = EXIT_BTN_X;
+    uint16_t exit_x_max = EXIT_BTN_X + get_sprite_width(sm->exit_button_sprite);
+    uint16_t exit_y_min = EXIT_BTN_Y;
+    uint16_t exit_y_max = EXIT_BTN_Y + get_sprite_height(sm->exit_button_sprite);
+
+    if (cursor_x > exit_x_min && cursor_x < exit_x_max &&
+        cursor_y > exit_y_min && cursor_y < exit_y_max) {
+      return 1;
+    }
+
+    // --- Bomb option buttons ---
+    int x_min = get_options_x_initial(sm->bomb_options);
+    int x_max = get_options_x_final(sm->bomb_options);
+
+    if (cursor_x > x_min && cursor_x < x_max) {
+      for (int i = 0; i < 3; ++i) {
+        int y_min = get_options_y_initial(sm->bomb_options, i);
+        int y_max = get_options_y_final(sm->bomb_options, i);
+
+        if (cursor_y > y_min && cursor_y < y_max) {
+          sm->player1_bomb_option = (BombType)i;
+          break;
+        }
       }
-    }  
+    }
   }
 
   return 0; // Continue game

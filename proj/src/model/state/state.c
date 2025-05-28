@@ -43,14 +43,24 @@ void destroy_state(State *state) {
   free(state);
 }
 
-void update_state_kbd(State *state, bool* keys) {
+void update_state(State *state, KeyPressed *key, Cursor *c) {
+  if (state == NULL) {
+    panic("State is NULL");
+  }
+
+  update_state_kbd(state, key);
+  update_state_mouse(state, c);
+  update_state_without_event(state);
+}
+
+void update_state_kbd(State *state, KeyPressed *key) {
   if (state == NULL) {
     panic("State is NULL");
   }
 
   switch (state->current_state) {
     case SINGLE_MODE:
-      if (process_single_mode_kbd(state->sm, keys) == 1) {
+      if (process_single_mode_kbd(state->sm, key) == 1) {
         state->current_state = MENU; // Go back to menu
         destroy_singleMode(state->sm);
         state->sm = NULL;
@@ -58,31 +68,6 @@ void update_state_kbd(State *state, bool* keys) {
         reset_cursor_button_pressed(state->c);
       }
       break;
-
-    case MENU:
-      if (process_menu_input(state->c) == 1) {
-        state->current_state = EXIT; // Exit game
-        destroy_menu(state->m);
-        state->m = NULL;
-      } else if (process_menu_input(state->c) == 2) {
-        state->current_state = SINGLE_MODE; // Go to single mode
-        destroy_menu(state->m);
-        state->m = NULL;
-        state->sm = create_singleMode(state->loader);
-        reset_cursor_button_pressed(state->c);
-      }
-      break;
-
-    case DIED:
-      if (process_died_input(state->c) == 1) {
-        state->current_state = MENU; // Exit to the menu
-        destroy_died(state->d);
-        state->d = NULL;
-        state->m = create_menu(state->loader);
-        reset_cursor_button_pressed(state->c);
-      }
-      break;
-
     default:
       break;
   }
@@ -99,6 +84,7 @@ void update_state_mouse(State *state, Cursor *c) {
         state->current_state = MENU; // Go back to menu
         destroy_singleMode(state->sm);
         state->sm = NULL;
+        state->m = create_menu(state->loader);
         reset_cursor_button_pressed(c);
       }
       break;
@@ -118,7 +104,7 @@ void update_state_mouse(State *state, Cursor *c) {
       break;
 
     case DIED:
-      if (process_died_input(c) == 1) {
+      if (process_died_input(state->d, c) == 1) {
         state->current_state = MENU; // Exit to the menu
         destroy_died(state->d);
         state->d = NULL;
@@ -132,7 +118,7 @@ void update_state_mouse(State *state, Cursor *c) {
   }
 }
 
-void update_state_others(State *state) {
+void update_state_without_event(State *state) {
   if (state == NULL) {
     panic("State is NULL");
   }

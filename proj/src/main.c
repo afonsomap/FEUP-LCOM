@@ -6,10 +6,11 @@
 #include "spriteLoader.h"
 #include "cursor.h"
 #include "state.h"
+#include "key_pressed.h"
 
 static SpriteLoader *loader = NULL;
 static Cursor *c = NULL;
-static bool key_pressed[5] = {false, false, false, false, false}; // UP, DOWN, LEFT, RIGHT, ESC
+static KeyPressed *key_pressed = NULL;
 static State *state = NULL;
 
 int main(int argc, char *argv[]) {
@@ -78,41 +79,7 @@ void interrups_loop() {
             kbc_ih();
 
             if (check_scancode_complete() == 0){
-              switch (*scancode)
-              {
-              case ESC_MAKE_CODE:
-                key_pressed[4] = true;
-                break;
-              case ESC_BREAK_CODE:
-                key_pressed[4] = false;
-                break;
-              case W_MAKE_CODE:
-                key_pressed[0] = true;
-                break;
-              case W_BREAK_CODE:
-                key_pressed[0] = false;
-                break;
-              case S_MAKE_CODE:
-                key_pressed[1] = true;
-                break;
-              case S_BREAK_CODE:
-                key_pressed[1] = false;
-                break;
-              case A_MAKE_CODE:
-                key_pressed[2] = true;
-                break;    
-              case A_BREAK_CODE:
-                key_pressed[2] = false;
-                break;
-              case D_MAKE_CODE:
-                key_pressed[3] = true;
-                break;
-              case D_BREAK_CODE:
-                key_pressed[3] = false;
-                break;
-              default:
-                break;
-              }
+              key_pressed_update(key_pressed, *scancode);
             }
           }
 
@@ -121,9 +88,7 @@ void interrups_loop() {
             if (timer_get_count() % 2 == 0) { // 30 FPSc
               clear_back_buffer();
           
-              update_state_kbd(state, key_pressed);
-              update_state_mouse(state, c);
-              update_state_others(state);
+              update_state(state, key_pressed, c);
               draw_state(state);
 
               vg_flip_buffer();
@@ -173,6 +138,7 @@ int (proj_main_loop)(int argc, char *argv[]) {
   set_video_mode(VBE_1024p_DC);
 
   loader = load_sprites();
+  key_pressed = key_pressed_create();
   c = create_cursor(get_cursor(loader), get_mode_info().XResolution, get_mode_info().YResolution);
   state = create_state(loader, c);
 
@@ -180,6 +146,7 @@ int (proj_main_loop)(int argc, char *argv[]) {
   
   destroy_state(state);
   destroy_cursor(c);
+  key_pressed_destroy(key_pressed);
   destroy_sprites(loader);
 
   vg_exit();
