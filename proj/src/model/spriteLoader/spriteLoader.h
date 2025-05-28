@@ -56,6 +56,10 @@
 #include "images/bomb_options/bomb_option2.xpm"
 #include "images/bomb_options/bomb_option3.xpm"
 
+#include "images/bomb_options/selected_bomb1.xpm"
+#include "images/bomb_options/selected_bomb2.xpm"
+#include "images/bomb_options/selected_bomb3.xpm"
+
 #include "images/wall/wall.xpm"
 #include "images/wall/solid_wall.xpm"
 
@@ -70,7 +74,9 @@
 #include "images/menu/menu_exit.xpm"
 #include "images/menu/menu_title.xpm"
 
-#include "images/died/died_text.xpm"
+#include "images/single_player/exit_sp.xpm"
+
+#include "images/died/YouDied.xpm"
 
 struct sprite_loader_imp;
 typedef struct sprite_loader_imp SpriteLoader;
@@ -100,6 +106,7 @@ Sprite* get_menu_title(SpriteLoader *loader);
 Sprite* get_single_mode_button(SpriteLoader *loader);
 Sprite* get_multi_mode_button(SpriteLoader *loader);
 Sprite* get_exit_button(SpriteLoader *loader);
+Sprite* get_exit(SpriteLoader *loader);
 Sprite** get_bomb_options(SpriteLoader *loader);
 Sprite** get_selected_options(SpriteLoader *loader);
 Sprite* get_game_background(SpriteLoader *loader);
