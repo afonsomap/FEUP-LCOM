@@ -76,7 +76,7 @@
 
 #include "images/single_player/exit_sp.xpm"
 
-#include "images/died/YouDied.xpm"
+#include "images/died/died_text.xpm"
 
 struct sprite_loader_imp;
 typedef struct sprite_loader_imp SpriteLoader;
