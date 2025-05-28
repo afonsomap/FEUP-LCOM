@@ -10,9 +10,9 @@ struct bomb_imp;
 typedef struct bomb_imp Bomb;
 
 typedef enum {
-  NORMAL,
-  FULL_LINE,
-  CONSTRUCTIVE
+  NORMAL = 0,
+  FULL_LINE = 1,
+  CONSTRUCTIVE = 2
 } BombType;
 
 /**

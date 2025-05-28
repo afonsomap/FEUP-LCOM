@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "sprite.h"
+#include "bomb.h"
 
 struct bomb_options_imp;
 typedef struct bomb_options_imp BombOptions;
@@ -75,6 +76,23 @@ void destroy_bomb_options(BombOptions *b);
  * @param selected_option The index of the selected bomb option
  */
 void draw_bomb_options(BombOptions *b, int selected_option);
+
+void set_bomb_unavailable(BombOptions *b, BombType type);
+
+bool isBombAvailable(BombOptions *b, BombType type);
+
+void decrease_time_availability(BombOptions *b);
+
+void decrease_time_spawning(BombOptions *b);
+
+bool is_spawning(BombOptions *b);
+
+void set_spawn_rate(BombOptions *b);
+
+BombType get_random_bomb();
+
+void print_availability_counters(BombOptions *b);
+
 
 #endif /* __BOMB_OPTIONS_H */
 

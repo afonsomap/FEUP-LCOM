@@ -1,4 +1,4 @@
 *.o
 .gdbinit
 proj
-*core*
+core.*

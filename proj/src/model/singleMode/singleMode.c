@@ -225,16 +225,26 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
     return 1; // Goes back to menu
   }
 
-  int cursor_x = get_cursor_Xpos(c);
-  int cursor_y = get_cursor_Ypos(c);
-
-  // Right mouse button pressed
+  decrease_time_availability(sm->bomb_options); // Decrease the time of the bomb options
+  
+  // Rigth mouse button pressed
   if (get_cursor_button_pressed(c, 2)) {
-    uint16_t grid_x = (get_player_Xpos(sm->player1) + 30) / sm->grid_square_width;
-    uint16_t grid_y = (get_player_Ypos(sm->player1) + 30) / sm->grid_square_width;
+    
+    uint16_t grid_x =  (get_player_Xpos(sm->player1)+30) / sm->grid_square_width;
+    uint16_t grid_y =  (get_player_Ypos(sm->player1)+30) / sm->grid_square_width;
 
     if (!is_bomb_active(sm->bomb_matrix[grid_x][grid_y])) {
-      set_bomb_active(sm->bomb_matrix[grid_x][grid_y], true, sm->player1_bomb_option);
+      printf("Selected bomb option: %d\n", sm->player1_bomb_option);
+      if (!isBombAvailable(sm->bomb_options, sm->player1_bomb_option)) {
+        printf("Bomb option %d is not available\n", sm->player1_bomb_option);
+        return 0; // Continue game, no action
+      }
+      else {
+        printf("Bomb option %d is available\n", sm->player1_bomb_option);
+        BombType bomb_type = sm->player1_bomb_option; // Get the bomb type from the player option
+        set_bomb_active(sm->bomb_matrix[grid_x][grid_y], true, sm->player1_bomb_option); // Activate the bomb
+        set_bomb_unavailable(sm->bomb_options, bomb_type); // Set the bomb option as unavailable
+      }                                
     }
   }
   // Left mouse button pressed
@@ -269,8 +279,32 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
   }
 
   return 0; // Continue game
+  
 }
 
+int process_bomb_spawning(SingleMode *sm) {
+  if (sm == NULL) {
+    return 1; // Go back to menu
+  }
+
+  // Check if the bomb options are available
+  if (is_spawning(sm->bomb_options)) {
+    uint16_t randomX = (rand() % 16) + 1; 
+    uint16_t randomY = (rand() % 14) + 1; 
+    while (is_wall_active(sm->wall_matrix[randomX][randomY]) || is_bomb_active(sm->bomb_matrix[randomX][randomY])) {
+      randomX = (rand() % 16) + 1; // Generate a random X coordinate
+      randomY = (rand() % 14) + 1; // Generate a random Y coordinate
+    }
+    BombType random_bomb = get_random_bomb(); 
+    set_bomb_active(sm->bomb_matrix[randomX][randomY], true, random_bomb); // Activate the bomb
+    set_spawn_rate(sm->bomb_options); // Reset the spawn rate
+  }
+  else {
+    decrease_time_spawning(sm->bomb_options); // Decrease the time of the bomb spawning
+  }
+
+  return 0; // Continue game
+}
 
 // 0 Continue game
 // 1 Goes back to menu

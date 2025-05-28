@@ -68,5 +68,8 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c);
  */
 int check_bomb_exploded(SingleMode *sm);
 
+int process_bomb_spawning(SingleMode *sm);
+
+
 #endif /* _SINGLEMODE_H_ */
 
