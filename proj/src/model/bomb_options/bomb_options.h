@@ -91,6 +91,7 @@ void set_spawn_rate(BombOptions *b);
 
 BombType get_random_bomb();
 
+void print_availability_counters(BombOptions *b);
 
 
 #endif /* __BOMB_OPTIONS_H */

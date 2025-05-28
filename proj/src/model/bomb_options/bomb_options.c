@@ -8,7 +8,7 @@ struct bomb_options_imp {
   uint16_t options_y_initial[3]; 
   uint16_t options_y_final[3];
   uint8_t number_of_options;
-  uint8_t availability_counter[3]; // 0: available, 1: unavailable
+  uint8_t availability_counter[3]; 
   uint8_t spawn_counter;
   BombType selectedBomb;
 };
@@ -76,6 +76,14 @@ BombOptions *create_bomb_options(Sprite** options, Sprite** selected_option) {
 
   bomb_options->number_of_options = 3; // Number of options
 
+  for (int i = 0; i < bomb_options->number_of_options; i++) {
+    bomb_options->availability_counter[i] = 0; // Initialize availability counter
+  }
+
+  bomb_options->spawn_counter = 0; // Initialize spawn counter
+
+  bomb_options->selectedBomb = NORMAL; // Default selected bomb type
+
   return bomb_options;
 }
 
@@ -123,6 +131,8 @@ bool isBombAvailable(BombOptions *b, BombType type) {
     return false;
   }
   printf("testing if bomb type %d is available\n", type);
+  print_availability_counters(b); // Print the availability counters for debugging
+
   if (type == NORMAL) {
     return b->availability_counter[0] == 0;
   }
@@ -178,3 +188,12 @@ BombType get_random_bomb() {
   else return CONSTRUCTIVE;
 }
 
+void print_availability_counters(BombOptions *b) {
+  if (b == NULL) {
+    return;
+  }
+  printf("Availability counters:\n");
+  for (int i = 0; i < b->number_of_options; i++) {
+    printf("Option %d: %d\n", i, b->availability_counter[i]);
+  }
+}

@@ -214,19 +214,10 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
   }
 
   decrease_time_availability(sm->bomb_options); // Decrease the time of the bomb options
-  printf("current unavailability array: [");
-  for (int i = 0; i < sm->bomb_options->number_of_options; i++) {
-      printf("%d", sm->bomb_options->availability_counter[i]);
-      if (i < sm->bomb_options->number_of_options - 1) {
-          printf(", ");
-      }
-  }
-  printf("]\n");
-
+  
   // Rigth mouse button pressed
   if (get_cursor_button_pressed(c, 2)) {
     
-
     uint16_t grid_x =  (get_player_Xpos(sm->player1)+30) / sm->grid_square_width;
     uint16_t grid_y =  (get_player_Ypos(sm->player1)+30) / sm->grid_square_width;
 
@@ -238,9 +229,10 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
       }
       else {
         printf("Bomb option %d is available\n", sm->player1_bomb_option);
+        BombType bomb_type = sm->player1_bomb_option; // Get the bomb type from the player option
         set_bomb_active(sm->bomb_matrix[grid_x][grid_y], true, sm->player1_bomb_option); // Activate the bomb
-        set_bomb_unavailable(sm->bomb_options, sm->player1_bomb_option); // Set the bomb option as unavailable
-      }
+        set_bomb_unavailable(sm->bomb_options, bomb_type); // Set the bomb option as unavailable
+      }                                
     }
   }
   // Left mouse button pressed
