@@ -256,8 +256,8 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
     uint16_t exit_y_min = EXIT_BTN_Y;
     uint16_t exit_y_max = EXIT_BTN_Y + get_sprite_height(sm->exit_button_sprite);
 
-    if (cursor_x > exit_x_min && cursor_x < exit_x_max &&
-        cursor_y > exit_y_min && cursor_y < exit_y_max) {
+    if (get_cursor_Xpos(c) > exit_x_min && get_cursor_Xpos(c) < exit_x_max &&
+        get_cursor_Ypos(c) > exit_y_min && get_cursor_Ypos(c) < exit_y_max) {
       return 1;
     }
 
@@ -265,12 +265,12 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
     int x_min = get_options_x_initial(sm->bomb_options);
     int x_max = get_options_x_final(sm->bomb_options);
 
-    if (cursor_x > x_min && cursor_x < x_max) {
+    if (get_cursor_Xpos(c) > x_min && get_cursor_Xpos(c) < x_max) {
       for (int i = 0; i < 3; ++i) {
         int y_min = get_options_y_initial(sm->bomb_options, i);
         int y_max = get_options_y_final(sm->bomb_options, i);
 
-        if (cursor_y > y_min && cursor_y < y_max) {
+        if (get_cursor_Ypos(c) > y_min && get_cursor_Ypos(c) < y_max) {
           sm->player1_bomb_option = (BombType)i;
           break;
         }
