@@ -8,8 +8,6 @@ struct menu_imp {
   Sprite *exit_button;    // "Exit" button sprite
 };
 
-uint16_t center_x = 1280 / 2;
-uint16_t center_y = 50; 
 
 Menu* create_menu(SpriteLoader *loader) {
   Menu *m = (Menu *) malloc(sizeof(Menu));
@@ -44,13 +42,13 @@ void draw_menu(Menu *m) {
     return;
   }
 
-
   draw_sprite(m->background, 0, 0);
-  draw_sprite(m->menu_title, center_x - 406 / 2, center_y + 45); // Draw the title at (100, 50)
 
-  draw_sprite(m->single_mode_button, center_x - 356 / 2, center_y + 350); // Draw the "Single Mode" button below the title
-  draw_sprite(m->multi_mode_button, center_x - 356 / 2, center_y + 500); // Draw the "Multiplayer Mode" button below the title
-  draw_sprite(m->exit_button, center_x - 356 / 2, center_y + 650);   
+  draw_sprite(m->menu_title, TITLE_X_POSITION, TITLE_Y_POSITION);
+
+  draw_sprite(m->single_mode_button, BUTTONS_X_POSITION, SINGLE_MODE_BUTTON_Y_POSITION); 
+  draw_sprite(m->multi_mode_button, BUTTONS_X_POSITION, MULTI_MODE_BUTTON_Y_POSITION); 
+  draw_sprite(m->exit_button, BUTTONS_X_POSITION, EXIT_BUTTON_Y_POSITION);   
 }
 
 
@@ -63,14 +61,14 @@ int process_menu_input(Cursor *cursor) {
     uint16_t cursor_y = get_cursor_Ypos(cursor);
 
     // Check if the cursor is over the "Single Mode" button
-    if (cursor_x >= center_x - 240 / 2 && cursor_x <= center_x + 210 / 2 &&
-        cursor_y >= center_y + 400 && cursor_y <= center_y + 400 + 90) {
+    if (cursor_x >= SCREEN_CENTER_X - 240 / 2 && cursor_x <= SCREEN_CENTER_X + 210 / 2 &&
+        cursor_y >= SCREEN_STARTING_Y + 400 && cursor_y <= SCREEN_STARTING_Y + 400 + 90) {
       return 2; // Goes to single mode
     }
 
     // Check if the cursor is over the "Exit" button
-    if (cursor_x >= center_x - 240 / 2 && cursor_x <= center_x + 210 / 2 &&
-        cursor_y >= center_y + 700 && cursor_y <= center_y + 700 + 90) {
+    if (cursor_x >= SCREEN_CENTER_X - 240 / 2 && cursor_x <= SCREEN_CENTER_X + 210 / 2 &&
+        cursor_y >= SCREEN_STARTING_Y + 700 && cursor_y <= SCREEN_STARTING_Y + 700 + 90) {
       return 1; // Exit the game
     }
   }

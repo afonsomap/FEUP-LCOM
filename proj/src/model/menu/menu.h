@@ -9,6 +9,26 @@
 #include "spriteLoader.h"
 #include "cursor.h"
 
+#define SCREEN_CENTER_X 1280 / 2
+#define SCREEN_STARTING_Y 50 // This is the Y position of the title, not the center of the screen
+
+#define TITLE_WIDTH 406
+
+
+#define TITLE_X_POSITION (SCREEN_CENTER_X - TITLE_WIDTH / 2)
+#define TITLE_Y_POSITION SCREEN_STARTING_Y + 45
+
+#define BUTTONS_WIDTH 356
+
+#define BUTTONS_X_POSITION (SCREEN_CENTER_X - BUTTONS_WIDTH / 2)
+
+#define SINGLE_MODE_BUTTON_Y_POSITION (SCREEN_STARTING_Y + 350)
+#define MULTI_MODE_BUTTON_Y_POSITION (SCREEN_STARTING_Y + 500)
+#define EXIT_BUTTON_Y_POSITION (SCREEN_STARTING_Y + 650)
+
+
+
+
 struct menu_imp;
 typedef struct menu_imp Menu;
 
