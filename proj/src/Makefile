@@ -21,10 +21,11 @@ PROG=proj
 .PATH: ${.CURDIR}/model/died_state
 .PATH: ${.CURDIR}/model/state
 .PATH: ${.CURDIR}/model/key_pressed
+.PATH: ${.CURDIR}/controllers/serial_port
 
 
 # source code files
-SRCS = 	main.c kbc.c kbd.c mouse.c timer.c utils.c graphics.c animatedSprite.c sprite.c bomb.c player.c wall.c singleMode.c spriteLoader.c cursor.c explosion.c menu.c bomb_options.c died_state.c state.c key_pressed.c
+SRCS = 	main.c kbc.c kbd.c mouse.c timer.c utils.c graphics.c animatedSprite.c sprite.c bomb.c player.c wall.c singleMode.c spriteLoader.c cursor.c explosion.c menu.c bomb_options.c died_state.c state.c key_pressed.c serial_port.c queue.c
 
 # additional compilation flags
 CFLAGS += -pedantic -D_LCOM_OPTIMIZED_
@@ -48,7 +49,8 @@ CFLAGS += -pedantic -D_LCOM_OPTIMIZED_ \
           -I${.CURDIR}/model/bomb_options \
           -I${.CURDIR}/model/died_state \
           -I${.CURDIR}/model/state \
-          -I${.CURDIR}/model/key_pressed
+          -I${.CURDIR}/model/key_pressed \
+          -I${.CURDIR}/controllers/serial_port
 
 
 

@@ -7,6 +7,8 @@
 #include "cursor.h"
 #include "state.h"
 #include "key_pressed.h"
+#include "serial_port.h"
+#include "queue.h"
 
 static SpriteLoader *loader = NULL;
 static Cursor *c = NULL;
@@ -43,7 +45,7 @@ void interrups_loop() {
     return;
   }
 
-  uint8_t bit_no_timer, bit_no_kbd, bit_no_mouse;
+  uint8_t bit_no_timer, bit_no_kbd, bit_no_mouse, bit_no_serial;
   int ipc_status;
   message msg;
 
@@ -59,10 +61,15 @@ void interrups_loop() {
     printf("Error subscribing mouse interrupts\n");
     return;
   }
+  if (sp_subscribe_int(&bit_no_serial) != 0) {
+    printf("Error subscribing serial port interrupts\n");
+    return;
+  }
 
   uint32_t irq_set_timer = BIT(bit_no_timer);
   uint32_t irq_set_kbd = BIT(bit_no_kbd);
   uint32_t irq_set_mouse = BIT(bit_no_mouse);
+  uint32_t irq_set_serial = BIT(bit_no_serial);
 
   uint8_t *scancode = get_scancode();
 
@@ -75,17 +82,32 @@ void interrups_loop() {
       switch(_ENDPOINT_P(msg.m_source)){
         case HARDWARE:
 
+          if (msg.m_notify.interrupts & irq_set_serial) {
+            sp_ih(); 
+            printf("Serial port interrupt received\n");
+
+            Queue *q = get_in_queue();
+            if (processWaitingGuessSP(pop(q))) {
+              printf("Guessing game started!\n");
+              send_byte(0xFE); // Acknowledge the start of the guessing game
+              panic("Guessing game started!");
+              
+            } 
+          }
+
           if (msg.m_notify.interrupts & irq_set_kbd) {
             kbc_ih();
 
             if (check_scancode_complete() == 0){
               key_pressed_update(key_pressed, *scancode);
+              send_byte(*scancode);
             }
           }
 
           if (msg.m_notify.interrupts & irq_set_timer) {
             timer_int_handler();
             if (timer_get_count() % 2 == 0) { // 30 FPSc
+              send_byte(0xFF); 
               clear_back_buffer();
           
               update_state(state, key_pressed, c);
@@ -113,6 +135,11 @@ void interrups_loop() {
     }
   }
 
+  if (sp_unsubscribe_int() != 0) {
+    printf("Error unsubscribing serial port interrupts\n");
+    return;
+  }
+
   if (mouse_unsubscribe_int() != 0) {
     printf("Error unsubscribing mouse interrupts\n");
     return;
@@ -136,6 +163,7 @@ int (proj_main_loop)(int argc, char *argv[]) {
 
   map_graphics_vram(VBE_1024p_DC);
   set_video_mode(VBE_1024p_DC);
+  sp_init();
 
   loader = load_sprites();
   key_pressed = key_pressed_create();
@@ -149,6 +177,7 @@ int (proj_main_loop)(int argc, char *argv[]) {
   key_pressed_destroy(key_pressed);
   destroy_sprites(loader);
 
+  sp_exit();
   vg_exit();
 
   return 0;

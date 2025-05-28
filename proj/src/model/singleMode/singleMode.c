@@ -1,6 +1,5 @@
 #include "singleMode.h"
 
-
 #define GRID_WIDTH 17
 #define GRID_HEIGHT 15
 
@@ -225,7 +224,7 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
     return 1; // Goes back to menu
   }
 
-  decrease_time_availability(sm->bomb_options); // Decrease the time of the bomb options
+  decrease_cooldown_time(sm->bomb_options); // Decrease the time of the bomb options
   
   // Rigth mouse button pressed
   if (get_cursor_button_pressed(c, 2)) {
@@ -234,16 +233,12 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c) {
     uint16_t grid_y =  (get_player_Ypos(sm->player1)+30) / sm->grid_square_width;
 
     if (!is_bomb_active(sm->bomb_matrix[grid_x][grid_y])) {
-      printf("Selected bomb option: %d\n", sm->player1_bomb_option);
-      if (!isBombAvailable(sm->bomb_options, sm->player1_bomb_option)) {
-        printf("Bomb option %d is not available\n", sm->player1_bomb_option);
+      if (!is_bomb_off_cooldown(sm->bomb_options, sm->player1_bomb_option)) {
         return 0; // Continue game, no action
       }
       else {
-        printf("Bomb option %d is available\n", sm->player1_bomb_option);
-        BombType bomb_type = sm->player1_bomb_option; // Get the bomb type from the player option
         set_bomb_active(sm->bomb_matrix[grid_x][grid_y], true, sm->player1_bomb_option); // Activate the bomb
-        set_bomb_unavailable(sm->bomb_options, bomb_type); // Set the bomb option as unavailable
+        set_bomb_on_cooldown(sm->bomb_options, sm->player1_bomb_option); // Set the bomb option as unavailable, cooldown time
       }                                
     }
   }
@@ -295,12 +290,11 @@ int process_bomb_spawning(SingleMode *sm) {
       randomX = (rand() % 16) + 1; // Generate a random X coordinate
       randomY = (rand() % 14) + 1; // Generate a random Y coordinate
     }
-    BombType random_bomb = get_random_bomb(); 
-    set_bomb_active(sm->bomb_matrix[randomX][randomY], true, random_bomb); // Activate the bomb
-    set_spawn_rate(sm->bomb_options); // Reset the spawn rate
+    set_bomb_active(sm->bomb_matrix[randomX][randomY], true, get_random_bomb_type()); // Activate the bomb
+    reset_time_until_spawn(sm->bomb_options); // Reset the spawn rate
   }
   else {
-    decrease_time_spawning(sm->bomb_options); // Decrease the time of the bomb spawning
+    decrease_time_until_spawn(sm->bomb_options); // Decrease the time that is missing for the bomb to spanw
   }
 
   return 0; // Continue game
