@@ -67,7 +67,7 @@ int process_menu_input(Cursor *cursor) {
     }
 
     // Check if the cursor is over the "Exit" button
-    if (cursor_x >= CURSOR_BUTTON_X_LEFT_POSITION && cursor_x <= SCREEN_CENTER_X + 210 / 2 &&
+    if (cursor_x >= CURSOR_BUTTON_LEFT_X_POSITION && cursor_x <= CURSOR_BUTTON_RIGHT_X_POSITION &&
         cursor_y >= CURSOR_BUTTON_TOP_EXIT_Y_POSITION && cursor_y <= CURSOR_BUTTON_BOTTOM_EXIT_Y_POSITION) {
       return 1; // Exit the game
     }
