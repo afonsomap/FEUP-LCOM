@@ -138,6 +138,7 @@ void update_state_others(State *state) {
   }
 
   if (state->current_state == SINGLE_MODE) {
+    process_bomb_spawning(state->sm); // Process bomb spawning
     if (check_bomb_exploded(state->sm)) {
       state->current_state = DIED; // Go to died state
       destroy_singleMode(state->sm);

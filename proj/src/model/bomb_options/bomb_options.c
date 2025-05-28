@@ -106,6 +106,7 @@ void set_bomb_unavailable(BombOptions *b, BombType type) {
   if (b == NULL) {
     return;
   }
+  printf("Setting bomb type %d as unavailable\n", type);
   if (type == NORMAL) {
     b->availability_counter[0] = 180; 
   }
@@ -121,7 +122,7 @@ bool isBombAvailable(BombOptions *b, BombType type) {
   if (b == NULL) {
     return false;
   }
-
+  printf("testing if bomb type %d is available\n", type);
   if (type == NORMAL) {
     return b->availability_counter[0] == 0;
   }
@@ -139,7 +140,6 @@ void decrease_time_availability(BombOptions *b) {
   if (b == NULL) {
     return;
   }
-
   for (int i = 0; i < b->number_of_options; i++) {
     if (b->availability_counter[i] > 0) {
       b->availability_counter[i]--;
