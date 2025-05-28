@@ -1,5 +1,6 @@
 #ifndef _SINGLEMODE_H_
 #define _SINGLEMODE_H_
+
 #include <lcom/lcf.h>
 #include <stddef.h>
 #include <math.h>
@@ -13,6 +14,7 @@
 #include "explosion.h"
 #include "menu.h"
 #include "bomb_options.h"
+#include "key_pressed.h"
 
 
 struct singleMode_imp;
@@ -44,10 +46,10 @@ void draw_singleMode(SingleMode *sm);
  * @brief Processes the input from the keyboard
  * 
  * @param sm Pointer to the SingleMode object
- * @param keys Array of boolean values representing the state of the keys
+ * @param key Pointer to the KeyPressed object containing the state of the keys
  * @return 0 if the game should continue, 1 go back to the menu
  */
-int process_single_mode_kbd(SingleMode *sm, bool* keys);
+int process_single_mode_kbd(SingleMode *sm, KeyPressed *key);
 
 /**
  * @brief Processes the input from the mouse

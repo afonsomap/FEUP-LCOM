@@ -66,33 +66,6 @@ void clear_back_buffer();
 void draw_pixel(uint16_t x, uint16_t y, uint32_t color);
 
 /**
- * @brief Draws a horizontal line on the current back buffer
- * 
- * Panic if something goes wrong.
- * 
- * @param x X coordinate of the starting point
- * @param y Y coordinate of the starting point
- * @param length Length of the line
- * @param color Color of the line
- * @return 0 on success, 1 on failure
- */
-void draw_hline(uint16_t x, uint16_t y, uint16_t length, uint32_t color);
-
-/**
- * @brief Draws a rectangle on the current back buffer
- * 
- * Panic if something goes wrong.
- * 
- * @param x X coordinate of the top left corner
- * @param y Y coordinate of the top left corner
- * @param width Width of the rectangle
- * @param height Height of the rectangle
- * @param color Color of the rectangle
- * @return 0 on success, 1 on failure
- */
-void draw_rectangle(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color);
-
-/**
  * @brief Draws an xpm image on the current back buffer
  * 
  * @param xpm_map XPM image pixel map to draw
@@ -103,5 +76,10 @@ void draw_rectangle(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uin
  * @return 0 on success, 1 on failure
  */
 int vg_draw_xpm(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
+
+int vg_draw_xpm_by_image(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
+
+int vg_draw_xpm_by_line(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
+
 
 #endif

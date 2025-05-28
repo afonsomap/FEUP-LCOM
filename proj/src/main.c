@@ -4,25 +4,14 @@
 #include "mouse.h"
 #include "timer_count.h"
 #include "spriteLoader.h"
-#include "singleMode.h"
-#include "died_state.h"
 #include "cursor.h"
-#include "menu.h"
-
-typedef enum {
-  MENU,
-  SINGLE_MODE,
-  DIED,
-  EXIT
-} GameState;
+#include "state.h"
+#include "key_pressed.h"
 
 static SpriteLoader *loader = NULL;
-static SingleMode *sm = NULL;
-static Menu *m = NULL;
-static Died *d = NULL;
 static Cursor *c = NULL;
-static bool key_pressed[5] = {false, false, false, false, false}; // UP, DOWN, LEFT, RIGHT, ESC
-GameState current_state = MENU;
+static KeyPressed *key_pressed = NULL;
+static State *state = NULL;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -77,7 +66,7 @@ void interrups_loop() {
 
   uint8_t *scancode = get_scancode();
 
-  while ( current_state != EXIT ) {
+  while ( !is_game_over(state) ) {
     if( driver_receive(ANY, &msg, &ipc_status) != 0 ){
       printf("Error");
       continue;
@@ -90,41 +79,7 @@ void interrups_loop() {
             kbc_ih();
 
             if (check_scancode_complete() == 0){
-              switch (*scancode)
-              {
-              case ESC_MAKE_CODE:
-                key_pressed[4] = true;
-                break;
-              case ESC_BREAK_CODE:
-                key_pressed[4] = false;
-                break;
-              case W_MAKE_CODE:
-                key_pressed[0] = true;
-                break;
-              case W_BREAK_CODE:
-                key_pressed[0] = false;
-                break;
-              case S_MAKE_CODE:
-                key_pressed[1] = true;
-                break;
-              case S_BREAK_CODE:
-                key_pressed[1] = false;
-                break;
-              case A_MAKE_CODE:
-                key_pressed[2] = true;
-                break;    
-              case A_BREAK_CODE:
-                key_pressed[2] = false;
-                break;
-              case D_MAKE_CODE:
-                key_pressed[3] = true;
-                break;
-              case D_BREAK_CODE:
-                key_pressed[3] = false;
-                break;
-              default:
-                break;
-              }
+              key_pressed_update(key_pressed, *scancode);
             }
           }
 
@@ -133,105 +88,9 @@ void interrups_loop() {
             if (timer_get_count() % 2 == 0) { // 30 FPSc
               clear_back_buffer();
           
-              int menu_return;
-              switch (current_state) {
-                case SINGLE_MODE:
+              update_state(state, key_pressed, c);
+              draw_state(state);
 
-                  if (process_single_mode_kbd(sm, key_pressed) == 1) {
-
-                    current_state = MENU; // Go back to menu
-                    destroy_singleMode(sm);
-                    sm = NULL;
-                    m = create_menu(loader);
-                    memset(key_pressed, false, sizeof(key_pressed));
-                    reset_cursor_button_pressed(c);
-                    draw_menu(m);
-                    draw_cursor(c);
-                    break;
-
-                  }
-
-                  if (process_single_mode_mouse(sm, c) == 1) {
-
-                    current_state = MENU; // Go back to menu
-                    destroy_singleMode(sm);
-                    sm = NULL;
-                    m = create_menu(loader);
-                    memset(key_pressed, false, sizeof(key_pressed));
-                    reset_cursor_button_pressed(c);
-                    draw_menu(m);
-                    draw_cursor(c);
-                    break;
-
-                  }
-                  
-                  if (check_bomb_exploded(sm) == 1) {
-
-                    current_state = DIED; // Go back to "You died" page
-                    destroy_singleMode(sm);
-                    sm = NULL;
-                    d = create_Died_Page(loader);
-                    memset(key_pressed, false, sizeof(key_pressed));
-                    reset_cursor_button_pressed(c);
-                    draw_died(d);
-                    draw_cursor(c);
-                    break;
-
-                  }
-
-                  draw_singleMode(sm);
-                  draw_cursor(c);
-                  break;
-          
-                case MENU:
-                  menu_return = process_menu_input(c);
-                  if (menu_return == 1) {
-
-                    current_state = EXIT; // Exit game
-                    destroy_menu(m);
-                    m = NULL;
-                    break;
-
-                  } else if (menu_return == 2) {
-
-                    current_state = SINGLE_MODE; // Go to single mode
-                    destroy_menu(m);
-                    m = NULL;
-                    sm = create_singleMode(loader);
-                    memset(key_pressed, false, sizeof(key_pressed));
-                    reset_cursor_button_pressed(c);
-                    draw_singleMode(sm);
-                    draw_cursor(c);
-                    break;
-                  }
-
-                  draw_menu(m);
-                  draw_cursor(c);
-                  break;
-
-                case DIED:
-                  if (process_died_input(c) == 1) {
-
-                    current_state = MENU; // Exit to the menu
-                    destroy_died(d);
-                    d = NULL;
-                    m = create_menu(loader);
-                    memset(key_pressed, false, sizeof(key_pressed));
-                    reset_cursor_button_pressed(c);
-                    draw_menu(m);
-                    draw_cursor(c);
-                    break;
-
-                  }
-
-                  draw_died(d);
-                  draw_cursor(c);
-                  break;
-
-                default:
-                  break;
-
-              }
               vg_flip_buffer();
               timer_reset_count();
             }
@@ -279,12 +138,15 @@ int (proj_main_loop)(int argc, char *argv[]) {
   set_video_mode(VBE_1024p_DC);
 
   loader = load_sprites();
+  key_pressed = key_pressed_create();
   c = create_cursor(get_cursor(loader), get_mode_info().XResolution, get_mode_info().YResolution);
-  m = create_menu(loader);
+  state = create_state(loader, c);
 
   interrups_loop();
   
+  destroy_state(state);
   destroy_cursor(c);
+  key_pressed_destroy(key_pressed);
   destroy_sprites(loader);
 
   vg_exit();
