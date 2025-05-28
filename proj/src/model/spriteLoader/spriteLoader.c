@@ -106,6 +106,7 @@ SpriteLoader* load_sprites() {
   loader->single_mode_button = create_sprite((xpm_map_t)single_menu_xpm, BY_PIXEL); 
   loader->multiplayer_mode_button = create_sprite((xpm_map_t)multi_menu_xpm, BY_PIXEL);
   loader->exit_button = create_sprite((xpm_map_t)exit_menu_xpm, BY_PIXEL); 
+  loader->exit = create_sprite((xpm_map_t)exit_sp, BY_PIXEL);
 
   loader->bomb_options[0] = create_sprite((xpm_map_t)bomb_option_1, BY_PIXEL);
   loader->bomb_options[1] = create_sprite((xpm_map_t)bomb_option_2, BY_PIXEL);
