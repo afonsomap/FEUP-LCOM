@@ -123,6 +123,17 @@ SpriteLoader* load_sprites() {
   loader->play_again = create_sprite((xpm_map_t)play_again_xpm, BY_PIXEL);
   loader->back_to_menu = create_sprite((xpm_map_t)back_to_menu_xpm, BY_PIXEL);
 
+  loader->number_0 = create_sprite((xpm_map_t)number_0_xpm, BY_PIXEL);
+  loader->number_1 = create_sprite((xpm_map_t)number_1_xpm, BY_PIXEL);
+  loader->number_2 = create_sprite((xpm_map_t)number_2_xpm, BY_PIXEL);
+  loader->number_3 = create_sprite((xpm_map_t)number_3_xpm, BY_PIXEL);
+  loader->number_4 = create_sprite((xpm_map_t)number_4_xpm, BY_PIXEL);
+  loader->number_5 = create_sprite((xpm_map_t)number_5_xpm, BY_PIXEL);
+  loader->number_6 = create_sprite((xpm_map_t)number_6_xpm, BY_PIXEL);
+  loader->number_7 = create_sprite((xpm_map_t)number_7_xpm, BY_PIXEL);
+  loader->number_8 = create_sprite((xpm_map_t)number_8_xpm, BY_PIXEL);
+  loader->number_9 = create_sprite((xpm_map_t)number_9_xpm, BY_PIXEL);
+
   return loader;
 }
 

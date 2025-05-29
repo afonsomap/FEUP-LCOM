@@ -64,6 +64,7 @@ void destroy_sprite(Sprite *sp) {
 
 void draw_sprite(Sprite *sp, uint16_t x, uint16_t y) {
   if (sp == NULL) {
+    printf("Failed to draw sprite at (%d, %d)\n", x, y);
     return;
   }
 

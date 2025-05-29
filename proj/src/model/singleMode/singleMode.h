@@ -15,6 +15,7 @@
 #include "menu.h"
 #include "bomb_options.h"
 #include "key_pressed.h"
+#include "score.h"
 
 
 struct singleMode_imp;
@@ -69,6 +70,10 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c);
 int check_bomb_exploded(SingleMode *sm);
 
 int process_bomb_spawning(SingleMode *sm);
+
+int process_single_mode_score(SingleMode *sm);
+
+
 
 
 #endif /* _SINGLEMODE_H_ */
