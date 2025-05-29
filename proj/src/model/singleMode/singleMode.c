@@ -17,6 +17,8 @@ struct singleMode_imp {
   BombOptions *bomb_options; // Bomb options
   BombType player1_bomb_option; // Bomb option for player 1
   Sprite* exit_button_sprite;
+  uint8_t score; // Score of the player
+  uint8_t score_rate;
 };
 
 uint16_t EXIT_BTN_X = 20;
@@ -68,6 +70,8 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
 
   sm->bomb_options = create_bomb_options(get_bomb_options(loader), get_selected_options(loader));
   sm->player1_bomb_option = NORMAL;
+  sm->score = 0; // Initialize score
+  sm->score_rate = 60; // Initialize score rate
 
   return sm;
 }
@@ -306,6 +310,23 @@ int process_bomb_spawning(SingleMode *sm) {
   return 0; // Continue game
 }
 
+int process_single_mode_score(SingleMode *sm) {
+  if (sm == NULL) {
+    return 1; // Go back to menu
+  }
+
+  if (sm->score_rate > 0) {
+    sm->score_rate--; // Decrease the score rate
+    return 0; // Continue game, no action
+  }
+  else {
+    increment_score(sm); // Increment the score if possible
+    sm->score_rate = 60; // Reset the score rate
+  }
+
+  return 0; // Continue game
+}
+
 // 0 Continue game
 // 1 Goes back to menu
 int check_bomb_exploded(SingleMode *sm) {
@@ -524,5 +545,22 @@ int check_bomb_exploded(SingleMode *sm) {
     }
   }
   return 0;
+}
+
+bool increment_score(SingleMode *sm) {
+  if (sm == NULL) {
+    return false; // Invalid SingleMode
+  }
+
+  sm->score += 1; // Increment score by 1
+  return true; // Score incremented successfully
+}
+
+uint8_t get_single_mode_score(SingleMode *sm) {
+  if (sm == NULL) {
+    return 0; // Invalid SingleMode
+  }
+
+  return sm->score; // Return the current score
 }
 

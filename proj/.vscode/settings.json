@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.xpm": "c",
-        "compare": "c"
+        "compare": "c",
+        "animatedsprite.h": "c"
     }
 }

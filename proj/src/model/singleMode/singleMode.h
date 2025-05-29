@@ -70,6 +70,12 @@ int check_bomb_exploded(SingleMode *sm);
 
 int process_bomb_spawning(SingleMode *sm);
 
+bool increment_score(SingleMode *sm);
+
+uint8_t get_single_mode_score(SingleMode *sm);
+
+int process_single_mode_score(SingleMode *sm);
+
 
 #endif /* _SINGLEMODE_H_ */
 
