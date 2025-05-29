@@ -41,14 +41,9 @@ void destroy_multiMode(MultiMode *mm);
  */
 void draw_multiMode(MultiMode *mm);
 
-/**
- * @brief Processes the input from the keyboard for multiplayer
- * 
- * @param mm Pointer to the MultiMode object
- * @param key Pointer to the KeyPressed object containing the state of the keys
- * @return 0 if the game should continue, 1 to go back to the menu
- */
-int process_multi_mode_kbd(MultiMode *mm, KeyPressed *key);
+
+int process_multi_mode_player1_kbd(MultiMode *mm, KeyPressed *key);
+int process_multi_mode_player2_kbd(MultiMode *mm, KeyPressed *key);
 
 /**
  * @brief Processes the input from the mouse for multiplayer
@@ -67,6 +62,7 @@ int process_multi_mode_mouse(MultiMode *mm, Cursor *c);
  */
 int check_bomb_exploded_multi(MultiMode *mm);
 
-int process_bomb_spawning_multi(MultiMode *mm);
+int process_bomb_player1_spawning_multi(MultiMode *mm);
+int process_bomb_player2_spawning_multi(MultiMode *mm);
 
 #endif /* _MULTIMODE_H_ */
