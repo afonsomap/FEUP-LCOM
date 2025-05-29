@@ -77,6 +77,10 @@
 #include "images/single_player/exit_sp.xpm"
 
 #include "images/died/died_text.xpm"
+#include "images/died/died_background.xpm"
+#include "images/died/play_again.xpm"
+#include "images/died/back_to_menu.xpm"
+
 
 #include "images/numbers/number_0.xpm"
 #include "images/numbers/number_1.xpm"
@@ -123,16 +127,7 @@ Sprite** get_bomb_options(SpriteLoader *loader);
 Sprite** get_selected_options(SpriteLoader *loader);
 Sprite* get_game_background(SpriteLoader *loader);
 Sprite* get_died_title(SpriteLoader *loader);
-Sprite* get_number_0(SpriteLoader *loader);
-Sprite* get_number_1(SpriteLoader *loader);
-Sprite* get_number_2(SpriteLoader *loader);
-Sprite* get_number_3(SpriteLoader *loader);
-Sprite* get_number_4(SpriteLoader *loader);
-Sprite* get_number_5(SpriteLoader *loader);
-Sprite* get_number_6(SpriteLoader *loader);
-Sprite* get_number_7(SpriteLoader *loader);
-Sprite* get_number_8(SpriteLoader *loader);
-Sprite* get_number_9(SpriteLoader *loader);
-Sprite* get_number_sprite(uint8_t digit, SpriteLoader *loader);
-
+Sprite* get_died_background(SpriteLoader *loader);
+Sprite* get_play_again(SpriteLoader *loader);
+Sprite* get_back_to_menu(SpriteLoader *loader);
 #endif
