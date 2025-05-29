@@ -173,3 +173,18 @@ static bool check_wall_collision(MultiMode *mm, uint16_t x, uint16_t y) {
 
 // 0 Continue game
 // 1 Goes back to menu  
+int process_multi_mode_kbd(MultiMode *mm, KeyPressed * key) {
+  
+}
+
+int process_multi_mode_mouse(MultiMode *mm, Cursor *c) {
+  
+}
+
+int check_bomb_exploded_multi(MultiMode *mm){
+  
+}
+
+int process_bomb_spawning_multi(MultiMode *mm){
+  
+}
