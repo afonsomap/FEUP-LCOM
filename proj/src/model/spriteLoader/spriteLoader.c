@@ -30,6 +30,16 @@ struct sprite_loader_imp {
   Sprite *died_background;
   Sprite *play_again;
   Sprite *back_to_menu;
+  Sprite *number_0;
+  Sprite *number_1;
+  Sprite *number_2;
+  Sprite *number_3;
+  Sprite *number_4;
+  Sprite *number_5;
+  Sprite *number_6;
+  Sprite *number_7;
+  Sprite *number_8;
+  Sprite *number_9;
 };
 
 SpriteLoader* load_sprites() {
@@ -266,4 +276,60 @@ Sprite* get_play_again(SpriteLoader *loader) {
 
 Sprite* get_back_to_menu(SpriteLoader *loader) {
   return loader->back_to_menu;
+}
+
+Sprite* get_number_0(SpriteLoader *loader) {
+  return loader->number_0;
+}
+
+Sprite* get_number_1(SpriteLoader *loader) {
+  return loader->number_1;
+}
+
+Sprite* get_number_2(SpriteLoader *loader) {
+  return loader->number_2;
+}
+
+Sprite* get_number_3(SpriteLoader *loader) {
+  return loader->number_3;
+}
+
+Sprite* get_number_4(SpriteLoader *loader) {
+  return loader->number_4;
+}
+
+Sprite* get_number_5(SpriteLoader *loader) {
+  return loader->number_5;
+}
+
+Sprite* get_number_6(SpriteLoader *loader) {
+  return loader->number_6;
+}
+
+Sprite* get_number_7(SpriteLoader *loader) {
+  return loader->number_7;
+}
+
+Sprite* get_number_8(SpriteLoader *loader) {
+  return loader->number_8;
+}
+
+Sprite* get_number_9(SpriteLoader *loader) {
+  return loader->number_9;
+}
+
+Sprite* get_number_sprite(int number, SpriteLoader *loader) {
+  switch (number) {
+    case 0: return get_number_0(loader);
+    case 1: return get_number_1(loader);
+    case 2: return get_number_2(loader);
+    case 3: return get_number_3(loader);
+    case 4: return get_number_4(loader);
+    case 5: return get_number_5(loader);
+    case 6: return get_number_6(loader);
+    case 7: return get_number_7(loader);
+    case 8: return get_number_8(loader);
+    case 9: return get_number_9(loader);
+    default: return NULL; // Invalid number
+  }
 }
