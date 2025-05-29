@@ -110,6 +110,12 @@ void update_state_mouse(State *state, Cursor *c) {
         state->d = NULL;
         state->m = create_menu(state->loader);
         reset_cursor_button_pressed(c);
+      } else if (process_died_input(state->d, c) == 2) {
+        state->current_state = SINGLE_MODE; // Exit to the menu
+        destroy_died(state->d);
+        state->d = NULL;
+        state->sm = create_singleMode(state->loader);
+        reset_cursor_button_pressed(c);
       }
       break;
 

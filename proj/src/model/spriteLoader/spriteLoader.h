@@ -77,6 +77,10 @@
 #include "images/single_player/exit_sp.xpm"
 
 #include "images/died/died_text.xpm"
+#include "images/died/died_background.xpm"
+#include "images/died/play_again.xpm"
+#include "images/died/back_to_menu.xpm"
+
 
 struct sprite_loader_imp;
 typedef struct sprite_loader_imp SpriteLoader;
@@ -111,5 +115,7 @@ Sprite** get_bomb_options(SpriteLoader *loader);
 Sprite** get_selected_options(SpriteLoader *loader);
 Sprite* get_game_background(SpriteLoader *loader);
 Sprite* get_died_title(SpriteLoader *loader);
-
+Sprite* get_died_background(SpriteLoader *loader);
+Sprite* get_play_again(SpriteLoader *loader);
+Sprite* get_back_to_menu(SpriteLoader *loader);
 #endif

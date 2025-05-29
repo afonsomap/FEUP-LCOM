@@ -1,8 +1,10 @@
 #include "died_state.h"
 
 struct died_imp {
-  Sprite *background;
   Sprite *died_title;
+  Sprite *died_background;
+  Sprite *back_to_menu;
+  Sprite *play_again;
   Sprite *exit_button;
   uint16_t xPos_title;
   uint16_t xPos_button;
@@ -15,11 +17,13 @@ Died* create_died_page(SpriteLoader *loader) {
     return NULL;
   }
 
-  d->background = get_menu_background(loader);
+  d->died_background = get_died_background(loader);
+  d->back_to_menu = get_back_to_menu(loader);
+  d->play_again = get_play_again(loader);
   d->died_title = get_died_title(loader);
   d->exit_button = get_exit_button(loader);
 
-  if (d->background == NULL || d->exit_button == NULL) {
+  if (d->died_background == NULL || d->exit_button == NULL) {
     destroy_died(d);
     return NULL;
   }
@@ -44,20 +48,25 @@ void draw_died(Died *d) {
     return;
   }
 
-  draw_sprite(d->background, 0, 0);
+  draw_sprite(d->died_background, 0, 0);
   draw_sprite(d->died_title, d->xPos_title, 100);
-  draw_sprite(d->exit_button, d->xPos_button, d->yPos_button);  
+  draw_sprite(d->play_again, d->xPos_button, d->yPos_button-200);
+  draw_sprite(d->back_to_menu, d->xPos_button, d->yPos_button);  
 }
 
 int process_died_input(Died *d, Cursor *cursor) {
   if (get_cursor_button_pressed(cursor, 0)) { // Left mouse button pressed
-    uint16_t cursor_x = get_cursor_Xpos(cursor);
-    uint16_t cursor_y = get_cursor_Ypos(cursor);
 
     // Check if the cursor is over the "Exit" button
-    if (cursor_x >= d->xPos_button && cursor_x <= d->xPos_button + get_sprite_width(d->exit_button) &&
-        cursor_y >=  d->yPos_button && cursor_y <= d->yPos_button + get_sprite_height(d->exit_button)) {
+    if (get_cursor_Xpos(cursor) >= d->xPos_button && get_cursor_Xpos(cursor) <= d->xPos_button + get_sprite_width(d->exit_button) &&
+        get_cursor_Ypos(cursor) >=  d->yPos_button && get_cursor_Ypos(cursor) <= d->yPos_button + get_sprite_height(d->exit_button)) {
       return 1; // Exit the game
+    }
+
+    // Check if the cursor is over the "Play Again" button
+    if (get_cursor_Xpos(cursor) >= d->xPos_button && get_cursor_Xpos(cursor) <= d->xPos_button + get_sprite_width(d->play_again) &&
+        get_cursor_Ypos(cursor) >=  d->yPos_button - 200 && get_cursor_Ypos(cursor) <= d->yPos_button - 200 + get_sprite_height(d->play_again)) {
+      return 2; // Play again
     }
   }
 

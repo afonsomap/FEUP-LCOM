@@ -27,6 +27,9 @@ struct sprite_loader_imp {
   Sprite *selected_options[3];
   Sprite *game_background;
   Sprite *died_title;
+  Sprite *died_background;
+  Sprite *play_again;
+  Sprite *back_to_menu;
 };
 
 SpriteLoader* load_sprites() {
@@ -116,6 +119,9 @@ SpriteLoader* load_sprites() {
   loader->selected_options[2] = create_sprite((xpm_map_t)selected_bomb3, BY_PIXEL);
 
   loader->died_title = create_sprite((xpm_map_t)died_title_xpm, BY_PIXEL);
+  loader->died_background = create_sprite((xpm_map_t)died_background_xpm, BY_LINE);
+  loader->play_again = create_sprite((xpm_map_t)play_again_xpm, BY_PIXEL);
+  loader->back_to_menu = create_sprite((xpm_map_t)back_to_menu_xpm, BY_PIXEL);
 
   return loader;
 }
@@ -146,6 +152,9 @@ void destroy_sprites(SpriteLoader *loader) {
   destroy_sprite(loader->exit_button);
   destroy_sprite(loader->exit);
   destroy_sprite(loader->died_title);
+  destroy_sprite(loader->died_background);
+  destroy_sprite(loader->back_to_menu);
+  destroy_sprite(loader->play_again);
   for (int i = 0; i < 3; i++) {
     destroy_sprite(loader->bomb_options[i]);
     destroy_sprite(loader->selected_options[i]);
@@ -234,4 +243,16 @@ Sprite* get_game_background(SpriteLoader *loader) {
 
 Sprite* get_died_title(SpriteLoader *loader) {
   return loader->died_title;
+}
+
+Sprite* get_died_background(SpriteLoader *loader) {
+  return loader->died_background;
+}
+
+Sprite* get_play_again(SpriteLoader *loader) {
+  return loader->play_again;
+}
+
+Sprite* get_back_to_menu(SpriteLoader *loader) {
+  return loader->back_to_menu;
 }
