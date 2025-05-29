@@ -36,6 +36,7 @@ uint16_t get_score_Yposition(Score *score);
 
 uint8_t get_score_rate(Score *score);
 
+void draw_score_at(Score *score, uint16_t x, uint16_t y);
 
 #endif // SCORE_H
 

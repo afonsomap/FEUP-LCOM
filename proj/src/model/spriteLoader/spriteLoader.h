@@ -80,7 +80,7 @@
 #include "images/died/died_background.xpm"
 #include "images/died/play_again.xpm"
 #include "images/died/back_to_menu.xpm"
-
+#include "images/died/your_score.xpm"
 
 #include "images/numbers/number_0.xpm"
 #include "images/numbers/number_1.xpm"
@@ -141,4 +141,5 @@ Sprite* get_number_7(SpriteLoader *loader);
 Sprite* get_number_8(SpriteLoader *loader);
 Sprite* get_number_9(SpriteLoader *loader);
 Sprite* get_number_sprite(int number, SpriteLoader *loader);
+Sprite* get_your_score_text(SpriteLoader *loader);
 #endif
