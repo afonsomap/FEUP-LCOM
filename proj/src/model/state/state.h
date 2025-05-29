@@ -8,6 +8,7 @@
 #include "died_state.h"
 #include "spriteLoader.h"
 #include "key_pressed.h"
+#include "score.h"
 
 struct state_imp;
 typedef struct state_imp State;

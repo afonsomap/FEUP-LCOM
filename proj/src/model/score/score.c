@@ -98,6 +98,22 @@ void draw_score(Score *score) {
   }
 }
 
+
+void draw_score_at(Score *score, uint16_t x, uint16_t y) {
+  if (score == NULL) return;
+
+  uint16_t old_x = score->x;
+  uint16_t old_y = score->y;
+
+  score->x = x;
+  score->y = y;
+
+  draw_score(score);
+
+  score->x = old_x;
+  score->y = old_y;
+}
+
 uint16_t get_score_Xposition(Score *score) {
   if (score == NULL) {
     return 0; // Invalid score pointer, return 0

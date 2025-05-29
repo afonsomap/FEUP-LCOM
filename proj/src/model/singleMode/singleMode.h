@@ -27,7 +27,7 @@ typedef struct singleMode_imp SingleMode;
  * @param loader Pointer to the SpriteLoader object
  * @return Pointer to the created SingleMode object, or NULL if the creation failed
  */
-SingleMode *create_singleMode(SpriteLoader *loader);
+SingleMode *create_singleMode(SpriteLoader *loader, Score *score);
 
 /**
  * @brief Destroys a SingleMode object, freeing all allocated memory

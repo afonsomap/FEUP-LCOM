@@ -6,6 +6,7 @@ struct state_imp {
   Menu *m; // Pointer to the menu
   Died *d; // Pointer to the died state
   Cursor *c; // Pointer to the cursor
+  Score *score;
   SpriteLoader *loader; // Pointer to the sprite loader
   GameState current_state; // Current state of the game
 };
@@ -20,6 +21,7 @@ State *create_state(SpriteLoader *loader, Cursor *c) {
   state->sm = NULL;
   state->m = create_menu(loader);
   state->d = NULL;
+  state->score = create_score(1200, 1000, loader);
   state->c = c;
   state->current_state = MENU;
   return state;
@@ -97,8 +99,12 @@ void update_state_mouse(State *state, Cursor *c) {
       } else if (process_menu_input(c) == 2) {
         state->current_state = SINGLE_MODE; // Go to single mode
         destroy_menu(state->m);
+        
+        destroy_score(state->score);
+        state->score = create_score(1200, 1000, state->loader);
+
         state->m = NULL;
-        state->sm = create_singleMode(state->loader);
+        state->sm = create_singleMode(state->loader, state->score);
         reset_cursor_button_pressed(c);
       }
       break;
@@ -113,8 +119,12 @@ void update_state_mouse(State *state, Cursor *c) {
       } else if (process_died_input(state->d, c) == 2) {
         state->current_state = SINGLE_MODE; // Exit to the menu
         destroy_died(state->d);
+
+        destroy_score(state->score);
+        state->score = create_score(1200, 1000, state->loader);
+
         state->d = NULL;
-        state->sm = create_singleMode(state->loader);
+        state->sm = create_singleMode(state->loader, state->score);
         reset_cursor_button_pressed(c);
       }
       break;
@@ -136,7 +146,7 @@ void update_state_without_event(State *state) {
       state->current_state = DIED; // Go to died state
       destroy_singleMode(state->sm);
       state->sm = NULL;
-      state->d = create_died_page(state->loader);
+      state->d = create_died_page(state->loader, state->score);
       reset_cursor_button_pressed(state->c);
     }
   }else{
@@ -159,7 +169,7 @@ void draw_state(State *state) {
       break;
 
     case DIED:
-      draw_died(state->d);
+      draw_died(state->d, state->score);
       break;
 
     default:

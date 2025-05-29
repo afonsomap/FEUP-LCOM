@@ -7,6 +7,7 @@
 #include "sprite.h"
 #include "spriteLoader.h"
 #include "cursor.h"
+#include "score.h"
 
 
 struct died_imp;
@@ -18,7 +19,7 @@ typedef struct died_imp Died;
  * @param loader Pointer to the SpriteLoader object
  * @return Pointer to the created Died object, or NULL if the creation failed
  */
-Died* create_died_page(SpriteLoader *loader);
+Died* create_died_page(SpriteLoader *loader, Score *score);
 
 /**
  * @brief Destroys a Died object, freeing all allocated memory
@@ -32,7 +33,7 @@ void destroy_died(Died *d);
  * 
  * @param d Pointer to the Died object to be drawn
  */
-void draw_died(Died *d);
+void draw_died(Died *d, Score *score);
 
 /**
  * @brief Processes the input from the cursor in the Died state

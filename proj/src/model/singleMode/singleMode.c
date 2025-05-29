@@ -23,7 +23,7 @@ struct singleMode_imp {
 uint16_t EXIT_BTN_X = 20;
 uint16_t EXIT_BTN_Y = 20;
 
-SingleMode *create_singleMode(SpriteLoader *loader) {
+SingleMode *create_singleMode(SpriteLoader *loader, Score *score){
   SingleMode *sm = (SingleMode *) malloc(sizeof(SingleMode));
   if (sm == NULL) {
     return NULL;
@@ -69,7 +69,7 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
 
   sm->bomb_options = create_bomb_options(get_bomb_options(loader), get_selected_options(loader));
   sm->player1_bomb_option = NORMAL;
-  sm->score = create_score(1200, 1000, loader); // Create score object
+  sm->score = score;
   return sm;
 }
 
@@ -92,7 +92,6 @@ void destroy_singleMode(SingleMode *sm) {
 
   // Destroy bomb options
   destroy_bomb_options(sm->bomb_options);
-  destroy_score(sm->score);
 
   free(sm);
 }

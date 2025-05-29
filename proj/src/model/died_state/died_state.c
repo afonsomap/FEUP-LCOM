@@ -9,9 +9,10 @@ struct died_imp {
   uint16_t xPos_title;
   uint16_t xPos_button;
   uint16_t yPos_button;
+  Score *score;
 };
 
-Died* create_died_page(SpriteLoader *loader) {
+Died* create_died_page(SpriteLoader *loader, Score *score) {
   Died *d = (Died *) malloc(sizeof(Died));
   if (d == NULL) {
     return NULL;
@@ -32,6 +33,8 @@ Died* create_died_page(SpriteLoader *loader) {
   d->xPos_button = (get_mode_info().XResolution - get_sprite_width(d->exit_button)) / 2;
   d->yPos_button = 700; // Fixed position for the button
 
+  d->score = score;
+
   return d;
 }
 
@@ -43,7 +46,7 @@ void destroy_died(Died *d) {
   free(d);
 }
 
-void draw_died(Died *d) {
+void draw_died(Died *d, Score *score) {
   if (d == NULL) {
     return;
   }
@@ -52,6 +55,8 @@ void draw_died(Died *d) {
   draw_sprite(d->died_title, d->xPos_title, 100);
   draw_sprite(d->play_again, d->xPos_button, d->yPos_button-200);
   draw_sprite(d->back_to_menu, d->xPos_button, d->yPos_button);  
+  //draw_score_at(score, d->xPos_title, 300);
+  draw_score(score);
 }
 
 int process_died_input(Died *d, Cursor *cursor) {
