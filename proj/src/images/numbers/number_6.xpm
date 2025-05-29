@@ -2,7 +2,7 @@
 static xpm_row_t const number_6_xpm[] = {
 /* columns rows colors chars-per-pixel */
 "14 20 54 1 ",
-"  c black",
+"  c #000000",
 ". c #0D0D0D",
 "X c #0E0E0E",
 "o c #0F0F0F",
@@ -55,7 +55,7 @@ static xpm_row_t const number_6_xpm[] = {
 "v c #F2F2F2",
 "b c #F6F6F6",
 "n c #F8F8F8",
-"m c white",
+"m c #FFFFFF",
 /* pixels */
 "              ",
 " X@,,,,1111$X ",

@@ -17,8 +17,7 @@ struct singleMode_imp {
   BombOptions *bomb_options; // Bomb options
   BombType player1_bomb_option; // Bomb option for player 1
   Sprite* exit_button_sprite;
-  uint8_t score; // Score of the player
-  uint8_t score_rate;
+  Score *score; // Score object
 };
 
 uint16_t EXIT_BTN_X = 20;
@@ -70,9 +69,7 @@ SingleMode *create_singleMode(SpriteLoader *loader) {
 
   sm->bomb_options = create_bomb_options(get_bomb_options(loader), get_selected_options(loader));
   sm->player1_bomb_option = NORMAL;
-  sm->score = 0; // Initialize score
-  sm->score_rate = 60; // Initialize score rate
-
+  sm->score = create_score(1200, 1000, loader); // Create score object
   return sm;
 }
 
@@ -95,6 +92,7 @@ void destroy_singleMode(SingleMode *sm) {
 
   // Destroy bomb options
   destroy_bomb_options(sm->bomb_options);
+  destroy_score(sm->score);
 
   free(sm);
 }
@@ -124,6 +122,7 @@ void draw_singleMode(SingleMode *sm) {
   }
 
   draw_bomb_options(sm->bomb_options, sm->player1_bomb_option);
+  draw_score(sm->score); // Draw score
 }
 
 static bool check_wall_collision(SingleMode *sm, uint16_t x, uint16_t y) {
@@ -315,16 +314,14 @@ int process_single_mode_score(SingleMode *sm) {
     return 1; // Go back to menu
   }
 
-  if (sm->score_rate > 0) {
-    sm->score_rate--; // Decrease the score rate
-    return 0; // Continue game, no action
+  decrease_score_rate(sm->score); // Decrease the score rate
+  if (get_score_rate(sm->score) == 0) {
+    increment_score(sm->score); // Increment the score if possible
+    draw_score(sm->score); // Draw the score
   }
-  else {
-    increment_score(sm); // Increment the score if possible
-    sm->score_rate = 60; // Reset the score rate
-  }
-
   return 0; // Continue game
+  
+  
 }
 
 // 0 Continue game
@@ -547,20 +544,5 @@ int check_bomb_exploded(SingleMode *sm) {
   return 0;
 }
 
-bool increment_score(SingleMode *sm) {
-  if (sm == NULL) {
-    return false; // Invalid SingleMode
-  }
 
-  sm->score += 1; // Increment score by 1
-  return true; // Score incremented successfully
-}
-
-uint8_t get_single_mode_score(SingleMode *sm) {
-  if (sm == NULL) {
-    return 0; // Invalid SingleMode
-  }
-
-  return sm->score; // Return the current score
-}
 
