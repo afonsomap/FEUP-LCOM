@@ -16,26 +16,14 @@ static KeyPressed *key_pressed = NULL;
 static State *state = NULL;
 
 int main(int argc, char *argv[]) {
-  // sets the language of LCF messages (can be either EN-US or PT-PT)
   lcf_set_language("EN-US");
-
-  // enables to log function invocations that are being "wrapped" by LCF
-  // [comment this out if you don't want/need it]
   lcf_trace_calls("/home/lcom/labs/lab5/trace.txt");
-
-  // enables to save the output of printf function calls on a file
-  // [comment this out if you don't want/need it]
   lcf_log_output("/home/lcom/labs/lab5/output.txt");
 
-  // handles control over to LCF
-  // [LCF handles command line arguments and invokes the right function]
   if (lcf_start(argc, argv))
     return 1;
 
-  // LCF clean up tasks
-  // [must be the last statement before return]
   lcf_cleanup();
-
   return 0;
 }
 
@@ -84,15 +72,6 @@ void interrups_loop() {
 
           if (msg.m_notify.interrupts & irq_set_serial) {
             sp_ih(); 
-            printf("Serial port interrupt received\n");
-
-            Queue *q = get_in_queue();
-            if (processWaitingGuessSP(pop(q))) {
-              printf("Guessing game started!\n");
-              send_byte(0xFE); // Acknowledge the start of the guessing game
-              panic("Guessing game started!");
-              
-            } 
           }
 
           if (msg.m_notify.interrupts & irq_set_kbd) {
@@ -100,17 +79,15 @@ void interrups_loop() {
 
             if (check_scancode_complete() == 0){
               key_pressed_update(key_pressed, *scancode);
-              send_byte(*scancode);
             }
           }
 
           if (msg.m_notify.interrupts & irq_set_timer) {
             timer_int_handler();
-            if (timer_get_count() % 2 == 0) { // 30 FPSc
-              send_byte(0xFF); 
+            if (timer_get_count() % 2 == 0) { // 30 FPS
               clear_back_buffer();
           
-              update_state(state, key_pressed, c);
+              update_state(state, key_pressed, c, get_sp_byte());
               draw_state(state);
 
               vg_flip_buffer();

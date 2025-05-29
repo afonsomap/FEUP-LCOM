@@ -2,22 +2,20 @@
 #define _MULTIMODE_H_
 
 #include <lcom/lcf.h>
-#include <stddef.h>
-#include <math.h>
-#include "player.h"
-#include "bomb.h"
-#include "wall.h"
+
 #include "spriteLoader.h"
-#include "animatedSprite.h"
-#include "sprite.h"
 #include "cursor.h"
-#include "explosion.h"
 #include "menu.h"
-#include "bomb_options.h"
 #include "key_pressed.h"
 
 struct multiMode_imp;
 typedef struct multiMode_imp MultiMode;
+
+typedef enum {
+  MM_CONNECTION,
+  MM_GAME,
+  MM_WINNER
+} Mm_State;
 
 /**
  * @brief Creates a new MultiMode object, which contains multiple players and a grid of walls
@@ -41,9 +39,14 @@ void destroy_multiMode(MultiMode *mm);
  */
 void draw_multiMode(MultiMode *mm);
 
-
-int process_multi_mode_player1_kbd(MultiMode *mm, KeyPressed *key);
-int process_multi_mode_player2_kbd(MultiMode *mm, KeyPressed *key);
+/**
+ * @brief Processes the input from the keyboard
+ * 
+ * @param mm Pointer to the MultiMode object
+ * @param key Pointer to the KeyPressed object containing the state of the keys
+ * @return 0 if the game should continue, 1 to go back to the menu
+ */
+int process_multi_mode_kbd(MultiMode *mm, KeyPressed *key);
 
 /**
  * @brief Processes the input from the mouse for multiplayer
@@ -55,14 +58,21 @@ int process_multi_mode_player2_kbd(MultiMode *mm, KeyPressed *key);
 int process_multi_mode_mouse(MultiMode *mm, Cursor *c);
 
 /**
- * @brief Checks if any bomb has exploded and if any player is in the same position, destroys wall if it is destroyable
+ * @brief Processes the input from the timer for multiplayer
  * 
  * @param mm Pointer to the MultiMode object
  * @return 0 if the game should continue, 1 to go back to the menu
  */
-int check_bomb_exploded_multi(MultiMode *mm);
+int process_multi_mode_timer(MultiMode *mm);
 
-int process_bomb_player1_spawning_multi(MultiMode *mm);
-int process_bomb_player2_spawning_multi(MultiMode *mm);
+
+/**
+ * @brief Process the input from the serial port for multiplayer
+ * 
+ * @param mm Pointer to the MultiMode object
+ * @param byte Pointer to the byte received from the serial port
+ * @return 0 if the game should continue, 1 to go back to the menu
+ */
+int process_multi_mode_sp(MultiMode *mm, uint8_t *byte);
 
 #endif /* _MULTIMODE_H_ */

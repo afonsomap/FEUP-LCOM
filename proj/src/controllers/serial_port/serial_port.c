@@ -32,7 +32,6 @@ void sp_init(){
         printf("Failed to read IER register.\n");
         return;
     } 
-    // Disable all interrupts except for the Receive Data Available interrupt
     ier &= 0xF0;
     if(sys_outb( UART_BASE + INTERRUPT_ENABLE_R, ier | IER_RECEIVED_DATA_AVAILABLE) != 0) {
         printf("Failed to write to IER register.\n");
@@ -44,7 +43,6 @@ void sp_init(){
     }
     inQueue = createQueue();
     sp_clear_buffers();
-    sys_outb(UART_BASE + MCR, 0x03); // DTR + RTS, no loopback
 }
 
 void sp_exit(){
@@ -120,6 +118,9 @@ int processWaitingGuessSP(uint8_t val){
     return 0;
 }
 
-Queue* get_in_queue() {
-    return inQueue;
+uint8_t get_sp_byte() {
+    if (isEmpty(inQueue)) {
+        return 0;
+    }
+    return pop(inQueue);
 }

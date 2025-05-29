@@ -2,12 +2,12 @@
 #include "state.h"
 
 struct state_imp {
-  SingleMode *sm; // Pointer to the single mode game
-  Menu *m; // Pointer to the menu
-  Died *d; // Pointer to the died state
-  Cursor *c; // Pointer to the cursor
-  SpriteLoader *loader; // Pointer to the sprite loader
-  GameState current_state; // Current state of the game
+  SingleMode *sm; 
+  MultiMode *mm; 
+  Menu *m; 
+  Cursor *c;
+  SpriteLoader *loader; 
+  GameState current_state; 
 };
 
 State *create_state(SpriteLoader *loader, Cursor *c) {
@@ -19,7 +19,7 @@ State *create_state(SpriteLoader *loader, Cursor *c) {
   state->loader = loader;
   state->sm = NULL;
   state->m = create_menu(loader);
-  state->d = NULL;
+  state->mm = NULL;
   state->c = c;
   state->current_state = MENU;
   return state;
@@ -36,21 +36,43 @@ void destroy_state(State *state) {
   if (state->m != NULL) {
     destroy_menu(state->m);
   }
-  if (state->d != NULL) {
-    destroy_died(state->d);
+  if (state->mm != NULL) {
+    destroy_multiPlayer(state->c);
   }
 
   free(state);
 }
 
-void update_state(State *state, KeyPressed *key, Cursor *c) {
+void update_state(State *state, KeyPressed *key, Cursor *c, uint8_t sp_byte) {
   if (state == NULL) {
     panic("State is NULL");
   }
 
+  update_state_sp(state, sp_byte);
   update_state_kbd(state, key);
   update_state_mouse(state, c);
-  update_state_without_event(state);
+  update_state_timer(state);
+}
+
+void update_state_sp(State *state, uint8_t sp_byte) {
+  if (state == NULL) {
+    panic("State is NULL");
+  }
+
+  switch (state->current_state) {
+    case MULTI_MODE:
+      if (process_multi_mode_sp(state->mm, sp_byte) == 1) {
+        state->current_state = MENU;
+        destroy_multiMode(state->mm);
+        state->mm = NULL;
+        state->m = create_menu(state->loader);
+        reset_cursor_button_pressed(state->c);
+      }
+      break;
+
+    default:
+      break;
+  }
 }
 
 void update_state_kbd(State *state, KeyPressed *key) {
@@ -68,6 +90,15 @@ void update_state_kbd(State *state, KeyPressed *key) {
         reset_cursor_button_pressed(state->c);
       }
       break;
+    case MULTI_MODE:
+      if (process_multi_mode_kbd(state->mm, key) == 1) {
+        state->current_state = MENU;
+        destroy_multiMode(state->mm);
+        state->mm = NULL;
+        state->m = create_menu(state->loader);
+        reset_cursor_button_pressed(state->c);
+      }
+      break;  
     default:
       break;
   }
@@ -89,6 +120,16 @@ void update_state_mouse(State *state, Cursor *c) {
       }
       break;
 
+    case MULTI_MODE:
+      if (process_multi_mode_mouse(state->mm, c) == 1) {
+        state->current_state = MENU; // Go back to menu
+        destroy_multiMode(state->mm);
+        state->mm = NULL;
+        state->m = create_menu(state->loader);
+        reset_cursor_button_pressed(c);
+      }
+      break;
+
     case MENU:
       if (process_menu_input(c) == 1) {
         state->current_state = EXIT; // Exit game
@@ -100,40 +141,34 @@ void update_state_mouse(State *state, Cursor *c) {
         state->m = NULL;
         state->sm = create_singleMode(state->loader);
         reset_cursor_button_pressed(c);
-      }
-      break;
-
-    case DIED:
-      if (process_died_input(state->d, c) == 1) {
-        state->current_state = MENU; // Exit to the menu
-        destroy_died(state->d);
-        state->d = NULL;
-        state->m = create_menu(state->loader);
+      } else if (process_menu_input(c) == 3) {
+        state->current_state = MULTI_MODE; // Go to multi mode
+        destroy_menu(state->m);
+        state->m = NULL;
+        state->mm = create_multiMode(state->loader);
         reset_cursor_button_pressed(c);
       }
       break;
-
     default:
       break;
   }
 }
 
-void update_state_without_event(State *state) {
+void update_state_timer(State *state) {
   if (state == NULL) {
     panic("State is NULL");
   }
 
-  if (state->current_state == SINGLE_MODE) {
-    process_bomb_spawning(state->sm); // Process bomb spawning
-    if (check_bomb_exploded(state->sm)) {
-      state->current_state = DIED; // Go to died state
-      destroy_singleMode(state->sm);
-      state->sm = NULL;
-      state->d = create_died_page(state->loader);
-      reset_cursor_button_pressed(state->c);
-    }
-  }else{
-    return; // No need to check for other states
+  switch (state->current_state) {
+    case SINGLE_MODE:
+      process_single_mode_timer(state->sm);
+      break;
+
+    case MULTI_MODE:
+      process_multi_mode_timer(state->mm);
+      break;
+    default:
+      break;
   }
 }
 
@@ -147,12 +182,12 @@ void draw_state(State *state) {
       draw_singleMode(state->sm);
       break;
 
+    case MULTI_MODE:
+      draw_multiMode(state->mm);
+      break;
+      
     case MENU:
       draw_menu(state->m);
-      break;
-
-    case DIED:
-      draw_died(state->d);
       break;
 
     default:

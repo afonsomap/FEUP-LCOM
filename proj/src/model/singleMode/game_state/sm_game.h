@@ -1,9 +1,8 @@
-#ifndef _SINGLEMODE_H_
-#define _SINGLEMODE_H_
+#ifndef _SM_GAME_H_
+#define _SM_GAME_H_
 
 #include <lcom/lcf.h>
-#include <stddef.h>
-#include <math.h>
+
 #include "player.h"
 #include "bomb.h"
 #include "wall.h"
@@ -17,13 +16,8 @@
 #include "key_pressed.h"
 
 
-struct singleMode_imp;
-typedef struct singleMode_imp SingleMode;
-
-typedef enum {
-  GAME,
-  DIED
-} Sm_State;
+struct sm_game_imp;
+typedef struct sm_game_imp SmGame;
 
 /**
  * @brief Creates a new SingleMode object, which contains a player and a grid of walls
@@ -31,21 +25,21 @@ typedef enum {
  * @param loader Pointer to the SpriteLoader object
  * @return Pointer to the created SingleMode object, or NULL if the creation failed
  */
-SingleMode *create_singleMode(SpriteLoader *loader);
+SmGame *create_sm_game(SpriteLoader *loader);
 
 /**
  * @brief Destroys a SingleMode object, freeing all allocated memory
  * 
  * @param sm Pointer to the SingleMode object to be destroyed
  */
-void destroy_singleMode(SingleMode *sm);
+void destroy_sm_game(SmGame *smg);
 
 /**
  * @brief Draws the SingleMode object on the screen
  * 
  * @param sm Pointer to the SingleMode object to be drawn
  */
-void draw_singleMode(SingleMode *sm);
+void draw_sm_game(SmGame *smg);
 
 /**
  * @brief Processes the input from the keyboard
@@ -54,7 +48,7 @@ void draw_singleMode(SingleMode *sm);
  * @param key Pointer to the KeyPressed object containing the state of the keys
  * @return 0 if the game should continue, 1 go back to the menu
  */
-int process_single_mode_kbd(SingleMode *sm, KeyPressed *key);
+int process_sm_game_kbd(SmGame *smg, KeyPressed *key);
 
 /**
  * @brief Processes the input from the mouse
@@ -63,16 +57,31 @@ int process_single_mode_kbd(SingleMode *sm, KeyPressed *key);
  * @param c Pointer to the Cursor object
  * @return 0 if the game should continue, 1 go back to the menu
  */
-int process_single_mode_mouse(SingleMode *sm, Cursor *c);
+int process_sm_game_mouse(SmGame *smg, Cursor *c);
 
 /**
- * @brief Processes the timer events in the SingleMode object
+ * @brief Processes the game timer, checking for bomb spawning and explosions
  * 
  * @param sm Pointer to the SingleMode object
- * @return 0 if the game should continue, 1 go back to the menu
+ * @return 0 if the game should continue, 1 go back to the menu, 2 go to died state
  */
-int process_single_mode_timer(SingleMode *sm);
+int process_sm_game_timer(SmGame *smg);
+
+/**
+ * @brief Checks for wall collisions based on the player's position
+ * 
+ * @param sm Pointer to the SingleMode object
+ * @param x X position of the player
+ * @param y Y position of the player
+ * @return true if there is a wall collision, false otherwise
+ */
+static bool check_wall_collision(SmGame *sm, uint16_t x, uint16_t y);
 
 
-#endif /* _SINGLEMODE_H_ */
+static int process_bomb_spawning(SmGame *sm);
+
+static int check_bomb_exploded(SmGame *sm);
+
+
+#endif 
 

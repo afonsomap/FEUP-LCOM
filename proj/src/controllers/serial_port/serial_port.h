@@ -65,19 +65,19 @@ int sp_clear_buffers();
 void sp_ih();
 
 /**
- * @brief Gets the input queue for the serial port
- * 
- * @return Pointer to the input queue
- */
-Queue* get_in_queue();
-
-/**
  * @brief Processes a waiting guess from the serial port
  * 
  * @param val The value read from the serial port
  * @return 1 if the guessing game started, 0 otherwise
  */
 int processWaitingGuessSP(uint8_t val);
+
+/**
+ * @brief returns the next byte to be processed from the input queue
+ * 
+ * @return The next byte from the input queue, or 0 if the queue is empty
+ */
+uint8_t get_sp_byte();
 
 #endif // _SERIAL_PORT_H_
 
