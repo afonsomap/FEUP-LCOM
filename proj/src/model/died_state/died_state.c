@@ -65,7 +65,7 @@ void draw_died(Died *d, Score *score) {
   // Y positions
   int y_title = 150;
   int y_your_score = y_title + get_sprite_height(d->died_title);
-  int y_score_line = y_your_score + ((get_sprite_height(d->your_score)/2) - 20/2) - 2; //20/2 is the height / 2
+  int y_score_line = y_your_score + ((get_sprite_height(d->your_score)/2) - 20/2); //20/2 is the height / 2
 
   // Button Y positions
   int play_again_y = 700 - 200;
