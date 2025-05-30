@@ -78,7 +78,6 @@ void destroy_sm_game(SmGame *smg) {
   }
 
   destroy_bomb_options(smg->bomb_options);
-  destroy_score(smg->score);
   free(smg);
 }
 
