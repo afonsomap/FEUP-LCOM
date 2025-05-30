@@ -69,16 +69,19 @@ void draw_sprite(Sprite *sp, uint16_t x, uint16_t y) {
   }
 
   if (sp->type == BY_LINE) {
-    // If the sprite is of type BY_LINE, we can use a more efficient drawing method
     if (vg_draw_xpm_by_line(sp->map, x, y, sp->width, sp->height) != 0) {
-      return; // Handle error if needed
+      printf("Failed to draw sprite by line at (%d, %d)\n", x, y);
+      return; 
     }
   } else if (sp->type == FULL_IMAGE) {
-    // If the sprite is of type FULL_IMAGE, we can use a different drawing method
     if (vg_draw_xpm_by_image(sp->map, x, y, sp->width, sp->height) != 0) {
-      return; // Handle error if needed
+      printf("Failed to draw sprite by image at (%d, %d)\n", x, y);
+      return; 
+    }
+  } else {
+    if (vg_draw_xpm(sp->map, x, y, sp->width, sp->height) != 0) {
+      printf("Failed to draw sprite at (%d, %d)\n", x, y);
+      return; 
     }
   }
-  else 
-    vg_draw_xpm(sp->map, x, y, sp->width, sp->height);
 }

@@ -6,26 +6,33 @@ PROG=proj
 .PATH: ${.CURDIR}/controllers/keyboard_mouse
 .PATH: ${.CURDIR}/controllers/timer
 .PATH: ${.CURDIR}/controllers/graphics
+.PATH: ${.CURDIR}/controllers/serial_port
+.PATH: ${.CURDIR}/images
 .PATH: ${.CURDIR}/model/animSprite
 .PATH: ${.CURDIR}/model/sprite
 .PATH: ${.CURDIR}/model/bomb
 .PATH: ${.CURDIR}/model/player
 .PATH: ${.CURDIR}/model/wall
-.PATH: ${.CURDIR}/images
 .PATH: ${.CURDIR}/model/singleMode
+.PATH: ${.CURDIR}/model/singleMode/died_state
+.PATH: ${.CURDIR}/model/singleMode/game_state
+.PATH: ${.CURDIR}/model/multiMode/connection_state
+.PATH: ${.CURDIR}/model/multiMode/game_state
+.PATH: ${.CURDIR}/model/multiMode/winner_state
+.PATH: ${.CURDIR}/model/multiMode/
 .PATH: ${.CURDIR}/model/spriteLoader
 .PATH: ${.CURDIR}/model/cursor
 .PATH: ${.CURDIR}/model/explosion
 .PATH: ${.CURDIR}/model/menu
 .PATH: ${.CURDIR}/model/bomb_options
-.PATH: ${.CURDIR}/model/died_state
 .PATH: ${.CURDIR}/model/state
 .PATH: ${.CURDIR}/model/key_pressed
 .PATH: ${.CURDIR}/model/score
 
 
+
 # source code files
-SRCS = 	main.c kbc.c kbd.c mouse.c timer.c utils.c graphics.c animatedSprite.c sprite.c bomb.c player.c wall.c singleMode.c spriteLoader.c cursor.c explosion.c menu.c bomb_options.c died_state.c state.c key_pressed.c score.c 
+SRCS = 	main.c kbc.c kbd.c mouse.c timer.c utils.c graphics.c animatedSprite.c sprite.c bomb.c player.c wall.c singleMode.c spriteLoader.c cursor.c explosion.c menu.c bomb_options.c state.c key_pressed.c serial_port.c queue.c sm_died.c sm_game.c mm_connection.c mm_game.c mm_winner.c multiMode.c score.c
 
 # additional compilation flags
 CFLAGS += -pedantic -D_LCOM_OPTIMIZED_
@@ -35,13 +42,13 @@ CFLAGS += -pedantic -D_LCOM_OPTIMIZED_ \
           -I${.CURDIR}/controllers/keyboard_mouse \
           -I${.CURDIR}/controllers/timer \
           -I${.CURDIR}/controllers/graphics \
+          -I${.CURDIR}/controllers/serial_port \
           -I${.CURDIR}/model/animSprite \
           -I${.CURDIR}/model/sprite \
           -I${.CURDIR}/model/bomb \
           -I${.CURDIR}/model/player \
           -I${.CURDIR}/model/wall \
           -I${.CURDIR}/images \
-          -I${.CURDIR}/model/singleMode \
           -I${.CURDIR}/model/spriteLoader \
           -I${.CURDIR}/model/cursor \
           -I${.CURDIR}/model/explosion \
@@ -50,8 +57,14 @@ CFLAGS += -pedantic -D_LCOM_OPTIMIZED_ \
           -I${.CURDIR}/model/died_state \
           -I${.CURDIR}/model/state \
           -I${.CURDIR}/model/key_pressed \
+          -I${.CURDIR}/model/multiMode \
+          -I${.CURDIR}/model/multiMode/connection_state \
+          -I${.CURDIR}/model/multiMode/game_state \
+          -I${.CURDIR}/model/multiMode/winner_state \
+          -I${.CURDIR}/model/singleMode \
+          -I${.CURDIR}/model/singleMode/died_state \
+          -I${.CURDIR}/model/singleMode/game_state \
           -I${.CURDIR}/model/score
-
 
 
 # list of library dependencies

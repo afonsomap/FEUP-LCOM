@@ -1,7 +1,6 @@
 #ifndef MENU_H
 #define MENU_H
 
-
 #include <lcom/lcf.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -67,7 +66,7 @@ void draw_menu(Menu *m);
  * @param c Pointer to the Cursor object used for input.
  * @return 0 if no action is taken, 1 if the game should exit, or 2 if single mode is selected.
  */
-int process_menu_input(Cursor *c);
+int process_menu_mouse(Menu *m, Cursor *cursor);
 
 #endif
 

@@ -130,16 +130,6 @@ Sprite* get_died_title(SpriteLoader *loader);
 Sprite* get_died_background(SpriteLoader *loader);
 Sprite* get_play_again(SpriteLoader *loader);
 Sprite* get_back_to_menu(SpriteLoader *loader);
-Sprite* get_number_0(SpriteLoader *loader);
-Sprite* get_number_1(SpriteLoader *loader);
-Sprite* get_number_2(SpriteLoader *loader);
-Sprite* get_number_3(SpriteLoader *loader);
-Sprite* get_number_4(SpriteLoader *loader);
-Sprite* get_number_5(SpriteLoader *loader);
-Sprite* get_number_6(SpriteLoader *loader);
-Sprite* get_number_7(SpriteLoader *loader);
-Sprite* get_number_8(SpriteLoader *loader);
-Sprite* get_number_9(SpriteLoader *loader);
-Sprite* get_number_sprite(int number, SpriteLoader *loader);
+Sprite* get_number_sprite(SpriteLoader *loader, int number);
 Sprite* get_your_score_text(SpriteLoader *loader);
 #endif

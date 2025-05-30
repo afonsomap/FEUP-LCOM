@@ -55,7 +55,8 @@ void draw_menu(Menu *m) {
 // 0 NO ACTION
 // 1 Leave game  
 // 2 Single mode game
-int process_menu_input(Cursor *cursor) {
+// 3 Multiplayer mode game
+int process_menu_mouse(Menu *m, Cursor *cursor) {
   if (get_cursor_button_pressed(cursor, 0)) { // Left mouse button pressed
     uint16_t cursor_x = get_cursor_Xpos(cursor);
     uint16_t cursor_y = get_cursor_Ypos(cursor);
@@ -64,6 +65,12 @@ int process_menu_input(Cursor *cursor) {
     if (cursor_x >= CURSOR_BUTTON_LEFT_X_POSITION && cursor_x <= CURSOR_BUTTON_RIGHT_X_POSITION &&
         cursor_y >= CURSOR_BUTTON_TOP_SINGLE_Y_POSITION && cursor_y <= CURSOR_BUTTON_BOTTOM_SINGLE_Y_POSITION) {
       return 2; // Goes to single mode
+    }
+
+    // Check if the cursor is over the "Multiplayer Mode" button
+    if (cursor_x >= CURSOR_BUTTON_LEFT_X_POSITION && cursor_x <= CURSOR_BUTTON_RIGHT_X_POSITION &&
+        cursor_y >= CURSOR_BUTTON_TOP_MULTI_Y_POSITION && cursor_y <= CURSOR_BUTTON_BOTTOM_MULTI_Y_POSITION) {
+      return 3; // Goes to multiplayer mode
     }
 
     // Check if the cursor is over the "Exit" button

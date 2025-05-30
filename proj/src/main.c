@@ -7,6 +7,8 @@
 #include "cursor.h"
 #include "state.h"
 #include "key_pressed.h"
+#include "serial_port.h"
+#include "queue.h"
 
 static SpriteLoader *loader = NULL;
 static Cursor *c = NULL;
@@ -14,26 +16,14 @@ static KeyPressed *key_pressed = NULL;
 static State *state = NULL;
 
 int main(int argc, char *argv[]) {
-  // sets the language of LCF messages (can be either EN-US or PT-PT)
   lcf_set_language("EN-US");
-
-  // enables to log function invocations that are being "wrapped" by LCF
-  // [comment this out if you don't want/need it]
   lcf_trace_calls("/home/lcom/labs/lab5/trace.txt");
-
-  // enables to save the output of printf function calls on a file
-  // [comment this out if you don't want/need it]
   lcf_log_output("/home/lcom/labs/lab5/output.txt");
 
-  // handles control over to LCF
-  // [LCF handles command line arguments and invokes the right function]
   if (lcf_start(argc, argv))
     return 1;
 
-  // LCF clean up tasks
-  // [must be the last statement before return]
   lcf_cleanup();
-
   return 0;
 }
 
@@ -43,7 +33,7 @@ void interrups_loop() {
     return;
   }
 
-  uint8_t bit_no_timer, bit_no_kbd, bit_no_mouse;
+  uint8_t bit_no_timer, bit_no_kbd, bit_no_mouse, bit_no_serial;
   int ipc_status;
   message msg;
 
@@ -59,10 +49,15 @@ void interrups_loop() {
     printf("Error subscribing mouse interrupts\n");
     return;
   }
+  if (sp_subscribe_int(&bit_no_serial) != 0) {
+    printf("Error subscribing serial port interrupts\n");
+    return;
+  }
 
   uint32_t irq_set_timer = BIT(bit_no_timer);
   uint32_t irq_set_kbd = BIT(bit_no_kbd);
   uint32_t irq_set_mouse = BIT(bit_no_mouse);
+  uint32_t irq_set_serial = BIT(bit_no_serial);
 
   uint8_t *scancode = get_scancode();
 
@@ -75,6 +70,10 @@ void interrups_loop() {
       switch(_ENDPOINT_P(msg.m_source)){
         case HARDWARE:
 
+          if (msg.m_notify.interrupts & irq_set_serial) {
+            sp_ih(); 
+          }
+
           if (msg.m_notify.interrupts & irq_set_kbd) {
             kbc_ih();
 
@@ -85,10 +84,10 @@ void interrups_loop() {
 
           if (msg.m_notify.interrupts & irq_set_timer) {
             timer_int_handler();
-            if (timer_get_count() % 2 == 0) { // 30 FPSc
+            if (timer_get_count() % 2 == 0) { // 30 FPS
               clear_back_buffer();
-          
-              update_state(state, key_pressed, c);
+
+              update_state(state, key_pressed, c, get_sp_byte());
               draw_state(state);
 
               vg_flip_buffer();
@@ -111,6 +110,11 @@ void interrups_loop() {
           break;
       }
     }
+  }
+
+  if (sp_unsubscribe_int() != 0) {
+    printf("Error unsubscribing serial port interrupts\n");
+    return;
   }
 
   if (mouse_unsubscribe_int() != 0) {
@@ -136,6 +140,7 @@ int (proj_main_loop)(int argc, char *argv[]) {
 
   map_graphics_vram(VBE_1024p_DC);
   set_video_mode(VBE_1024p_DC);
+  sp_init();
 
   loader = load_sprites();
   key_pressed = key_pressed_create();
@@ -149,6 +154,7 @@ int (proj_main_loop)(int argc, char *argv[]) {
   key_pressed_destroy(key_pressed);
   destroy_sprites(loader);
 
+  sp_exit();
   vg_exit();
 
   return 0;

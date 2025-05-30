@@ -1,20 +1,19 @@
-#include "died_state.h"
+#include "sm_died.h"
 
-struct died_imp {
+struct SmDied_imp {
   Sprite *died_title;
   Sprite *died_background;
   Sprite *back_to_menu;
   Sprite *play_again;
-  Sprite *exit_button;
   Sprite *your_score;
   uint16_t xPos_title;
   uint16_t xPos_button;
   uint16_t yPos_button;
-  Score *score;
+  Score *score; 
 };
 
-Died* create_died_page(SpriteLoader *loader, Score *score) {
-  Died *d = (Died *) malloc(sizeof(Died));
+SmDied* create_sm_died(SpriteLoader *loader, Score *score) {
+  SmDied *d = (SmDied *) malloc(sizeof(SmDied));
   if (d == NULL) {
     return NULL;
   }
@@ -25,44 +24,41 @@ Died* create_died_page(SpriteLoader *loader, Score *score) {
   d->died_title = get_died_title(loader);
   d->your_score = get_your_score_text(loader);
 
-  if (d->died_background == NULL || d->exit_button == NULL) {
-    destroy_died(d);
+  if (d->died_background == NULL) {
+    destroy_sm_died(d);
     return NULL;
   }
 
   d->xPos_title = (get_mode_info().XResolution - get_sprite_width(d->died_title)) / 2;
-  d->xPos_button = (get_mode_info().XResolution - get_sprite_width(d->exit_button)) / 2;
+  d->xPos_button = (get_mode_info().XResolution - get_sprite_width(d->back_to_menu)) / 2;
   d->yPos_button = 700; // Fixed position for the button
-
   d->score = score;
 
   return d;
 }
 
-void destroy_died(Died *d) {
+void destroy_sm_died(SmDied *d) {
+  if (d == NULL) {
+    return;
+  }
+  free(d);
+}
+
+void draw_sm_died(SmDied *d) {
   if (d == NULL) {
     return;
   }
 
-  free(d);
-}
-
-void draw_died(Died *d, Score *score) {
-  if (d == NULL) return;
-
   int screen_center_x = get_mode_info().XResolution / 2;
 
-  // Get widths
-  int your_score_width = get_sprite_width(d->your_score);
-  int score_width = 14; // ← you must implement this
 
-  // Combined width of "Your Score" + actual score
+  int your_score_width = get_sprite_width(d->your_score);
+  int score_width = 14; 
+
   int total_width = your_score_width + 10 + score_width;
 
-  // X offset so the combined line is centered
   int start_x = screen_center_x - total_width / 2;
 
-  // Y positions
   int y_title = 150;
   int y_your_score = y_title + get_sprite_height(d->died_title);
   int y_score_line = y_your_score + ((get_sprite_height(d->your_score)/2) - 20/2); //20/2 is the height / 2
@@ -78,29 +74,46 @@ void draw_died(Died *d, Score *score) {
   // Draw everything
   draw_sprite(d->died_background, 0, 0);
   draw_sprite(d->died_title, screen_center_x - get_sprite_width(d->died_title) / 2, y_title);
-
   draw_sprite(d->your_score, start_x, y_your_score);
-  draw_score_at(score, start_x + total_width - score_width - 10, y_score_line);
-
+  draw_score(d->score, start_x + total_width - score_width - 10, y_score_line);
   draw_sprite(d->play_again, play_again_x, play_again_y);
   draw_sprite(d->back_to_menu, back_to_menu_x, back_to_menu_y);
 }
 
-int process_died_input(Died *d, Cursor *cursor) {
-  if (get_cursor_button_pressed(cursor, 0)) { // Left mouse button pressed
+// 0 Continue game
+// 1 Go back to menu
+int process_sm_died_mouse(SmDied *d, Cursor *cursor) {
+  if (d == NULL || cursor == NULL) {
+    return 1; 
+  }
 
-    // Check if the cursor is over the "Exit" button
-    if (get_cursor_Xpos(cursor) >= d->xPos_button && get_cursor_Xpos(cursor) <= d->xPos_button + get_sprite_width(d->exit_button) &&
-        get_cursor_Ypos(cursor) >=  d->yPos_button && get_cursor_Ypos(cursor) <= d->yPos_button + get_sprite_height(d->exit_button)) {
-      return 1; // Exit the game
+  // Left mouse button pressed
+  if (get_cursor_button_pressed(cursor, 0)) {
+    uint16_t cursor_x = get_cursor_Xpos(cursor);
+    uint16_t cursor_y = get_cursor_Ypos(cursor);
+
+    if (cursor_x >= d->xPos_button && cursor_x <= d->xPos_button + get_sprite_width(d->back_to_menu) && cursor_y >=  d->yPos_button && cursor_y <= d->yPos_button + get_sprite_height(d->back_to_menu)) {
+      return 1;
     }
 
-    // Check if the cursor is over the "Play Again" button
-    if (get_cursor_Xpos(cursor) >= d->xPos_button && get_cursor_Xpos(cursor) <= d->xPos_button + get_sprite_width(d->play_again) &&
-        get_cursor_Ypos(cursor) >=  d->yPos_button - 200 && get_cursor_Ypos(cursor) <= d->yPos_button - 200 + get_sprite_height(d->play_again)) {
+    if (cursor_x >= d->xPos_button && cursor_x <= d->xPos_button + get_sprite_width(d->play_again) && cursor_y >=  d->yPos_button - 200 && cursor_y <= d->yPos_button - 200 + get_sprite_height(d->play_again)) {
       return 2; // Play again
     }
   }
 
-  return 0; // Continue the game
+  return 0; 
+}
+
+// 0 Continue in the died state
+// 1 Exit to menu
+int process_sm_died_kbd(SmDied *d, KeyPressed *key) {
+  if (d == NULL || key == NULL) {
+    return 1;
+  }
+
+  if (is_esc_pressed(key)) {
+    return 1; 
+  }
+
+  return 0;
 }

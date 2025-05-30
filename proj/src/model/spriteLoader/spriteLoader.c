@@ -179,6 +179,19 @@ void destroy_sprites(SpriteLoader *loader) {
   destroy_sprite(loader->back_to_menu);
   destroy_sprite(loader->play_again);
   destroy_sprite(loader->your_score);
+  destroy_anim_sprite(loader->explosion);
+  destroy_sprite(loader->player1_standing);
+  destroy_sprite(loader->player2_standing);
+  destroy_sprite(loader->number_0);
+  destroy_sprite(loader->number_1);
+  destroy_sprite(loader->number_2); 
+  destroy_sprite(loader->number_3);
+  destroy_sprite(loader->number_4);
+  destroy_sprite(loader->number_5);
+  destroy_sprite(loader->number_6);
+  destroy_sprite(loader->number_7);
+  destroy_sprite(loader->number_8);
+  destroy_sprite(loader->number_9);
   for (int i = 0; i < 3; i++) {
     destroy_sprite(loader->bomb_options[i]);
     destroy_sprite(loader->selected_options[i]);
@@ -285,58 +298,18 @@ Sprite* get_your_score_text(SpriteLoader *loader) {
   return loader->your_score;
 }
 
-Sprite* get_number_0(SpriteLoader *loader) {
-  return loader->number_0;
-}
-
-Sprite* get_number_1(SpriteLoader *loader) {
-  return loader->number_1;
-}
-
-Sprite* get_number_2(SpriteLoader *loader) {
-  return loader->number_2;
-}
-
-Sprite* get_number_3(SpriteLoader *loader) {
-  return loader->number_3;
-}
-
-Sprite* get_number_4(SpriteLoader *loader) {
-  return loader->number_4;
-}
-
-Sprite* get_number_5(SpriteLoader *loader) {
-  return loader->number_5;
-}
-
-Sprite* get_number_6(SpriteLoader *loader) {
-  return loader->number_6;
-}
-
-Sprite* get_number_7(SpriteLoader *loader) {
-  return loader->number_7;
-}
-
-Sprite* get_number_8(SpriteLoader *loader) {
-  return loader->number_8;
-}
-
-Sprite* get_number_9(SpriteLoader *loader) {
-  return loader->number_9;
-}
-
-Sprite* get_number_sprite(int number, SpriteLoader *loader) {
+Sprite* get_number_sprite(SpriteLoader* loader, int number) {
   switch (number) {
-    case 0: return get_number_0(loader);
-    case 1: return get_number_1(loader);
-    case 2: return get_number_2(loader);
-    case 3: return get_number_3(loader);
-    case 4: return get_number_4(loader);
-    case 5: return get_number_5(loader);
-    case 6: return get_number_6(loader);
-    case 7: return get_number_7(loader);
-    case 8: return get_number_8(loader);
-    case 9: return get_number_9(loader);
+    case 0: return loader->number_0;
+    case 1: return loader->number_1;
+    case 2: return loader->number_2;
+    case 3: return loader->number_3;
+    case 4: return loader->number_4;
+    case 5: return loader->number_5;
+    case 6: return loader->number_6;
+    case 7: return loader->number_7;
+    case 8: return loader->number_8;
+    case 9: return loader->number_9;
     default: return NULL; // Invalid number
   }
 }

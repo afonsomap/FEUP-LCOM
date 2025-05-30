@@ -2,13 +2,12 @@
 #define _STATE_H_
 
 #include <lcom/lcf.h>
+#include "key_pressed.h"
 #include "cursor.h"
+#include "multiMode.h"
 #include "singleMode.h"
 #include "menu.h"
-#include "died_state.h"
 #include "spriteLoader.h"
-#include "key_pressed.h"
-#include "score.h"
 
 struct state_imp;
 typedef struct state_imp State;
@@ -16,7 +15,7 @@ typedef struct state_imp State;
 typedef enum {
   MENU,
   SINGLE_MODE,
-  DIED,
+  MULTI_MODE,
   EXIT
 } GameState;
 
@@ -43,7 +42,15 @@ void destroy_state(State *state);
  * @param keys Array of boolean values representing the state of the keys
  * @param c Pointer to the Cursor object
  */
-void update_state(State *state, KeyPressed *key, Cursor *c);
+void update_state(State *state, KeyPressed *key, Cursor *c, uint8_t sp_byte);
+
+/**
+ * @brief Updates the state of the game based on the serial port input
+ * 
+ * @param state Pointer to the State object
+ * @param sp_byte Byte received from the serial port
+ */
+void update_state_sp(State *state, uint8_t sp_byte);
 
 /**
  * @brief Updates the state of the game based on the input from the keyboard
@@ -68,7 +75,7 @@ void update_state_mouse(State *state, Cursor *c);
  * 
  * @param state Pointer to the State object
  */
-void update_state_without_event(State *state);
+void update_state_timer(State *state);
 
 /**
  * @brief Draws the current state of the game on the screen

@@ -77,21 +77,19 @@ void destroy_bomb_options(BombOptions *b);
  */
 void draw_bomb_options(BombOptions *b, int selected_option);
 
-void set_bomb_unavailable(BombOptions *b, BombType type);
+void set_bomb_on_cooldown(BombOptions *b, BombType type);
 
-bool isBombAvailable(BombOptions *b, BombType type);
+bool is_bomb_off_cooldown(BombOptions *b, BombType type);
 
-void decrease_time_availability(BombOptions *b);
+void decrease_cooldown_time(BombOptions *b);
 
-void decrease_time_spawning(BombOptions *b);
+void decrease_time_until_spawn(BombOptions *b);
 
 bool is_spawning(BombOptions *b);
 
-void set_spawn_rate(BombOptions *b);
+void reset_time_until_spawn(BombOptions *b);
 
-BombType get_random_bomb();
-
-void print_availability_counters(BombOptions *b);
+BombType get_random_bomb_type();
 
 
 #endif /* __BOMB_OPTIONS_H */
