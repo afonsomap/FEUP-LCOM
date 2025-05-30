@@ -1,7 +1,8 @@
 #include "sm_died.h"
 
 struct SmDied_imp {
-  int16_t xPos_title; // X position for the title
+  uint16_t xPos_title; // X position for the title
+  uint16_t xPos_your_score; // X position for the your score text
   Sprite *died_title;
   Sprite *died_background;
   Sprite *your_score;
@@ -28,15 +29,8 @@ SmDied* create_sm_died(SpriteLoader *loader, Score *score) {
   d->back_to_menu = create_button(back_x, back_y, get_back_to_menu(loader));
   d->play_again = create_button(again_x, again_y, get_play_again(loader));
 
-  int screen_center_x = get_mode_info().XResolution / 2;
-
-  d->xPos_pa = screen_center_x - get_sprite_width(d->play_again) / 2;
-  d->yPos_pa = 700 - 200;
-
-  d->xPos_gbm = screen_center_x - get_sprite_width(d->play_again) / 2;
-  d->yPos_gbm = 700;
-
   d->xPos_title = (get_mode_info().XResolution - get_sprite_width(d->died_title)) / 2;
+  d->xPos_your_score = (get_mode_info().XResolution - get_sprite_width(d->your_score)) / 2;
   d->score = score;
 
   return d;
@@ -56,8 +50,8 @@ void draw_sm_died(SmDied *d) {
 
   draw_sprite(d->died_background, 0, 0);
   draw_sprite(d->died_title, d->xPos_title, 150);
-  draw_sprite(d->your_score, d->xPos_title + 150, 250);
-  draw_score(d->score, d->xPos_title + 150 +  get_sprite_width(d->your_score), 270);
+  draw_sprite(d->your_score, d->xPos_your_score, 270);
+  draw_score(d->score, d->xPos_your_score + 150, 370);
   draw_button(d->play_again);
   draw_button(d->back_to_menu);
 }
