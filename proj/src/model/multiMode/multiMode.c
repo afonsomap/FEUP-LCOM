@@ -15,6 +15,7 @@ MultiMode *create_multiMode(SpriteLoader *loader) {
     return NULL;
   }
   
+  sp_clear_buffers(); // Clear the serial port buffer
   mm->mm_connection = create_mm_connection(loader);
   if (mm->mm_connection == NULL) {
     free(mm);
@@ -81,12 +82,16 @@ int process_multi_mode_kbd(MultiMode *mm, KeyPressed *key) {
   switch (mm->current_state) {
     case MM_GAME:
       if (process_mm_game_kbd(mm->mm_game, key) == 1) {
+        destroy_mm_game(mm->mm_game);
+        mm->mm_game = NULL; // Clear the game state
         return 1; // Go back to menu
       }
       break;
 
     case MM_WINNER:
       if (process_mm_winner_kbd(mm->mm_winner, key) == 1) {
+        destroy_mm_winner(mm->mm_winner);
+        mm->mm_winner = NULL; // Clear the winner state
         return 1; // Go back to menu
       }
       break;
@@ -105,22 +110,38 @@ int process_multi_mode_mouse(MultiMode *mm, Cursor *c) {
     return 1; // Go back to menu
   }
 
+  int ret;
   switch (mm->current_state) {
     case MM_CONNECTION:
       if (process_mm_connection_mouse(mm->mm_connection, c) == 1) {
+        destroy_mm_connection(mm->mm_connection);
+        mm->mm_connection = NULL; // Clear the connection state
         return 1; // Go back to menu
       }
       break;
 
     case MM_GAME:
       if (process_mm_game_mouse(mm->mm_game, c) == 1) {
+        destroy_mm_game(mm->mm_game);
+        mm->mm_game = NULL; // Clear the game state
         return 1; // Go back to menu
       }
       break;
 
     case MM_WINNER:
-      if (process_mm_winner_mouse(mm->mm_winner, c) == 1) {
+      ret = process_mm_winner_mouse(mm->mm_winner, c);
+      if (ret == 1) {
+        destroy_mm_winner(mm->mm_winner);
+        mm->mm_winner = NULL; // Clear the winner state
         return 1; // Go back to menu
+      } else if (ret == 2) {
+        destroy_mm_winner(mm->mm_winner);
+        mm->mm_winner = NULL; // Clear the winner state
+        mm->current_state = MM_CONNECTION; // Go back to game state
+        mm->mm_connection = create_mm_connection(mm->loader);
+        if (mm->mm_connection == NULL) {
+          return 1; // Go back to menu if connection creation failed
+        }
       }
       break;
 
@@ -143,6 +164,8 @@ int process_multi_mode_timer(MultiMode *mm) {
 
     case MM_CONNECTION:
       if (process_mm_connection_timer(mm->mm_connection) == 1) {
+        destroy_mm_connection(mm->mm_connection);
+        mm->mm_connection = NULL; // Clear the connection state
         return 1; // Go back to menu
       }
       break;
@@ -158,6 +181,8 @@ int process_multi_mode_timer(MultiMode *mm) {
         destroy_mm_game(mm->mm_game);
         mm->mm_game = NULL; // Clear the game state
       }else if(ret == 1) {
+        destroy_mm_game(mm->mm_game);
+        mm->mm_game = NULL; // Clear the game state
         return 1; // Go back to menu
       }
       break;
@@ -179,8 +204,11 @@ int process_multi_mode_sp(MultiMode *mm, uint8_t byte){
   int ret;
   switch (mm->current_state) {
     case MM_CONNECTION:
+      if (mm->mm_connection == NULL) break;
       ret = process_mm_connection_sp(mm->mm_connection, byte);
       if (ret == -1) {
+        destroy_mm_connection(mm->mm_connection);
+        mm->mm_connection = NULL;
         return 1; // Go back to menu
       }else if (ret == 1) {
         mm->current_state = MM_GAME; 
@@ -202,7 +230,10 @@ int process_multi_mode_sp(MultiMode *mm, uint8_t byte){
       break;
 
     case MM_GAME:
+      if (mm->mm_game == NULL) break;
       if (process_mm_game_sp(mm->mm_game, byte) == 1) {
+        destroy_mm_game(mm->mm_game);
+        mm->mm_game = NULL;
         return 1; // Go back to menu
       }
       break;

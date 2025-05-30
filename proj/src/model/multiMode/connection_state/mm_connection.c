@@ -32,6 +32,7 @@ void destroy_mm_connection(MmConnection *mm_connection) {
   if (mm_connection == NULL) {
     return;
   }
+  destroy_button(mm_connection->leave);
   free(mm_connection);
 }
 

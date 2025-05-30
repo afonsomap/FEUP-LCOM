@@ -52,7 +52,7 @@ MmGame *create_mm_game(SpriteLoader *loader, uint8_t player_number) {
   mm_game->grid_square_width = get_sprite_width(get_wall(loader));
   mm_game->grid_background = get_grid_background(loader); 
   mm_game->game_background = get_game_background(loader);
-  mm_game->exit = create_button(10, 10, get_exit(loader));
+  mm_game->exit = create_button(0, 0, get_exit(loader));
 
   if (player_number == 1) {
     mm_game->my_player = create_player(1 * mm_game->grid_square_width, 1 * mm_game->grid_square_width, get_player1_left(loader), get_player1_right(loader), get_player1_up(loader), get_player1_down(loader), get_player1_standing(loader));
@@ -63,6 +63,7 @@ MmGame *create_mm_game(SpriteLoader *loader, uint8_t player_number) {
   }
   if (mm_game->my_player == NULL || mm_game->other_player == NULL) {
     free(mm_game);
+    printf("Error creating players in mm_game\n");
     return NULL;
   }
 
