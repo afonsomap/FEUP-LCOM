@@ -43,6 +43,10 @@ struct sprite_loader_imp {
   Sprite *number_9;
   Sprite *waiting_connection;
   Sprite *warning_connection;
+  Sprite *winners_background;
+  Sprite *you_won;
+  Sprite *you_lost;
+  Sprite *draw;
 };
 
 SpriteLoader* load_sprites() {
@@ -147,10 +151,12 @@ SpriteLoader* load_sprites() {
   loader->number_7 = create_sprite((xpm_map_t)number_7_xpm, BY_PIXEL);
   loader->number_8 = create_sprite((xpm_map_t)number_8_xpm, BY_PIXEL);
   loader->number_9 = create_sprite((xpm_map_t)number_9_xpm, BY_PIXEL);
-
   loader->warning_connection = create_sprite((xpm_map_t)warning_connection_xpm, BY_PIXEL);
   loader->waiting_connection = create_sprite((xpm_map_t)waiting_connection_xpm, BY_PIXEL);
-
+  loader->winners_background = create_sprite((xpm_map_t)died_background_xpm, BY_LINE);
+  loader->you_won = create_sprite((xpm_map_t)you_won_xpm, BY_PIXEL);
+  loader->you_lost = create_sprite((xpm_map_t)you_lost_xpm, BY_PIXEL);
+  loader->draw = create_sprite((xpm_map_t)draw_xpm, BY_PIXEL);
   return loader;
 }
 
@@ -197,6 +203,12 @@ void destroy_sprites(SpriteLoader *loader) {
   destroy_sprite(loader->number_7);
   destroy_sprite(loader->number_8);
   destroy_sprite(loader->number_9);
+  destroy_sprite(loader->winners_background);
+  destroy_sprite(loader->you_won);
+  destroy_sprite(loader->you_lost);
+  destroy_sprite(loader->draw);
+
+
   for (int i = 0; i < 3; i++) {
     destroy_sprite(loader->bomb_options[i]);
     destroy_sprite(loader->selected_options[i]);
@@ -324,4 +336,16 @@ Sprite* get_warning_connection(SpriteLoader *loader) {
 }
 Sprite* get_waiting_connection(SpriteLoader *loader) {
   return loader->waiting_connection;
+}
+Sprite* get_winners_background(SpriteLoader *loader) {
+  return loader->winners_background;
+}
+Sprite* get_winners_you_won(SpriteLoader *loader) {
+  return loader->you_won;
+}
+Sprite* get_winners_you_lost(SpriteLoader *loader) {
+  return loader->you_lost;
+}
+Sprite* get_winners_draw(SpriteLoader *loader) {
+  return loader->draw;
 }

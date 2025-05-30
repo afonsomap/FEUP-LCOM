@@ -18,6 +18,7 @@ SmDied* create_sm_died(SpriteLoader *loader, Score *score) {
     return NULL;
   }
 
+  
   d->died_background = get_died_background(loader);
   d->back_to_menu = get_back_to_menu(loader);
   d->play_again = get_play_again(loader);
@@ -53,7 +54,7 @@ void draw_sm_died(SmDied *d) {
 
 
   int your_score_width = get_sprite_width(d->your_score);
-  int score_width = 14; 
+  int score_width = 50; 
 
   int total_width = your_score_width + 10 + score_width;
 
@@ -61,7 +62,7 @@ void draw_sm_died(SmDied *d) {
 
   int y_title = 150;
   int y_your_score = y_title + get_sprite_height(d->died_title);
-  int y_score_line = y_your_score + ((get_sprite_height(d->your_score)/2) - 20/2); //20/2 is the height / 2
+  int y_score_line = y_your_score + ((get_sprite_height(d->your_score)/2) - 36/2); //36/2 is the height / 2
 
   // Button Y positions
   int play_again_y = 700 - 200;
