@@ -1,7 +1,7 @@
 #ifndef _QUEUE_H_
 #define _QUEUE_H_
 
-#define QUEUESIZE 64
+#define QUEUESIZE 128
 
 #include <lcom/lcf.h>
 
