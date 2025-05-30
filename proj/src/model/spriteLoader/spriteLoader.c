@@ -41,6 +41,8 @@ struct sprite_loader_imp {
   Sprite *number_7;
   Sprite *number_8;
   Sprite *number_9;
+  Sprite *waiting_connection;
+  Sprite *warning_connection;
 };
 
 SpriteLoader* load_sprites() {
@@ -145,6 +147,9 @@ SpriteLoader* load_sprites() {
   loader->number_7 = create_sprite((xpm_map_t)number_7_xpm, BY_PIXEL);
   loader->number_8 = create_sprite((xpm_map_t)number_8_xpm, BY_PIXEL);
   loader->number_9 = create_sprite((xpm_map_t)number_9_xpm, BY_PIXEL);
+
+  loader->warning_connection = create_sprite((xpm_map_t)warning_connection_xpm, BY_PIXEL);
+  loader->waiting_connection = create_sprite((xpm_map_t)waiting_connection_xpm, BY_PIXEL);
 
   return loader;
 }
@@ -312,4 +317,11 @@ Sprite* get_number_sprite(SpriteLoader* loader, int number) {
     case 9: return loader->number_9;
     default: return NULL; // Invalid number
   }
+}
+
+Sprite* get_warning_connection(SpriteLoader *loader) {
+  return loader->warning_connection;
+}
+Sprite* get_waiting_connection(SpriteLoader *loader) {
+  return loader->waiting_connection;
 }
