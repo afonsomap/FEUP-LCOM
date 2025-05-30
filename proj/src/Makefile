@@ -27,11 +27,12 @@ PROG=proj
 .PATH: ${.CURDIR}/model/bomb_options
 .PATH: ${.CURDIR}/model/state
 .PATH: ${.CURDIR}/model/key_pressed
+.PATH: ${.CURDIR}/model/score
 
 
 
 # source code files
-SRCS = 	main.c kbc.c kbd.c mouse.c timer.c utils.c graphics.c animatedSprite.c sprite.c bomb.c player.c wall.c singleMode.c spriteLoader.c cursor.c explosion.c menu.c bomb_options.c state.c key_pressed.c serial_port.c queue.c sm_died.c sm_game.c mm_connection.c mm_game.c mm_winner.c multiMode.c
+SRCS = 	main.c kbc.c kbd.c mouse.c timer.c utils.c graphics.c animatedSprite.c sprite.c bomb.c player.c wall.c singleMode.c spriteLoader.c cursor.c explosion.c menu.c bomb_options.c state.c key_pressed.c serial_port.c queue.c sm_died.c sm_game.c mm_connection.c mm_game.c mm_winner.c multiMode.c score.c
 
 # additional compilation flags
 CFLAGS += -pedantic -D_LCOM_OPTIMIZED_
@@ -62,7 +63,9 @@ CFLAGS += -pedantic -D_LCOM_OPTIMIZED_ \
           -I${.CURDIR}/model/multiMode/winner_state \
           -I${.CURDIR}/model/singleMode \
           -I${.CURDIR}/model/singleMode/died_state \
-          -I${.CURDIR}/model/singleMode/game_state
+          -I${.CURDIR}/model/singleMode/game_state \
+          -I${.CURDIR}/model/score
+
 
 # list of library dependencies
 DPADD += ${LIBLCF}

@@ -13,6 +13,7 @@
 #include "explosion.h"
 #include "bomb_options.h"
 #include "key_pressed.h"
+#include "score.h"
 
 
 struct sm_game_imp;
@@ -27,7 +28,7 @@ typedef struct sm_game_imp SmGame;
  * @param loader Pointer to the SpriteLoader object
  * @return Pointer to the created SingleMode object, or NULL if the creation failed
  */
-SmGame *create_sm_game(SpriteLoader *loader);
+SmGame *create_sm_game(SpriteLoader *loader, Score* score);
 
 /**
  * @brief Destroys a SingleMode object, freeing all allocated memory

@@ -77,6 +77,22 @@
 #include "images/single_player/exit_sp.xpm"
 
 #include "images/died/died_text.xpm"
+#include "images/died/died_background.xpm"
+#include "images/died/play_again.xpm"
+#include "images/died/back_to_menu.xpm"
+#include "images/died/your_score.xpm"
+
+#include "images/numbers/number_0.xpm"
+#include "images/numbers/number_1.xpm"
+#include "images/numbers/number_2.xpm"
+#include "images/numbers/number_3.xpm"
+#include "images/numbers/number_4.xpm"
+#include "images/numbers/number_5.xpm"
+#include "images/numbers/number_6.xpm"
+#include "images/numbers/number_7.xpm"
+#include "images/numbers/number_8.xpm"
+#include "images/numbers/number_9.xpm"
+
 
 struct sprite_loader_imp;
 typedef struct sprite_loader_imp SpriteLoader;
@@ -111,5 +127,9 @@ Sprite** get_bomb_options(SpriteLoader *loader);
 Sprite** get_selected_options(SpriteLoader *loader);
 Sprite* get_game_background(SpriteLoader *loader);
 Sprite* get_died_title(SpriteLoader *loader);
-
+Sprite* get_died_background(SpriteLoader *loader);
+Sprite* get_play_again(SpriteLoader *loader);
+Sprite* get_back_to_menu(SpriteLoader *loader);
+Sprite* get_number_sprite(SpriteLoader *loader, int number);
+Sprite* get_your_score_text(SpriteLoader *loader);
 #endif

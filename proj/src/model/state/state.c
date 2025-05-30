@@ -130,7 +130,7 @@ void update_state_mouse(State *state, Cursor *c) {
         state->mm = NULL;
         state->m = create_menu(state->loader);
         reset_cursor_button_pressed(c);
-      }
+      } 
       break;
 
     case MENU:

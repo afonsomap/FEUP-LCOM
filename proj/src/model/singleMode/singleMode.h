@@ -8,7 +8,7 @@
 #include "key_pressed.h"
 #include "sm_game.h"
 #include "sm_died.h"
-
+#include "score.h"
 
 
 struct singleMode_imp;
@@ -66,6 +66,8 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c);
  * @return 0 if the game should continue, 1 go back to the menu
  */
 int process_single_mode_timer(SingleMode *sm);
+
+
 
 
 #endif /* _SINGLEMODE_H_ */

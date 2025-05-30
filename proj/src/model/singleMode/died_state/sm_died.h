@@ -8,6 +8,7 @@
 #include "spriteLoader.h"
 #include "cursor.h"
 #include "key_pressed.h"
+#include "score.h"
 
 
 struct SmDied_imp;
@@ -19,7 +20,7 @@ typedef struct SmDied_imp SmDied;
  * @param loader Pointer to the SpriteLoader object
  * @return Pointer to the created SmDied object, or NULL if the creation failed
  */
-SmDied* create_sm_died(SpriteLoader *loader);
+SmDied* create_sm_died(SpriteLoader *loader, Score *score);
 
 /**
  * @brief Destroys a SmDied object, freeing all allocated memory
@@ -39,7 +40,7 @@ void draw_sm_died(SmDied *d);
  * @brief Processes the input from the cursor in the SmDied state
  * 
  * @param c Pointer to the Cursor object
- * @return 1 if the game should exit, 0 otherwise
+ * @return 1 if the game should exit, 0 otherwise, 2 to play again
  */
 int process_sm_died_mouse(SmDied *d, Cursor *c);
 

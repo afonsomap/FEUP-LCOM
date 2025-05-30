@@ -27,6 +27,20 @@ struct sprite_loader_imp {
   Sprite *selected_options[3];
   Sprite *game_background;
   Sprite *died_title;
+  Sprite *died_background;
+  Sprite *play_again;
+  Sprite *back_to_menu;
+  Sprite *your_score;
+  Sprite *number_0;
+  Sprite *number_1;
+  Sprite *number_2;
+  Sprite *number_3;
+  Sprite *number_4;
+  Sprite *number_5;
+  Sprite *number_6;
+  Sprite *number_7;
+  Sprite *number_8;
+  Sprite *number_9;
 };
 
 SpriteLoader* load_sprites() {
@@ -116,6 +130,21 @@ SpriteLoader* load_sprites() {
   loader->selected_options[2] = create_sprite((xpm_map_t)selected_bomb3, BY_PIXEL);
 
   loader->died_title = create_sprite((xpm_map_t)died_title_xpm, BY_PIXEL);
+  loader->died_background = create_sprite((xpm_map_t)died_background_xpm, BY_LINE);
+  loader->play_again = create_sprite((xpm_map_t)play_again_xpm, BY_PIXEL);
+  loader->back_to_menu = create_sprite((xpm_map_t)back_to_menu_xpm, BY_PIXEL);
+  loader->your_score = create_sprite((xpm_map_t)your_score_xpm, BY_PIXEL);
+
+  loader->number_0 = create_sprite((xpm_map_t)number_0_xpm, BY_PIXEL);
+  loader->number_1 = create_sprite((xpm_map_t)number_1_xpm, BY_PIXEL);
+  loader->number_2 = create_sprite((xpm_map_t)number_2_xpm, BY_PIXEL);
+  loader->number_3 = create_sprite((xpm_map_t)number_3_xpm, BY_PIXEL);
+  loader->number_4 = create_sprite((xpm_map_t)number_4_xpm, BY_PIXEL);
+  loader->number_5 = create_sprite((xpm_map_t)number_5_xpm, BY_PIXEL);
+  loader->number_6 = create_sprite((xpm_map_t)number_6_xpm, BY_PIXEL);
+  loader->number_7 = create_sprite((xpm_map_t)number_7_xpm, BY_PIXEL);
+  loader->number_8 = create_sprite((xpm_map_t)number_8_xpm, BY_PIXEL);
+  loader->number_9 = create_sprite((xpm_map_t)number_9_xpm, BY_PIXEL);
 
   return loader;
 }
@@ -146,6 +175,23 @@ void destroy_sprites(SpriteLoader *loader) {
   destroy_sprite(loader->exit_button);
   destroy_sprite(loader->exit);
   destroy_sprite(loader->died_title);
+  destroy_sprite(loader->died_background);
+  destroy_sprite(loader->back_to_menu);
+  destroy_sprite(loader->play_again);
+  destroy_sprite(loader->your_score);
+  destroy_anim_sprite(loader->explosion);
+  destroy_sprite(loader->player1_standing);
+  destroy_sprite(loader->player2_standing);
+  destroy_sprite(loader->number_0);
+  destroy_sprite(loader->number_1);
+  destroy_sprite(loader->number_2); 
+  destroy_sprite(loader->number_3);
+  destroy_sprite(loader->number_4);
+  destroy_sprite(loader->number_5);
+  destroy_sprite(loader->number_6);
+  destroy_sprite(loader->number_7);
+  destroy_sprite(loader->number_8);
+  destroy_sprite(loader->number_9);
   for (int i = 0; i < 3; i++) {
     destroy_sprite(loader->bomb_options[i]);
     destroy_sprite(loader->selected_options[i]);
@@ -234,4 +280,36 @@ Sprite* get_game_background(SpriteLoader *loader) {
 
 Sprite* get_died_title(SpriteLoader *loader) {
   return loader->died_title;
+}
+
+Sprite* get_died_background(SpriteLoader *loader) {
+  return loader->died_background;
+}
+
+Sprite* get_play_again(SpriteLoader *loader) {
+  return loader->play_again;
+}
+
+Sprite* get_back_to_menu(SpriteLoader *loader) {
+  return loader->back_to_menu;
+}
+
+Sprite* get_your_score_text(SpriteLoader *loader) {
+  return loader->your_score;
+}
+
+Sprite* get_number_sprite(SpriteLoader* loader, int number) {
+  switch (number) {
+    case 0: return loader->number_0;
+    case 1: return loader->number_1;
+    case 2: return loader->number_2;
+    case 3: return loader->number_3;
+    case 4: return loader->number_4;
+    case 5: return loader->number_5;
+    case 6: return loader->number_6;
+    case 7: return loader->number_7;
+    case 8: return loader->number_8;
+    case 9: return loader->number_9;
+    default: return NULL; // Invalid number
+  }
 }

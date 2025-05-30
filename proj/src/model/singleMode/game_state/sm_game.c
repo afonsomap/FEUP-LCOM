@@ -16,9 +16,10 @@ struct sm_game_imp {
   BombOptions *bomb_options; 
   BombType player1_bomb_option;
   Sprite* exit_button_sprite;
+  Score* score;
 };
 
-SmGame *create_sm_game(SpriteLoader *loader) {
+SmGame *create_sm_game(SpriteLoader *loader, Score* score) {
   SmGame *smg = (SmGame *) malloc(sizeof(SmGame));
   if (smg == NULL) {
     return NULL;
@@ -57,6 +58,7 @@ SmGame *create_sm_game(SpriteLoader *loader) {
 
   smg->bomb_options = create_bomb_options(get_bomb_options(loader), get_selected_options(loader));
   smg->player1_bomb_option = NORMAL;
+  smg->score = score;
   return smg;
 }
 
@@ -76,6 +78,7 @@ void destroy_sm_game(SmGame *smg) {
   }
 
   destroy_bomb_options(smg->bomb_options);
+  destroy_score(smg->score);
   free(smg);
 }
 
@@ -99,6 +102,7 @@ void draw_sm_game(SmGame *smg) {
     }
   }
   draw_bomb_options(smg->bomb_options, smg->player1_bomb_option);
+  draw_score(smg->score, 1000, 10);
 }
 
 
@@ -500,6 +504,7 @@ int process_sm_game_timer(SmGame *sm) {
     return 1; // Go back to menu
   }
 
+  increment_score(sm->score);
   decrease_cooldown_time(sm->bomb_options);
   return 0; // Continue game
 }
