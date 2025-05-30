@@ -58,9 +58,6 @@ void update_state_sp(State *state, uint8_t sp_byte) {
   if (state == NULL) {
     panic("State is NULL");
   }
-  if (sp_byte == 0) {
-    return; // No data received from serial port
-  }
 
   switch (state->current_state) {
     case MULTI_MODE:

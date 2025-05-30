@@ -583,10 +583,11 @@ int process_mm_game_kbd(MmGame *mm_game, KeyPressed *key) {
     return -1; // Error
   }
 
+  mm_game->byte_to_send &= ~(BIT(2) | BIT(3) | BIT(4) | BIT(5)); // Clear movement bits
   bool is_some_key_pressed = false;
 
   if ( is_up_pressed(key) ){ // Up
-    mm_game->byte_to_send |= (1 << 2); // Set bit 2 for up movement
+    mm_game->byte_to_send |= BIT(2); // Set bit 2 for up movement
     is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(mm_game->my_player); i++) {
       if (!check_wall_collision(mm_game, get_player_Xpos(mm_game->my_player), get_player_Ypos(mm_game->my_player) - 1)){
@@ -598,7 +599,7 @@ int process_mm_game_kbd(MmGame *mm_game, KeyPressed *key) {
   }
 
   if ( is_down_pressed(key) ){ // Down
-    mm_game->byte_to_send |= (1 << 3); // Set bit 3 for down movement
+    mm_game->byte_to_send |= BIT(3); // Set bit 3 for down movement
     is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(mm_game->my_player); i++) {
       if (!check_wall_collision(mm_game, get_player_Xpos(mm_game->my_player), get_player_Ypos(mm_game->my_player) + 1)){
@@ -610,7 +611,7 @@ int process_mm_game_kbd(MmGame *mm_game, KeyPressed *key) {
   }
 
   if ( is_left_pressed(key) ){ // Left
-    mm_game->byte_to_send |= (1 << 4); // Set bit 4 for left movement
+    mm_game->byte_to_send |= BIT(4); // Set bit 4 for left movement
     is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(mm_game->my_player); i++) {
       if (!check_wall_collision(mm_game, get_player_Xpos(mm_game->my_player) - 1, get_player_Ypos(mm_game->my_player))){
@@ -622,7 +623,7 @@ int process_mm_game_kbd(MmGame *mm_game, KeyPressed *key) {
   }
 
   if ( is_right_pressed(key)){ // Right
-    mm_game->byte_to_send |= (1 << 5); // Set bit 5 for right movement
+    mm_game->byte_to_send |= BIT(5); // Set bit 5 for right movement
     is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(mm_game->my_player); i++) {
       if (!check_wall_collision(mm_game, get_player_Xpos(mm_game->my_player) + 1, get_player_Ypos(mm_game->my_player))){
@@ -636,7 +637,7 @@ int process_mm_game_kbd(MmGame *mm_game, KeyPressed *key) {
     player_stand(mm_game->my_player);
   } 
   if ( is_esc_pressed(key) ) { 
-    mm_game->byte_to_send |= (1 << 7); // Set bit 7 for exit
+    mm_game->byte_to_send |= BIT(7); // Set bit 7 for exit
     send_byte(mm_game->byte_to_send);
     mm_game->byte_to_send = 0; // Reset byte to send
     return 1; 
@@ -649,8 +650,9 @@ int process_mm_game_timer(MmGame *mm_game) {
     return -1; // Error
   }
 
+  printf("Sending byte: 0x%02X\n", mm_game->byte_to_send);
   send_byte(mm_game->byte_to_send); 
-  mm_game->byte_to_send = 0; 
+  mm_game->byte_to_send = 0x00; // Reset byte to send
 
   int ret = check_bomb_exploded(mm_game);
   if (ret == 1) {

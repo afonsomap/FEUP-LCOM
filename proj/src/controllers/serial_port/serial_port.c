@@ -80,7 +80,6 @@ int read_byte(){
             return 1;
         }
         if(!(status & (LSR_OVERRUN_ERROR | LSR_PARITY_ERROR | LSR_FRAMING_ERROR))){
-            printf("Received byte: 0x%02X\n", data);
             push(inQueue,data);
             return 0;
         }
