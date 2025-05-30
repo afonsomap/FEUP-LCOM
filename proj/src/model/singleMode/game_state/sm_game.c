@@ -206,15 +206,20 @@ static int check_bomb_exploded(SmGame *sm) {
   
           if ( is_wall_destroyable(sm->wall_matrix[j+1][i]) && is_wall_active(sm->wall_matrix[j+1][i])) {
             set_wall_active(sm->wall_matrix[j+1][i], false); // Deactivate the wall, bomb destroyed it
+            increment_score(sm->score);
+
           }
           if ( is_wall_destroyable(sm->wall_matrix[j][i+1]) && is_wall_active(sm->wall_matrix[j][i+1])) {
             set_wall_active(sm->wall_matrix[j][i+1], false); // Deactivate the wall, bomb destroyed it
+            increment_score(sm->score);
           }
           if ( is_wall_destroyable(sm->wall_matrix[j-1][i]) && is_wall_active(sm->wall_matrix[j-1][i])) {
             set_wall_active(sm->wall_matrix[j-1][i], false); // Deactivate the wall, bomb destroyed it
+            increment_score(sm->score);
           }
           if ( is_wall_destroyable(sm->wall_matrix[j][i-1]) && is_wall_active(sm->wall_matrix[j][i-1])) {
             set_wall_active(sm->wall_matrix[j][i-1], false); // Deactivate the wall, bomb destroyed it
+            increment_score(sm->score);
           }
   
           set_explosion_active(sm->explosion_matrix[j][i], true); // Activate the explosion, in the bomb position
@@ -250,6 +255,7 @@ static int check_bomb_exploded(SmGame *sm) {
                 set_explosion_active(sm->explosion_matrix[j + k][i], true); // Activate the explosion
                 if ( is_wall_active(sm->wall_matrix[j + k][i]) ){
                   set_wall_active(sm->wall_matrix[j + k][i], false); // Deactivate the wall, bomb destroyed
+                  increment_score(sm->score);
                   right_collision = true;
                 }
               }else {
@@ -269,6 +275,7 @@ static int check_bomb_exploded(SmGame *sm) {
                 set_explosion_active(sm->explosion_matrix[j - k][i], true); // Activate the explosion
                 if ( is_wall_active(sm->wall_matrix[j - k][i]) ){
                   set_wall_active(sm->wall_matrix[j - k][i], false); // Deactivate the wall, bomb destroyed
+                  increment_score(sm->score);
                   left_collision = true;
                 }
               }else {
@@ -287,6 +294,7 @@ static int check_bomb_exploded(SmGame *sm) {
                 set_explosion_active(sm->explosion_matrix[j][i + k], true); // Activate the explosion
                 if ( is_wall_active(sm->wall_matrix[j][i + k]) ){
                   set_wall_active(sm->wall_matrix[j][i + k], false); // Deactivate the wall, bomb destroyed
+                  increment_score(sm->score);
                   down_collision = true;
                 }
               }else {
@@ -305,6 +313,7 @@ static int check_bomb_exploded(SmGame *sm) {
                 set_explosion_active(sm->explosion_matrix[j][i - k], true); // Activate the explosion
                 if ( is_wall_active(sm->wall_matrix[j][i - k]) ){
                   set_wall_active(sm->wall_matrix[j][i - k], false); // Deactivate the wall, bomb destroyed
+                  increment_score(sm->score);
                   up_collision = true;
                 }
               }else {
