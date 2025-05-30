@@ -101,7 +101,7 @@ void draw_sm_game(SmGame *smg) {
     }
   }
   draw_bomb_options(smg->bomb_options, smg->player1_bomb_option);
-  draw_score(smg->score, 1190, 10);
+  draw_score(smg->score, 1118, 10);
 }
 
 

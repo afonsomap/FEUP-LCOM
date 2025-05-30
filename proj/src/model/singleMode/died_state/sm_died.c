@@ -7,8 +7,10 @@ struct SmDied_imp {
   Sprite *play_again;
   Sprite *your_score;
   uint16_t xPos_title;
-  uint16_t xPos_button;
-  uint16_t yPos_button;
+  uint16_t xPos_pa;
+  uint16_t yPos_pa;
+  uint16_t xPos_gbm;
+  uint16_t yPos_gbm;
   Score *score; 
 };
 
@@ -30,9 +32,15 @@ SmDied* create_sm_died(SpriteLoader *loader, Score *score) {
     return NULL;
   }
 
+  int screen_center_x = get_mode_info().XResolution / 2;
+
+  d->xPos_pa = screen_center_x - get_sprite_width(d->play_again) / 2;
+  d->yPos_pa = 700 - 200;
+
+  d->xPos_gbm = screen_center_x - get_sprite_width(d->play_again) / 2;
+  d->yPos_gbm = 700;
+
   d->xPos_title = (get_mode_info().XResolution - get_sprite_width(d->died_title)) / 2;
-  d->xPos_button = (get_mode_info().XResolution - get_sprite_width(d->back_to_menu)) / 2;
-  d->yPos_button = 700; // Fixed position for the button
   d->score = score;
 
   return d;
@@ -64,21 +72,13 @@ void draw_sm_died(SmDied *d) {
   int y_your_score = y_title + get_sprite_height(d->died_title);
   int y_score_line = y_your_score + ((get_sprite_height(d->your_score)/2) - 36/2); //36/2 is the height / 2
 
-  // Button Y positions
-  int play_again_y = 700 - 200;
-  int back_to_menu_y = 700;
-
-  // Button X positions (centered)
-  int play_again_x = screen_center_x - get_sprite_width(d->play_again) / 2;
-  int back_to_menu_x = screen_center_x - get_sprite_width(d->back_to_menu) / 2;
-
   // Draw everything
   draw_sprite(d->died_background, 0, 0);
   draw_sprite(d->died_title, screen_center_x - get_sprite_width(d->died_title) / 2, y_title);
   draw_sprite(d->your_score, start_x, y_your_score);
   draw_score(d->score, start_x + total_width - score_width - 10, y_score_line);
-  draw_sprite(d->play_again, play_again_x, play_again_y);
-  draw_sprite(d->back_to_menu, back_to_menu_x, back_to_menu_y);
+  draw_sprite(d->play_again, d->xPos_pa, d->yPos_pa);
+  draw_sprite(d->back_to_menu, d->xPos_gbm, d->yPos_gbm);
 }
 
 // 0 Continue game
@@ -93,11 +93,11 @@ int process_sm_died_mouse(SmDied *d, Cursor *cursor) {
     uint16_t cursor_x = get_cursor_Xpos(cursor);
     uint16_t cursor_y = get_cursor_Ypos(cursor);
 
-    if (cursor_x >= d->xPos_button && cursor_x <= d->xPos_button + get_sprite_width(d->back_to_menu) && cursor_y >=  d->yPos_button && cursor_y <= d->yPos_button + get_sprite_height(d->back_to_menu)) {
+    if (cursor_x >= d->xPos_gbm && cursor_x <= d->xPos_gbm + get_sprite_width(d->back_to_menu) && cursor_y >=  d->yPos_gbm && cursor_y <= d->yPos_gbm + get_sprite_height(d->back_to_menu)) {
       return 1;
     }
 
-    if (cursor_x >= d->xPos_button && cursor_x <= d->xPos_button + get_sprite_width(d->play_again) && cursor_y >=  d->yPos_button - 200 && cursor_y <= d->yPos_button - 200 + get_sprite_height(d->play_again)) {
+    if (cursor_x >= d->xPos_pa && cursor_x <= d->xPos_pa + get_sprite_width(d->play_again) && cursor_y >=  d->yPos_pa && cursor_y <= d->yPos_pa + get_sprite_height(d->play_again)) {
       return 2; // Play again
     }
   }
