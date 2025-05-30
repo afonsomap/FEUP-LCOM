@@ -150,6 +150,7 @@ static int process_bomb_spawning(SmGame *sm) {
     return 1; // Go back to menu
   }
 
+  decrease_decrease_spawn_rate_counter(sm->bomb_options); // Decrease the spawn rate counter
   // Check if the bomb options are available
   if (is_spawning(sm->bomb_options)) {
     uint16_t randomX = (rand() % 16) + 1; 
