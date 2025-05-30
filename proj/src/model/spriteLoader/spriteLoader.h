@@ -93,6 +93,9 @@
 #include "images/numbers/number_8.xpm"
 #include "images/numbers/number_9.xpm"
 
+#include "images/winner/you_won.xpm"
+#include "images/winner/you_lost.xpm"
+#include "images/winner/draw.xpm"
 
 struct sprite_loader_imp;
 typedef struct sprite_loader_imp SpriteLoader;
@@ -132,4 +135,10 @@ Sprite* get_play_again(SpriteLoader *loader);
 Sprite* get_back_to_menu(SpriteLoader *loader);
 Sprite* get_number_sprite(SpriteLoader *loader, int number);
 Sprite* get_your_score_text(SpriteLoader *loader);
+
+Sprite* get_winners_background(SpriteLoader *loader);
+Sprite* get_winners_you_won(SpriteLoader *loader);
+Sprite* get_winners_you_lost(SpriteLoader *loader);
+Sprite* get_winners_draw(SpriteLoader *loader);
+
 #endif
