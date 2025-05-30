@@ -9,6 +9,13 @@
 #include "score.h"
 #include "button.h"
 
+/**
+ * @defgroup sm_died sm_died
+ * @brief Single Mode died state management
+ * 
+ * This module provides functions to create, destroy, draw, and process input for the Single Mode died state.
+ * It manages the display of the "You Died" screen, including the title, score, and buttons to play again or return to the menu.
+ */
 
 struct SmDied_imp;
 typedef struct SmDied_imp SmDied;

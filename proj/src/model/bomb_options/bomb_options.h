@@ -7,6 +7,14 @@
 #include "sprite.h"
 #include "bomb.h"
 
+/**
+ * @defgroup bomb_options bomb_options
+ * @brief Bomb options management in the game
+ * 
+ * This module provides functions to create, manage, and draw bomb options in the game.
+ * It handles the bomb options' positions, cooldowns, spawn rates, and rendering on the screen.
+ */
+
 struct bomb_options_imp;
 typedef struct bomb_options_imp BombOptions;
 

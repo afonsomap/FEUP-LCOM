@@ -6,6 +6,15 @@
 #include <stdlib.h>
 #include "animatedSprite.h"
 
+
+/**
+ * @defgroup explosion explosion
+ * @brief Explosion management in the game
+ * 
+ * This module provides functions to create, manage, and draw explosions in the game.
+ * Explosions are used to indicate the destruction of walls or other objects.
+ */
+
 struct explosion_imp;
 typedef struct explosion_imp Explosion;
 

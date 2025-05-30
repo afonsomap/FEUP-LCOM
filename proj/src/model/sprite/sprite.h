@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include "graphics.h"
 
-
 typedef enum {
     FULL_IMAGE,
     BY_LINE,
@@ -15,8 +14,10 @@ typedef enum {
 
 /** @defgroup sprite Sprite
  * @{
- *
- * Sprite related functions
+ * @brief Sprite management for the game
+ * This module provides functions to create, destroy, and draw sprites.
+ * 
+ * It also defines the sprite type, which can be FULL_IMAGE, BY_LINE, or BY_PIXEL.
  */
 
 struct sprite_imp;

@@ -9,6 +9,14 @@
 #include "menu.h"
 #include "spriteLoader.h"
 
+/**
+ * @defgroup state state
+ * @brief State management for the game
+ * 
+ * This module provides functions to manage the game state, including creating, updating, and drawing the current state of the game.
+ * It handles transitions between different game modes such as menu, single player mode, and multiplayer mode.
+ */
+
 struct state_imp;
 typedef struct state_imp State;
 

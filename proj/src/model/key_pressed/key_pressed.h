@@ -4,6 +4,14 @@
 #include <lcom/lcf.h>
 #include "kbd.h"
 
+/**
+ * @defgroup key_pressed key_pressed
+ * 
+ * @brief KeyPressed management
+ * 
+ * This module provides functions to create, destroy, and manage the state of keys pressed in the game.
+ * It allows checking if specific keys (UP, DOWN, LEFT, RIGHT, ESC) are pressed and updating the state based on keyboard input.
+ */
 
 struct key_pressed_imp;
 typedef struct key_pressed_imp KeyPressed;
