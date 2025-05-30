@@ -1,0 +1,61 @@
+\doxysection{bomb\+\_\+options.\+h}
+\hypertarget{bomb__options_8h_source}{}\label{bomb__options_8h_source}\index{model/bomb\_options/bomb\_options.h@{model/bomb\_options/bomb\_options.h}}
+\mbox{\hyperlink{bomb__options_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_BOMB\_OPTION\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_BOMB\_OPTION\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{sprite.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bomb_8h}{bomb.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbomb__options__imp}{bomb\_options\_imp}};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbomb__options__imp}{bomb\_options\_imp}}\ \mbox{\hyperlink{structbomb__options__imp}{BombOptions}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ uint16\_t\ \mbox{\hyperlink{bomb__options_8h_a35d43eb789de196b07b57cf6e641f1bc}{get\_options\_x\_initial}}(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00036\ uint16\_t\ \mbox{\hyperlink{bomb__options_8h_a703345ff97dee4ce79eccf714434513d}{get\_options\_y\_initial}}(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b,\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00044\ uint16\_t\ \mbox{\hyperlink{bomb__options_8h_a0bd62b816970921abaf60384278d92af}{get\_options\_x\_final}}(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00053\ uint16\_t\ \mbox{\hyperlink{bomb__options_8h_a66e5987cd8a0469b2b346a511139b3d3}{get\_options\_y\_final}}(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b,\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00061\ uint8\_t\ \mbox{\hyperlink{bomb__options_8h_a9dc869fdc01c6510938b498d9708a938}{get\_number\_of\_options}}(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00070\ \mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *\mbox{\hyperlink{bomb__options_8h_a932f93a241cafb6537dc995eae58c15f}{create\_bomb\_options}}(\mbox{\hyperlink{structsprite__imp}{Sprite}}**\ options,\ \mbox{\hyperlink{structsprite__imp}{Sprite}}**\ selected\_option);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bomb__options_8h_aafc1ced05a678cfb870cdaa2a15964bc}{destroy\_bomb\_options}}(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);\ }
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bomb__options_8h_aab590ca4260d5471f67cbeb97071393e}{draw\_bomb\_options}}(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b,\ \textcolor{keywordtype}{int}\ selected\_option);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{void}\ set\_bomb\_on\_cooldown(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b,\ BombType\ type);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{bool}\ is\_bomb\_off\_cooldown(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b,\ BombType\ type);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ decrease\_cooldown\_time(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ decrease\_time\_until\_spawn(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{bool}\ is\_spawning(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{void}\ reset\_time\_until\_spawn(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ BombType\ get\_random\_bomb\_type();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ decrease\_spawn\_rate(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ uint8\_t\ get\_spawn\_rate(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ uint16\_t\ get\_decrease\_spawn\_rate\_counter(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{void}\ decrease\_decrease\_spawn\_rate\_counter(\mbox{\hyperlink{structbomb__options__imp}{BombOptions}}\ *b);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_BOMB\_OPTIONS\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00113\ }
+
+\end{DoxyCode}

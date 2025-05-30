@@ -10,7 +10,7 @@
 #include "button.h"
 
 /**
- * @defgroup sm_died sm_died
+ * @file sm_died.h
  * @brief Single Mode died state management
  * 
  * This module provides functions to create, destroy, draw, and process input for the Single Mode died state.

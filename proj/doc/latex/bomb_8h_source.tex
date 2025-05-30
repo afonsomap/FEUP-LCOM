@@ -1,0 +1,44 @@
+\doxysection{bomb.\+h}
+\hypertarget{bomb_8h_source}{}\label{bomb_8h_source}\index{model/bomb/bomb.h@{model/bomb/bomb.h}}
+\mbox{\hyperlink{bomb_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_BOMB\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_BOMB\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{animatedSprite_8h}{animatedSprite.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbomb__imp}{bomb\_imp}};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbomb__imp}{bomb\_imp}}\ \mbox{\hyperlink{structbomb__imp}{Bomb}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00022\ \ \ NORMAL\ =\ 0,}
+\DoxyCodeLine{00023\ \ \ FULL\_LINE\ =\ 1,}
+\DoxyCodeLine{00024\ \ \ CONSTRUCTIVE\ =\ 2}
+\DoxyCodeLine{00025\ \}\ BombType;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00033\ uint8\_t\ \mbox{\hyperlink{bomb_8h_aa22d77c903d31f3075d6b2f91202c5d6}{get\_bomb\_Xpos}}(\mbox{\hyperlink{structbomb__imp}{Bomb}}\ *b);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00041\ uint8\_t\ \mbox{\hyperlink{bomb_8h_ac491ceeca7bb401c8c20bae0520fb85a}{get\_bomb\_Ypos}}(\mbox{\hyperlink{structbomb__imp}{Bomb}}\ *b);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{bomb_8h_af1263c7aa8fc96c12f09c27a21c48f16}{is\_bomb\_active}}(\mbox{\hyperlink{structbomb__imp}{Bomb}}\ *b);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bomb_8h_a91449a33a0e603e0532388f60a836851}{set\_bomb\_active}}(\mbox{\hyperlink{structbomb__imp}{Bomb}}\ *b,\ \textcolor{keywordtype}{bool}\ active,\ BombType\ type);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{bomb_8h_a0d4f98220933e6e3eccb78751ee0860b}{is\_bomb\_exploded}}(\mbox{\hyperlink{structbomb__imp}{Bomb}}\ *b);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00074\ BombType\ \mbox{\hyperlink{bomb_8h_a0207ffa81742d6882f5e7a732e65f433}{get\_bomb\_type}}(\mbox{\hyperlink{structbomb__imp}{Bomb}}\ *b);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00085\ \mbox{\hyperlink{structbomb__imp}{Bomb}}\ *\mbox{\hyperlink{bomb_8h_ae9025783cc535d11ecca2e5bc728bb19}{create\_bomb}}(uint8\_t\ x,\ uint8\_t\ y,\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}\ *img,\ \textcolor{keywordtype}{bool}\ active);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bomb_8h_ac318f34d32b9bcbb73db2f6504a31b9a}{destroy\_bomb}}(\mbox{\hyperlink{structbomb__imp}{Bomb}}\ *b);\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bomb_8h_a9310fd5bd331bd40c70947628b1e1b0a}{draw\_bomb}}(\mbox{\hyperlink{structbomb__imp}{Bomb}}\ *b,\ uint16\_t\ x\_initial\_grid,\ uint16\_t\ y\_initial\_grid,\ uint16\_t\ grid\_square\_width);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_BOMB\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00106\ }
+
+\end{DoxyCode}

@@ -1,0 +1,227 @@
+\doxysection{model/sprite\+Loader/sprite\+Loader.h File Reference}
+\hypertarget{spriteLoader_8h}{}\label{spriteLoader_8h}\index{model/spriteLoader/spriteLoader.h@{model/spriteLoader/spriteLoader.h}}
+
+
+Sprite loader for the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+{\ttfamily \#include "{}animated\+Sprite.\+h"{}}\newline
+{\ttfamily \#include "{}images/player1/back/p1\+\_\+back1.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/back/p1\+\_\+back2.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/back/p1\+\_\+back3.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/back/p1\+\_\+back4.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/back/p1\+\_\+back5.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/front/p1\+\_\+front1.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/front/p1\+\_\+front2.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/front/p1\+\_\+front3.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/front/p1\+\_\+front4.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/front/p1\+\_\+front5.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/left/p1\+\_\+left1.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/left/p1\+\_\+left2.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/left/p1\+\_\+left3.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/left/p1\+\_\+left4.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/left/p1\+\_\+left5.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/right/p1\+\_\+right1.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/right/p1\+\_\+right2.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/right/p1\+\_\+right3.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/right/p1\+\_\+right4.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/player1/right/p1\+\_\+right5.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb/bomb1.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb/bomb2.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb/bomb3.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb/bomb4.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb/bomb5.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb/bomb6.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb/bomb7.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb/bomb8.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb/bomb9.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb/bomb10.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/connection/waiting\+\_\+connection.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/connection/warning\+\_\+connection.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/explosion/explosion1.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/explosion/explosion2.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/explosion/explosion3.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/explosion/explosion4.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/explosion/explosion5.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/explosion/explosion6.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/explosion/explosion7.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/explosion/explosion8.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/explosion/explosion9.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb\+\_\+options/bomb\+\_\+option1.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb\+\_\+options/bomb\+\_\+option2.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb\+\_\+options/bomb\+\_\+option3.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb\+\_\+options/selected\+\_\+bomb1.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb\+\_\+options/selected\+\_\+bomb2.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/bomb\+\_\+options/selected\+\_\+bomb3.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/wall/wall.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/wall/solid\+\_\+wall.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/background/grid\+\_\+background.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/background/game\+\_\+background.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/cursor.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menu/menu\+\_\+background.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menu/menu\+\_\+single.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menu/menu\+\_\+multi.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menu/menu\+\_\+exit.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/menu/menu\+\_\+title.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/single\+\_\+player/exit\+\_\+sp.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/died/died\+\_\+text.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/died/died\+\_\+background.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/died/play\+\_\+again.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/died/back\+\_\+to\+\_\+menu.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/died/your\+\_\+score.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/numbers/number\+\_\+0.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/numbers/number\+\_\+1.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/numbers/number\+\_\+2.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/numbers/number\+\_\+3.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/numbers/number\+\_\+4.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/numbers/number\+\_\+5.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/numbers/number\+\_\+6.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/numbers/number\+\_\+7.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/numbers/number\+\_\+8.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/numbers/number\+\_\+9.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/winners/you\+\_\+won.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/winners/you\+\_\+lost.\+xpm"{}}\newline
+{\ttfamily \#include "{}images/winners/draw.\+xpm"{}}\newline
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{spriteLoader_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{spriteLoader_8h_a373a44902a9853d9b9501d08bc0183ff}\label{spriteLoader_8h_a373a44902a9853d9b9501d08bc0183ff} 
+typedef struct \mbox{\hyperlink{structsprite__loader__imp}{sprite\+\_\+loader\+\_\+imp}} {\bfseries Sprite\+Loader}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{spriteLoader_8h_a4a9669c841bb2736c30fa451d86f8291}\label{spriteLoader_8h_a4a9669c841bb2736c30fa451d86f8291} 
+\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*} {\bfseries load\+\_\+sprites} ()
+\item 
+\Hypertarget{spriteLoader_8h_acc1276261907b2a884da0b4c3ef93d9d}\label{spriteLoader_8h_acc1276261907b2a884da0b4c3ef93d9d} 
+void {\bfseries destroy\+\_\+sprites} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_aa0f6a3df7b82537a658fae596d24a720}\label{spriteLoader_8h_aa0f6a3df7b82537a658fae596d24a720} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+player1\+\_\+standing} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_ab4e41c485f4c68476de773556ab3c2be}\label{spriteLoader_8h_ab4e41c485f4c68476de773556ab3c2be} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+player2\+\_\+standing} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_af4304085516770097f35e4b57762fea5}\label{spriteLoader_8h_af4304085516770097f35e4b57762fea5} 
+\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+player1\+\_\+left} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_ad4a32efa215e25a093282719f4f387b4}\label{spriteLoader_8h_ad4a32efa215e25a093282719f4f387b4} 
+\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+player1\+\_\+right} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a3cd12eb15f51d095bf3742cb087ae2b9}\label{spriteLoader_8h_a3cd12eb15f51d095bf3742cb087ae2b9} 
+\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+player1\+\_\+up} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_ae33b041ae85177f977b58f22d6abea7f}\label{spriteLoader_8h_ae33b041ae85177f977b58f22d6abea7f} 
+\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+player1\+\_\+down} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a72f59276b8b719c458d8d23a98b70cbe}\label{spriteLoader_8h_a72f59276b8b719c458d8d23a98b70cbe} 
+\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+player2\+\_\+left} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a46efabb13427a9ff4170f2e04c1f7155}\label{spriteLoader_8h_a46efabb13427a9ff4170f2e04c1f7155} 
+\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+player2\+\_\+right} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a5b5ef53764cafbff45a94684b0e60efa}\label{spriteLoader_8h_a5b5ef53764cafbff45a94684b0e60efa} 
+\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+player2\+\_\+up} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_ae4c1277ed6a94f8fb2bf9f195fdc4700}\label{spriteLoader_8h_ae4c1277ed6a94f8fb2bf9f195fdc4700} 
+\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+player2\+\_\+down} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a95d34606d4f8446ac103b09178e9fafc}\label{spriteLoader_8h_a95d34606d4f8446ac103b09178e9fafc} 
+\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+bomb} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_aefdeec96cf75425796e01595bf7ce8c2}\label{spriteLoader_8h_aefdeec96cf75425796e01595bf7ce8c2} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+wall} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_af61c3ff5f93029e47b1b439ed168bd26}\label{spriteLoader_8h_af61c3ff5f93029e47b1b439ed168bd26} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+solid\+\_\+wall} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_af8af4156137d448c5eab01fbf9a6d863}\label{spriteLoader_8h_af8af4156137d448c5eab01fbf9a6d863} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+grid\+\_\+background} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a1484e1f4d68b1898d480dd674ada78c5}\label{spriteLoader_8h_a1484e1f4d68b1898d480dd674ada78c5} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+cursor} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_af367d2934a1f4c5608289072f6b985e1}\label{spriteLoader_8h_af367d2934a1f4c5608289072f6b985e1} 
+\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+explosion} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_afa2f55c4feaa1d7f3d2419956729d458}\label{spriteLoader_8h_afa2f55c4feaa1d7f3d2419956729d458} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+menu\+\_\+background} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a19f9ebf883a14f927a30a29cd508e8aa}\label{spriteLoader_8h_a19f9ebf883a14f927a30a29cd508e8aa} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+menu\+\_\+title} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_af9e9cbe807e0b0490274fc29253d3cd3}\label{spriteLoader_8h_af9e9cbe807e0b0490274fc29253d3cd3} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+single\+\_\+mode\+\_\+button} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a0541a59c282e7c2496fce00b9eb32aba}\label{spriteLoader_8h_a0541a59c282e7c2496fce00b9eb32aba} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+multi\+\_\+mode\+\_\+button} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a1b1da04c19dddf0e6842beb15dc176df}\label{spriteLoader_8h_a1b1da04c19dddf0e6842beb15dc176df} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+exit\+\_\+button} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a79f847f6a2fabe4f88b7e4a7ef983ff1}\label{spriteLoader_8h_a79f847f6a2fabe4f88b7e4a7ef983ff1} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+exit} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a1cbfd9581c9683eb146d93337a540f2f}\label{spriteLoader_8h_a1cbfd9581c9683eb146d93337a540f2f} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+bomb\+\_\+options} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_ad435cd575d6939a95d193c21075cff20}\label{spriteLoader_8h_ad435cd575d6939a95d193c21075cff20} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+selected\+\_\+options} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_af8ec6491c45085f0aa24622cd3747c2d}\label{spriteLoader_8h_af8ec6491c45085f0aa24622cd3747c2d} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+game\+\_\+background} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a594926e718e2ab28a0626fa6aeef95b3}\label{spriteLoader_8h_a594926e718e2ab28a0626fa6aeef95b3} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+died\+\_\+title} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_ac5263002a57fe6c3fe85c2b0f32f48cd}\label{spriteLoader_8h_ac5263002a57fe6c3fe85c2b0f32f48cd} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+died\+\_\+background} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a96444c616a813e7cf569e667dd96b73a}\label{spriteLoader_8h_a96444c616a813e7cf569e667dd96b73a} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+play\+\_\+again} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_ac4517c8f2a239ecf0fed8ba851c37d8e}\label{spriteLoader_8h_ac4517c8f2a239ecf0fed8ba851c37d8e} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+back\+\_\+to\+\_\+menu} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a0f0fe475fbf8ff50d43aecc7bba116f7}\label{spriteLoader_8h_a0f0fe475fbf8ff50d43aecc7bba116f7} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+number\+\_\+sprite} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader, int number)
+\item 
+\Hypertarget{spriteLoader_8h_aef32c27f1b22bfdba6a9b2fd738d0097}\label{spriteLoader_8h_aef32c27f1b22bfdba6a9b2fd738d0097} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+your\+\_\+score\+\_\+text} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a9c925695bf737052a3ffb3175137211b}\label{spriteLoader_8h_a9c925695bf737052a3ffb3175137211b} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+warning\+\_\+connection} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a38acc76afcd36c82e1a279eec85d8f86}\label{spriteLoader_8h_a38acc76afcd36c82e1a279eec85d8f86} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+waiting\+\_\+connection} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a9709d0bcbe7c7567ed4250ef7d414312}\label{spriteLoader_8h_a9709d0bcbe7c7567ed4250ef7d414312} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+winners\+\_\+background} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_aaedebfac6a1dc5fb3a0f5bfb28ea792b}\label{spriteLoader_8h_aaedebfac6a1dc5fb3a0f5bfb28ea792b} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+winners\+\_\+you\+\_\+won} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_afdba9ec190a65e64681d0ac3237a4524}\label{spriteLoader_8h_afdba9ec190a65e64681d0ac3237a4524} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+winners\+\_\+you\+\_\+lost} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+\Hypertarget{spriteLoader_8h_a2896a01530007619b0140679957b75ca}\label{spriteLoader_8h_a2896a01530007619b0140679957b75ca} 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+winners\+\_\+draw} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sprite loader for the game. 
+
+This module provides functions to load and manage sprites used in the game. It includes functions to load player sprites, bomb sprites, wall sprites, background sprites, and menu sprites. It also provides functions to retrieve specific sprites for different game elements. 

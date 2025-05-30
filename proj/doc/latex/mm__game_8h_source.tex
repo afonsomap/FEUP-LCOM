@@ -1,0 +1,43 @@
+\doxysection{mm\+\_\+game.\+h}
+\hypertarget{mm__game_8h_source}{}\label{mm__game_8h_source}\index{model/multiMode/game\_state/mm\_game.h@{model/multiMode/game\_state/mm\_game.h}}
+\mbox{\hyperlink{mm__game_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MM\_GAME\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MM\_GAME\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{spriteLoader_8h}{spriteLoader.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cursor_8h}{cursor.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{key__pressed_8h}{key\_pressed.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{serial__port_8h}{serial\_port.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bomb_8h}{bomb.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{wall_8h}{wall.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{explosion_8h}{explosion.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bomb__options_8h}{bomb\_options.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{sprite.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{animatedSprite_8h}{animatedSprite.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{button_8h}{button.h}}"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmm__game__imp}{mm\_game\_imp}};}
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmm__game__imp}{mm\_game\_imp}}\ \mbox{\hyperlink{structmm__game__imp}{MmGame}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00036\ \mbox{\hyperlink{structmm__game__imp}{MmGame}}\ *\mbox{\hyperlink{mm__game_8h_ad20c7a918e087381b2a430f4306a6579}{create\_mm\_game}}(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader,\ uint8\_t\ player\_number);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mm__game_8h_a9a3c0990aeb27d19e50292c8b9c370b5}{destroy\_mm\_game}}(\mbox{\hyperlink{structmm__game__imp}{MmGame}}\ *mm\_game);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mm__game_8h_a05e46569d62d8f4fcbab6a45f05f1e5c}{draw\_mm\_game}}(\mbox{\hyperlink{structmm__game__imp}{MmGame}}\ *mm\_game);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mm__game_8h_a5ce8720385cc3353f8366b81abc0169a}{process\_mm\_game\_mouse}}(\mbox{\hyperlink{structmm__game__imp}{MmGame}}\ *mm\_game,\ \mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mm__game_8h_ae01d96db6122612035b93d05715f65f4}{process\_mm\_game\_kbd}}(\mbox{\hyperlink{structmm__game__imp}{MmGame}}\ *mm\_game,\ \mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *kp);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mm__game_8h_aa8b3c4347efc48edd4a0246b85aea557}{process\_mm\_game\_timer}}(\mbox{\hyperlink{structmm__game__imp}{MmGame}}\ *mm\_game);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mm__game_8h_a30933824a3b7652012f03e1dfb1da244}{process\_mm\_game\_sp}}(\mbox{\hyperlink{structmm__game__imp}{MmGame}}\ *mm\_game,\ uint8\_t\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mm__game_8h_a4dcc9770ec7442a167a38a46c51e691d}{get\_winner}}(\mbox{\hyperlink{structmm__game__imp}{MmGame}}\ *mm\_game);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MM\_GAME\_H}}
+
+\end{DoxyCode}

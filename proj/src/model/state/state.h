@@ -10,7 +10,7 @@
 #include "spriteLoader.h"
 
 /**
- * @defgroup state state
+ * @file state.h
  * @brief State management for the game
  * 
  * This module provides functions to manage the game state, including creating, updating, and drawing the current state of the game.

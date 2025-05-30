@@ -1,0 +1,98 @@
+\doxysection{controllers/keyboard\+\_\+mouse/mouse.h File Reference}
+\hypertarget{mouse_8h}{}\label{mouse_8h}\index{controllers/keyboard\_mouse/mouse.h@{controllers/keyboard\_mouse/mouse.h}}
+
+
+Mouse management.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+{\ttfamily \#include "{}kbc.\+h"{}}\newline
+Include dependency graph for mouse.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{mouse_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{mouse_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mouse_8h_a51a4f87031c431cbac48ad0f51bc4150}\label{mouse_8h_a51a4f87031c431cbac48ad0f51bc4150} 
+struct packet \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+packet} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the packet struct. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{mouse_8h_a20285aed4b3ef45812cd967532dd09db}{mouse\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes mouse interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{mouse_8h_a3ecf823d80520009ae5e0d76ae40a3c3}{mouse\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes mouse interrupts. \end{DoxyCompactList}\item 
+\Hypertarget{mouse_8h_a210374b50462acdedab00df64d5cea3c}\label{mouse_8h_a210374b50462acdedab00df64d5cea3c} 
+void() {\bfseries mouse\+\_\+ih} ()
+\begin{DoxyCompactList}\small\item\em Mouse interrupt handler. \end{DoxyCompactList}\item 
+\Hypertarget{mouse_8h_a3b71fce460b15fe9d0de3d8c77d9cad3}\label{mouse_8h_a3b71fce460b15fe9d0de3d8c77d9cad3} 
+void {\bfseries packet\+\_\+parse} ()
+\begin{DoxyCompactList}\small\item\em Parses the packet acording to the packet struct. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8h_a7116d7598dabde6ff1d6ed928aae6eee}{check\+\_\+packet\+\_\+complete}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the packet is complete. \end{DoxyCompactList}\item 
+\Hypertarget{mouse_8h_ad35b135a465650bd58aef6ee248ca402}\label{mouse_8h_ad35b135a465650bd58aef6ee248ca402} 
+int {\bfseries mouse\+\_\+write\+\_\+command} (uint8\+\_\+t command)
+\begin{DoxyCompactList}\small\item\em Writes a command to the mouse, used for enabling and disabling data reporting. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Mouse management. 
+
+Functions to interact with the mouse. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mouse_8h_a7116d7598dabde6ff1d6ed928aae6eee}\label{mouse_8h_a7116d7598dabde6ff1d6ed928aae6eee} 
+\index{mouse.h@{mouse.h}!check\_packet\_complete@{check\_packet\_complete}}
+\index{check\_packet\_complete@{check\_packet\_complete}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{check\_packet\_complete()}{check\_packet\_complete()}}
+{\footnotesize\ttfamily int check\+\_\+packet\+\_\+complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the packet is complete. 
+
+\begin{DoxyReturn}{Returns}
+1 if the packet is complete, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{mouse_8h_a20285aed4b3ef45812cd967532dd09db}\label{mouse_8h_a20285aed4b3ef45812cd967532dd09db} 
+\index{mouse.h@{mouse.h}!mouse\_subscribe\_int@{mouse\_subscribe\_int}}
+\index{mouse\_subscribe\_int@{mouse\_subscribe\_int}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{mouse\_subscribe\_int()}{mouse\_subscribe\_int()}}
+{\footnotesize\ttfamily int() mouse\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribes mouse interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Pointer to store the bit number set in the interrupt mask \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{mouse_8h_a3ecf823d80520009ae5e0d76ae40a3c3}\label{mouse_8h_a3ecf823d80520009ae5e0d76ae40a3c3} 
+\index{mouse.h@{mouse.h}!mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}}
+\index{mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}!mouse.h@{mouse.h}}
+\doxysubsubsection{\texorpdfstring{mouse\_unsubscribe\_int()}{mouse\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() mouse\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes mouse interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}

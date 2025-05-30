@@ -1,0 +1,143 @@
+\doxysection{model/multi\+Mode/winner\+\_\+state/mm\+\_\+winner.h File Reference}
+\hypertarget{mm__winner_8h}{}\label{mm__winner_8h}\index{model/multiMode/winner\_state/mm\_winner.h@{model/multiMode/winner\_state/mm\_winner.h}}
+
+
+Multiplayer mode winner state management.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}sprite\+Loader.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+pressed.\+h"{}}\newline
+{\ttfamily \#include "{}button.\+h"{}}\newline
+Include dependency graph for mm\+\_\+winner.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mm__winner_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{mm__winner_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mm__winner_8h_a2dd79299417f4621395970642376099f}\label{mm__winner_8h_a2dd79299417f4621395970642376099f} 
+typedef struct \mbox{\hyperlink{structmm__winner__imp}{mm\+\_\+winner\+\_\+imp}} {\bfseries Mm\+Winner}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structmm__winner__imp}{Mm\+Winner}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{mm__winner_8h_af35e319a6cec78ccb71fee0371be0b5f}{create\+\_\+mm\+\_\+winner}} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader, int winner)
+\begin{DoxyCompactList}\small\item\em Creates a new Mm\+Winner object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mm__winner_8h_a6736ecbd7243c5e4a73f7ff240b333fc}{destroy\+\_\+mm\+\_\+winner}} (\mbox{\hyperlink{structmm__winner__imp}{Mm\+Winner}} \texorpdfstring{$\ast$}{*}mm\+\_\+winner)
+\begin{DoxyCompactList}\small\item\em Destroys a Mm\+Winner object, freeing all allocated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mm__winner_8h_a9b44f185435b6e03f8d3e0bc3307e703}{draw\+\_\+mm\+\_\+winner}} (\mbox{\hyperlink{structmm__winner__imp}{Mm\+Winner}} \texorpdfstring{$\ast$}{*}mm\+\_\+winner)
+\begin{DoxyCompactList}\small\item\em Draws the Mm\+Winner screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mm__winner_8h_a3e484790e7f3482b47535b8cef370f9c}{process\+\_\+mm\+\_\+winner\+\_\+mouse}} (\mbox{\hyperlink{structmm__winner__imp}{Mm\+Winner}} \texorpdfstring{$\ast$}{*}mm\+\_\+winner, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Processes the input from the cursor in the Mm\+Winner state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mm__winner_8h_ae8e7baa395c8868786ecad49e118fdd5}{process\+\_\+mm\+\_\+winner\+\_\+kbd}} (\mbox{\hyperlink{structmm__winner__imp}{Mm\+Winner}} \texorpdfstring{$\ast$}{*}mm\+\_\+winner, \mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}kp)
+\begin{DoxyCompactList}\small\item\em Processes the input from the keyboard in the Mm\+Winner state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Multiplayer mode winner state management. 
+
+This module provides functions to create, manage, and draw the winner state in the multiplayer mode. It handles the display of the winner screen, including the background, winner message, and buttons to play again or return to the menu. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mm__winner_8h_af35e319a6cec78ccb71fee0371be0b5f}\label{mm__winner_8h_af35e319a6cec78ccb71fee0371be0b5f} 
+\index{mm\_winner.h@{mm\_winner.h}!create\_mm\_winner@{create\_mm\_winner}}
+\index{create\_mm\_winner@{create\_mm\_winner}!mm\_winner.h@{mm\_winner.h}}
+\doxysubsubsection{\texorpdfstring{create\_mm\_winner()}{create\_mm\_winner()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmm__winner__imp}{Mm\+Winner}} \texorpdfstring{$\ast$}{*} create\+\_\+mm\+\_\+winner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}}]{loader,  }\item[{int}]{winner }\end{DoxyParamCaption})}
+
+
+
+Creates a new Mm\+Winner object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loader} & Pointer to the Sprite\+Loader object \\
+\hline
+{\em winner} & The winner of the game (0 -\/ No winner, 1 -\/ Current player wins, 2 -\/ Other player wins) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created Mm\+Winner object, or NULL if the creation failed 
+\end{DoxyReturn}
+\Hypertarget{mm__winner_8h_a6736ecbd7243c5e4a73f7ff240b333fc}\label{mm__winner_8h_a6736ecbd7243c5e4a73f7ff240b333fc} 
+\index{mm\_winner.h@{mm\_winner.h}!destroy\_mm\_winner@{destroy\_mm\_winner}}
+\index{destroy\_mm\_winner@{destroy\_mm\_winner}!mm\_winner.h@{mm\_winner.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_mm\_winner()}{destroy\_mm\_winner()}}
+{\footnotesize\ttfamily void destroy\+\_\+mm\+\_\+winner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__winner__imp}{Mm\+Winner}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+winner }\end{DoxyParamCaption})}
+
+
+
+Destroys a Mm\+Winner object, freeing all allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+winner} & Pointer to the Mm\+Winner object to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mm__winner_8h_a9b44f185435b6e03f8d3e0bc3307e703}\label{mm__winner_8h_a9b44f185435b6e03f8d3e0bc3307e703} 
+\index{mm\_winner.h@{mm\_winner.h}!draw\_mm\_winner@{draw\_mm\_winner}}
+\index{draw\_mm\_winner@{draw\_mm\_winner}!mm\_winner.h@{mm\_winner.h}}
+\doxysubsubsection{\texorpdfstring{draw\_mm\_winner()}{draw\_mm\_winner()}}
+{\footnotesize\ttfamily void draw\+\_\+mm\+\_\+winner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__winner__imp}{Mm\+Winner}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+winner }\end{DoxyParamCaption})}
+
+
+
+Draws the Mm\+Winner screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+winner} & Pointer to the Mm\+Winner object to be drawn \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mm__winner_8h_ae8e7baa395c8868786ecad49e118fdd5}\label{mm__winner_8h_ae8e7baa395c8868786ecad49e118fdd5} 
+\index{mm\_winner.h@{mm\_winner.h}!process\_mm\_winner\_kbd@{process\_mm\_winner\_kbd}}
+\index{process\_mm\_winner\_kbd@{process\_mm\_winner\_kbd}!mm\_winner.h@{mm\_winner.h}}
+\doxysubsubsection{\texorpdfstring{process\_mm\_winner\_kbd()}{process\_mm\_winner\_kbd()}}
+{\footnotesize\ttfamily int process\+\_\+mm\+\_\+winner\+\_\+kbd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__winner__imp}{Mm\+Winner}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+winner,  }\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{kp }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the keyboard in the Mm\+Winner state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+winner} & Pointer to the Mm\+Winner object \\
+\hline
+{\em kp} & Pointer to the Key\+Pressed object containing the state of the keys \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 to go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{mm__winner_8h_a3e484790e7f3482b47535b8cef370f9c}\label{mm__winner_8h_a3e484790e7f3482b47535b8cef370f9c} 
+\index{mm\_winner.h@{mm\_winner.h}!process\_mm\_winner\_mouse@{process\_mm\_winner\_mouse}}
+\index{process\_mm\_winner\_mouse@{process\_mm\_winner\_mouse}!mm\_winner.h@{mm\_winner.h}}
+\doxysubsubsection{\texorpdfstring{process\_mm\_winner\_mouse()}{process\_mm\_winner\_mouse()}}
+{\footnotesize\ttfamily int process\+\_\+mm\+\_\+winner\+\_\+mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__winner__imp}{Mm\+Winner}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+winner,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the cursor in the Mm\+Winner state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+winner} & Pointer to the Mm\+Winner object \\
+\hline
+{\em c} & Pointer to the Cursor object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the game should exit, 0 otherwise, 2 to play again 
+\end{DoxyReturn}

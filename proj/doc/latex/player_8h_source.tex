@@ -1,0 +1,50 @@
+\doxysection{player.\+h}
+\hypertarget{player_8h_source}{}\label{player_8h_source}\index{model/player/player.h@{model/player/player.h}}
+\mbox{\hyperlink{player_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLAYER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLAYER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{sprite.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{animatedSprite_8h}{animatedSprite.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structplayer__imp}{player\_imp}};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structplayer__imp}{player\_imp}}\ \mbox{\hyperlink{structplayer__imp}{Player}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00022\ \ \ LEFT,}
+\DoxyCodeLine{00023\ \ \ RIGHT,}
+\DoxyCodeLine{00024\ \ \ UP,}
+\DoxyCodeLine{00025\ \ \ DOWN,}
+\DoxyCodeLine{00026\ \ \ STANDING}
+\DoxyCodeLine{00027\ \}\ Direction;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00035\ uint16\_t\ \mbox{\hyperlink{player_8h_a356645aadafc58a0e937d6c3bfea1844}{get\_player\_Xpos}}(\mbox{\hyperlink{structplayer__imp}{Player}}\ *p);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00043\ uint16\_t\ \mbox{\hyperlink{player_8h_a154e00944f2f76a0c5e1d291d389930a}{get\_player\_Ypos}}(\mbox{\hyperlink{structplayer__imp}{Player}}\ *p);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00051\ uint8\_t\ \mbox{\hyperlink{player_8h_af5edbc2cb3a74807fceb66c566ed6244}{get\_player\_speed}}(\mbox{\hyperlink{structplayer__imp}{Player}}\ *p);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00059\ \mbox{\hyperlink{structsprite__imp}{Sprite}}\ *\mbox{\hyperlink{player_8h_af286e728a7fc185eb5d7fdbcbda1296e}{get\_player\_standing}}(\mbox{\hyperlink{structplayer__imp}{Player}}\ *p);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00073\ \mbox{\hyperlink{structplayer__imp}{Player}}\ *\mbox{\hyperlink{player_8h_acec30ce11ed464f300a5f73ef7c8db53}{create\_player}}(uint16\_t\ x,\ uint16\_t\ y,\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}\ *left\_movement,\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}\ *right\_movement,\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}\ *up\_movement,\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}\ *down\_movement,\ \mbox{\hyperlink{structsprite__imp}{Sprite}}\ *standing);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8h_af8545b7bf366427e84ccd6b24c9786c2}{destroy\_player}}(\mbox{\hyperlink{structplayer__imp}{Player}}\ *p);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8h_a061284666dc516490bcb151d0d47c512}{draw\_player}}(\mbox{\hyperlink{structplayer__imp}{Player}}\ *p,\ uint16\_t\ x\_initial\_grid,\ uint16\_t\ y\_initial\_grid);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8h_a19e7bf710f8317ebec169373d69d83b6}{player\_move\_up}}(\mbox{\hyperlink{structplayer__imp}{Player}}\ *p);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8h_a25868833e65e9c535f67f275c04bf96c}{player\_move\_down}}(\mbox{\hyperlink{structplayer__imp}{Player}}\ *p);}
+\DoxyCodeLine{00109\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8h_a72066b7559fffdacd85ac142a7cfd804}{player\_move\_left}}(\mbox{\hyperlink{structplayer__imp}{Player}}\ *p);}
+\DoxyCodeLine{00115\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8h_a8a90cb4b1b4ae9ce8d89af33be2bfecf}{player\_move\_right}}(\mbox{\hyperlink{structplayer__imp}{Player}}\ *p);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00122\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8h_aeb4fe3c88eff5b740c86ab23974ec5e3}{player\_stand}}(\mbox{\hyperlink{structplayer__imp}{Player}}\ *p);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ PLAYER\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00125\ }
+
+\end{DoxyCode}

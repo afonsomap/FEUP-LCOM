@@ -1,0 +1,229 @@
+\doxysection{model/wall/wall.h File Reference}
+\hypertarget{wall_8h}{}\label{wall_8h}\index{model/wall/wall.h@{model/wall/wall.h}}
+
+
+Wall management in the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+Include dependency graph for wall.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{wall_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wall_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{wall_8h_a0b1ebfab145693f5fa23d129c7e31cd3}\label{wall_8h_a0b1ebfab145693f5fa23d129c7e31cd3} 
+typedef struct \mbox{\hyperlink{structwall__imp}{wall\+\_\+imp}} {\bfseries Wall}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{wall_8h_adec8881cb3aaca9758bfa8562b6bef4e}{get\+\_\+wall\+\_\+\+Xpos}} (\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}w)
+\begin{DoxyCompactList}\small\item\em Returns the X coordinate of the wall. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{wall_8h_a6f08e4999cfd79b42a99786a45a9b1d3}{get\+\_\+wall\+\_\+\+Ypos}} (\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}w)
+\begin{DoxyCompactList}\small\item\em Returns the Y coordinate of the wall. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{wall_8h_a296482c5a80de0f6f7b46c40b98303c4}{is\+\_\+wall\+\_\+destroyable}} (\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}w)
+\begin{DoxyCompactList}\small\item\em Returns whether the wall is destroyable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{wall_8h_a6ce5ed93f0924b9e2e6420b1f1f41d95}{is\+\_\+wall\+\_\+active}} (\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}w)
+\begin{DoxyCompactList}\small\item\em Returns whether the wall is active. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{wall_8h_a10c62ed61f562a4fc77a9d198fb23a86}{set\+\_\+wall\+\_\+active}} (\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}w, bool active)
+\begin{DoxyCompactList}\small\item\em Sets the active state of the wall. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{wall_8h_ac45e85245f4f77e45f076f3e7f8c4465}{get\+\_\+wall\+\_\+sprite}} (\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}w)
+\begin{DoxyCompactList}\small\item\em Returns the sprite of the wall. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{wall_8h_a4ab2911607d085d3fc65e3d4b02d0e5c}{create\+\_\+wall}} (uint8\+\_\+t x, uint8\+\_\+t y, \mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}img, bool is\+\_\+destroyable, bool active)
+\begin{DoxyCompactList}\small\item\em Creates a new wall with the specified sprite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{wall_8h_a0df49469c479774e0759e72a9c20da51}{destroy\+\_\+wall}} (\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}w)
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for the wall. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{wall_8h_a6e062e216cec42daa4095df9cd7db84a}{draw\+\_\+wall}} (\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}w, uint16\+\_\+t x\+\_\+initial\+\_\+grid, uint16\+\_\+t y\+\_\+initial\+\_\+grid, uint16\+\_\+t grid\+\_\+square\+\_\+width)
+\begin{DoxyCompactList}\small\item\em Draws the wall on the screen, only if the wall is active. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Wall management in the game. 
+
+This module provides functions to create, manage, and draw walls in the game. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{wall_8h_a4ab2911607d085d3fc65e3d4b02d0e5c}\label{wall_8h_a4ab2911607d085d3fc65e3d4b02d0e5c} 
+\index{wall.h@{wall.h}!create\_wall@{create\_wall}}
+\index{create\_wall@{create\_wall}!wall.h@{wall.h}}
+\doxysubsubsection{\texorpdfstring{create\_wall()}{create\_wall()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*} create\+\_\+wall (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y,  }\item[{\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}}]{img,  }\item[{bool}]{is\+\_\+destroyable,  }\item[{bool}]{active }\end{DoxyParamCaption})}
+
+
+
+Creates a new wall with the specified sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the wall \\
+\hline
+{\em y} & The y-\/coordinate of the wall \\
+\hline
+{\em img} & The sprite for the wall \\
+\hline
+{\em is\+\_\+destroyable} & Whether the wall is destroyable \\
+\hline
+{\em active} & Whether the wall is active \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created wall, or NULL if the pixmap is invalid 
+\end{DoxyReturn}
+\Hypertarget{wall_8h_a0df49469c479774e0759e72a9c20da51}\label{wall_8h_a0df49469c479774e0759e72a9c20da51} 
+\index{wall.h@{wall.h}!destroy\_wall@{destroy\_wall}}
+\index{destroy\_wall@{destroy\_wall}!wall.h@{wall.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_wall()}{destroy\_wall()}}
+{\footnotesize\ttfamily void destroy\+\_\+wall (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}}]{w }\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated for the wall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Pointer to the wall to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{wall_8h_a6e062e216cec42daa4095df9cd7db84a}\label{wall_8h_a6e062e216cec42daa4095df9cd7db84a} 
+\index{wall.h@{wall.h}!draw\_wall@{draw\_wall}}
+\index{draw\_wall@{draw\_wall}!wall.h@{wall.h}}
+\doxysubsubsection{\texorpdfstring{draw\_wall()}{draw\_wall()}}
+{\footnotesize\ttfamily void draw\+\_\+wall (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}}]{w,  }\item[{uint16\+\_\+t}]{x\+\_\+initial\+\_\+grid,  }\item[{uint16\+\_\+t}]{y\+\_\+initial\+\_\+grid,  }\item[{uint16\+\_\+t}]{grid\+\_\+square\+\_\+width }\end{DoxyParamCaption})}
+
+
+
+Draws the wall on the screen, only if the wall is active. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Pointer to the wall to be drawn \\
+\hline
+{\em x\+\_\+initial\+\_\+grid} & The initial X coordinate of the grid \\
+\hline
+{\em y\+\_\+initial\+\_\+grid} & The initial Y coordinate of the grid \\
+\hline
+{\em grid\+\_\+square\+\_\+width} & The width of the grid square \\
+\hline
+\end{DoxyParams}
+\Hypertarget{wall_8h_ac45e85245f4f77e45f076f3e7f8c4465}\label{wall_8h_ac45e85245f4f77e45f076f3e7f8c4465} 
+\index{wall.h@{wall.h}!get\_wall\_sprite@{get\_wall\_sprite}}
+\index{get\_wall\_sprite@{get\_wall\_sprite}!wall.h@{wall.h}}
+\doxysubsubsection{\texorpdfstring{get\_wall\_sprite()}{get\_wall\_sprite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} get\+\_\+wall\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}}]{w }\end{DoxyParamCaption})}
+
+
+
+Returns the sprite of the wall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Pointer to the wall \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the sprite of the wall 
+\end{DoxyReturn}
+\Hypertarget{wall_8h_adec8881cb3aaca9758bfa8562b6bef4e}\label{wall_8h_adec8881cb3aaca9758bfa8562b6bef4e} 
+\index{wall.h@{wall.h}!get\_wall\_Xpos@{get\_wall\_Xpos}}
+\index{get\_wall\_Xpos@{get\_wall\_Xpos}!wall.h@{wall.h}}
+\doxysubsubsection{\texorpdfstring{get\_wall\_Xpos()}{get\_wall\_Xpos()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+wall\+\_\+\+Xpos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}}]{w }\end{DoxyParamCaption})}
+
+
+
+Returns the X coordinate of the wall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Pointer to the wall \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The X coordinate of the wall 
+\end{DoxyReturn}
+\Hypertarget{wall_8h_a6f08e4999cfd79b42a99786a45a9b1d3}\label{wall_8h_a6f08e4999cfd79b42a99786a45a9b1d3} 
+\index{wall.h@{wall.h}!get\_wall\_Ypos@{get\_wall\_Ypos}}
+\index{get\_wall\_Ypos@{get\_wall\_Ypos}!wall.h@{wall.h}}
+\doxysubsubsection{\texorpdfstring{get\_wall\_Ypos()}{get\_wall\_Ypos()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+wall\+\_\+\+Ypos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}}]{w }\end{DoxyParamCaption})}
+
+
+
+Returns the Y coordinate of the wall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Pointer to the wall \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Y coordinate of the wall 
+\end{DoxyReturn}
+\Hypertarget{wall_8h_a6ce5ed93f0924b9e2e6420b1f1f41d95}\label{wall_8h_a6ce5ed93f0924b9e2e6420b1f1f41d95} 
+\index{wall.h@{wall.h}!is\_wall\_active@{is\_wall\_active}}
+\index{is\_wall\_active@{is\_wall\_active}!wall.h@{wall.h}}
+\doxysubsubsection{\texorpdfstring{is\_wall\_active()}{is\_wall\_active()}}
+{\footnotesize\ttfamily bool is\+\_\+wall\+\_\+active (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}}]{w }\end{DoxyParamCaption})}
+
+
+
+Returns whether the wall is active. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Pointer to the wall \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the wall is active, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{wall_8h_a296482c5a80de0f6f7b46c40b98303c4}\label{wall_8h_a296482c5a80de0f6f7b46c40b98303c4} 
+\index{wall.h@{wall.h}!is\_wall\_destroyable@{is\_wall\_destroyable}}
+\index{is\_wall\_destroyable@{is\_wall\_destroyable}!wall.h@{wall.h}}
+\doxysubsubsection{\texorpdfstring{is\_wall\_destroyable()}{is\_wall\_destroyable()}}
+{\footnotesize\ttfamily bool is\+\_\+wall\+\_\+destroyable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}}]{w }\end{DoxyParamCaption})}
+
+
+
+Returns whether the wall is destroyable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Pointer to the wall \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the wall is destroyable, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{wall_8h_a10c62ed61f562a4fc77a9d198fb23a86}\label{wall_8h_a10c62ed61f562a4fc77a9d198fb23a86} 
+\index{wall.h@{wall.h}!set\_wall\_active@{set\_wall\_active}}
+\index{set\_wall\_active@{set\_wall\_active}!wall.h@{wall.h}}
+\doxysubsubsection{\texorpdfstring{set\_wall\_active()}{set\_wall\_active()}}
+{\footnotesize\ttfamily void set\+\_\+wall\+\_\+active (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structwall__imp}{Wall}} \texorpdfstring{$\ast$}{*}}]{w,  }\item[{bool}]{active }\end{DoxyParamCaption})}
+
+
+
+Sets the active state of the wall. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Pointer to the wall \\
+\hline
+{\em active} & The new active state of the wall \\
+\hline
+\end{DoxyParams}

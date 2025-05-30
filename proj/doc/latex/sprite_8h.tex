@@ -1,0 +1,149 @@
+\doxysection{model/sprite/sprite.h File Reference}
+\hypertarget{sprite_8h}{}\label{sprite_8h}\index{model/sprite/sprite.h@{model/sprite/sprite.h}}
+
+
+Sprite management for the game This module provides functions to create, destroy, and draw sprites.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}graphics.\+h"{}}\newline
+Include dependency graph for sprite.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{sprite_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sprite_8h_a33da6e37eb502087e8ec5324fac3b36b}\label{sprite_8h_a33da6e37eb502087e8ec5324fac3b36b} 
+typedef struct \mbox{\hyperlink{structsprite__imp}{sprite\+\_\+imp}} {\bfseries Sprite}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sprite_8h_ac6fa10729dffeb6a192492f13c25e31a}\label{sprite_8h_ac6fa10729dffeb6a192492f13c25e31a} 
+enum {\bfseries Sprite\+Type} \{ {\bfseries FULL\+\_\+\+IMAGE}
+, {\bfseries BY\+\_\+\+LINE}
+, {\bfseries BY\+\_\+\+PIXEL}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{sprite_8h_a24c3ade665af8d7aae20594fd360b8bf}{get\+\_\+sprite\+\_\+width}} (\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}sp)
+\begin{DoxyCompactList}\small\item\em Returns the width of the sprite. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{sprite_8h_ac7cf0d953ecb62e7b4719d53cff11c7e}{get\+\_\+sprite\+\_\+height}} (\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}sp)
+\begin{DoxyCompactList}\small\item\em Returns the height of the sprite. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sprite_8h_a5472df4d712732d0563bb391c3791605}{create\+\_\+sprite}} (const xpm\+\_\+map\+\_\+t pic, Sprite\+Type type)
+\begin{DoxyCompactList}\small\item\em Creates a new sprite from XPM "{}pic"{} This function allocates memory for the sprite and loads the XPM image. It does not draw the sprite on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_af16c6befaac9ffb673b9e3c798d542ed}{destroy\+\_\+sprite}} (\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}sp)
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for the sprite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_a25e3a50856c6a709c0fc7411fc2d8b9e}{draw\+\_\+sprite}} (\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}sp, uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the sprite on the screen at the specified coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sprite management for the game This module provides functions to create, destroy, and draw sprites. 
+
+It also defines the sprite type, which can be FULL\+\_\+\+IMAGE, BY\+\_\+\+LINE, or BY\+\_\+\+PIXEL. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sprite_8h_a5472df4d712732d0563bb391c3791605}\label{sprite_8h_a5472df4d712732d0563bb391c3791605} 
+\index{sprite.h@{sprite.h}!create\_sprite@{create\_sprite}}
+\index{create\_sprite@{create\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{create\_sprite()}{create\_sprite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} create\+\_\+sprite (\begin{DoxyParamCaption}\item[{const xpm\+\_\+map\+\_\+t}]{pic,  }\item[{Sprite\+Type}]{type }\end{DoxyParamCaption})}
+
+
+
+Creates a new sprite from XPM "{}pic"{} This function allocates memory for the sprite and loads the XPM image. It does not draw the sprite on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic} & The XPM image to be loaded \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created sprite, or NULL if the pixmap is invalid 
+\end{DoxyReturn}
+\Hypertarget{sprite_8h_af16c6befaac9ffb673b9e3c798d542ed}\label{sprite_8h_af16c6befaac9ffb673b9e3c798d542ed} 
+\index{sprite.h@{sprite.h}!destroy\_sprite@{destroy\_sprite}}
+\index{destroy\_sprite@{destroy\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_sprite()}{destroy\_sprite()}}
+{\footnotesize\ttfamily void destroy\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sp }\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated for the sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sp} & Pointer to the sprite to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sprite_8h_a25e3a50856c6a709c0fc7411fc2d8b9e}\label{sprite_8h_a25e3a50856c6a709c0fc7411fc2d8b9e} 
+\index{sprite.h@{sprite.h}!draw\_sprite@{draw\_sprite}}
+\index{draw\_sprite@{draw\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{draw\_sprite()}{draw\_sprite()}}
+{\footnotesize\ttfamily void draw\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sp,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the sprite on the screen at the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sp} & Pointer to the sprite to be drawn \\
+\hline
+{\em x} & The x-\/coordinate where the sprite will be drawn \\
+\hline
+{\em y} & The y-\/coordinate where the sprite will be drawn \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sprite_8h_ac7cf0d953ecb62e7b4719d53cff11c7e}\label{sprite_8h_ac7cf0d953ecb62e7b4719d53cff11c7e} 
+\index{sprite.h@{sprite.h}!get\_sprite\_height@{get\_sprite\_height}}
+\index{get\_sprite\_height@{get\_sprite\_height}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{get\_sprite\_height()}{get\_sprite\_height()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+\_\+sprite\+\_\+height (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sp }\end{DoxyParamCaption})}
+
+
+
+Returns the height of the sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sp} & Pointer to the sprite \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The height of the sprite 
+\end{DoxyReturn}
+\Hypertarget{sprite_8h_a24c3ade665af8d7aae20594fd360b8bf}\label{sprite_8h_a24c3ade665af8d7aae20594fd360b8bf} 
+\index{sprite.h@{sprite.h}!get\_sprite\_width@{get\_sprite\_width}}
+\index{get\_sprite\_width@{get\_sprite\_width}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{get\_sprite\_width()}{get\_sprite\_width()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+\_\+sprite\+\_\+width (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sp }\end{DoxyParamCaption})}
+
+
+
+Returns the width of the sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sp} & Pointer to the sprite \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The width of the sprite 
+\end{DoxyReturn}

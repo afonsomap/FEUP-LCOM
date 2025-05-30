@@ -17,7 +17,7 @@
 #include "button.h"
 
 /**
- * @defgroup sm_game sm_game
+ * @file sm_game.h
  * @brief Single Mode game state management
  * 
  * This module provides functions to create, destroy, draw, and process input for the Single Mode game state.

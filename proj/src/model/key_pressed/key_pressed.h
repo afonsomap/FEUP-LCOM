@@ -5,7 +5,7 @@
 #include "kbd.h"
 
 /**
- * @defgroup key_pressed key_pressed
+ * @file key_pressed.h
  * 
  * @brief KeyPressed management
  * 

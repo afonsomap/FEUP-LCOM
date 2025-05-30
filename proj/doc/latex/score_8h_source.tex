@@ -1,0 +1,31 @@
+\doxysection{score.\+h}
+\hypertarget{score_8h_source}{}\label{score_8h_source}\index{model/score/score.h@{model/score/score.h}}
+\mbox{\hyperlink{score_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SCORE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SCORE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{sprite.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{spriteLoader_8h}{spriteLoader.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structscore__imp}{score\_imp}};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structscore__imp}{score\_imp}}\ \mbox{\hyperlink{structscore__imp}{Score}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00028\ \mbox{\hyperlink{structscore__imp}{Score}}\ *\mbox{\hyperlink{score_8h_a1a9811412288fc977a06d9723f94b2f5}{create\_score}}(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8h_a3a6f41fa568c40448661bade0e512f84}{destroy\_score}}(\mbox{\hyperlink{structscore__imp}{Score}}\ *score);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8h_ac1c6bd862d852430179da1335cef0759}{increment\_score}}(\mbox{\hyperlink{structscore__imp}{Score}}\ *score);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ uint16\_t\ \mbox{\hyperlink{score_8h_ad2a2e58badbcd6f2ec8ae9a1f26c3778}{get\_score\_value}}(\mbox{\hyperlink{structscore__imp}{Score}}\ *score);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ draw\_score(\mbox{\hyperlink{structscore__imp}{Score}}\ *score,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SCORE\_H}}
+\DoxyCodeLine{00057\ }
+
+\end{DoxyCode}

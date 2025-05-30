@@ -1,0 +1,99 @@
+\doxysection{controllers/utils.h File Reference}
+\hypertarget{utils_8h}{}\label{utils_8h}\index{controllers/utils.h@{controllers/utils.h}}
+
+
+Utility functions for the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for utils.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{utils_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{utils_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{utils_8h_a81621440b3d65680979425e39aa8c789}{util\+\_\+get\+\_\+\+LSB}} (uint16\+\_\+t val, uint8\+\_\+t \texorpdfstring{$\ast$}{*}lsb)
+\begin{DoxyCompactList}\small\item\em Converts a 16-\/bit value to its least significant byte. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{utils_8h_a6a880076cd2ec468834438b6e0c58836}{util\+\_\+get\+\_\+\+MSB}} (uint16\+\_\+t val, uint8\+\_\+t \texorpdfstring{$\ast$}{*}msb)
+\begin{DoxyCompactList}\small\item\em Converts a 16-\/bit value to its most significant byte. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{utils_8h_a79a031a8611f5b2d6afa4158e92b0fb4}{util\+\_\+sys\+\_\+inb}} (int port, uint8\+\_\+t \texorpdfstring{$\ast$}{*}value)
+\begin{DoxyCompactList}\small\item\em Reads a byte from a given port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility functions for the game. 
+
+Functions for utility operations 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{utils_8h_a81621440b3d65680979425e39aa8c789}\label{utils_8h_a81621440b3d65680979425e39aa8c789} 
+\index{utils.h@{utils.h}!util\_get\_LSB@{util\_get\_LSB}}
+\index{util\_get\_LSB@{util\_get\_LSB}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{util\_get\_LSB()}{util\_get\_LSB()}}
+{\footnotesize\ttfamily int() util\+\_\+get\+\_\+\+LSB (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{val,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{lsb }\end{DoxyParamCaption})}
+
+
+
+Converts a 16-\/bit value to its least significant byte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Value to convert \\
+\hline
+{\em lsb} & Pointer to store the least significant byte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\Hypertarget{utils_8h_a6a880076cd2ec468834438b6e0c58836}\label{utils_8h_a6a880076cd2ec468834438b6e0c58836} 
+\index{utils.h@{utils.h}!util\_get\_MSB@{util\_get\_MSB}}
+\index{util\_get\_MSB@{util\_get\_MSB}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{util\_get\_MSB()}{util\_get\_MSB()}}
+{\footnotesize\ttfamily int() util\+\_\+get\+\_\+\+MSB (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{val,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{msb }\end{DoxyParamCaption})}
+
+
+
+Converts a 16-\/bit value to its most significant byte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & Value to convert \\
+\hline
+{\em msb} & Pointer to store the most significant byte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\Hypertarget{utils_8h_a79a031a8611f5b2d6afa4158e92b0fb4}\label{utils_8h_a79a031a8611f5b2d6afa4158e92b0fb4} 
+\index{utils.h@{utils.h}!util\_sys\_inb@{util\_sys\_inb}}
+\index{util\_sys\_inb@{util\_sys\_inb}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{util\_sys\_inb()}{util\_sys\_inb()}}
+{\footnotesize\ttfamily int() util\+\_\+sys\+\_\+inb (\begin{DoxyParamCaption}\item[{int}]{port,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{value }\end{DoxyParamCaption})}
+
+
+
+Reads a byte from a given port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Port to read from \\
+\hline
+{\em value} & Variable to store the read byte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}

@@ -1,0 +1,35 @@
+\doxysection{sprite.\+h}
+\hypertarget{sprite_8h_source}{}\label{sprite_8h_source}\index{model/sprite/sprite.h@{model/sprite/sprite.h}}
+\mbox{\hyperlink{sprite_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_SPRITE\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_SPRITE\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graphics_8h}{graphics.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ FULL\_IMAGE,}
+\DoxyCodeLine{00011\ \ \ \ \ BY\_LINE,}
+\DoxyCodeLine{00012\ \ \ \ \ BY\_PIXEL}
+\DoxyCodeLine{00013\ \}\ SpriteType;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsprite__imp}{sprite\_imp}};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsprite__imp}{sprite\_imp}}\ \mbox{\hyperlink{structsprite__imp}{Sprite}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ uint16\_t\ \mbox{\hyperlink{sprite_8h_a24c3ade665af8d7aae20594fd360b8bf}{get\_sprite\_width}}(\mbox{\hyperlink{structsprite__imp}{Sprite}}\ *sp);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ uint16\_t\ \mbox{\hyperlink{sprite_8h_ac7cf0d953ecb62e7b4719d53cff11c7e}{get\_sprite\_height}}(\mbox{\hyperlink{structsprite__imp}{Sprite}}\ *sp);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00049\ \mbox{\hyperlink{structsprite__imp}{Sprite}}\ *\mbox{\hyperlink{sprite_8h_a5472df4d712732d0563bb391c3791605}{create\_sprite}}(\textcolor{keyword}{const}\ xpm\_map\_t\ pic,\ SpriteType\ type);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sprite_8h_af16c6befaac9ffb673b9e3c798d542ed}{destroy\_sprite}}(\mbox{\hyperlink{structsprite__imp}{Sprite}}\ *sp);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sprite_8h_a25e3a50856c6a709c0fc7411fc2d8b9e}{draw\_sprite}}(\mbox{\hyperlink{structsprite__imp}{Sprite}}\ *sp,\ uint16\_t\ x,\ uint16\_t\ y);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00070\ }
+
+\end{DoxyCode}

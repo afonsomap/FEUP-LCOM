@@ -9,7 +9,7 @@
 #include "button.h"
 
 /**
- * @defgroup mm_connection mm_connection
+ * @file mm_connection.h
  * @brief Multiplayer mode connection state management
  * 
  * This module provides functions to create, manage, and draw the connection state in the multiplayer mode.

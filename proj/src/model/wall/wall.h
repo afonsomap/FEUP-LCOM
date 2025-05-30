@@ -7,7 +7,7 @@
 #include "sprite.h"
 
 /**
- * @defgroup wall wall
+ * @file wall.h
  * @brief Wall management in the game
  * 
  * This module provides functions to create, manage, and draw walls in the game.

@@ -7,7 +7,7 @@
 #include "cursor.h"
 
 /**
- * @defgroup button button
+ * @file button.h
  * @brief Button management in the game
  * 
  * This module provides functions to create, manage, and draw buttons in the game.

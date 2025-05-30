@@ -1,0 +1,124 @@
+\doxysection{Keyboard}
+\hypertarget{group__KBD}{}\label{group__KBD}\index{Keyboard@{Keyboard}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__KBD_gab74dfc8cf2410860a157bc07cb09fba8}{get\+\_\+scancode}} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the scancode byte read. \end{DoxyCompactList}\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__KBD_ga2e8899a43c96e570561fcb02f9ab91d9}{get\+\_\+scancode\+\_\+array}} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the scancode array. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group__KBD_gaddc1759ee6b0ac530fc12b576969a0ba}{get\+\_\+scancode\+\_\+index}} ()
+\begin{DoxyCompactList}\small\item\em Returns the index of the scancode array. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{group__KBD_ga4ac9231a99a664d6a9f0b69767e0d707}{kbd\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes keyboard interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{group__KBD_gaee0a7b54ee426fade9c780418d110fe0}{kbd\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes keyboard interrupts. \end{DoxyCompactList}\item 
+\Hypertarget{group__KBD_gaea970a154161a35f6894898a092ed70a}\label{group__KBD_gaea970a154161a35f6894898a092ed70a} 
+void() {\bfseries kbc\+\_\+ih} ()
+\begin{DoxyCompactList}\small\item\em Keyboard interrupt handler. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{group__KBD_ga757b2678cfdf6b0ef28495dca1e6ba40}{check\+\_\+scancode\+\_\+complete}} ()
+\begin{DoxyCompactList}\small\item\em Checks if a scancode is complete. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{group__KBD_gaa55bcee31ec8144c0add0d8a79523edd}{kbd\+\_\+enable\+\_\+interrupts}} ()
+\begin{DoxyCompactList}\small\item\em Enables keyboard interrupts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions to interact with the keyboard. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__KBD_ga757b2678cfdf6b0ef28495dca1e6ba40}\label{group__KBD_ga757b2678cfdf6b0ef28495dca1e6ba40} 
+\index{Keyboard@{Keyboard}!check\_scancode\_complete@{check\_scancode\_complete}}
+\index{check\_scancode\_complete@{check\_scancode\_complete}!Keyboard@{Keyboard}}
+\doxysubsubsection{\texorpdfstring{check\_scancode\_complete()}{check\_scancode\_complete()}}
+{\footnotesize\ttfamily int() check\+\_\+scancode\+\_\+complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if a scancode is complete. 
+
+\begin{DoxyReturn}{Returns}
+0 if the scancode is complete, 1 otherwise 
+\end{DoxyReturn}
+\Hypertarget{group__KBD_gab74dfc8cf2410860a157bc07cb09fba8}\label{group__KBD_gab74dfc8cf2410860a157bc07cb09fba8} 
+\index{Keyboard@{Keyboard}!get\_scancode@{get\_scancode}}
+\index{get\_scancode@{get\_scancode}!Keyboard@{Keyboard}}
+\doxysubsubsection{\texorpdfstring{get\_scancode()}{get\_scancode()}}
+{\footnotesize\ttfamily uint8\+\_\+t \texorpdfstring{$\ast$}{*} get\+\_\+scancode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a pointer to the scancode byte read. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the scancode byte 
+\end{DoxyReturn}
+\Hypertarget{group__KBD_ga2e8899a43c96e570561fcb02f9ab91d9}\label{group__KBD_ga2e8899a43c96e570561fcb02f9ab91d9} 
+\index{Keyboard@{Keyboard}!get\_scancode\_array@{get\_scancode\_array}}
+\index{get\_scancode\_array@{get\_scancode\_array}!Keyboard@{Keyboard}}
+\doxysubsubsection{\texorpdfstring{get\_scancode\_array()}{get\_scancode\_array()}}
+{\footnotesize\ttfamily uint8\+\_\+t \texorpdfstring{$\ast$}{*} get\+\_\+scancode\+\_\+array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a pointer to the scancode array. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the scancode array 
+\end{DoxyReturn}
+\Hypertarget{group__KBD_gaddc1759ee6b0ac530fc12b576969a0ba}\label{group__KBD_gaddc1759ee6b0ac530fc12b576969a0ba} 
+\index{Keyboard@{Keyboard}!get\_scancode\_index@{get\_scancode\_index}}
+\index{get\_scancode\_index@{get\_scancode\_index}!Keyboard@{Keyboard}}
+\doxysubsubsection{\texorpdfstring{get\_scancode\_index()}{get\_scancode\_index()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+scancode\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the index of the scancode array. 
+
+\begin{DoxyReturn}{Returns}
+Index of the scancode array 
+\end{DoxyReturn}
+\Hypertarget{group__KBD_gaa55bcee31ec8144c0add0d8a79523edd}\label{group__KBD_gaa55bcee31ec8144c0add0d8a79523edd} 
+\index{Keyboard@{Keyboard}!kbd\_enable\_interrupts@{kbd\_enable\_interrupts}}
+\index{kbd\_enable\_interrupts@{kbd\_enable\_interrupts}!Keyboard@{Keyboard}}
+\doxysubsubsection{\texorpdfstring{kbd\_enable\_interrupts()}{kbd\_enable\_interrupts()}}
+{\footnotesize\ttfamily int() kbd\+\_\+enable\+\_\+interrupts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables keyboard interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{group__KBD_ga4ac9231a99a664d6a9f0b69767e0d707}\label{group__KBD_ga4ac9231a99a664d6a9f0b69767e0d707} 
+\index{Keyboard@{Keyboard}!kbd\_subscribe\_int@{kbd\_subscribe\_int}}
+\index{kbd\_subscribe\_int@{kbd\_subscribe\_int}!Keyboard@{Keyboard}}
+\doxysubsubsection{\texorpdfstring{kbd\_subscribe\_int()}{kbd\_subscribe\_int()}}
+{\footnotesize\ttfamily int() kbd\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribes keyboard interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Pointer to store the bit number set in the interrupt mask \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{group__KBD_gaee0a7b54ee426fade9c780418d110fe0}\label{group__KBD_gaee0a7b54ee426fade9c780418d110fe0} 
+\index{Keyboard@{Keyboard}!kbd\_unsubscribe\_int@{kbd\_unsubscribe\_int}}
+\index{kbd\_unsubscribe\_int@{kbd\_unsubscribe\_int}!Keyboard@{Keyboard}}
+\doxysubsubsection{\texorpdfstring{kbd\_unsubscribe\_int()}{kbd\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() kbd\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes keyboard interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}

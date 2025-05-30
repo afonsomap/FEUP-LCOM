@@ -1,0 +1,152 @@
+\doxysection{sprite\+Loader.\+h}
+\hypertarget{spriteLoader_8h_source}{}\label{spriteLoader_8h_source}\index{model/spriteLoader/spriteLoader.h@{model/spriteLoader/spriteLoader.h}}
+\mbox{\hyperlink{spriteLoader_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_SPRITELOADER\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_SPRITELOADER\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{sprite.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{animatedSprite_8h}{animatedSprite.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}images/player1/back/p1\_back1.xpm"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}images/player1/back/p1\_back2.xpm"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}images/player1/back/p1\_back3.xpm"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}images/player1/back/p1\_back4.xpm"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}images/player1/back/p1\_back5.xpm"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}images/player1/front/p1\_front1.xpm"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}images/player1/front/p1\_front2.xpm"{}}\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}images/player1/front/p1\_front3.xpm"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}images/player1/front/p1\_front4.xpm"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}images/player1/front/p1\_front5.xpm"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}images/player1/left/p1\_left1.xpm"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}images/player1/left/p1\_left2.xpm"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}images/player1/left/p1\_left3.xpm"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}images/player1/left/p1\_left4.xpm"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}images/player1/left/p1\_left5.xpm"{}}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}images/player1/right/p1\_right1.xpm"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}images/player1/right/p1\_right2.xpm"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}images/player1/right/p1\_right3.xpm"{}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}images/player1/right/p1\_right4.xpm"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}images/player1/right/p1\_right5.xpm"{}}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}images/bomb/bomb1.xpm"{}}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}images/bomb/bomb2.xpm"{}}\ \ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}images/bomb/bomb3.xpm"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}images/bomb/bomb4.xpm"{}}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}images/bomb/bomb5.xpm"{}}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}images/bomb/bomb6.xpm"{}}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}images/bomb/bomb7.xpm"{}}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ "{}images/bomb/bomb8.xpm"{}}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ "{}images/bomb/bomb9.xpm"{}}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ "{}images/bomb/bomb10.xpm"{}}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ "{}images/connection/waiting\_connection.xpm"{}}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ "{}images/connection/warning\_connection.xpm"{}}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ "{}images/explosion/explosion1.xpm"{}}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}images/explosion/explosion2.xpm"{}}\ \ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#include\ "{}images/explosion/explosion3.xpm"{}}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ "{}images/explosion/explosion4.xpm"{}}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#include\ "{}images/explosion/explosion5.xpm"{}}\ \ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#include\ "{}images/explosion/explosion6.xpm"{}}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#include\ "{}images/explosion/explosion7.xpm"{}}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}images/explosion/explosion8.xpm"{}}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#include\ "{}images/explosion/explosion9.xpm"{}}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#include\ "{}images/bomb\_options/bomb\_option1.xpm"{}}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#include\ "{}images/bomb\_options/bomb\_option2.xpm"{}}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#include\ "{}images/bomb\_options/bomb\_option3.xpm"{}}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#include\ "{}images/bomb\_options/selected\_bomb1.xpm"{}}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#include\ "{}images/bomb\_options/selected\_bomb2.xpm"{}}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#include\ "{}images/bomb\_options/selected\_bomb3.xpm"{}}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#include\ "{}images/wall/wall.xpm"{}}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#include\ "{}images/wall/solid\_wall.xpm"{}}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#include\ "{}images/background/grid\_background.xpm"{}}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#include\ "{}images/background/game\_background.xpm"{}}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#include\ "{}images/cursor.xpm"{}}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#include\ "{}images/menu/menu\_background.xpm"{}}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#include\ "{}images/menu/menu\_single.xpm"{}}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#include\ "{}images/menu/menu\_multi.xpm"{}}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#include\ "{}images/menu/menu\_exit.xpm"{}}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#include\ "{}images/menu/menu\_title.xpm"{}}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#include\ "{}images/single\_player/exit\_sp.xpm"{}}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#include\ "{}images/died/died\_text.xpm"{}}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#include\ "{}images/died/died\_background.xpm"{}}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#include\ "{}images/died/play\_again.xpm"{}}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#include\ "{}images/died/back\_to\_menu.xpm"{}}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#include\ "{}images/died/your\_score.xpm"{}}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#include\ "{}images/numbers/number\_0.xpm"{}}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#include\ "{}images/numbers/number\_1.xpm"{}}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#include\ "{}images/numbers/number\_2.xpm"{}}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#include\ "{}images/numbers/number\_3.xpm"{}}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#include\ "{}images/numbers/number\_4.xpm"{}}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#include\ "{}images/numbers/number\_5.xpm"{}}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#include\ "{}images/numbers/number\_6.xpm"{}}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#include\ "{}images/numbers/number\_7.xpm"{}}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#include\ "{}images/numbers/number\_8.xpm"{}}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#include\ "{}images/numbers/number\_9.xpm"{}}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#include\ "{}images/winners/you\_won.xpm"{}}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#include\ "{}images/winners/you\_lost.xpm"{}}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#include\ "{}images/winners/draw.xpm"{}}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsprite__loader__imp}{sprite\_loader\_imp}};}
+\DoxyCodeLine{00113\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsprite__loader__imp}{sprite\_loader\_imp}}\ \mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}*\ load\_sprites();}
+\DoxyCodeLine{00116\ \textcolor{keywordtype}{void}\ destroy\_sprites(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_player1\_standing(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00119\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_player2\_standing(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00120\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}*\ get\_player1\_left(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00121\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}*\ get\_player1\_right(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00122\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}*\ get\_player1\_up(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00123\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}*\ get\_player1\_down(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00124\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}*\ get\_player2\_left(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00125\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}*\ get\_player2\_right(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00126\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}*\ get\_player2\_up(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00127\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}*\ get\_player2\_down(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00128\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}*\ get\_bomb(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00129\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_wall(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00130\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_solid\_wall(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00131\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_grid\_background(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00132\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_cursor(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00133\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}*\ get\_explosion(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00134\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_menu\_background(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00135\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_menu\_title(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00136\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_single\_mode\_button(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00137\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_multi\_mode\_button(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00138\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_exit\_button(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00139\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_exit(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00140\ \mbox{\hyperlink{structsprite__imp}{Sprite}}**\ get\_bomb\_options(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00141\ \mbox{\hyperlink{structsprite__imp}{Sprite}}**\ get\_selected\_options(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00142\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_game\_background(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00143\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_died\_title(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00144\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_died\_background(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00145\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_play\_again(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00146\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_back\_to\_menu(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00147\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_number\_sprite(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader,\ \textcolor{keywordtype}{int}\ number);}
+\DoxyCodeLine{00148\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_your\_score\_text(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00149\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_warning\_connection(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00150\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_waiting\_connection(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00151\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_winners\_background(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00152\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_winners\_you\_won(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00153\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_winners\_you\_lost(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00154\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ get\_winners\_draw(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

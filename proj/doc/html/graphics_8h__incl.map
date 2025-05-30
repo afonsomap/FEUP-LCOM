@@ -1,0 +1,8 @@
+<map id="controllers/graphics/graphics.h" name="controllers/graphics/graphics.h">
+<area shape="rect" id="Node000001" title="Graphics management." alt="" coords="5,5,140,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="33,167,112,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,46,69,80,69,119,72,153,67,154,63,119,64,80,67,45"/>
+<area shape="rect" id="Node000003" href="$vbe_8h.html" title="VBE (VESA BIOS Extensions) management." alt="" coords="79,93,133,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="83,45,98,79,93,82,78,47"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="103,120,86,155,81,153,98,118"/>
+</map>

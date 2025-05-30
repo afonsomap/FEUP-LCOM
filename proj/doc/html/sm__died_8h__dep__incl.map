@@ -1,0 +1,9 @@
+<map id="model/singleMode/died_state/sm_died.h" name="model/singleMode/died_state/sm_died.h">
+<area shape="rect" id="Node000001" title="Single Mode died state management." alt="" coords="32,5,187,45"/>
+<area shape="rect" id="Node000002" href="$singleMode_8h.html" title="Single player mode management." alt="" coords="5,93,213,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,59,112,93,107,93,107,59"/>
+<area shape="rect" id="Node000003" href="$state_8h.html" title="State management for the game." alt="" coords="42,167,177,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,132,112,167,107,167,107,132"/>
+<area shape="rect" id="Node000004" href="$main_8c.html" title=" " alt="" coords="79,240,140,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="112,206,112,240,107,240,107,206"/>
+</map>

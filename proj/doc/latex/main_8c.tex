@@ -1,0 +1,68 @@
+\doxysection{main.\+c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{main.c@{main.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}graphics.\+h"{}}\newline
+{\ttfamily \#include "{}kbd.\+h"{}}\newline
+{\ttfamily \#include "{}mouse.\+h"{}}\newline
+{\ttfamily \#include "{}timer\+\_\+count.\+h"{}}\newline
+{\ttfamily \#include "{}sprite\+Loader.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}state.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+pressed.\+h"{}}\newline
+{\ttfamily \#include "{}serial\+\_\+port.\+h"{}}\newline
+{\ttfamily \#include "{}queue.\+h"{}}\newline
+Include dependency graph for main.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+int {\bfseries main} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{main_8c_a999708f86e80fba1b07b338c959a7d35}{interrups\+\_\+loop}} ()
+\begin{DoxyCompactList}\small\item\em Main loop that handles interrupts and updates the game state. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{main_8c_a2a16f651eccbd248e1ad3b3b924b143b}{proj\+\_\+main\+\_\+loop}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Main function that initializes the game and starts the main loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the main function and the interrupt loop for the game. It initializes the graphics mode, subscribes to interrupts, and handles the game state. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8c_a999708f86e80fba1b07b338c959a7d35}\label{main_8c_a999708f86e80fba1b07b338c959a7d35} 
+\index{main.c@{main.c}!interrups\_loop@{interrups\_loop}}
+\index{interrups\_loop@{interrups\_loop}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{interrups\_loop()}{interrups\_loop()}}
+{\footnotesize\ttfamily void interrups\+\_\+loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main loop that handles interrupts and updates the game state. 
+
+This function subscribes to keyboard, mouse, timer, and serial port interrupts, processes the input, updates the game state, and draws the current state on the screen. \Hypertarget{main_8c_a2a16f651eccbd248e1ad3b3b924b143b}\label{main_8c_a2a16f651eccbd248e1ad3b3b924b143b} 
+\index{main.c@{main.c}!proj\_main\_loop@{proj\_main\_loop}}
+\index{proj\_main\_loop@{proj\_main\_loop}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{proj\_main\_loop()}{proj\_main\_loop()}}
+{\footnotesize\ttfamily int() proj\+\_\+main\+\_\+loop (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Main function that initializes the game and starts the main loop. 
+
+This function sets up the graphics mode, initializes the sprite loader, cursor, and state, and then enters the interrupt loop to handle input and update the game state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of command line arguments \\
+\hline
+{\em argv} & Array of command line arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success 
+\end{DoxyReturn}

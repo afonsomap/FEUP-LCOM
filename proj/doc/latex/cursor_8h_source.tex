@@ -1,0 +1,35 @@
+\doxysection{cursor.\+h}
+\hypertarget{cursor_8h_source}{}\label{cursor_8h_source}\index{model/cursor/cursor.h@{model/cursor/cursor.h}}
+\mbox{\hyperlink{cursor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_CURSOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_CURSOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{sprite.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcursor__imp}{cursor\_imp}};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcursor__imp}{cursor\_imp}}\ \mbox{\hyperlink{structcursor__imp}{Cursor}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ uint16\_t\ \mbox{\hyperlink{cursor_8h_a4dfbcebcbc3a4c981e1aa83185af99cd}{get\_cursor\_Xpos}}(\mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00035\ uint16\_t\ \mbox{\hyperlink{cursor_8h_aa5bb3282b6c918bcbcf589ee95fc35a4}{get\_cursor\_Ypos}}(\mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{cursor_8h_ae919c2237463b0574f6d430771d73b94}{get\_cursor\_button\_pressed}}(\mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c,\ uint8\_t\ button);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{cursor_8h_ad3fdf26ed48521723ee55c50a60031e9}{reset\_cursor\_button\_pressed}}(\mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00061\ \mbox{\hyperlink{structcursor__imp}{Cursor}}\ *\mbox{\hyperlink{cursor_8h_a2733bfe9893db85a4618e19cf5763920}{create\_cursor}}(\mbox{\hyperlink{structsprite__imp}{Sprite}}\ *img,\ uint16\_t\ screen\_width,\ uint16\_t\ screen\_height);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{cursor_8h_a67e83bbdd823ad9546a67bb39b37c846}{destroy\_cursor}}(\mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{cursor_8h_a68ed1eda9c3e5fcc5645a84c3b2d5614}{draw\_cursor}}(\mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{cursor_8h_a79d34356d78900e52c92200932df32d4}{update\_cursor\_with\_mouse}}(\mbox{\hyperlink{structcursor__imp}{Cursor}}\ *cursor,\ \textcolor{keyword}{struct}\ packet\ *mouse\_packet);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\ \#endif}}
+\DoxyCodeLine{00086\ \ }
+
+\end{DoxyCode}

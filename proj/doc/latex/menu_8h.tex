@@ -1,0 +1,119 @@
+\doxysection{model/menu/menu.h File Reference}
+\hypertarget{menu_8h}{}\label{menu_8h}\index{model/menu/menu.h@{model/menu/menu.h}}
+
+
+Menu management in the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+{\ttfamily \#include "{}sprite\+Loader.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}button.\+h"{}}\newline
+Include dependency graph for menu.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{menu_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{menu_8h_af5f1cebffd9177b1da1738b7e4ecb886}\label{menu_8h_af5f1cebffd9177b1da1738b7e4ecb886} 
+typedef struct \mbox{\hyperlink{structmenu__imp}{menu\+\_\+imp}} {\bfseries Menu}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structmenu__imp}{Menu}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{menu_8h_a576871ea8c337bac4c312dfe6f82f452}{create\+\_\+menu}} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\begin{DoxyCompactList}\small\item\em Creates a menu object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_a4e64875b7ff4ce253fe5a8604ec9461c}{destroy\+\_\+menu}} (\mbox{\hyperlink{structmenu__imp}{Menu}} \texorpdfstring{$\ast$}{*}m)
+\begin{DoxyCompactList}\small\item\em Destroys a menu object and frees its resources. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_a464335f32a23588b3aa7bbdecb815aab}{draw\+\_\+menu}} (\mbox{\hyperlink{structmenu__imp}{Menu}} \texorpdfstring{$\ast$}{*}m)
+\begin{DoxyCompactList}\small\item\em Draws the menu on the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8h_a34d8847f0ed4d050b5987b1b032da676}{process\+\_\+menu\+\_\+mouse}} (\mbox{\hyperlink{structmenu__imp}{Menu}} \texorpdfstring{$\ast$}{*}m, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}cursor)
+\begin{DoxyCompactList}\small\item\em Processes the input from the cursor and determines the action to take. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Menu management in the game. 
+
+This module provides functions to create, manage, and draw the main menu of the game. It handles the background, buttons, and input processing for starting the game or exiting. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{menu_8h_a576871ea8c337bac4c312dfe6f82f452}\label{menu_8h_a576871ea8c337bac4c312dfe6f82f452} 
+\index{menu.h@{menu.h}!create\_menu@{create\_menu}}
+\index{create\_menu@{create\_menu}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{create\_menu()}{create\_menu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmenu__imp}{Menu}} \texorpdfstring{$\ast$}{*} create\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}}]{loader }\end{DoxyParamCaption})}
+
+
+
+Creates a menu object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loader} & Pointer to the Sprite\+Loader object used to load sprites. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created Menu object, or NULL on failure. 
+\end{DoxyReturn}
+\Hypertarget{menu_8h_a4e64875b7ff4ce253fe5a8604ec9461c}\label{menu_8h_a4e64875b7ff4ce253fe5a8604ec9461c} 
+\index{menu.h@{menu.h}!destroy\_menu@{destroy\_menu}}
+\index{destroy\_menu@{destroy\_menu}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_menu()}{destroy\_menu()}}
+{\footnotesize\ttfamily void destroy\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmenu__imp}{Menu}} \texorpdfstring{$\ast$}{*}}]{m }\end{DoxyParamCaption})}
+
+
+
+Destroys a menu object and frees its resources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Pointer to the Menu object to be destroyed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_a464335f32a23588b3aa7bbdecb815aab}\label{menu_8h_a464335f32a23588b3aa7bbdecb815aab} 
+\index{menu.h@{menu.h}!draw\_menu@{draw\_menu}}
+\index{draw\_menu@{draw\_menu}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{draw\_menu()}{draw\_menu()}}
+{\footnotesize\ttfamily void draw\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmenu__imp}{Menu}} \texorpdfstring{$\ast$}{*}}]{m }\end{DoxyParamCaption})}
+
+
+
+Draws the menu on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Pointer to the Menu object to be drawn. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{menu_8h_a34d8847f0ed4d050b5987b1b032da676}\label{menu_8h_a34d8847f0ed4d050b5987b1b032da676} 
+\index{menu.h@{menu.h}!process\_menu\_mouse@{process\_menu\_mouse}}
+\index{process\_menu\_mouse@{process\_menu\_mouse}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{process\_menu\_mouse()}{process\_menu\_mouse()}}
+{\footnotesize\ttfamily int process\+\_\+menu\+\_\+mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmenu__imp}{Menu}} \texorpdfstring{$\ast$}{*}}]{m,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{cursor }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the cursor and determines the action to take. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Pointer to the Cursor object used for input. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if no action is taken, 1 if the game should exit, or 2 if single mode is selected. 
+\end{DoxyReturn}

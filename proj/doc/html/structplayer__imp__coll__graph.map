@@ -1,0 +1,7 @@
+<map id="player_imp" name="player_imp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="98,137,183,163"/>
+<area shape="rect" id="Node000002" href="$structanimatedSprite__imp.html" title=" " alt="" coords="5,5,143,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,44,68,78,71,96,78,112,90,125,106,135,103,140,86,129,73,115,66,97,63,79,65,44"/>
+<area shape="rect" id="Node000003" href="$structsprite__imp.html" title=" " alt="" coords="167,5,250,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="207,45,198,79,182,115,159,139,155,135,177,112,193,78,202,44"/>
+</map>

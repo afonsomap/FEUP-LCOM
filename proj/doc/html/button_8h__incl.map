@@ -1,0 +1,24 @@
+<map id="model/button/button.h" name="model/button/button.h">
+<area shape="rect" id="Node000001" title="Button management in the game." alt="" coords="95,5,243,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="82,372,161,397"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,33,98,52,55,80,36,98,22,117,12,139,8,164,8,239,10,259,16,277,37,311,65,340,92,362,89,366,61,344,33,315,11,280,5,260,3,239,3,163,6,138,17,115,33,94,52,76,95,47,136,28"/>
+<area shape="rect" id="Node000003" href="$sprite_8h.html" title="Sprite management for the game This module provides functions to create, destroy, and draw sprites." alt="" coords="138,152,203,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,31,173,138,168,138,167,31"/>
+<area shape="rect" id="Node000008" href="$cursor_8h.html" title="Cursor management." alt="" coords="207,79,275,104"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="183,29,222,67,218,71,179,33"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="141,180,109,198,95,211,84,227,73,252,71,273,84,323,92,342,104,360,100,363,88,345,79,325,66,274,68,251,79,224,91,208,106,194,139,175"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="288,225,357,251"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="196,175,287,217,285,222,194,180"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="200,225,264,251"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="183,176,215,213,211,217,179,179"/>
+<area shape="rect" id="Node000006" href="$graphics_8h.html" title="Graphics management." alt="" coords="93,225,176,251"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="167,179,149,214,144,212,162,176"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="145,250,162,283,166,304,164,325,155,345,143,363,139,360,150,342,159,323,161,304,157,285,140,252"/>
+<area shape="rect" id="Node000007" href="$vbe_8h.html" title="VBE (VESA BIOS Extensions) management." alt="" coords="94,299,149,324"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="135,251,129,286,123,285,130,251"/>
+<area shape="poly" id="edge9_Node000007_Node000002" title=" " alt="" coords="124,324,124,358,119,358,119,324"/>
+<area shape="poly" id="edge11_Node000008_Node000002" title=" " alt="" coords="265,102,306,127,349,162,366,183,377,205,380,228,372,252,353,277,331,299,280,334,225,359,175,375,173,369,223,354,277,329,328,295,349,274,367,249,374,228,372,207,361,186,345,166,303,131,262,106"/>
+<area shape="poly" id="edge14_Node000008_Node000003" title=" " alt="" coords="232,106,194,144,190,140,228,102"/>
+<area shape="poly" id="edge12_Node000008_Node000004" title=" " alt="" coords="250,103,312,212,307,215,246,106"/>
+<area shape="poly" id="edge13_Node000008_Node000005" title=" " alt="" coords="243,105,236,212,231,211,238,104"/>
+</map>

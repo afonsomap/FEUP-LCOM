@@ -10,7 +10,7 @@
 #include "button.h"
 
 /**
- * @defgroup menu menu
+ * @file menu.h
  * @brief Menu management in the game
  * 
  * This module provides functions to create, manage, and draw the main menu of the game.

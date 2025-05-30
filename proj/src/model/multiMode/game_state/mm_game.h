@@ -16,7 +16,7 @@
 #include "button.h"
 
 /**
- * @defgroup mm_game mm_game
+ * @file mm_game.h
  * @brief Multiplayer mode game state management
  * 
  * This module provides functions to create, manage, and draw the multiplayer game state.

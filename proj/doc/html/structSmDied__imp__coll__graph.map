@@ -1,0 +1,11 @@
+<map id="SmDied_imp" name="SmDied_imp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="113,215,210,240"/>
+<area shape="rect" id="Node000002" href="$structsprite__imp.html" title=" " alt="" coords="131,5,213,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,32,89,41,61,54,36,72,15,95,9,114,11,132,22,149,39,165,84,192,130,212,127,217,82,197,36,169,18,152,6,133,3,113,11,92,32,68,59,49,88,36,116,27"/>
+<area shape="rect" id="Node000003" href="$structbutton__imp.html" title=" " alt="" coords="129,103,215,128"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="175,44,175,102,169,102,169,44"/>
+<area shape="rect" id="Node000004" href="$structscore__imp.html" title=" " alt="" coords="240,103,323,128"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="198,37,216,53,270,100,267,104,213,57,195,42"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,142,165,162,163,215,158,214,160,161,163,141"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="279,142,270,168,254,193,234,207,211,218,209,213,231,203,250,189,265,166,274,140"/>
+</map>

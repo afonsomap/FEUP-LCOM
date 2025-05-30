@@ -1,0 +1,47 @@
+\doxysection{state.\+h}
+\hypertarget{state_8h_source}{}\label{state_8h_source}\index{model/state/state.h@{model/state/state.h}}
+\mbox{\hyperlink{state_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_STATE\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_STATE\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{key__pressed_8h}{key\_pressed.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cursor_8h}{cursor.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{multiMode_8h}{multiMode.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{singleMode_8h}{singleMode.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{menu_8h}{menu.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{spriteLoader_8h}{spriteLoader.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structstate__imp}{state\_imp}};}
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structstate__imp}{state\_imp}}\ \mbox{\hyperlink{structstate__imp}{State}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00024\ \ \ MENU,}
+\DoxyCodeLine{00025\ \ \ SINGLE\_MODE,}
+\DoxyCodeLine{00026\ \ \ MULTI\_MODE,}
+\DoxyCodeLine{00027\ \ \ EXIT}
+\DoxyCodeLine{00028\ \}\ GameState;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00037\ \mbox{\hyperlink{structstate__imp}{State}}\ *\mbox{\hyperlink{state_8h_a0b21adf3ec69eef0558f6492264bb384}{create\_state}}(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader,\ \mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_ad708c19722a92accc4fb5984b9ca7a58}{destroy\_state}}(\mbox{\hyperlink{structstate__imp}{State}}\ *state);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_af1e3f46ceafc910f31f3549d67dbfb7f}{update\_state}}(\mbox{\hyperlink{structstate__imp}{State}}\ *state,\ \mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *key,\ \mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c,\ uint8\_t\ sp\_byte);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_a401218ce955f11d0f4b0496dbbc5b413}{update\_state\_sp}}(\mbox{\hyperlink{structstate__imp}{State}}\ *state,\ uint8\_t\ sp\_byte);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_ab7425c1f167848e5bdea8574139396d3}{update\_state\_kbd}}(\mbox{\hyperlink{structstate__imp}{State}}\ *state,\ \mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *key);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_a610d2b5cd855910df384798476787803}{update\_state\_mouse}}(\mbox{\hyperlink{structstate__imp}{State}}\ *state,\ \mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_a37b5acd0464dc1b20bd5d410b43c5228}{update\_state\_timer}}(\mbox{\hyperlink{structstate__imp}{State}}\ *state);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{state_8h_ad2ee8a97db339e4ca7dfd2f3eba92fa2}{draw\_state}}(\mbox{\hyperlink{structstate__imp}{State}}\ *state);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{state_8h_af181b310951b01a2d61eb48fa2a21359}{is\_game\_over}}(\mbox{\hyperlink{structstate__imp}{State}}\ *state);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00104\ }
+
+\end{DoxyCode}

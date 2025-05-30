@@ -1,0 +1,191 @@
+\doxysection{model/key\+\_\+pressed/key\+\_\+pressed.h File Reference}
+\hypertarget{key__pressed_8h}{}\label{key__pressed_8h}\index{model/key\_pressed/key\_pressed.h@{model/key\_pressed/key\_pressed.h}}
+
+
+Key\+Pressed management.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}kbd.\+h"{}}\newline
+Include dependency graph for key\+\_\+pressed.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{key__pressed_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{key__pressed_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{key__pressed_8h_a2cb1ce3eaeb10c8bcba5645c709f8d4f}\label{key__pressed_8h_a2cb1ce3eaeb10c8bcba5645c709f8d4f} 
+typedef struct \mbox{\hyperlink{structkey__pressed__imp}{key\+\_\+pressed\+\_\+imp}} {\bfseries Key\+Pressed}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{key__pressed_8h_ab4a5ff048155c0edc59d8c94efab29ae}{key\+\_\+pressed\+\_\+create}} ()
+\begin{DoxyCompactList}\small\item\em Creates a Key\+Pressed instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{key__pressed_8h_a124883bc1e223f3be0b5d9852447b37f}{key\+\_\+pressed\+\_\+destroy}} (\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}kp)
+\begin{DoxyCompactList}\small\item\em Destroys a Key\+Pressed instance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{key__pressed_8h_ac730c62bc71e27ed1cf3c93fbc2b9777}{is\+\_\+up\+\_\+pressed}} (\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}kp)
+\begin{DoxyCompactList}\small\item\em Checks if the UP key is pressed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{key__pressed_8h_a09fcfb1ad1e619035510e4c343d9173c}{is\+\_\+down\+\_\+pressed}} (\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}kp)
+\begin{DoxyCompactList}\small\item\em Checks if the DOWN key is pressed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{key__pressed_8h_a4ffbb9e4d5bd71388983bb41b1e9fbd1}{is\+\_\+left\+\_\+pressed}} (\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}kp)
+\begin{DoxyCompactList}\small\item\em Checks if the LEFT key is pressed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{key__pressed_8h_a0fe6825706addac8f447e36a4a31a9c2}{is\+\_\+right\+\_\+pressed}} (\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}kp)
+\begin{DoxyCompactList}\small\item\em Checks if the RIGHT key is pressed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{key__pressed_8h_a1b21a30cda20f5b237ef258fe40400b6}{is\+\_\+esc\+\_\+pressed}} (\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}kp)
+\begin{DoxyCompactList}\small\item\em Checks if the ESC key is pressed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{key__pressed_8h_abf2c92189d5221ba6aa4d020b60632d3}{key\+\_\+pressed\+\_\+update}} (\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}kp, uint8\+\_\+t keyboard\+\_\+code)
+\begin{DoxyCompactList}\small\item\em Updates the pressed key based on the keyboard code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Key\+Pressed management. 
+
+This module provides functions to create, destroy, and manage the state of keys pressed in the game. It allows checking if specific keys (UP, DOWN, LEFT, RIGHT, ESC) are pressed and updating the state based on keyboard input. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{key__pressed_8h_a09fcfb1ad1e619035510e4c343d9173c}\label{key__pressed_8h_a09fcfb1ad1e619035510e4c343d9173c} 
+\index{key\_pressed.h@{key\_pressed.h}!is\_down\_pressed@{is\_down\_pressed}}
+\index{is\_down\_pressed@{is\_down\_pressed}!key\_pressed.h@{key\_pressed.h}}
+\doxysubsubsection{\texorpdfstring{is\_down\_pressed()}{is\_down\_pressed()}}
+{\footnotesize\ttfamily bool is\+\_\+down\+\_\+pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{kp }\end{DoxyParamCaption})}
+
+
+
+Checks if the DOWN key is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kp} & Pointer to the Key\+Pressed instance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the DOWN key is pressed, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{key__pressed_8h_a1b21a30cda20f5b237ef258fe40400b6}\label{key__pressed_8h_a1b21a30cda20f5b237ef258fe40400b6} 
+\index{key\_pressed.h@{key\_pressed.h}!is\_esc\_pressed@{is\_esc\_pressed}}
+\index{is\_esc\_pressed@{is\_esc\_pressed}!key\_pressed.h@{key\_pressed.h}}
+\doxysubsubsection{\texorpdfstring{is\_esc\_pressed()}{is\_esc\_pressed()}}
+{\footnotesize\ttfamily bool is\+\_\+esc\+\_\+pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{kp }\end{DoxyParamCaption})}
+
+
+
+Checks if the ESC key is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kp} & Pointer to the Key\+Pressed instance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the ESC key is pressed, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{key__pressed_8h_a4ffbb9e4d5bd71388983bb41b1e9fbd1}\label{key__pressed_8h_a4ffbb9e4d5bd71388983bb41b1e9fbd1} 
+\index{key\_pressed.h@{key\_pressed.h}!is\_left\_pressed@{is\_left\_pressed}}
+\index{is\_left\_pressed@{is\_left\_pressed}!key\_pressed.h@{key\_pressed.h}}
+\doxysubsubsection{\texorpdfstring{is\_left\_pressed()}{is\_left\_pressed()}}
+{\footnotesize\ttfamily bool is\+\_\+left\+\_\+pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{kp }\end{DoxyParamCaption})}
+
+
+
+Checks if the LEFT key is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kp} & Pointer to the Key\+Pressed instance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the LEFT key is pressed, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{key__pressed_8h_a0fe6825706addac8f447e36a4a31a9c2}\label{key__pressed_8h_a0fe6825706addac8f447e36a4a31a9c2} 
+\index{key\_pressed.h@{key\_pressed.h}!is\_right\_pressed@{is\_right\_pressed}}
+\index{is\_right\_pressed@{is\_right\_pressed}!key\_pressed.h@{key\_pressed.h}}
+\doxysubsubsection{\texorpdfstring{is\_right\_pressed()}{is\_right\_pressed()}}
+{\footnotesize\ttfamily bool is\+\_\+right\+\_\+pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{kp }\end{DoxyParamCaption})}
+
+
+
+Checks if the RIGHT key is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kp} & Pointer to the Key\+Pressed instance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the RIGHT key is pressed, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{key__pressed_8h_ac730c62bc71e27ed1cf3c93fbc2b9777}\label{key__pressed_8h_ac730c62bc71e27ed1cf3c93fbc2b9777} 
+\index{key\_pressed.h@{key\_pressed.h}!is\_up\_pressed@{is\_up\_pressed}}
+\index{is\_up\_pressed@{is\_up\_pressed}!key\_pressed.h@{key\_pressed.h}}
+\doxysubsubsection{\texorpdfstring{is\_up\_pressed()}{is\_up\_pressed()}}
+{\footnotesize\ttfamily bool is\+\_\+up\+\_\+pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{kp }\end{DoxyParamCaption})}
+
+
+
+Checks if the UP key is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kp} & Pointer to the Key\+Pressed instance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the UP key is pressed, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{key__pressed_8h_ab4a5ff048155c0edc59d8c94efab29ae}\label{key__pressed_8h_ab4a5ff048155c0edc59d8c94efab29ae} 
+\index{key\_pressed.h@{key\_pressed.h}!key\_pressed\_create@{key\_pressed\_create}}
+\index{key\_pressed\_create@{key\_pressed\_create}!key\_pressed.h@{key\_pressed.h}}
+\doxysubsubsection{\texorpdfstring{key\_pressed\_create()}{key\_pressed\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*} key\+\_\+pressed\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a Key\+Pressed instance. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the created Key\+Pressed instance, or NULL if memory allocation fails. 
+\end{DoxyReturn}
+\Hypertarget{key__pressed_8h_a124883bc1e223f3be0b5d9852447b37f}\label{key__pressed_8h_a124883bc1e223f3be0b5d9852447b37f} 
+\index{key\_pressed.h@{key\_pressed.h}!key\_pressed\_destroy@{key\_pressed\_destroy}}
+\index{key\_pressed\_destroy@{key\_pressed\_destroy}!key\_pressed.h@{key\_pressed.h}}
+\doxysubsubsection{\texorpdfstring{key\_pressed\_destroy()}{key\_pressed\_destroy()}}
+{\footnotesize\ttfamily void key\+\_\+pressed\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{kp }\end{DoxyParamCaption})}
+
+
+
+Destroys a Key\+Pressed instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kp} & Pointer to the Key\+Pressed instance to be destroyed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{key__pressed_8h_abf2c92189d5221ba6aa4d020b60632d3}\label{key__pressed_8h_abf2c92189d5221ba6aa4d020b60632d3} 
+\index{key\_pressed.h@{key\_pressed.h}!key\_pressed\_update@{key\_pressed\_update}}
+\index{key\_pressed\_update@{key\_pressed\_update}!key\_pressed.h@{key\_pressed.h}}
+\doxysubsubsection{\texorpdfstring{key\_pressed\_update()}{key\_pressed\_update()}}
+{\footnotesize\ttfamily void key\+\_\+pressed\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{kp,  }\item[{uint8\+\_\+t}]{keyboard\+\_\+code }\end{DoxyParamCaption})}
+
+
+
+Updates the pressed key based on the keyboard code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kp} & Pointer to the Key\+Pressed instance to be updated. \\
+\hline
+{\em keyboard\+\_\+code} & The keyboard code representing the key event. \\
+\hline
+\end{DoxyParams}

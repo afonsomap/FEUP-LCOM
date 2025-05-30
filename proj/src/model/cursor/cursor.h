@@ -7,7 +7,7 @@
 #include "sprite.h"
 
 /**
- * @defgroup cursor cursor
+ * @file cursor.h
  * 
  * @brief Cursor management
  * 

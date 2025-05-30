@@ -1,0 +1,35 @@
+\doxysection{key\+\_\+pressed.\+h}
+\hypertarget{key__pressed_8h_source}{}\label{key__pressed_8h_source}\index{model/key\_pressed/key\_pressed.h@{model/key\_pressed/key\_pressed.h}}
+\mbox{\hyperlink{key__pressed_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KEY\_PRESSED\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KEY\_PRESSED\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kbd_8h}{kbd.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structkey__pressed__imp}{key\_pressed\_imp}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structkey__pressed__imp}{key\_pressed\_imp}}\ \mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00024\ \mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *\mbox{\hyperlink{key__pressed_8h_ab4a5ff048155c0edc59d8c94efab29ae}{key\_pressed\_create}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{key__pressed_8h_a124883bc1e223f3be0b5d9852447b37f}{key\_pressed\_destroy}}(\mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *kp);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{key__pressed_8h_ac730c62bc71e27ed1cf3c93fbc2b9777}{is\_up\_pressed}}(\mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *kp);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{key__pressed_8h_a09fcfb1ad1e619035510e4c343d9173c}{is\_down\_pressed}}(\mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *kp);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{key__pressed_8h_a4ffbb9e4d5bd71388983bb41b1e9fbd1}{is\_left\_pressed}}(\mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *kp);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{key__pressed_8h_a0fe6825706addac8f447e36a4a31a9c2}{is\_right\_pressed}}(\mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *kp);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{key__pressed_8h_a1b21a30cda20f5b237ef258fe40400b6}{is\_esc\_pressed}}(\mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *kp);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{key__pressed_8h_abf2c92189d5221ba6aa4d020b60632d3}{key\_pressed\_update}}(\mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *kp,\ uint8\_t\ keyboard\_code);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ KEY\_PRESSED\_H}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+
+\end{DoxyCode}

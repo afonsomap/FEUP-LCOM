@@ -1,0 +1,37 @@
+\doxysection{wall.\+h}
+\hypertarget{wall_8h_source}{}\label{wall_8h_source}\index{model/wall/wall.h@{model/wall/wall.h}}
+\mbox{\hyperlink{wall_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_WALL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_WALL\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{sprite.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structwall__imp}{wall\_imp}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structwall__imp}{wall\_imp}}\ \mbox{\hyperlink{structwall__imp}{Wall}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00025\ uint8\_t\ \mbox{\hyperlink{wall_8h_adec8881cb3aaca9758bfa8562b6bef4e}{get\_wall\_Xpos}}(\mbox{\hyperlink{structwall__imp}{Wall}}\ *w);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00033\ uint8\_t\ \mbox{\hyperlink{wall_8h_a6f08e4999cfd79b42a99786a45a9b1d3}{get\_wall\_Ypos}}(\mbox{\hyperlink{structwall__imp}{Wall}}\ *w);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{wall_8h_a296482c5a80de0f6f7b46c40b98303c4}{is\_wall\_destroyable}}(\mbox{\hyperlink{structwall__imp}{Wall}}\ *w);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{wall_8h_a6ce5ed93f0924b9e2e6420b1f1f41d95}{is\_wall\_active}}(\mbox{\hyperlink{structwall__imp}{Wall}}\ *w);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{wall_8h_a10c62ed61f562a4fc77a9d198fb23a86}{set\_wall\_active}}(\mbox{\hyperlink{structwall__imp}{Wall}}\ *w,\ \textcolor{keywordtype}{bool}\ active);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00065\ \mbox{\hyperlink{structsprite__imp}{Sprite}}*\ \mbox{\hyperlink{wall_8h_ac45e85245f4f77e45f076f3e7f8c4465}{get\_wall\_sprite}}(\mbox{\hyperlink{structwall__imp}{Wall}}\ *w);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00077\ \mbox{\hyperlink{structwall__imp}{Wall}}\ *\mbox{\hyperlink{wall_8h_a4ab2911607d085d3fc65e3d4b02d0e5c}{create\_wall}}(uint8\_t\ x,\ uint8\_t\ y,\ \mbox{\hyperlink{structsprite__imp}{Sprite}}\ *img,\ \textcolor{keywordtype}{bool}\ is\_destroyable,\ \textcolor{keywordtype}{bool}\ active);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{wall_8h_a0df49469c479774e0759e72a9c20da51}{destroy\_wall}}(\mbox{\hyperlink{structwall__imp}{Wall}}\ *w);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{wall_8h_a6e062e216cec42daa4095df9cd7db84a}{draw\_wall}}(\mbox{\hyperlink{structwall__imp}{Wall}}\ *w,\ uint16\_t\ x\_initial\_grid,\ uint16\_t\ y\_initial\_grid,\ uint16\_t\ grid\_square\_width);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_WALL\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00097\ }
+
+\end{DoxyCode}

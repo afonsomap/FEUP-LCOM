@@ -1,0 +1,15 @@
+<map id="model/score/score.h" name="model/score/score.h">
+<area shape="rect" id="Node000001" title="Score management in the game." alt="" coords="127,5,267,31"/>
+<area shape="rect" id="Node000002" href="$sm__died_8h.html" title="Single Mode died state management." alt="" coords="5,79,160,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,41,112,81,109,76,167,36"/>
+<area shape="rect" id="Node000003" href="$singleMode_8h.html" title="Single player mode management." alt="" coords="93,167,301,192"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="200,44,200,166,195,166,195,44"/>
+<area shape="rect" id="Node000006" href="$sm__game_8h.html" title="Single Mode game state management." alt="" coords="235,79,397,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="228,36,289,76,286,81,225,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="123,124,182,164,179,169,120,129"/>
+<area shape="rect" id="Node000004" href="$state_8h.html" title="State management for the game." alt="" coords="130,240,265,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="200,206,200,240,195,240,195,206"/>
+<area shape="rect" id="Node000005" href="$main_8c.html" title=" " alt="" coords="167,313,228,339"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="200,279,200,313,195,313,195,279"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="277,129,216,169,213,164,274,124"/>
+</map>

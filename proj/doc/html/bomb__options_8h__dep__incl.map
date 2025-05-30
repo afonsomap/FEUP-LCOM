@@ -1,0 +1,16 @@
+<map id="model/bomb_options/bomb_options.h" name="model/bomb_options/bomb_options.h">
+<area shape="rect" id="Node000001" title="Bomb options management in the game." alt="" coords="145,5,288,45"/>
+<area shape="rect" id="Node000002" href="$mm__game_8h.html" title="Multiplayer mode game state management." alt="" coords="46,93,203,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,57,147,95,143,91,185,53"/>
+<area shape="rect" id="Node000006" href="$sm__game_8h.html" title="Single Mode game state management." alt="" coords="238,93,401,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="252,52,298,91,295,95,248,56"/>
+<area shape="rect" id="Node000003" href="$multiMode_8h.html" title="Multiplayer mode management." alt="" coords="5,181,201,207"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="119,147,109,182,104,180,113,146"/>
+<area shape="rect" id="Node000004" href="$state_8h.html" title="State management for the game." alt="" coords="149,255,284,280"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="135,212,200,252,197,257,132,216"/>
+<area shape="rect" id="Node000005" href="$main_8c.html" title=" " alt="" coords="186,328,247,353"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="219,294,219,328,214,328,214,294"/>
+<area shape="rect" id="Node000007" href="$singleMode_8h.html" title="Single player mode management." alt="" coords="226,181,434,207"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="326,147,331,181,326,181,321,147"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="301,216,237,257,234,252,298,212"/>
+</map>

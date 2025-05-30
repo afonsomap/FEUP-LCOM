@@ -1,0 +1,37 @@
+\doxysection{explosion.\+h}
+\hypertarget{explosion_8h_source}{}\label{explosion_8h_source}\index{model/explosion/explosion.h@{model/explosion/explosion.h}}
+\mbox{\hyperlink{explosion_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_EXPLOSION\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_EXPLOSION\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{animatedSprite_8h}{animatedSprite.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structexplosion__imp}{explosion\_imp}};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structexplosion__imp}{explosion\_imp}}\ \mbox{\hyperlink{structexplosion__imp}{Explosion}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00028\ uint8\_t\ \mbox{\hyperlink{explosion_8h_a9382cb00d360bd945bd5a98592c78829}{get\_explosion\_Xpos}}(\mbox{\hyperlink{structexplosion__imp}{Explosion}}\ *b);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00036\ uint8\_t\ \mbox{\hyperlink{explosion_8h_a48b5e8c868d1cacd091c38bb1b851801}{get\_explosion\_Ypos}}(\mbox{\hyperlink{structexplosion__imp}{Explosion}}\ *b);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{explosion_8h_a8bcd20bc5552f6f99f986e293f145ed8}{is\_explosion\_active}}(\mbox{\hyperlink{structexplosion__imp}{Explosion}}\ *b);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{explosion_8h_a9286ed8089e8e5ebe73a113aacdbd527}{set\_explosion\_active}}(\mbox{\hyperlink{structexplosion__imp}{Explosion}}\ *b,\ \textcolor{keywordtype}{bool}\ active);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00063\ \mbox{\hyperlink{structexplosion__imp}{Explosion}}\ *\mbox{\hyperlink{explosion_8h_adaec20060c79be5fecd17933621c71f8}{create\_explosion}}(uint8\_t\ x,\ uint8\_t\ y,\ \mbox{\hyperlink{structanimatedSprite__imp}{AnimSprite}}\ *img);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{explosion_8h_a3a6104f4c0945bee954fae2b4381e793}{destroy\_explosion}}(\mbox{\hyperlink{structexplosion__imp}{Explosion}}\ *b);\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00081\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{explosion_8h_aaa772e3baea108dac0b194019f58874b}{draw\_explosion}}(\mbox{\hyperlink{structexplosion__imp}{Explosion}}\ *b,\ uint16\_t\ x\_initial\_grid,\ uint16\_t\ y\_initial\_grid,\ uint16\_t\ grid\_square\_width);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_EXPLOSION\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00084\ }
+
+\end{DoxyCode}

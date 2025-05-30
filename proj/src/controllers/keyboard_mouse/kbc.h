@@ -5,9 +5,10 @@
 #include "i8042.h"
 #include "controllers/utils.h"
 
-/** @defgroup kbc kbc
- * @{
- *
+/** 
+ * @file kbc.h
+ * 
+ * 
  * Functions to interact with the i8042 KBC.
  */
 

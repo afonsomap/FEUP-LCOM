@@ -7,7 +7,7 @@
 #include "animatedSprite.h"
 
 /**
- * @defgroup bomb bomb
+ * @file bomb.h
  * 
  * @brief Bomb management in the game
  * 

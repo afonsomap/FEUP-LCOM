@@ -1,0 +1,238 @@
+\doxysection{model/bomb/bomb.h File Reference}
+\hypertarget{bomb_8h}{}\label{bomb_8h}\index{model/bomb/bomb.h@{model/bomb/bomb.h}}
+
+
+Bomb management in the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}animated\+Sprite.\+h"{}}\newline
+Include dependency graph for bomb.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bomb_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bomb_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{bomb_8h_a70b9ffce91954647c9b38f5362aa05d2}\label{bomb_8h_a70b9ffce91954647c9b38f5362aa05d2} 
+typedef struct \mbox{\hyperlink{structbomb__imp}{bomb\+\_\+imp}} {\bfseries Bomb}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{bomb_8h_aa172fc2219d6396e3cf9dee6d1046a53}\label{bomb_8h_aa172fc2219d6396e3cf9dee6d1046a53} 
+enum {\bfseries Bomb\+Type} \{ {\bfseries NORMAL} = 0
+, {\bfseries FULL\+\_\+\+LINE} = 1
+, {\bfseries CONSTRUCTIVE} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bomb_8h_aa22d77c903d31f3075d6b2f91202c5d6}{get\+\_\+bomb\+\_\+\+Xpos}} (\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Returns the X coordinate of the bomb. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{bomb_8h_ac491ceeca7bb401c8c20bae0520fb85a}{get\+\_\+bomb\+\_\+\+Ypos}} (\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Returns the Y coordinate of the bomb. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{bomb_8h_af1263c7aa8fc96c12f09c27a21c48f16}{is\+\_\+bomb\+\_\+active}} (\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Checks if the bomb is active. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bomb_8h_a91449a33a0e603e0532388f60a836851}{set\+\_\+bomb\+\_\+active}} (\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}b, bool active, Bomb\+Type type)
+\begin{DoxyCompactList}\small\item\em Sets the bomb\textquotesingle{}s active status. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{bomb_8h_a0d4f98220933e6e3eccb78751ee0860b}{is\+\_\+bomb\+\_\+exploded}} (\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Checks if the bomb has exploded. \end{DoxyCompactList}\item 
+Bomb\+Type \mbox{\hyperlink{bomb_8h_a0207ffa81742d6882f5e7a732e65f433}{get\+\_\+bomb\+\_\+type}} (\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Gets the type of the bomb. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{bomb_8h_ae9025783cc535d11ecca2e5bc728bb19}{create\+\_\+bomb}} (uint8\+\_\+t x, uint8\+\_\+t y, \mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}img, bool active)
+\begin{DoxyCompactList}\small\item\em Creates a new bomb with the specified sprite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bomb_8h_ac318f34d32b9bcbb73db2f6504a31b9a}{destroy\+\_\+bomb}} (\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for the bomb. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bomb_8h_a9310fd5bd331bd40c70947628b1e1b0a}{draw\+\_\+bomb}} (\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}b, uint16\+\_\+t x\+\_\+initial\+\_\+grid, uint16\+\_\+t y\+\_\+initial\+\_\+grid, uint16\+\_\+t grid\+\_\+square\+\_\+width)
+\begin{DoxyCompactList}\small\item\em Draws the bomb on the screen, if active. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Bomb management in the game. 
+
+This module provides functions to create, manage, and draw bombs in the game. It handles the bomb\textquotesingle{}s position, active status, explosion status, and type. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{bomb_8h_ae9025783cc535d11ecca2e5bc728bb19}\label{bomb_8h_ae9025783cc535d11ecca2e5bc728bb19} 
+\index{bomb.h@{bomb.h}!create\_bomb@{create\_bomb}}
+\index{create\_bomb@{create\_bomb}!bomb.h@{bomb.h}}
+\doxysubsubsection{\texorpdfstring{create\_bomb()}{create\_bomb()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*} create\+\_\+bomb (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y,  }\item[{\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}}]{img,  }\item[{bool}]{active }\end{DoxyParamCaption})}
+
+
+
+Creates a new bomb with the specified sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the bomb in the game grid \\
+\hline
+{\em y} & The y-\/coordinate of the bomb in the game grid \\
+\hline
+{\em img} & The sprite for the bomb \\
+\hline
+{\em active} & The initial active status of the bomb \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created bomb, or NULL if the pixmap is invalid 
+\end{DoxyReturn}
+\Hypertarget{bomb_8h_ac318f34d32b9bcbb73db2f6504a31b9a}\label{bomb_8h_ac318f34d32b9bcbb73db2f6504a31b9a} 
+\index{bomb.h@{bomb.h}!destroy\_bomb@{destroy\_bomb}}
+\index{destroy\_bomb@{destroy\_bomb}!bomb.h@{bomb.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_bomb()}{destroy\_bomb()}}
+{\footnotesize\ttfamily void destroy\+\_\+bomb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated for the bomb. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the bomb to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{bomb_8h_a9310fd5bd331bd40c70947628b1e1b0a}\label{bomb_8h_a9310fd5bd331bd40c70947628b1e1b0a} 
+\index{bomb.h@{bomb.h}!draw\_bomb@{draw\_bomb}}
+\index{draw\_bomb@{draw\_bomb}!bomb.h@{bomb.h}}
+\doxysubsubsection{\texorpdfstring{draw\_bomb()}{draw\_bomb()}}
+{\footnotesize\ttfamily void draw\+\_\+bomb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{uint16\+\_\+t}]{x\+\_\+initial\+\_\+grid,  }\item[{uint16\+\_\+t}]{y\+\_\+initial\+\_\+grid,  }\item[{uint16\+\_\+t}]{grid\+\_\+square\+\_\+width }\end{DoxyParamCaption})}
+
+
+
+Draws the bomb on the screen, if active. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the bomb to be drawn \\
+\hline
+{\em x\+\_\+initial\+\_\+grid} & The initial X coordinate of the grid \\
+\hline
+{\em y\+\_\+initial\+\_\+grid} & The initial Y coordinate of the grid \\
+\hline
+{\em grid\+\_\+square\+\_\+width} & The width of each grid square \\
+\hline
+\end{DoxyParams}
+\Hypertarget{bomb_8h_a0207ffa81742d6882f5e7a732e65f433}\label{bomb_8h_a0207ffa81742d6882f5e7a732e65f433} 
+\index{bomb.h@{bomb.h}!get\_bomb\_type@{get\_bomb\_type}}
+\index{get\_bomb\_type@{get\_bomb\_type}!bomb.h@{bomb.h}}
+\doxysubsubsection{\texorpdfstring{get\_bomb\_type()}{get\_bomb\_type()}}
+{\footnotesize\ttfamily Bomb\+Type get\+\_\+bomb\+\_\+type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Gets the type of the bomb. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the bomb to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The type of the bomb 
+\end{DoxyReturn}
+\Hypertarget{bomb_8h_aa22d77c903d31f3075d6b2f91202c5d6}\label{bomb_8h_aa22d77c903d31f3075d6b2f91202c5d6} 
+\index{bomb.h@{bomb.h}!get\_bomb\_Xpos@{get\_bomb\_Xpos}}
+\index{get\_bomb\_Xpos@{get\_bomb\_Xpos}!bomb.h@{bomb.h}}
+\doxysubsubsection{\texorpdfstring{get\_bomb\_Xpos()}{get\_bomb\_Xpos()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+bomb\+\_\+\+Xpos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Returns the X coordinate of the bomb. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The X coordinate of the bomb 
+\end{DoxyReturn}
+\Hypertarget{bomb_8h_ac491ceeca7bb401c8c20bae0520fb85a}\label{bomb_8h_ac491ceeca7bb401c8c20bae0520fb85a} 
+\index{bomb.h@{bomb.h}!get\_bomb\_Ypos@{get\_bomb\_Ypos}}
+\index{get\_bomb\_Ypos@{get\_bomb\_Ypos}!bomb.h@{bomb.h}}
+\doxysubsubsection{\texorpdfstring{get\_bomb\_Ypos()}{get\_bomb\_Ypos()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+bomb\+\_\+\+Ypos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Returns the Y coordinate of the bomb. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Y coordinate of the bomb 
+\end{DoxyReturn}
+\Hypertarget{bomb_8h_af1263c7aa8fc96c12f09c27a21c48f16}\label{bomb_8h_af1263c7aa8fc96c12f09c27a21c48f16} 
+\index{bomb.h@{bomb.h}!is\_bomb\_active@{is\_bomb\_active}}
+\index{is\_bomb\_active@{is\_bomb\_active}!bomb.h@{bomb.h}}
+\doxysubsubsection{\texorpdfstring{is\_bomb\_active()}{is\_bomb\_active()}}
+{\footnotesize\ttfamily bool is\+\_\+bomb\+\_\+active (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Checks if the bomb is active. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the bomb to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the bomb is active, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{bomb_8h_a0d4f98220933e6e3eccb78751ee0860b}\label{bomb_8h_a0d4f98220933e6e3eccb78751ee0860b} 
+\index{bomb.h@{bomb.h}!is\_bomb\_exploded@{is\_bomb\_exploded}}
+\index{is\_bomb\_exploded@{is\_bomb\_exploded}!bomb.h@{bomb.h}}
+\doxysubsubsection{\texorpdfstring{is\_bomb\_exploded()}{is\_bomb\_exploded()}}
+{\footnotesize\ttfamily bool is\+\_\+bomb\+\_\+exploded (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Checks if the bomb has exploded. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the bomb to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the bomb has exploded, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{bomb_8h_a91449a33a0e603e0532388f60a836851}\label{bomb_8h_a91449a33a0e603e0532388f60a836851} 
+\index{bomb.h@{bomb.h}!set\_bomb\_active@{set\_bomb\_active}}
+\index{set\_bomb\_active@{set\_bomb\_active}!bomb.h@{bomb.h}}
+\doxysubsubsection{\texorpdfstring{set\_bomb\_active()}{set\_bomb\_active()}}
+{\footnotesize\ttfamily void set\+\_\+bomb\+\_\+active (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbomb__imp}{Bomb}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{bool}]{active,  }\item[{Bomb\+Type}]{type }\end{DoxyParamCaption})}
+
+
+
+Sets the bomb\textquotesingle{}s active status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the bomb to be modified \\
+\hline
+{\em active} & The new active status of the bomb \\
+\hline
+{\em type} & The type of the bomb \\
+\hline
+\end{DoxyParams}

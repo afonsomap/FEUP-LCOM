@@ -7,8 +7,8 @@
 #include "kbc.h"
 
 /**
- * @defgroup mouse mouse
- * @{
+ * @file mouse.h
+ * @brief Mouse management
  * 
  * Functions to interact with the mouse.
  */

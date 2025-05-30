@@ -1,0 +1,33 @@
+<map id="model/bomb_options/bomb_options.h" name="model/bomb_options/bomb_options.h">
+<area shape="rect" id="Node000001" title="Bomb options management in the game." alt="" coords="37,5,179,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="178,460,257,485"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,47,61,71,36,102,16,138,10,158,8,178,8,327,12,354,24,377,41,397,63,414,114,440,166,457,164,462,112,445,60,418,37,401,19,380,7,355,3,328,3,178,5,157,11,136,31,99,57,67,82,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="424,313,493,339"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,34,262,54,306,70,347,91,393,121,426,151,451,188,471,239,474,271,469,300,464,299,469,271,465,241,446,190,422,154,390,125,344,96,304,75,261,60,179,39"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="43,313,107,339"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="109,46,80,300,75,299,103,45"/>
+<area shape="rect" id="Node000005" href="$sprite_8h.html" title="Sprite management for the game This module provides functions to create, destroy, and draw sprites." alt="" coords="197,240,262,265"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="120,44,219,226,214,229,116,47"/>
+<area shape="rect" id="Node000008" href="$bomb_8h.html" title="Bomb management in the game." alt="" coords="267,93,333,119"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="155,43,260,86,258,91,153,48"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="232,266,232,328,228,412,224,447,219,446,223,412,226,328,227,266"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="263,262,412,307,410,312,261,267"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="206,268,113,310,111,305,203,263"/>
+<area shape="rect" id="Node000006" href="$graphics_8h.html" title="Graphics management." alt="" coords="131,313,213,339"/>
+<area shape="poly" id="edge8_Node000005_Node000006" title=" " alt="" coords="222,267,192,304,188,301,218,264"/>
+<area shape="poly" id="edge9_Node000006_Node000002" title=" " alt="" coords="166,340,149,373,145,392,149,411,165,433,185,450,182,454,161,436,144,413,140,392,144,371,161,337"/>
+<area shape="rect" id="Node000007" href="$vbe_8h.html" title="VBE (VESA BIOS Extensions) management." alt="" coords="158,387,213,412"/>
+<area shape="poly" id="edge10_Node000006_Node000007" title=" " alt="" coords="177,339,183,373,178,374,172,339"/>
+<area shape="poly" id="edge11_Node000007_Node000002" title=" " alt="" coords="193,411,209,447,204,449,188,413"/>
+<area shape="poly" id="edge13_Node000008_Node000002" title=" " alt="" coords="334,116,395,141,465,174,523,211,541,231,548,251,548,327,546,349,540,369,517,401,484,426,444,445,399,458,353,467,271,474,270,468,352,461,398,453,442,440,481,422,514,398,535,366,541,348,543,327,543,252,537,234,520,216,463,178,393,145,332,121"/>
+<area shape="poly" id="edge14_Node000008_Node000003" title=" " alt="" coords="322,117,351,136,386,164,420,198,448,239,458,269,461,299,456,300,453,271,443,241,416,202,382,168,348,141,319,121"/>
+<area shape="poly" id="edge15_Node000008_Node000004" title=" " alt="" coords="287,121,230,169,187,204,146,242,93,304,89,301,142,238,183,200,226,165,284,117"/>
+<area shape="rect" id="Node000009" href="$animatedSprite_8h.html" title="Animated sprite management for the game." alt="" coords="240,167,360,192"/>
+<area shape="poly" id="edge16_Node000008_Node000009" title=" " alt="" coords="303,119,303,153,297,153,297,119"/>
+<area shape="poly" id="edge17_Node000009_Node000002" title=" " alt="" coords="301,193,282,285,247,413,232,449,227,447,241,411,277,284,295,192"/>
+<area shape="poly" id="edge18_Node000009_Node000003" title=" " alt="" coords="339,190,381,209,421,238,441,268,454,299,449,301,437,270,417,242,378,213,337,195"/>
+<area shape="poly" id="edge19_Node000009_Node000004" title=" " alt="" coords="276,195,187,242,140,275,100,307,97,303,137,271,184,238,273,190"/>
+<area shape="poly" id="edge21_Node000009_Node000005" title=" " alt="" coords="290,194,252,232,248,228,286,190"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="337,240,407,265"/>
+<area shape="poly" id="edge20_Node000009_Node000010" title=" " alt="" coords="314,190,352,228,349,232,310,194"/>
+</map>
