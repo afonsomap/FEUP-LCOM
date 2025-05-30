@@ -31,7 +31,7 @@ SmGame *create_sm_game(SpriteLoader *loader, Score* score) {
   smg->grid_square_width = get_sprite_width(get_wall(loader));
   smg->grid_background = get_grid_background(loader); 
   smg->game_background = get_game_background(loader);
-  smg->exit = create_button(10, 10, get_exit(loader));
+  smg->exit = create_button(0, 0, get_exit(loader));
 
   smg->player1 = create_player(1* smg->grid_square_width, 1 * smg->grid_square_width, get_player1_left(loader), get_player1_right(loader), get_player1_up(loader), get_player1_down(loader), get_player1_standing(loader));
 

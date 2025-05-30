@@ -109,6 +109,7 @@ void update_state_mouse(State *state, Cursor *c) {
     panic("State or Cursor is NULL");
   }
 
+  int ret;
   switch (state->current_state) {
     case SINGLE_MODE:
       if (process_single_mode_mouse(state->sm, c) == 1) {
@@ -131,18 +132,18 @@ void update_state_mouse(State *state, Cursor *c) {
       break;
 
     case MENU:
-      if (process_menu_mouse(state->m, c) == 1) {
+      ret = process_menu_mouse(state->m, c);
+      if (ret == 1) {
         state->current_state = EXIT; // Exit game
         destroy_menu(state->m);
         state->m = NULL;
-      } else if (process_menu_mouse(state->m, c) == 2) {
+      } else if (ret == 2) {
         state->current_state = SINGLE_MODE; // Go to single mode
         destroy_menu(state->m);
         state->m = NULL;
         state->sm = create_singleMode(state->loader);
         reset_cursor_button_pressed(c);
-      } else if (process_menu_mouse(state->m, c) == 3) {
-        sp_clear_buffers(); 
+      } else if (ret == 3) {
         state->current_state = MULTI_MODE; // Go to multi mode
         destroy_menu(state->m);
         state->m = NULL;

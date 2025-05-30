@@ -22,9 +22,9 @@ SmDied* create_sm_died(SpriteLoader *loader, Score *score) {
   d->died_background = get_died_background(loader);
 
   int back_x = get_sprite_width(d->died_background) / 2 - get_sprite_width(get_back_to_menu(loader)) / 2;
-  int back_y = get_sprite_height(d->died_background) - get_sprite_height(get_back_to_menu(loader)) - 50; // 50 pixels from the bottom
+  int back_y = get_sprite_height(d->died_background) - get_sprite_height(get_back_to_menu(loader)) - 80; // 50 pixels from the bottom
   int again_x = get_sprite_width(d->died_background) / 2 - get_sprite_width(get_play_again(loader)) / 2;
-  int again_y = back_y - get_sprite_height(get_play_again(loader)) - 20; // 20 pixels above the back button
+  int again_y = back_y - get_sprite_height(get_play_again(loader)) - 70; // 20 pixels above the back button
 
   d->back_to_menu = create_button(back_x, back_y, get_back_to_menu(loader));
   d->play_again = create_button(again_x, again_y, get_play_again(loader));

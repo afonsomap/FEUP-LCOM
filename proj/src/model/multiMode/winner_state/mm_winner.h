@@ -6,6 +6,7 @@
 #include "spriteLoader.h"
 #include "cursor.h"
 #include "key_pressed.h"
+#include "button.h"
 
 struct mm_winner_imp;
 typedef struct mm_winner_imp MmWinner;

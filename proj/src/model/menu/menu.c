@@ -23,9 +23,9 @@ Menu* create_menu(SpriteLoader *loader) {
   uint16_t x_pos = get_sprite_width(m->background) / 2 - get_sprite_width(get_exit_button(loader)) / 2;
   uint16_t y_pos = get_sprite_height(m->background) - get_sprite_height(get_exit_button(loader));
 
-  m->single_mode = create_button( x_pos , y_pos - 320 , get_single_mode_button(loader));
-  m->multi_mode = create_button( x_pos , y_pos - 170 , get_multi_mode_button(loader));
-  m->exit = create_button( x_pos , y_pos - 20 , get_exit_button(loader));
+  m->single_mode = create_button( x_pos , y_pos - 400 , get_single_mode_button(loader));
+  m->multi_mode = create_button( x_pos , y_pos - 250 , get_multi_mode_button(loader));
+  m->exit = create_button( x_pos , y_pos - 100 , get_exit_button(loader));
 
   return m;
 }
