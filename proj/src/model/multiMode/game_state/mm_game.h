@@ -13,20 +13,10 @@
 #include "bomb_options.h"
 #include "sprite.h"
 #include "animatedSprite.h"
+#include "button.h"
 
 struct mm_game_imp;
 typedef struct mm_game_imp MmGame;
-
-#define BIT(n) (1 << (n))
-
-#define GRID_WIDTH 17
-#define GRID_HEIGHT 15
-#define EXIT_BTN_X_MM 20
-#define EXIT_BTN_Y_MM 20
-#define BOMB_TYPE_NONE        0x00
-#define BOMB_TYPE_NORMAL      0x01
-#define BOMB_TYPE_FULL_LINE   0x02
-#define BOMB_TYPE_CONSTRUCTIVE 0x03
 
 MmGame *create_mm_game(SpriteLoader *loader, uint8_t player_number);
 void destroy_mm_game(MmGame *mm_game);

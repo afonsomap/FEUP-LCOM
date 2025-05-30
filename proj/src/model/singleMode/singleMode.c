@@ -98,6 +98,8 @@ int process_single_mode_mouse(SingleMode *sm, Cursor *c){
   switch (sm->current_state) {
     case GAME:
       if (process_sm_game_mouse(sm->sm_game, c) == 1) {
+        destroy_sm_game(sm->sm_game);
+        sm->sm_game = NULL;
         return 1; 
       }
       break;

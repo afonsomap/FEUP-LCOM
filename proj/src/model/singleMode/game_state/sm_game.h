@@ -14,13 +14,11 @@
 #include "bomb_options.h"
 #include "key_pressed.h"
 #include "score.h"
+#include "button.h"
 
 
 struct sm_game_imp;
 typedef struct sm_game_imp SmGame;
-
-#define EXIT_BTN_X 20
-#define EXIT_BTN_Y 20
 
 /**
  * @brief Creates a new SingleMode object, which contains a player and a grid of walls

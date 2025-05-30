@@ -74,8 +74,8 @@ void draw_score(Score *score, int x, int y) {
     value /= 10;
   }
 
-  for (int i = num_digits - 1; i >= 0; i--) {
+  for (int i = 0; i <= num_digits - 1; i++) {
     draw_sprite(score->number_sprites[digits[i]], x, y);
-    x += get_sprite_width(score->number_sprites[digits[i]]);
+    x -= get_sprite_width(score->number_sprites[digits[i]]);
   }
 }

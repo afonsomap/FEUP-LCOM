@@ -15,8 +15,7 @@ struct sm_game_imp {
   Sprite *grid_background; 
   BombOptions *bomb_options; 
   BombType player1_bomb_option;
-  Sprite* exit_button_sprite;
-  Sprite* your_score;
+  Button* exit;
   Score* score;
 };
 
@@ -31,7 +30,7 @@ SmGame *create_sm_game(SpriteLoader *loader, Score* score) {
   smg->grid_square_width = get_sprite_width(get_wall(loader));
   smg->grid_background = get_grid_background(loader); 
   smg->game_background = get_game_background(loader);
-  smg->exit_button_sprite = get_exit(loader);
+  smg->exit = create_button(10, 10, get_exit(loader));
 
   smg->player1 = create_player(1* smg->grid_square_width, 1 * smg->grid_square_width, get_player1_left(loader), get_player1_right(loader), get_player1_up(loader), get_player1_down(loader), get_player1_standing(loader));
 
@@ -80,6 +79,7 @@ void destroy_sm_game(SmGame *smg) {
   }
 
   destroy_bomb_options(smg->bomb_options);
+  destroy_button(smg->exit);
   free(smg);
 }
 
@@ -89,7 +89,6 @@ void draw_sm_game(SmGame *smg) {
   }
   
   draw_sprite(smg->grid_background, smg->x_initial_grid + 33, smg->y_initial_grid + 50);
-  draw_sprite(smg->exit_button_sprite, EXIT_BTN_X, EXIT_BTN_Y);
 
   for (int i = 0; i < GRID_HEIGHT; i++) {
     for (int j = 0; j < GRID_WIDTH; j++) {
@@ -102,9 +101,9 @@ void draw_sm_game(SmGame *smg) {
       draw_player(smg->player1, smg->x_initial_grid, smg->y_initial_grid);
     }
   }
+  draw_button(smg->exit);
   draw_bomb_options(smg->bomb_options, smg->player1_bomb_option);
-  draw_sprite(smg->your_score, 1110- get_sprite_width(smg->your_score), 10 + 20 - get_sprite_height(smg->your_score)/2);
-  draw_score(smg->score, 1118, 10);
+  draw_score(smg->score, 1190, 5);
 }
 
 
@@ -465,14 +464,7 @@ int process_sm_game_mouse(SmGame *sm, Cursor *c) {
   // Left mouse button pressed
   if (get_cursor_button_pressed(c, 0)) {
 
-    // --- Exit button check ---
-    uint16_t exit_x_min = EXIT_BTN_X;
-    uint16_t exit_x_max = EXIT_BTN_X + get_sprite_width(sm->exit_button_sprite);
-    uint16_t exit_y_min = EXIT_BTN_Y;
-    uint16_t exit_y_max = EXIT_BTN_Y + get_sprite_height(sm->exit_button_sprite);
-
-    if (get_cursor_Xpos(c) > exit_x_min && get_cursor_Xpos(c) < exit_x_max &&
-        get_cursor_Ypos(c) > exit_y_min && get_cursor_Ypos(c) < exit_y_max) {
+    if (is_button_clicked(sm->exit, c)) {
       return 1; // Go back to menu
     }
 
