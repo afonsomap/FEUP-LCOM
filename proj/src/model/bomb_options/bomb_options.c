@@ -10,6 +10,8 @@ struct bomb_options_imp {
   uint8_t number_of_options;
   uint8_t cooldown_counter[3]; 
   uint8_t spawn_counter;
+  uint8_t spawn_rate;
+  uint16_t decrease_spawn_rate_counter; // Counter to decrease spawn rate
   BombType selectedBomb;
 };
 
@@ -48,6 +50,20 @@ uint8_t get_number_of_options(BombOptions *b) {
   return b->number_of_options;
 }
 
+uint8_t get_spawn_rate(BombOptions *b) {
+  if (b == NULL) {
+    return 0;
+  }
+  return b->spawn_rate;
+}
+
+uint16_t get_decrease_spawn_rate_counter(BombOptions *b) {
+  if (b == NULL) {
+    return 0;
+  }
+  return b->decrease_spawn_rate_counter;
+} 
+
 BombOptions *create_bomb_options(Sprite** options, Sprite** selected_option) {
 
   BombOptions *bomb_options = (BombOptions *) malloc(sizeof(BombOptions));
@@ -81,7 +97,11 @@ BombOptions *create_bomb_options(Sprite** options, Sprite** selected_option) {
 
   bomb_options->spawn_counter = 0; // Initialize spawn counter
 
+  bomb_options->spawn_rate = 60; // Set spawn rate (e.g., every 60 frames)
+
   bomb_options->selectedBomb = NORMAL; // Default selected bomb type
+
+  bomb_options->decrease_spawn_rate_counter = 300; // Initialize decrease spawn rate counter
 
   return bomb_options;
 }
@@ -179,7 +199,30 @@ void reset_time_until_spawn(BombOptions *b) {
   if (b == NULL) {
     return;
   }
-  b->spawn_counter = 60; 
+  b->spawn_counter = b->spawn_rate; // Reset the spawn rate
+}
+
+void decrease_spawn_rate(BombOptions *b) {
+  if (b == NULL) {
+    return;
+  }
+  if (b->spawn_rate > 10) { // Minimum spawn rate
+    b->spawn_rate -= 5; // Decrease spawn rate
+    return;
+  }
+}
+
+void decrease_decrease_spawn_rate_counter(BombOptions *b) {
+  if (b == NULL) {
+    return;
+  }
+  if (b->decrease_spawn_rate_counter > 0) {
+    b->decrease_spawn_rate_counter--;
+  }
+  else {
+    b->decrease_spawn_rate_counter = 300; // Reset the counter
+    decrease_spawn_rate(b); // Decrease the spawn rate
+  }
 }
 
 BombType get_random_bomb_type() {

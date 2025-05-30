@@ -91,6 +91,15 @@ void reset_time_until_spawn(BombOptions *b);
 
 BombType get_random_bomb_type();
 
+void decrease_spawn_rate(BombOptions *b);
+
+uint8_t get_spawn_rate(BombOptions *b);
+
+uint16_t get_decrease_spawn_rate_counter(BombOptions *b);
+
+void decrease_decrease_spawn_rate_counter(BombOptions *b);
+
+
 
 #endif /* __BOMB_OPTIONS_H */
 
