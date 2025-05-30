@@ -2,6 +2,9 @@
 
 struct mm_winner_imp {
   Sprite *background; // Background sprite for the winner screen
+  Sprite *you_won; // Sprite for "You Won" message
+  Sprite *you_lost; // Sprite for "You Lost" message
+  Sprite *draw; // Sprite for "Draw" message
   int winner; // 0 - No winner, 1 - Current player wins, 2 - Other player wins
 };
 
@@ -11,7 +14,15 @@ MmWinner *create_mm_winner(SpriteLoader *loader, int winner) {
     return NULL;
   }
   mm_winner->winner = winner;
-  mm_winner->background = get_menu_background(loader); // Load the background sprite
+  mm_winner->background = get_winners_background(loader); // Load the background sprite
+  mm_winner->you_won = get_winners_you_won(loader); // Load the "You Won" sprite
+  mm_winner->you_lost = get_winners_you_lost(loader); // Load the "You Lost" sprite
+  mm_winner->draw = get_winners_draw(loader); // Load the "Draw" sprite
+
+  if (mm_winner->background == NULL || mm_winner->you_won == NULL || mm_winner->you_lost == NULL || mm_winner->draw == NULL) {
+    destroy_mm_winner(mm_winner);
+    return NULL; // Return NULL if any sprite loading fails
+  }
   
   return mm_winner;
 }
@@ -28,10 +39,13 @@ void draw_mm_winner(MmWinner *mm_winner) {
     return;
   }
   if (mm_winner->winner == 0) {
+    draw_sprite(mm_winner->draw, get_sprite_width(mm_winner->background) / 2, get_sprite_height(mm_winner->background) / 2); // Draw the background
     printf("Draw! \n");
   } else if (mm_winner->winner == 1) {
+    draw_sprite(mm_winner->you_won, get_sprite_width(mm_winner->background) / 2, get_sprite_height(mm_winner->background) / 2); // Draw the "You Won" sprite
     printf("Current player wins!\n");
   } else if (mm_winner->winner == 2) {
+    draw(mm_winner->you_lost, get_sprite_width(mm_winner->background) / 2, get_sprite_height(mm_winner->background) / 2); // Draw the "You Lost" sprite
     printf("Other player wins!\n");
   } 
   draw_sprite(mm_winner->background, 0, 0); // Draw the background

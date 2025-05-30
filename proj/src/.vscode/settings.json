@@ -10,6 +10,7 @@
     "animatedsprite.h": "c",
     "stdarg.h": "c",
     "*.xpm": "c",
-    "lcf.h": "c"
+    "lcf.h": "c",
+    "memory": "c"
   },
 }
