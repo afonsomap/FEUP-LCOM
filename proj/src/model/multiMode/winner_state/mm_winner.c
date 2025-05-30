@@ -1,15 +1,17 @@
 #include "mm_winner.h"
 
 struct mm_winner_imp {
-  bool current_player_winner; // Winner player number (1 or 2)
+  Sprite *background; // Background sprite for the winner screen
+  int winner; // 0 - No winner, 1 - Current player wins, 2 - Other player wins
 };
 
-MmWinner *create_mm_winner(SpriteLoader *loader, bool current_player_wins) {
+MmWinner *create_mm_winner(SpriteLoader *loader, int winner) {
   MmWinner *mm_winner = (MmWinner *) malloc(sizeof(MmWinner));
   if (mm_winner == NULL) {
     return NULL;
   }
-  mm->current_player_winner = current_player_wins;
+  mm_winner->winner = winner;
+  mm_winner->background = get_menu_background(loader); // Load the background sprite
   
   return mm_winner;
 }
@@ -25,11 +27,14 @@ void draw_mm_winner(MmWinner *mm_winner) {
   if (mm_winner == NULL) {
     return;
   }
-  if (mm_winner->current_player_winner) {
+  if (mm_winner->winner == 0) {
+    printf("Draw! \n");
+  } else if (mm_winner->winner == 1) {
     printf("Current player wins!\n");
-  } else {
+  } else if (mm_winner->winner == 2) {
     printf("Other player wins!\n");
-  }
+  } 
+  draw_sprite(mm_winner->background, 0, 0); // Draw the background
 }
 
 int process_mm_winner_mouse(MmWinner *mm_winner, Cursor *c) {

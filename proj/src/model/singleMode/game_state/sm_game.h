@@ -11,13 +11,15 @@
 #include "sprite.h"
 #include "cursor.h"
 #include "explosion.h"
-#include "menu.h"
 #include "bomb_options.h"
 #include "key_pressed.h"
 
 
 struct sm_game_imp;
 typedef struct sm_game_imp SmGame;
+
+#define EXIT_BTN_X 20
+#define EXIT_BTN_Y 20
 
 /**
  * @brief Creates a new SingleMode object, which contains a player and a grid of walls
@@ -66,21 +68,6 @@ int process_sm_game_mouse(SmGame *smg, Cursor *c);
  * @return 0 if the game should continue, 1 go back to the menu, 2 go to died state
  */
 int process_sm_game_timer(SmGame *smg);
-
-/**
- * @brief Checks for wall collisions based on the player's position
- * 
- * @param sm Pointer to the SingleMode object
- * @param x X position of the player
- * @param y Y position of the player
- * @return true if there is a wall collision, false otherwise
- */
-static bool check_wall_collision(SmGame *sm, uint16_t x, uint16_t y);
-
-
-static int process_bomb_spawning(SmGame *sm);
-
-static int check_bomb_exploded(SmGame *sm);
 
 
 #endif 

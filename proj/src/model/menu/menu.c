@@ -56,7 +56,7 @@ void draw_menu(Menu *m) {
 // 1 Leave game  
 // 2 Single mode game
 // 3 Multiplayer mode game
-int process_menu_input(Cursor *cursor) {
+int process_menu_mouse(Menu *m, Cursor *cursor) {
   if (get_cursor_button_pressed(cursor, 0)) { // Left mouse button pressed
     uint16_t cursor_x = get_cursor_Xpos(cursor);
     uint16_t cursor_y = get_cursor_Ypos(cursor);

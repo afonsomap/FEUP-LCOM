@@ -86,7 +86,7 @@ void interrups_loop() {
             timer_int_handler();
             if (timer_get_count() % 2 == 0) { // 30 FPS
               clear_back_buffer();
-          
+
               update_state(state, key_pressed, c, get_sp_byte());
               draw_state(state);
 

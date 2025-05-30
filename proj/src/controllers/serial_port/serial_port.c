@@ -108,16 +108,6 @@ void sp_ih(){
     }        
 }
 
-int processWaitingGuessSP(uint8_t val){
-    if(val == 0xFF){
-        send_byte(0xFE);
-    }
-    else if(val == 0xFE){
-        return 1;
-    }
-    return 0;
-}
-
 uint8_t get_sp_byte() {
     if (isEmpty(inQueue)) {
         return 0;

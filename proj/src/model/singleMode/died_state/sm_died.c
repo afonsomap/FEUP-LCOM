@@ -72,7 +72,7 @@ int process_sm_died_mouse(SmDied *d, Cursor *cursor) {
 // 1 Exit to menu
 int process_sm_died_kbd(SmDied *d, KeyPressed *key) {
   if (d == NULL || key == NULL) {
-    return 1
+    return 1;
   }
 
   if (is_esc_pressed(key)) {

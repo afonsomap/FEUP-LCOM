@@ -37,7 +37,7 @@ void destroy_state(State *state) {
     destroy_menu(state->m);
   }
   if (state->mm != NULL) {
-    destroy_multiPlayer(state->c);
+    destroy_multiMode(state->mm);
   }
 
   free(state);
@@ -57,6 +57,9 @@ void update_state(State *state, KeyPressed *key, Cursor *c, uint8_t sp_byte) {
 void update_state_sp(State *state, uint8_t sp_byte) {
   if (state == NULL) {
     panic("State is NULL");
+  }
+  if (sp_byte == 0) {
+    return; // No data received from serial port
   }
 
   switch (state->current_state) {
@@ -131,17 +134,17 @@ void update_state_mouse(State *state, Cursor *c) {
       break;
 
     case MENU:
-      if (process_menu_input(c) == 1) {
+      if (process_menu_mouse(state->m, c) == 1) {
         state->current_state = EXIT; // Exit game
         destroy_menu(state->m);
         state->m = NULL;
-      } else if (process_menu_input(c) == 2) {
+      } else if (process_menu_mouse(state->m, c) == 2) {
         state->current_state = SINGLE_MODE; // Go to single mode
         destroy_menu(state->m);
         state->m = NULL;
         state->sm = create_singleMode(state->loader);
         reset_cursor_button_pressed(c);
-      } else if (process_menu_input(c) == 3) {
+      } else if (process_menu_mouse(state->m, c) == 3) {
         state->current_state = MULTI_MODE; // Go to multi mode
         destroy_menu(state->m);
         state->m = NULL;
@@ -161,11 +164,23 @@ void update_state_timer(State *state) {
 
   switch (state->current_state) {
     case SINGLE_MODE:
-      process_single_mode_timer(state->sm);
+      if (process_single_mode_timer(state->sm) == 1) {
+        state->current_state = MENU; // Go back to menu
+        destroy_singleMode(state->sm);
+        state->sm = NULL;
+        state->m = create_menu(state->loader);
+        reset_cursor_button_pressed(state->c);
+      }
       break;
 
     case MULTI_MODE:
-      process_multi_mode_timer(state->mm);
+      if (process_multi_mode_timer(state->mm) == 1) {
+        state->current_state = MENU; // Go back to menu
+        destroy_multiMode(state->mm);
+        state->mm = NULL;
+        state->m = create_menu(state->loader);
+        reset_cursor_button_pressed(state->c);
+      }
       break;
     default:
       break;

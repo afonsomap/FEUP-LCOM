@@ -117,9 +117,10 @@ int process_single_mode_timer(SingleMode *sm) {
     return 1; // Go back to menu
   }
 
+  int ret;
   switch (sm->current_state) {
     case GAME:
-      int ret = process_sm_game_timer(sm->sm_game);
+      ret = process_sm_game_timer(sm->sm_game);
       if (ret == 1) {
         return 1; 
       } else if (ret == 2) {

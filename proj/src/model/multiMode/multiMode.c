@@ -21,7 +21,7 @@ MultiMode *create_multiMode(SpriteLoader *loader) {
     return NULL; 
   }
   
-  mm->mm_game = NULL
+  mm->mm_game = NULL;
   mm->mm_winner = NULL;
   mm->current_state = MM_CONNECTION; 
   mm->loader = loader;
@@ -138,6 +138,7 @@ int process_multi_mode_timer(MultiMode *mm) {
     return 1; // Go back to menu
   }
 
+  int ret;
   switch (mm->current_state) {
 
     case MM_CONNECTION:
@@ -147,14 +148,17 @@ int process_multi_mode_timer(MultiMode *mm) {
       break;
 
     case MM_GAME:
-      if (process_mm_game_timer(mm->mm_game) == 1) {
+      ret = process_mm_game_timer(mm->mm_game);
+      if (ret == 2) {
         mm->current_state = MM_WINNER; // Transition to winner state
-        mm->mm_winner = create_mm_winner(mm->loader, is_current_winner(mm->mm_game));
+        mm->mm_winner = create_mm_winner(mm->loader, get_winner(mm->mm_game));
         if (mm->mm_winner == NULL) {
           return 1; // Go back to menu if winner creation failed
         }
         destroy_mm_game(mm->mm_game);
         mm->mm_game = NULL; // Clear the game state
+      }else if(ret == 1) {
+        return 1; // Go back to menu
       }
       break;
 
@@ -194,14 +198,6 @@ int process_multi_mode_sp(MultiMode *mm, uint8_t byte){
         }
         destroy_mm_connection(mm->mm_connection);
         mm->mm_connection = NULL; 
-      }
-      break;
-
-
-    case MM_GAME:
-      ret = process_mm_game_sp(mm->mm_game, byte);
-      if (ret == 1) {
-        return 1; // Go back to menu
       }
       break;
 

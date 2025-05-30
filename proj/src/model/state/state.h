@@ -4,7 +4,7 @@
 #include <lcom/lcf.h>
 #include "key_pressed.h"
 #include "cursor.h"
-#include "multiMode.h>"
+#include "multiMode.h"
 #include "singleMode.h"
 #include "menu.h"
 #include "spriteLoader.h"

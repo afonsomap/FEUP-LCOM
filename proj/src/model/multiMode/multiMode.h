@@ -5,8 +5,11 @@
 
 #include "spriteLoader.h"
 #include "cursor.h"
-#include "menu.h"
 #include "key_pressed.h"
+#include "mm_connection.h"
+#include "mm_game.h"
+#include "mm_winner.h"
+
 
 struct multiMode_imp;
 typedef struct multiMode_imp MultiMode;
@@ -73,6 +76,6 @@ int process_multi_mode_timer(MultiMode *mm);
  * @param byte Pointer to the byte received from the serial port
  * @return 0 if the game should continue, 1 to go back to the menu
  */
-int process_multi_mode_sp(MultiMode *mm, uint8_t *byte);
+int process_multi_mode_sp(MultiMode *mm, uint8_t byte);
 
 #endif /* _MULTIMODE_H_ */

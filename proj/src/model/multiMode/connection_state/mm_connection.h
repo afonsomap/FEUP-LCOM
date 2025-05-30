@@ -2,7 +2,7 @@
 #define MM_CONNECTION_H
 
 #include <lcom/lcf.h>
-#include "sprite_loader.h"
+#include "spriteLoader.h"
 #include "cursor.h"
 #include "serial_port.h"
 

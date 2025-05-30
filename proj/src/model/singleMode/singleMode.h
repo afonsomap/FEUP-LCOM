@@ -2,19 +2,13 @@
 #define _SINGLEMODE_H_
 
 #include <lcom/lcf.h>
-#include <stddef.h>
-#include <math.h>
-#include "player.h"
-#include "bomb.h"
-#include "wall.h"
 #include "spriteLoader.h"
-#include "animatedSprite.h"
-#include "sprite.h"
 #include "cursor.h"
-#include "explosion.h"
 #include "menu.h"
-#include "bomb_options.h"
 #include "key_pressed.h"
+#include "sm_game.h"
+#include "sm_died.h"
+
 
 
 struct singleMode_imp;

@@ -16,10 +16,10 @@ MmConnection *create_mm_connection(SpriteLoader *loader) {
     return NULL;
   }
 
+  sp_clear_buffers(); // Clear the serial port buffer
   mm_connection->loader = loader;
   mm_connection->background = get_menu_background(loader);
   mm_connection->leave_button = get_exit_button(loader);
-  mm_connection->current_player = NULL;
   mm_connection->received_hello = false;
   mm_connection->time_until_failure = 300; //10 seconds until failure
   return mm_connection;
@@ -38,7 +38,7 @@ void draw_mm_connection(MmConnection *mm_connection) {
   }
   
   draw_sprite(mm_connection->background, 0, 0);
-  draw_sprite(mm_connection->leave_button, mm_connection->leave_button->x, mm_connection->leave_button->y);
+  draw_sprite(mm_connection->leave_button, mm_connection->leave_button_x, mm_connection->leave_button_y);
 }
 
 int process_mm_connection_mouse(MmConnection *mm_connection, Cursor *c) {
@@ -47,11 +47,11 @@ int process_mm_connection_mouse(MmConnection *mm_connection, Cursor *c) {
   }
 
   if (get_cursor_button_pressed(c, 0)) { // Left mouse button pressed
-    uint16_t x = get_cursor_x(c);
-    uint16_t y = get_cursor_y(c);
+    uint16_t x = get_cursor_Xpos(c);
+    uint16_t y = get_cursor_Ypos(c);
 
-    if (x >= mm_connection->leave_button_x && x <= mm_connection->leave_button_x + get_sprite_width(mm->leave_button) && 
-        y >= mm_connection->leave_button_y && y <= mm_connection->leave_button_y + get_sprite_height(mm->leave_button)) {
+    if (x >= mm_connection->leave_button_x && x <= mm_connection->leave_button_x + get_sprite_width(mm_connection->leave_button) && 
+        y >= mm_connection->leave_button_y && y <= mm_connection->leave_button_y + get_sprite_height(mm_connection->leave_button)) {
       return 1; // Leave game 
     }
   }

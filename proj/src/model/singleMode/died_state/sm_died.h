@@ -7,6 +7,7 @@
 #include "sprite.h"
 #include "spriteLoader.h"
 #include "cursor.h"
+#include "key_pressed.h"
 
 
 struct SmDied_imp;
