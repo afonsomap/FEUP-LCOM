@@ -57,6 +57,7 @@ SmGame *create_sm_game(SpriteLoader *loader, Score* score) {
   }
 
   smg->bomb_options = create_bomb_options(get_bomb_options(loader), get_selected_options(loader));
+  smg->your_score = get_your_score_text(loader);
   smg->player1_bomb_option = NORMAL;
   smg->score = score;
   return smg;
@@ -148,6 +149,7 @@ static int process_bomb_spawning(SmGame *sm) {
     return 1; // Go back to menu
   }
 
+  decrease_decrease_spawn_rate_counter(sm->bomb_options); // Decrease the spawn rate counter
   // Check if the bomb options are available
   if (is_spawning(sm->bomb_options)) {
     uint16_t randomX = (rand() % 16) + 1; 
