@@ -18,6 +18,7 @@ SmDied* create_sm_died(SpriteLoader *loader, Score *score) {
     return NULL;
   }
 
+  
   d->died_background = get_died_background(loader);
   d->back_to_menu = get_back_to_menu(loader);
   d->play_again = get_play_again(loader);
