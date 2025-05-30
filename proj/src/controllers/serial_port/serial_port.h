@@ -5,6 +5,14 @@
 #include "queue.h"
 
 /**
+ * @file serial_port.h
+ * @brief Serial port management for the game
+ * 
+ * This module provides functions to manage the serial port for communication in the game.
+ * It handles subscribing to interrupts, reading and writing bytes, and managing the input queue.
+ */
+
+/**
  * @brief Subscribes to serial port interrupts
  * 
  * @param bitno Pointer to store the bit number for the interrupt

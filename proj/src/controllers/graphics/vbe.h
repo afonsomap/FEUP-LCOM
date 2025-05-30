@@ -4,10 +4,10 @@
 #include <lcom/lcf.h>
 
 /**
- * @defgroup vbe vbe
- * @{
- * 
- * VESA BIOS Extensions (VBE) functions and constants.
+ * @file vbe.h
+ * @brief VBE (VESA BIOS Extensions) management
+ *  
+ * This module provides functions to interact with the VBE, including setting video modes, getting mode information, and handling frame buffers.
  */
 
 /* VBE video mode */

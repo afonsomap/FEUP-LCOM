@@ -1,0 +1,198 @@
+\doxysection{graphics}
+\hypertarget{group__graphics}{}\label{group__graphics}\index{graphics@{graphics}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{group__graphics_ga927f49f9cd45e261d548fef452016757}{get\+\_\+mode\+\_\+info}} ()
+\begin{DoxyCompactList}\small\item\em Returns the structure that holds the VBE mode information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__graphics_ga0cb58e84bd76bee04c2a5f70fb3f7e49}{set\+\_\+video\+\_\+mode}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Sets the video mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__graphics_ga7544d9816c74b9fcfa8227f51115f748}{map\+\_\+graphics\+\_\+vram}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Allocates and maps double the needed VRAM for page flipping. \end{DoxyCompactList}\item 
+\Hypertarget{group__graphics_ga28eecd0b8062a45c1aeda203ada36bc9}\label{group__graphics_ga28eecd0b8062a45c1aeda203ada36bc9} 
+void {\bfseries vg\+\_\+flip\+\_\+buffer} ()
+\begin{DoxyCompactList}\small\item\em Toggles the front and back VRAM buffers and updates the display start. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__graphics_gab5cc62add951f3c5e3d3484524ca2c4e}{set\+\_\+display\+\_\+start}} (uint32\+\_\+t addr)
+\begin{DoxyCompactList}\small\item\em Sets the display start to the given buffer (for page flipping) \end{DoxyCompactList}\item 
+\Hypertarget{group__graphics_ga6c664c7ef53bd67ddad710938d55d293}\label{group__graphics_ga6c664c7ef53bd67ddad710938d55d293} 
+void {\bfseries clear\+\_\+back\+\_\+buffer} ()
+\begin{DoxyCompactList}\small\item\em Clears the back buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__graphics_ga18107cedb98361dc0fa1f2680d2e6536}{draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a pixel on the current back buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__graphics_ga00997a666d2cfe5df9f904da4be0eb5a}{vg\+\_\+draw\+\_\+xpm}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}xpm\+\_\+map, uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em Draws an xpm image on the current back buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__graphics_ga79147db31cc3cc83ba94fb91fd8b291d}{vg\+\_\+draw\+\_\+xpm\+\_\+by\+\_\+image}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}xpm\+\_\+map, uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em Draws an xpm image on the current back buffer copying the whole image at once. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__graphics_ga5426d2e6a4a51472bbc552ae6bc83b14}{vg\+\_\+draw\+\_\+xpm\+\_\+by\+\_\+line}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}xpm\+\_\+map, uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em Draws an xpm image on the current back buffer by line. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions to interact with the graphics card. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__graphics_ga18107cedb98361dc0fa1f2680d2e6536}\label{group__graphics_ga18107cedb98361dc0fa1f2680d2e6536} 
+\index{graphics@{graphics}!draw\_pixel@{draw\_pixel}}
+\index{draw\_pixel@{draw\_pixel}!graphics@{graphics}}
+\doxysubsubsection{\texorpdfstring{draw\_pixel()}{draw\_pixel()}}
+{\footnotesize\ttfamily void draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a pixel on the current back buffer. 
+
+Panic if something goes wrong.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the pixel \\
+\hline
+{\em y} & Y coordinate of the pixel \\
+\hline
+{\em color} & Color of the pixel \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__graphics_ga927f49f9cd45e261d548fef452016757}\label{group__graphics_ga927f49f9cd45e261d548fef452016757} 
+\index{graphics@{graphics}!get\_mode\_info@{get\_mode\_info}}
+\index{get\_mode\_info@{get\_mode\_info}!graphics@{graphics}}
+\doxysubsubsection{\texorpdfstring{get\_mode\_info()}{get\_mode\_info()}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t get\+\_\+mode\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the structure that holds the VBE mode information. 
+
+\begin{DoxyReturn}{Returns}
+VBE mode information structure 
+\end{DoxyReturn}
+\Hypertarget{group__graphics_ga7544d9816c74b9fcfa8227f51115f748}\label{group__graphics_ga7544d9816c74b9fcfa8227f51115f748} 
+\index{graphics@{graphics}!map\_graphics\_vram@{map\_graphics\_vram}}
+\index{map\_graphics\_vram@{map\_graphics\_vram}!graphics@{graphics}}
+\doxysubsubsection{\texorpdfstring{map\_graphics\_vram()}{map\_graphics\_vram()}}
+{\footnotesize\ttfamily void map\+\_\+graphics\+\_\+vram (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Allocates and maps double the needed VRAM for page flipping. 
+
+Panic if the allocation fails.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Video mode to know the needed memory \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__graphics_gab5cc62add951f3c5e3d3484524ca2c4e}\label{group__graphics_gab5cc62add951f3c5e3d3484524ca2c4e} 
+\index{graphics@{graphics}!set\_display\_start@{set\_display\_start}}
+\index{set\_display\_start@{set\_display\_start}!graphics@{graphics}}
+\doxysubsubsection{\texorpdfstring{set\_display\_start()}{set\_display\_start()}}
+{\footnotesize\ttfamily void set\+\_\+display\+\_\+start (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+
+
+Sets the display start to the given buffer (for page flipping) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & Pointer to the buffer to display \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__graphics_ga0cb58e84bd76bee04c2a5f70fb3f7e49}\label{group__graphics_ga0cb58e84bd76bee04c2a5f70fb3f7e49} 
+\index{graphics@{graphics}!set\_video\_mode@{set\_video\_mode}}
+\index{set\_video\_mode@{set\_video\_mode}!graphics@{graphics}}
+\doxysubsubsection{\texorpdfstring{set\_video\_mode()}{set\_video\_mode()}}
+{\footnotesize\ttfamily void set\+\_\+video\+\_\+mode (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Sets the video mode. 
+
+Panic if the mode is not supported.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Video mode to set \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__graphics_ga00997a666d2cfe5df9f904da4be0eb5a}\label{group__graphics_ga00997a666d2cfe5df9f904da4be0eb5a} 
+\index{graphics@{graphics}!vg\_draw\_xpm@{vg\_draw\_xpm}}
+\index{vg\_draw\_xpm@{vg\_draw\_xpm}!graphics@{graphics}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_xpm()}{vg\_draw\_xpm()}}
+{\footnotesize\ttfamily int vg\+\_\+draw\+\_\+xpm (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{xpm\+\_\+map,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+Draws an xpm image on the current back buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xpm\+\_\+map} & XPM image pixel map to draw \\
+\hline
+{\em x} & X coordinate of the top left corner \\
+\hline
+{\em y} & Y coordinate of the top left corner \\
+\hline
+{\em width} & Width of the image \\
+\hline
+{\em height} & Height of the image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{group__graphics_ga79147db31cc3cc83ba94fb91fd8b291d}\label{group__graphics_ga79147db31cc3cc83ba94fb91fd8b291d} 
+\index{graphics@{graphics}!vg\_draw\_xpm\_by\_image@{vg\_draw\_xpm\_by\_image}}
+\index{vg\_draw\_xpm\_by\_image@{vg\_draw\_xpm\_by\_image}!graphics@{graphics}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_xpm\_by\_image()}{vg\_draw\_xpm\_by\_image()}}
+{\footnotesize\ttfamily int vg\+\_\+draw\+\_\+xpm\+\_\+by\+\_\+image (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{xpm\+\_\+map,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+Draws an xpm image on the current back buffer copying the whole image at once. 
+
+This function draws the xpm image interely, which can be useful for large images.
+
+
+\begin{DoxyParams}{Parameters}
+{\em xpm\+\_\+map} & XPM image pixel map to draw \\
+\hline
+{\em x} & X coordinate of the top left corner \\
+\hline
+{\em y} & Y coordinate of the top left corner \\
+\hline
+{\em width} & Width of the image \\
+\hline
+{\em height} & Height of the image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{group__graphics_ga5426d2e6a4a51472bbc552ae6bc83b14}\label{group__graphics_ga5426d2e6a4a51472bbc552ae6bc83b14} 
+\index{graphics@{graphics}!vg\_draw\_xpm\_by\_line@{vg\_draw\_xpm\_by\_line}}
+\index{vg\_draw\_xpm\_by\_line@{vg\_draw\_xpm\_by\_line}!graphics@{graphics}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_xpm\_by\_line()}{vg\_draw\_xpm\_by\_line()}}
+{\footnotesize\ttfamily int vg\+\_\+draw\+\_\+xpm\+\_\+by\+\_\+line (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{xpm\+\_\+map,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+Draws an xpm image on the current back buffer by line. 
+
+This function draws the xpm image line by line, which can be useful for large images.
+
+
+\begin{DoxyParams}{Parameters}
+{\em xpm\+\_\+map} & XPM image pixel map to draw \\
+\hline
+{\em x} & X coordinate of the top left corner \\
+\hline
+{\em y} & Y coordinate of the top left corner \\
+\hline
+{\em width} & Width of the image \\
+\hline
+{\em height} & Height of the image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}

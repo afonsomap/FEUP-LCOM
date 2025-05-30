@@ -1,0 +1,16 @@
+<map id="model/wall/wall.h" name="model/wall/wall.h">
+<area shape="rect" id="Node000001" title="Wall management in the game." alt="" coords="155,5,278,31"/>
+<area shape="rect" id="Node000002" href="$mm__game_8h.html" title="Multiplayer mode game state management." alt="" coords="46,79,203,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,42,149,81,145,76,191,38"/>
+<area shape="rect" id="Node000006" href="$sm__game_8h.html" title="Single Mode game state management." alt="" coords="238,79,401,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="244,37,296,76,293,81,241,41"/>
+<area shape="rect" id="Node000003" href="$multiMode_8h.html" title="Multiplayer mode management." alt="" coords="5,167,201,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="119,133,109,167,104,166,113,131"/>
+<area shape="rect" id="Node000004" href="$state_8h.html" title="State management for the game." alt="" coords="149,240,284,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="135,197,200,238,197,242,132,202"/>
+<area shape="rect" id="Node000005" href="$main_8c.html" title=" " alt="" coords="186,313,247,339"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="219,279,219,313,214,313,214,279"/>
+<area shape="rect" id="Node000007" href="$singleMode_8h.html" title="Single player mode management." alt="" coords="226,167,434,192"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="326,132,331,166,326,167,321,133"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="301,202,237,242,234,238,298,197"/>
+</map>

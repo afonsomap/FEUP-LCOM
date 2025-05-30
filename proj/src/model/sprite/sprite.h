@@ -12,8 +12,7 @@ typedef enum {
     BY_PIXEL
 } SpriteType;
 
-/** @defgroup sprite Sprite
- * @{
+/** @file sprite.h
  * @brief Sprite management for the game
  * This module provides functions to create, destroy, and draw sprites.
  * 

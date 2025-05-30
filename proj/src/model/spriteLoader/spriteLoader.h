@@ -101,7 +101,7 @@
 #include "images/winners/draw.xpm"
 
 /**
- * @defgroup sprite_loader sprite_loader
+ * @file spriteLoader.h
  * @brief Sprite loader for the game
  * 
  * This module provides functions to load and manage sprites used in the game.

@@ -1,0 +1,18 @@
+<map id="controllers/serial_port/queue.h" name="controllers/serial_port/queue.h">
+<area shape="rect" id="Node000001" title="Queue implementation for handling serial port data." alt="" coords="225,5,342,45"/>
+<area shape="rect" id="Node000002" href="$serial__port_8h.html" title="Serial port management for the game." alt="" coords="163,93,289,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="265,58,241,95,237,92,261,56"/>
+<area shape="rect" id="Node000003" href="$main_8c.html" title=" " alt="" coords="187,416,249,441"/>
+<area shape="poly" id="edge9_Node000001_Node000003" title=" " alt="" coords="333,51,369,77,405,111,432,152,441,175,443,200,443,284,437,316,421,343,398,366,369,384,306,411,250,425,248,420,304,406,367,380,395,362,417,340,432,314,438,283,438,200,435,177,428,154,401,114,366,81,329,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="150,121,115,128,80,140,48,158,23,183,13,200,9,217,9,234,13,252,31,286,60,319,96,349,133,376,197,414,194,418,130,380,92,353,57,323,27,289,8,253,3,235,3,216,8,198,19,180,45,153,78,135,113,123,148,116"/>
+<area shape="rect" id="Node000004" href="$mm__connection_8h.html" title="Multiplayer mode connection state management." alt="" coords="33,181,221,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="196,144,151,183,147,179,192,140"/>
+<area shape="rect" id="Node000007" href="$mm__game_8h.html" title="Multiplayer mode game state management." alt="" coords="246,181,403,221"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="260,140,305,179,301,183,256,144"/>
+<area shape="rect" id="Node000005" href="$multiMode_8h.html" title="Multiplayer mode management." alt="" coords="120,269,316,295"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="161,228,206,267,203,271,158,232"/>
+<area shape="rect" id="Node000006" href="$state_8h.html" title="State management for the game." alt="" coords="151,343,285,368"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="221,308,221,343,215,343,215,308"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="221,382,221,416,215,416,215,382"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="289,232,236,271,232,267,286,227"/>
+</map>

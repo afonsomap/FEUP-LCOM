@@ -11,7 +11,7 @@
 #include "score.h"
 
 /**
- * @defgroup singleMode singleMode
+ * @file singleMode.h
  * 
  * @brief Single player mode management
  * 

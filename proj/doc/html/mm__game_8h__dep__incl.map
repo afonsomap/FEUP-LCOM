@@ -1,0 +1,9 @@
+<map id="model/multiMode/game_state/mm_game.h" name="model/multiMode/game_state/mm_game.h">
+<area shape="rect" id="Node000001" title="Multiplayer mode game state management." alt="" coords="25,5,182,45"/>
+<area shape="rect" id="Node000002" href="$multiMode_8h.html" title="Multiplayer mode management." alt="" coords="5,93,201,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,59,106,93,101,93,101,59"/>
+<area shape="rect" id="Node000003" href="$state_8h.html" title="State management for the game." alt="" coords="36,167,171,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="106,132,106,167,101,167,101,132"/>
+<area shape="rect" id="Node000004" href="$main_8c.html" title=" " alt="" coords="73,240,134,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="106,206,106,240,101,240,101,206"/>
+</map>

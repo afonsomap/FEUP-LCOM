@@ -1,0 +1,176 @@
+\doxysection{model/multi\+Mode/connection\+\_\+state/mm\+\_\+connection.h File Reference}
+\hypertarget{mm__connection_8h}{}\label{mm__connection_8h}\index{model/multiMode/connection\_state/mm\_connection.h@{model/multiMode/connection\_state/mm\_connection.h}}
+
+
+Multiplayer mode connection state management.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}sprite\+Loader.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}serial\+\_\+port.\+h"{}}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+{\ttfamily \#include "{}button.\+h"{}}\newline
+Include dependency graph for mm\+\_\+connection.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mm__connection_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{mm__connection_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mm__connection_8h_a36945684e58f398ea3a65274365996d3}\label{mm__connection_8h_a36945684e58f398ea3a65274365996d3} 
+\#define {\bfseries HANDSHAKE\+\_\+\+HELLO}~0x\+C1
+\item 
+\Hypertarget{mm__connection_8h_a655d065544dbc9a22f5e039fc5f5692a}\label{mm__connection_8h_a655d065544dbc9a22f5e039fc5f5692a} 
+\#define {\bfseries HANDSHAKE\+\_\+\+REPLY}~0x\+C2
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mm__connection_8h_a68a66041a93776fe49f319a1b59ae8d7}\label{mm__connection_8h_a68a66041a93776fe49f319a1b59ae8d7} 
+typedef struct \mbox{\hyperlink{structmm__connection__imp}{mm\+\_\+connection\+\_\+imp}} {\bfseries Mm\+Connection}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{mm__connection_8h_aea37dba470794e5f319909df50856226}{create\+\_\+mm\+\_\+connection}} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\begin{DoxyCompactList}\small\item\em Creates a new Mm\+Connection object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mm__connection_8h_a7b0021db5ef2574a59042faa73f0bb1f}{destroy\+\_\+mm\+\_\+connection}} (\mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*}mm\+\_\+connection)
+\begin{DoxyCompactList}\small\item\em Destroys a Mm\+Connection object, freeing all allocated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mm__connection_8h_a90d039107ae2487e2360376508cc221b}{draw\+\_\+mm\+\_\+connection}} (\mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*}mm\+\_\+connection)
+\begin{DoxyCompactList}\small\item\em Draws the Mm\+Connection screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mm__connection_8h_ad723ffaf8cdf1fa67a9d43fd587e4bf1}{process\+\_\+mm\+\_\+connection\+\_\+mouse}} (\mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*}mm\+\_\+connection, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Processes the input from the mouse in the Mm\+Connection state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mm__connection_8h_ac1661fcd11bdfd25a7618a55d43ddcd1}{process\+\_\+mm\+\_\+connection\+\_\+timer}} (\mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*}mm\+\_\+connection)
+\begin{DoxyCompactList}\small\item\em Processes the input from the timer in the Mm\+Connection state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mm__connection_8h_a43d220b8036d09fcd4edc46ac3da1a89}{process\+\_\+mm\+\_\+connection\+\_\+sp}} (\mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*}mm\+\_\+connection, uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Processes the input from the serial port in the Mm\+Connection state ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Multiplayer mode connection state management. 
+
+This module provides functions to create, manage, and draw the connection state in the multiplayer mode. It handles the connection process, including sending and receiving handshake messages, and processing input from the mouse and timer. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mm__connection_8h_aea37dba470794e5f319909df50856226}\label{mm__connection_8h_aea37dba470794e5f319909df50856226} 
+\index{mm\_connection.h@{mm\_connection.h}!create\_mm\_connection@{create\_mm\_connection}}
+\index{create\_mm\_connection@{create\_mm\_connection}!mm\_connection.h@{mm\_connection.h}}
+\doxysubsubsection{\texorpdfstring{create\_mm\_connection()}{create\_mm\_connection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*} create\+\_\+mm\+\_\+connection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}}]{loader }\end{DoxyParamCaption})}
+
+
+
+Creates a new Mm\+Connection object. 
+
+This function initializes the connection state, including the background, buttons, and sprites. It also clears the serial port buffer and sets the initial time until failure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em loader} & Pointer to the Sprite\+Loader object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created Mm\+Connection object, or NULL if the creation failed 
+\end{DoxyReturn}
+\Hypertarget{mm__connection_8h_a7b0021db5ef2574a59042faa73f0bb1f}\label{mm__connection_8h_a7b0021db5ef2574a59042faa73f0bb1f} 
+\index{mm\_connection.h@{mm\_connection.h}!destroy\_mm\_connection@{destroy\_mm\_connection}}
+\index{destroy\_mm\_connection@{destroy\_mm\_connection}!mm\_connection.h@{mm\_connection.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_mm\_connection()}{destroy\_mm\_connection()}}
+{\footnotesize\ttfamily void destroy\+\_\+mm\+\_\+connection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+connection }\end{DoxyParamCaption})}
+
+
+
+Destroys a Mm\+Connection object, freeing all allocated memory. 
+
+This function cleans up the resources used by the Mm\+Connection object, including buttons and sprites.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+connection} & Pointer to the Mm\+Connection object to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mm__connection_8h_a90d039107ae2487e2360376508cc221b}\label{mm__connection_8h_a90d039107ae2487e2360376508cc221b} 
+\index{mm\_connection.h@{mm\_connection.h}!draw\_mm\_connection@{draw\_mm\_connection}}
+\index{draw\_mm\_connection@{draw\_mm\_connection}!mm\_connection.h@{mm\_connection.h}}
+\doxysubsubsection{\texorpdfstring{draw\_mm\_connection()}{draw\_mm\_connection()}}
+{\footnotesize\ttfamily void draw\+\_\+mm\+\_\+connection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+connection }\end{DoxyParamCaption})}
+
+
+
+Draws the Mm\+Connection screen. 
+
+This function draws the background, buttons, and sprites for the connection state. It displays the waiting connection and warning connection sprites.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+connection} & Pointer to the Mm\+Connection object to be drawn \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mm__connection_8h_ad723ffaf8cdf1fa67a9d43fd587e4bf1}\label{mm__connection_8h_ad723ffaf8cdf1fa67a9d43fd587e4bf1} 
+\index{mm\_connection.h@{mm\_connection.h}!process\_mm\_connection\_mouse@{process\_mm\_connection\_mouse}}
+\index{process\_mm\_connection\_mouse@{process\_mm\_connection\_mouse}!mm\_connection.h@{mm\_connection.h}}
+\doxysubsubsection{\texorpdfstring{process\_mm\_connection\_mouse()}{process\_mm\_connection\_mouse()}}
+{\footnotesize\ttfamily int process\+\_\+mm\+\_\+connection\+\_\+mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+connection,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the mouse in the Mm\+Connection state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+connection} & Pointer to the Mm\+Connection object \\
+\hline
+{\em c} & Pointer to the Cursor object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the connection state should continue, 1 to go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{mm__connection_8h_a43d220b8036d09fcd4edc46ac3da1a89}\label{mm__connection_8h_a43d220b8036d09fcd4edc46ac3da1a89} 
+\index{mm\_connection.h@{mm\_connection.h}!process\_mm\_connection\_sp@{process\_mm\_connection\_sp}}
+\index{process\_mm\_connection\_sp@{process\_mm\_connection\_sp}!mm\_connection.h@{mm\_connection.h}}
+\doxysubsubsection{\texorpdfstring{process\_mm\_connection\_sp()}{process\_mm\_connection\_sp()}}
+{\footnotesize\ttfamily int process\+\_\+mm\+\_\+connection\+\_\+sp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+connection,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the serial port in the Mm\+Connection state ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+connection} & Pointer to the Mm\+Connection object \\
+\hline
+{\em byte} & The byte received from the serial port \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the connection state should continue, 1 to go back to the menu, 2 for player 2 
+\end{DoxyReturn}
+\Hypertarget{mm__connection_8h_ac1661fcd11bdfd25a7618a55d43ddcd1}\label{mm__connection_8h_ac1661fcd11bdfd25a7618a55d43ddcd1} 
+\index{mm\_connection.h@{mm\_connection.h}!process\_mm\_connection\_timer@{process\_mm\_connection\_timer}}
+\index{process\_mm\_connection\_timer@{process\_mm\_connection\_timer}!mm\_connection.h@{mm\_connection.h}}
+\doxysubsubsection{\texorpdfstring{process\_mm\_connection\_timer()}{process\_mm\_connection\_timer()}}
+{\footnotesize\ttfamily int process\+\_\+mm\+\_\+connection\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__connection__imp}{Mm\+Connection}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+connection }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the timer in the Mm\+Connection state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+connection} & Pointer to the Mm\+Connection object \\
+\hline
+\end{DoxyParams}

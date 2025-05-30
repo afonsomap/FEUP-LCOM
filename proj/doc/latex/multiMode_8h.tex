@@ -1,0 +1,194 @@
+\doxysection{model/multi\+Mode/multi\+Mode.h File Reference}
+\hypertarget{multiMode_8h}{}\label{multiMode_8h}\index{model/multiMode/multiMode.h@{model/multiMode/multiMode.h}}
+
+
+Multiplayer mode management.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}sprite\+Loader.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+pressed.\+h"{}}\newline
+{\ttfamily \#include "{}mm\+\_\+connection.\+h"{}}\newline
+{\ttfamily \#include "{}mm\+\_\+game.\+h"{}}\newline
+{\ttfamily \#include "{}mm\+\_\+winner.\+h"{}}\newline
+Include dependency graph for multi\+Mode.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{multiMode_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{multiMode_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{multiMode_8h_a02717f32fd14914d8a0898b38fe8db19}\label{multiMode_8h_a02717f32fd14914d8a0898b38fe8db19} 
+typedef struct \mbox{\hyperlink{structmultiMode__imp}{multi\+Mode\+\_\+imp}} {\bfseries Multi\+Mode}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{multiMode_8h_a277f576c538176c6b7f7de10323fca23}\label{multiMode_8h_a277f576c538176c6b7f7de10323fca23} 
+enum {\bfseries Mm\+\_\+\+State} \{ {\bfseries MM\+\_\+\+CONNECTION}
+, {\bfseries MM\+\_\+\+GAME}
+, {\bfseries MM\+\_\+\+WINNER}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{multiMode_8h_a6afa1f2bbc77bc85e89923fdde76ef60}{create\+\_\+multi\+Mode}} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\begin{DoxyCompactList}\small\item\em Creates a new Multi\+Mode object, which contains multiple players and a grid of walls. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{multiMode_8h_a7de976f7e5d9c5effeb5e1ed42dfab11}{destroy\+\_\+multi\+Mode}} (\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}mm)
+\begin{DoxyCompactList}\small\item\em Destroys a Multi\+Mode object, freeing all allocated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{multiMode_8h_a94d334d6db9302054aee4fa530d3b5fd}{draw\+\_\+multi\+Mode}} (\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}mm)
+\begin{DoxyCompactList}\small\item\em Draws the Multi\+Mode object on the screen, including all players. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{multiMode_8h_af144bfe94337324a4c028ae60a9c554f}{process\+\_\+multi\+\_\+mode\+\_\+kbd}} (\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}mm, \mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Processes the input from the keyboard. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{multiMode_8h_aaaeb197770cdb3a07f3fdf1385562e73}{process\+\_\+multi\+\_\+mode\+\_\+mouse}} (\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}mm, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Processes the input from the mouse for multiplayer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{multiMode_8h_a8a0c2b91d08f9a900700772df91d00c7}{process\+\_\+multi\+\_\+mode\+\_\+timer}} (\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}mm)
+\begin{DoxyCompactList}\small\item\em Processes the input from the timer for multiplayer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{multiMode_8h_a0dff6d1e1ddf014d7766206a8f9c7265}{process\+\_\+multi\+\_\+mode\+\_\+sp}} (\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}mm, uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Process the input from the serial port for multiplayer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Multiplayer mode management. 
+
+This module provides functions to create, manage, and draw the multiplayer mode in the game. It handles the connection state, game state, and winner state, as well as processing input from the keyboard, mouse, timer, and serial port. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{multiMode_8h_a6afa1f2bbc77bc85e89923fdde76ef60}\label{multiMode_8h_a6afa1f2bbc77bc85e89923fdde76ef60} 
+\index{multiMode.h@{multiMode.h}!create\_multiMode@{create\_multiMode}}
+\index{create\_multiMode@{create\_multiMode}!multiMode.h@{multiMode.h}}
+\doxysubsubsection{\texorpdfstring{create\_multiMode()}{create\_multiMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*} create\+\_\+multi\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}}]{loader }\end{DoxyParamCaption})}
+
+
+
+Creates a new Multi\+Mode object, which contains multiple players and a grid of walls. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loader} & Pointer to the Sprite\+Loader object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created Multi\+Mode object, or NULL if the creation failed 
+\end{DoxyReturn}
+\Hypertarget{multiMode_8h_a7de976f7e5d9c5effeb5e1ed42dfab11}\label{multiMode_8h_a7de976f7e5d9c5effeb5e1ed42dfab11} 
+\index{multiMode.h@{multiMode.h}!destroy\_multiMode@{destroy\_multiMode}}
+\index{destroy\_multiMode@{destroy\_multiMode}!multiMode.h@{multiMode.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_multiMode()}{destroy\_multiMode()}}
+{\footnotesize\ttfamily void destroy\+\_\+multi\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}}]{mm }\end{DoxyParamCaption})}
+
+
+
+Destroys a Multi\+Mode object, freeing all allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm} & Pointer to the Multi\+Mode object to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{multiMode_8h_a94d334d6db9302054aee4fa530d3b5fd}\label{multiMode_8h_a94d334d6db9302054aee4fa530d3b5fd} 
+\index{multiMode.h@{multiMode.h}!draw\_multiMode@{draw\_multiMode}}
+\index{draw\_multiMode@{draw\_multiMode}!multiMode.h@{multiMode.h}}
+\doxysubsubsection{\texorpdfstring{draw\_multiMode()}{draw\_multiMode()}}
+{\footnotesize\ttfamily void draw\+\_\+multi\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}}]{mm }\end{DoxyParamCaption})}
+
+
+
+Draws the Multi\+Mode object on the screen, including all players. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm} & Pointer to the Multi\+Mode object to be drawn \\
+\hline
+\end{DoxyParams}
+\Hypertarget{multiMode_8h_af144bfe94337324a4c028ae60a9c554f}\label{multiMode_8h_af144bfe94337324a4c028ae60a9c554f} 
+\index{multiMode.h@{multiMode.h}!process\_multi\_mode\_kbd@{process\_multi\_mode\_kbd}}
+\index{process\_multi\_mode\_kbd@{process\_multi\_mode\_kbd}!multiMode.h@{multiMode.h}}
+\doxysubsubsection{\texorpdfstring{process\_multi\_mode\_kbd()}{process\_multi\_mode\_kbd()}}
+{\footnotesize\ttfamily int process\+\_\+multi\+\_\+mode\+\_\+kbd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}}]{mm,  }\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the keyboard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm} & Pointer to the Multi\+Mode object \\
+\hline
+{\em key} & Pointer to the Key\+Pressed object containing the state of the keys \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 to go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{multiMode_8h_aaaeb197770cdb3a07f3fdf1385562e73}\label{multiMode_8h_aaaeb197770cdb3a07f3fdf1385562e73} 
+\index{multiMode.h@{multiMode.h}!process\_multi\_mode\_mouse@{process\_multi\_mode\_mouse}}
+\index{process\_multi\_mode\_mouse@{process\_multi\_mode\_mouse}!multiMode.h@{multiMode.h}}
+\doxysubsubsection{\texorpdfstring{process\_multi\_mode\_mouse()}{process\_multi\_mode\_mouse()}}
+{\footnotesize\ttfamily int process\+\_\+multi\+\_\+mode\+\_\+mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}}]{mm,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the mouse for multiplayer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm} & Pointer to the Multi\+Mode object \\
+\hline
+{\em c} & Pointer to the Cursor object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 to go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{multiMode_8h_a0dff6d1e1ddf014d7766206a8f9c7265}\label{multiMode_8h_a0dff6d1e1ddf014d7766206a8f9c7265} 
+\index{multiMode.h@{multiMode.h}!process\_multi\_mode\_sp@{process\_multi\_mode\_sp}}
+\index{process\_multi\_mode\_sp@{process\_multi\_mode\_sp}!multiMode.h@{multiMode.h}}
+\doxysubsubsection{\texorpdfstring{process\_multi\_mode\_sp()}{process\_multi\_mode\_sp()}}
+{\footnotesize\ttfamily int process\+\_\+multi\+\_\+mode\+\_\+sp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}}]{mm,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Process the input from the serial port for multiplayer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm} & Pointer to the Multi\+Mode object \\
+\hline
+{\em byte} & Pointer to the byte received from the serial port \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 to go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{multiMode_8h_a8a0c2b91d08f9a900700772df91d00c7}\label{multiMode_8h_a8a0c2b91d08f9a900700772df91d00c7} 
+\index{multiMode.h@{multiMode.h}!process\_multi\_mode\_timer@{process\_multi\_mode\_timer}}
+\index{process\_multi\_mode\_timer@{process\_multi\_mode\_timer}!multiMode.h@{multiMode.h}}
+\doxysubsubsection{\texorpdfstring{process\_multi\_mode\_timer()}{process\_multi\_mode\_timer()}}
+{\footnotesize\ttfamily int process\+\_\+multi\+\_\+mode\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmultiMode__imp}{Multi\+Mode}} \texorpdfstring{$\ast$}{*}}]{mm }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the timer for multiplayer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm} & Pointer to the Multi\+Mode object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 to go back to the menu 
+\end{DoxyReturn}

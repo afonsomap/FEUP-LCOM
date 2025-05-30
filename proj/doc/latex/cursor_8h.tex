@@ -1,0 +1,198 @@
+\doxysection{model/cursor/cursor.h File Reference}
+\hypertarget{cursor_8h}{}\label{cursor_8h}\index{model/cursor/cursor.h@{model/cursor/cursor.h}}
+
+
+Cursor management.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+Include dependency graph for cursor.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{cursor_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cursor_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{cursor_8h_a84af43f9604106be1fc8ce328f23a06d}\label{cursor_8h_a84af43f9604106be1fc8ce328f23a06d} 
+typedef struct \mbox{\hyperlink{structcursor__imp}{cursor\+\_\+imp}} {\bfseries Cursor}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{cursor_8h_a4dfbcebcbc3a4c981e1aa83185af99cd}{get\+\_\+cursor\+\_\+\+Xpos}} (\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Returns the X coordinate of the cursor. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{cursor_8h_aa5bb3282b6c918bcbcf589ee95fc35a4}{get\+\_\+cursor\+\_\+\+Ypos}} (\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Returns the Y coordinate of the cursor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{cursor_8h_ae919c2237463b0574f6d430771d73b94}{get\+\_\+cursor\+\_\+button\+\_\+pressed}} (\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c, uint8\+\_\+t button)
+\begin{DoxyCompactList}\small\item\em Returns the button pressed state of the cursor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cursor_8h_ad3fdf26ed48521723ee55c50a60031e9}{reset\+\_\+cursor\+\_\+button\+\_\+pressed}} (\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Resets the button pressed state of the cursor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cursor_8h_a2733bfe9893db85a4618e19cf5763920}{create\+\_\+cursor}} (\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}img, uint16\+\_\+t screen\+\_\+width, uint16\+\_\+t screen\+\_\+height)
+\begin{DoxyCompactList}\small\item\em Creates a new cursor with the specified sprite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cursor_8h_a67e83bbdd823ad9546a67bb39b37c846}{destroy\+\_\+cursor}} (\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for the cursor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cursor_8h_a68ed1eda9c3e5fcc5645a84c3b2d5614}{draw\+\_\+cursor}} (\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Draws the cursor on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cursor_8h_a79d34356d78900e52c92200932df32d4}{update\+\_\+cursor\+\_\+with\+\_\+mouse}} (\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}cursor, struct packet \texorpdfstring{$\ast$}{*}mouse\+\_\+packet)
+\begin{DoxyCompactList}\small\item\em Updates the cursor position based on mouse input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cursor management. 
+
+This module provides functions to create, manage, and draw the cursor in the game. It handles the cursor\textquotesingle{}s position, button states, and rendering on the screen. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{cursor_8h_a2733bfe9893db85a4618e19cf5763920}\label{cursor_8h_a2733bfe9893db85a4618e19cf5763920} 
+\index{cursor.h@{cursor.h}!create\_cursor@{create\_cursor}}
+\index{create\_cursor@{create\_cursor}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{create\_cursor()}{create\_cursor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*} create\+\_\+cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}}]{img,  }\item[{uint16\+\_\+t}]{screen\+\_\+width,  }\item[{uint16\+\_\+t}]{screen\+\_\+height }\end{DoxyParamCaption})}
+
+
+
+Creates a new cursor with the specified sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & The sprite for the cursor \\
+\hline
+{\em screen\+\_\+width} & The width of the screen \\
+\hline
+{\em screen\+\_\+height} & The height of the screen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created cursor, or NULL if the pixmap is invalid 
+\end{DoxyReturn}
+\Hypertarget{cursor_8h_a67e83bbdd823ad9546a67bb39b37c846}\label{cursor_8h_a67e83bbdd823ad9546a67bb39b37c846} 
+\index{cursor.h@{cursor.h}!destroy\_cursor@{destroy\_cursor}}
+\index{destroy\_cursor@{destroy\_cursor}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_cursor()}{destroy\_cursor()}}
+{\footnotesize\ttfamily void destroy\+\_\+cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated for the cursor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Pointer to the cursor to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{cursor_8h_a68ed1eda9c3e5fcc5645a84c3b2d5614}\label{cursor_8h_a68ed1eda9c3e5fcc5645a84c3b2d5614} 
+\index{cursor.h@{cursor.h}!draw\_cursor@{draw\_cursor}}
+\index{draw\_cursor@{draw\_cursor}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{draw\_cursor()}{draw\_cursor()}}
+{\footnotesize\ttfamily void draw\+\_\+cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Draws the cursor on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Pointer to the cursor to be drawn \\
+\hline
+\end{DoxyParams}
+\Hypertarget{cursor_8h_ae919c2237463b0574f6d430771d73b94}\label{cursor_8h_ae919c2237463b0574f6d430771d73b94} 
+\index{cursor.h@{cursor.h}!get\_cursor\_button\_pressed@{get\_cursor\_button\_pressed}}
+\index{get\_cursor\_button\_pressed@{get\_cursor\_button\_pressed}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{get\_cursor\_button\_pressed()}{get\_cursor\_button\_pressed()}}
+{\footnotesize\ttfamily bool get\+\_\+cursor\+\_\+button\+\_\+pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{uint8\+\_\+t}]{button }\end{DoxyParamCaption})}
+
+
+
+Returns the button pressed state of the cursor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Pointer to the cursor \\
+\hline
+{\em button} & The button to check (0, 1, or 2) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the button is pressed, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{cursor_8h_a4dfbcebcbc3a4c981e1aa83185af99cd}\label{cursor_8h_a4dfbcebcbc3a4c981e1aa83185af99cd} 
+\index{cursor.h@{cursor.h}!get\_cursor\_Xpos@{get\_cursor\_Xpos}}
+\index{get\_cursor\_Xpos@{get\_cursor\_Xpos}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{get\_cursor\_Xpos()}{get\_cursor\_Xpos()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+\_\+cursor\+\_\+\+Xpos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Returns the X coordinate of the cursor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Pointer to the cursor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The X coordinate of the cursor 
+\end{DoxyReturn}
+\Hypertarget{cursor_8h_aa5bb3282b6c918bcbcf589ee95fc35a4}\label{cursor_8h_aa5bb3282b6c918bcbcf589ee95fc35a4} 
+\index{cursor.h@{cursor.h}!get\_cursor\_Ypos@{get\_cursor\_Ypos}}
+\index{get\_cursor\_Ypos@{get\_cursor\_Ypos}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{get\_cursor\_Ypos()}{get\_cursor\_Ypos()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+\_\+cursor\+\_\+\+Ypos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Returns the Y coordinate of the cursor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Pointer to the cursor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Y coordinate of the cursor 
+\end{DoxyReturn}
+\Hypertarget{cursor_8h_ad3fdf26ed48521723ee55c50a60031e9}\label{cursor_8h_ad3fdf26ed48521723ee55c50a60031e9} 
+\index{cursor.h@{cursor.h}!reset\_cursor\_button\_pressed@{reset\_cursor\_button\_pressed}}
+\index{reset\_cursor\_button\_pressed@{reset\_cursor\_button\_pressed}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{reset\_cursor\_button\_pressed()}{reset\_cursor\_button\_pressed()}}
+{\footnotesize\ttfamily void reset\+\_\+cursor\+\_\+button\+\_\+pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Resets the button pressed state of the cursor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Pointer to the cursor \\
+\hline
+\end{DoxyParams}
+\Hypertarget{cursor_8h_a79d34356d78900e52c92200932df32d4}\label{cursor_8h_a79d34356d78900e52c92200932df32d4} 
+\index{cursor.h@{cursor.h}!update\_cursor\_with\_mouse@{update\_cursor\_with\_mouse}}
+\index{update\_cursor\_with\_mouse@{update\_cursor\_with\_mouse}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{update\_cursor\_with\_mouse()}{update\_cursor\_with\_mouse()}}
+{\footnotesize\ttfamily void update\+\_\+cursor\+\_\+with\+\_\+mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{cursor,  }\item[{struct packet \texorpdfstring{$\ast$}{*}}]{mouse\+\_\+packet }\end{DoxyParamCaption})}
+
+
+
+Updates the cursor position based on mouse input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cursor} & Pointer to the cursor to be updated \\
+\hline
+{\em mouse\+\_\+packet} & Pointer to the mouse packet containing the movement data \\
+\hline
+\end{DoxyParams}

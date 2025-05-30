@@ -8,7 +8,7 @@
 #include "bomb.h"
 
 /**
- * @defgroup bomb_options bomb_options
+ * @file bomb_options.h
  * @brief Bomb options management in the game
  * 
  * This module provides functions to create, manage, and draw bomb options in the game.

@@ -1,0 +1,17 @@
+<map id="controllers/keyboard_mouse/mouse.h" name="controllers/keyboard_mouse/mouse.h">
+<area shape="rect" id="Node000001" title="Mouse management." alt="" coords="19,5,158,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="116,240,195,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,48,35,62,19,79,10,98,11,118,32,154,61,186,92,211,122,231,119,235,89,216,57,190,28,157,6,119,4,97,14,76,32,58,52,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="21,93,87,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="83,47,67,82,62,79,78,44"/>
+<area shape="rect" id="Node000004" href="$i8042_8h.html" title="Constants and macros for the i8042 keyboard and mouse controller." alt="" coords="89,167,153,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="95,45,118,152,113,154,90,46"/>
+<area shape="rect" id="Node000005" href="$kbc_8h.html" title=" " alt="" coords="163,93,217,119"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="115,43,165,82,162,87,111,48"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="129,191,146,226,141,229,124,194"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="190,120,164,227,159,226,184,118"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="180,121,143,159,139,155,177,117"/>
+<area shape="rect" id="Node000006" href="$utils_8h.html" title="Utility functions for the game." alt="" coords="228,167,349,192"/>
+<area shape="poly" id="edge8_Node000005_Node000006" title=" " alt="" coords="207,117,263,156,260,161,204,121"/>
+<area shape="poly" id="edge9_Node000006_Node000002" title=" " alt="" coords="268,194,190,236,188,231,266,190"/>
+</map>

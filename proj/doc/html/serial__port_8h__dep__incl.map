@@ -1,0 +1,15 @@
+<map id="controllers/serial_port/serial_port.h" name="controllers/serial_port/serial_port.h">
+<area shape="rect" id="Node000001" title="Serial port management for the game." alt="" coords="67,5,194,45"/>
+<area shape="rect" id="Node000002" href="$main_8c.html" title=" " alt="" coords="20,328,81,353"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,54,45,72,26,95,14,126,9,159,9,193,14,226,31,286,47,327,42,329,26,287,9,227,4,193,3,158,9,124,22,92,41,68,66,50"/>
+<area shape="rect" id="Node000003" href="$mm__connection_8h.html" title="Multiplayer mode connection state management." alt="" coords="37,93,225,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="133,59,133,93,128,93,128,59"/>
+<area shape="rect" id="Node000006" href="$mm__game_8h.html" title="Multiplayer mode game state management." alt="" coords="249,93,407,133"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="187,48,286,91,284,96,185,53"/>
+<area shape="rect" id="Node000004" href="$multiMode_8h.html" title="Multiplayer mode management." alt="" coords="37,181,233,207"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="135,147,137,181,131,181,130,147"/>
+<area shape="rect" id="Node000005" href="$state_8h.html" title="State management for the game." alt="" coords="51,255,186,280"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="132,221,124,255,119,254,126,219"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="100,292,64,330,60,326,96,288"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="270,141,164,184,162,179,268,136"/>
+</map>

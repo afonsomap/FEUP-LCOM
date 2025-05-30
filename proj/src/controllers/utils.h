@@ -4,8 +4,8 @@
 #include <lcom/lcf.h>
 
 /**
- * @defgroup utils utils
- * @{
+ * @file utils.h
+ * @brief Utility functions for the game
  * 
  * Functions for utility operations
  */

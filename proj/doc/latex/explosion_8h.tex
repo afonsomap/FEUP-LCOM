@@ -1,0 +1,185 @@
+\doxysection{model/explosion/explosion.h File Reference}
+\hypertarget{explosion_8h}{}\label{explosion_8h}\index{model/explosion/explosion.h@{model/explosion/explosion.h}}
+
+
+Explosion management in the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}animated\+Sprite.\+h"{}}\newline
+Include dependency graph for explosion.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{explosion_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{explosion_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{explosion_8h_a7deb65c6441d838137dd454a53cbc9d8}\label{explosion_8h_a7deb65c6441d838137dd454a53cbc9d8} 
+typedef struct \mbox{\hyperlink{structexplosion__imp}{explosion\+\_\+imp}} {\bfseries Explosion}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{explosion_8h_a9382cb00d360bd945bd5a98592c78829}{get\+\_\+explosion\+\_\+\+Xpos}} (\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Returns the X coordinate of the explosion. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{explosion_8h_a48b5e8c868d1cacd091c38bb1b851801}{get\+\_\+explosion\+\_\+\+Ypos}} (\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Returns the Y coordinate of the explosion. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{explosion_8h_a8bcd20bc5552f6f99f986e293f145ed8}{is\+\_\+explosion\+\_\+active}} (\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Checks if the explosion is active. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{explosion_8h_a9286ed8089e8e5ebe73a113aacdbd527}{set\+\_\+explosion\+\_\+active}} (\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}b, bool active)
+\begin{DoxyCompactList}\small\item\em Sets the explosion\textquotesingle{}s active status. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{explosion_8h_adaec20060c79be5fecd17933621c71f8}{create\+\_\+explosion}} (uint8\+\_\+t x, uint8\+\_\+t y, \mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}img)
+\begin{DoxyCompactList}\small\item\em Creates a new explosion with the specified sprite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{explosion_8h_a3a6104f4c0945bee954fae2b4381e793}{destroy\+\_\+explosion}} (\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for the explosion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{explosion_8h_aaa772e3baea108dac0b194019f58874b}{draw\+\_\+explosion}} (\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}b, uint16\+\_\+t x\+\_\+initial\+\_\+grid, uint16\+\_\+t y\+\_\+initial\+\_\+grid, uint16\+\_\+t grid\+\_\+square\+\_\+width)
+\begin{DoxyCompactList}\small\item\em Draws the explosion on the screen, if active. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Explosion management in the game. 
+
+This module provides functions to create, manage, and draw explosions in the game. Explosions are used to indicate the destruction of walls or other objects. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{explosion_8h_adaec20060c79be5fecd17933621c71f8}\label{explosion_8h_adaec20060c79be5fecd17933621c71f8} 
+\index{explosion.h@{explosion.h}!create\_explosion@{create\_explosion}}
+\index{create\_explosion@{create\_explosion}!explosion.h@{explosion.h}}
+\doxysubsubsection{\texorpdfstring{create\_explosion()}{create\_explosion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*} create\+\_\+explosion (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y,  }\item[{\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}}]{img }\end{DoxyParamCaption})}
+
+
+
+Creates a new explosion with the specified sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the explosion in the game grid \\
+\hline
+{\em y} & The y-\/coordinate of the explosion in the game grid \\
+\hline
+{\em img} & The sprite for the explosion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created explosion, or NULL if the pixmap is invalid 
+\end{DoxyReturn}
+\Hypertarget{explosion_8h_a3a6104f4c0945bee954fae2b4381e793}\label{explosion_8h_a3a6104f4c0945bee954fae2b4381e793} 
+\index{explosion.h@{explosion.h}!destroy\_explosion@{destroy\_explosion}}
+\index{destroy\_explosion@{destroy\_explosion}!explosion.h@{explosion.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_explosion()}{destroy\_explosion()}}
+{\footnotesize\ttfamily void destroy\+\_\+explosion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated for the explosion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the explosion to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{explosion_8h_aaa772e3baea108dac0b194019f58874b}\label{explosion_8h_aaa772e3baea108dac0b194019f58874b} 
+\index{explosion.h@{explosion.h}!draw\_explosion@{draw\_explosion}}
+\index{draw\_explosion@{draw\_explosion}!explosion.h@{explosion.h}}
+\doxysubsubsection{\texorpdfstring{draw\_explosion()}{draw\_explosion()}}
+{\footnotesize\ttfamily void draw\+\_\+explosion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{uint16\+\_\+t}]{x\+\_\+initial\+\_\+grid,  }\item[{uint16\+\_\+t}]{y\+\_\+initial\+\_\+grid,  }\item[{uint16\+\_\+t}]{grid\+\_\+square\+\_\+width }\end{DoxyParamCaption})}
+
+
+
+Draws the explosion on the screen, if active. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the explosion to be drawn \\
+\hline
+{\em x\+\_\+initial\+\_\+grid} & The initial X coordinate of the grid \\
+\hline
+{\em y\+\_\+initial\+\_\+grid} & The initial Y coordinate of the grid \\
+\hline
+{\em grid\+\_\+square\+\_\+width} & The width of each grid square \\
+\hline
+\end{DoxyParams}
+\Hypertarget{explosion_8h_a9382cb00d360bd945bd5a98592c78829}\label{explosion_8h_a9382cb00d360bd945bd5a98592c78829} 
+\index{explosion.h@{explosion.h}!get\_explosion\_Xpos@{get\_explosion\_Xpos}}
+\index{get\_explosion\_Xpos@{get\_explosion\_Xpos}!explosion.h@{explosion.h}}
+\doxysubsubsection{\texorpdfstring{get\_explosion\_Xpos()}{get\_explosion\_Xpos()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+explosion\+\_\+\+Xpos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Returns the X coordinate of the explosion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The X coordinate of the explosion 
+\end{DoxyReturn}
+\Hypertarget{explosion_8h_a48b5e8c868d1cacd091c38bb1b851801}\label{explosion_8h_a48b5e8c868d1cacd091c38bb1b851801} 
+\index{explosion.h@{explosion.h}!get\_explosion\_Ypos@{get\_explosion\_Ypos}}
+\index{get\_explosion\_Ypos@{get\_explosion\_Ypos}!explosion.h@{explosion.h}}
+\doxysubsubsection{\texorpdfstring{get\_explosion\_Ypos()}{get\_explosion\_Ypos()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+explosion\+\_\+\+Ypos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Returns the Y coordinate of the explosion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Y coordinate of the explosion 
+\end{DoxyReturn}
+\Hypertarget{explosion_8h_a8bcd20bc5552f6f99f986e293f145ed8}\label{explosion_8h_a8bcd20bc5552f6f99f986e293f145ed8} 
+\index{explosion.h@{explosion.h}!is\_explosion\_active@{is\_explosion\_active}}
+\index{is\_explosion\_active@{is\_explosion\_active}!explosion.h@{explosion.h}}
+\doxysubsubsection{\texorpdfstring{is\_explosion\_active()}{is\_explosion\_active()}}
+{\footnotesize\ttfamily bool is\+\_\+explosion\+\_\+active (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+
+
+Checks if the explosion is active. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the explosion to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the explosion is active, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{explosion_8h_a9286ed8089e8e5ebe73a113aacdbd527}\label{explosion_8h_a9286ed8089e8e5ebe73a113aacdbd527} 
+\index{explosion.h@{explosion.h}!set\_explosion\_active@{set\_explosion\_active}}
+\index{set\_explosion\_active@{set\_explosion\_active}!explosion.h@{explosion.h}}
+\doxysubsubsection{\texorpdfstring{set\_explosion\_active()}{set\_explosion\_active()}}
+{\footnotesize\ttfamily void set\+\_\+explosion\+\_\+active (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structexplosion__imp}{Explosion}} \texorpdfstring{$\ast$}{*}}]{b,  }\item[{bool}]{active }\end{DoxyParamCaption})}
+
+
+
+Sets the explosion\textquotesingle{}s active status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the explosion to be modified \\
+\hline
+{\em active} & The new active status of the explosion \\
+\hline
+\end{DoxyParams}

@@ -3,10 +3,12 @@
 
 #include <lcom/lcf.h>
 
-/** @defgroup i8042 i8042
- * @{
- *
- * Constants for programming the i8042 KBC.
+/** 
+ * @file i8042.h
+ * 
+ * @brief Constants and macros for the i8042 keyboard and mouse controller.
+ * 
+ * This file contains definitions for the i8042 keyboard and mouse controller
  */
 
 #define KBD_IRQ 1 /**< @brief Keyboard IRQ line */ 

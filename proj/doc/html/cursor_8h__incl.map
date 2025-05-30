@@ -1,0 +1,20 @@
+<map id="model/cursor/cursor.h" name="model/cursor/cursor.h">
+<area shape="rect" id="Node000001" title="Cursor management." alt="" coords="109,5,255,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="8,299,87,324"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,33,122,51,82,78,45,112,16,153,8,187,12,223,23,257,36,285,31,287,18,259,7,224,3,187,12,151,41,108,79,73,119,47,154,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="183,152,253,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,30,214,138,209,139,182,32"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="277,152,341,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="194,29,292,140,288,143,190,33"/>
+<area shape="rect" id="Node000005" href="$sprite_8h.html" title="Sprite management for the game This module provides functions to create, destroy, and draw sprites." alt="" coords="115,79,180,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="179,32,161,67,157,65,174,30"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="151,104,147,170,138,212,122,252,103,275,81,293,78,289,99,271,117,249,133,210,142,169,145,104"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="161,102,199,140,195,144,157,106"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="174,102,271,144,269,149,172,106"/>
+<area shape="rect" id="Node000006" href="$graphics_8h.html" title="Graphics management." alt="" coords="26,152,109,177"/>
+<area shape="poly" id="edge8_Node000005_Node000006" title=" " alt="" coords="136,106,92,145,89,141,133,102"/>
+<area shape="poly" id="edge9_Node000006_Node000002" title=" " alt="" coords="63,179,52,200,43,226,41,256,44,285,39,285,36,256,38,225,47,198,58,177"/>
+<area shape="rect" id="Node000007" href="$vbe_8h.html" title="VBE (VESA BIOS Extensions) management." alt="" coords="53,225,108,251"/>
+<area shape="poly" id="edge10_Node000006_Node000007" title=" " alt="" coords="72,177,79,211,73,212,67,178"/>
+<area shape="poly" id="edge11_Node000007_Node000002" title=" " alt="" coords="78,252,61,287,56,285,73,250"/>
+</map>

@@ -8,7 +8,7 @@
 #include "animatedSprite.h"
 
 /**
- * @defgroup player player
+ * @file player.h
  * @brief Player management for the game
  * 
  * This module provides functions to create, manage, and draw the player in the game.

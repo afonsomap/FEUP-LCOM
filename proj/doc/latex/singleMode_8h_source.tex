@@ -1,0 +1,43 @@
+\doxysection{single\+Mode.\+h}
+\hypertarget{singleMode_8h_source}{}\label{singleMode_8h_source}\index{model/singleMode/singleMode.h@{model/singleMode/singleMode.h}}
+\mbox{\hyperlink{singleMode_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_SINGLEMODE\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_SINGLEMODE\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{spriteLoader_8h}{spriteLoader.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cursor_8h}{cursor.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{menu_8h}{menu.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{key__pressed_8h}{key\_pressed.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sm__game_8h}{sm\_game.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sm__died_8h}{sm\_died.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{score_8h}{score.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsingleMode__imp}{singleMode\_imp}};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsingleMode__imp}{singleMode\_imp}}\ \mbox{\hyperlink{structsingleMode__imp}{SingleMode}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00026\ \ \ GAME,}
+\DoxyCodeLine{00027\ \ \ DIED}
+\DoxyCodeLine{00028\ \}\ Sm\_State;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00036\ \mbox{\hyperlink{structsingleMode__imp}{SingleMode}}\ *\mbox{\hyperlink{singleMode_8h_a940aa062bc9893626bad805557fc26db}{create\_singleMode}}(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{singleMode_8h_a45a10429ddcdd5099951fccb6488e6ab}{destroy\_singleMode}}(\mbox{\hyperlink{structsingleMode__imp}{SingleMode}}\ *sm);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{singleMode_8h_a6eb2c6b6cf714498d45679010212202d}{draw\_singleMode}}(\mbox{\hyperlink{structsingleMode__imp}{SingleMode}}\ *sm);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{singleMode_8h_a9ccde52b5eb9cb5a828fcde4c3de3e1b}{process\_single\_mode\_kbd}}(\mbox{\hyperlink{structsingleMode__imp}{SingleMode}}\ *sm,\ \mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *key);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{singleMode_8h_a622126ade9d05c484c3df12e11c0b7ea}{process\_single\_mode\_mouse}}(\mbox{\hyperlink{structsingleMode__imp}{SingleMode}}\ *sm,\ \mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{singleMode_8h_a907e0e6a45a6a2e5849ae75c92f322bd}{process\_single\_mode\_timer}}(\mbox{\hyperlink{structsingleMode__imp}{SingleMode}}\ *sm);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_SINGLEMODE\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00082\ }
+
+\end{DoxyCode}

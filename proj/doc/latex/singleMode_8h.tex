@@ -1,0 +1,172 @@
+\doxysection{model/single\+Mode/single\+Mode.h File Reference}
+\hypertarget{singleMode_8h}{}\label{singleMode_8h}\index{model/singleMode/singleMode.h@{model/singleMode/singleMode.h}}
+
+
+Single player mode management.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}sprite\+Loader.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}menu.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+pressed.\+h"{}}\newline
+{\ttfamily \#include "{}sm\+\_\+game.\+h"{}}\newline
+{\ttfamily \#include "{}sm\+\_\+died.\+h"{}}\newline
+{\ttfamily \#include "{}score.\+h"{}}\newline
+Include dependency graph for single\+Mode.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{singleMode_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{singleMode_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{singleMode_8h_a74375d08254149d6f652531e01a16fd5}\label{singleMode_8h_a74375d08254149d6f652531e01a16fd5} 
+typedef struct \mbox{\hyperlink{structsingleMode__imp}{single\+Mode\+\_\+imp}} {\bfseries Single\+Mode}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{singleMode_8h_a4d23ea746091bde9db781ef33bb06be7}\label{singleMode_8h_a4d23ea746091bde9db781ef33bb06be7} 
+enum {\bfseries Sm\+\_\+\+State} \{ {\bfseries GAME}
+, {\bfseries DIED}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{singleMode_8h_a940aa062bc9893626bad805557fc26db}{create\+\_\+single\+Mode}} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\begin{DoxyCompactList}\small\item\em Creates a new Single\+Mode object, which contains a player and a grid of walls. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{singleMode_8h_a45a10429ddcdd5099951fccb6488e6ab}{destroy\+\_\+single\+Mode}} (\mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em Destroys a Single\+Mode object, freeing all allocated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{singleMode_8h_a6eb2c6b6cf714498d45679010212202d}{draw\+\_\+single\+Mode}} (\mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em Draws the Single\+Mode object on the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{singleMode_8h_a9ccde52b5eb9cb5a828fcde4c3de3e1b}{process\+\_\+single\+\_\+mode\+\_\+kbd}} (\mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*}sm, \mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Processes the input from the keyboard. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{singleMode_8h_a622126ade9d05c484c3df12e11c0b7ea}{process\+\_\+single\+\_\+mode\+\_\+mouse}} (\mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*}sm, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Processes the input from the mouse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{singleMode_8h_a907e0e6a45a6a2e5849ae75c92f322bd}{process\+\_\+single\+\_\+mode\+\_\+timer}} (\mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*}sm)
+\begin{DoxyCompactList}\small\item\em Processes the timer events in the Single\+Mode object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Single player mode management. 
+
+This module provides functions to create, manage, and draw the single player mode in the game. It handles the changes between the game state and the died state, as well as processing input from the keyboard, mouse and timer. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{singleMode_8h_a940aa062bc9893626bad805557fc26db}\label{singleMode_8h_a940aa062bc9893626bad805557fc26db} 
+\index{singleMode.h@{singleMode.h}!create\_singleMode@{create\_singleMode}}
+\index{create\_singleMode@{create\_singleMode}!singleMode.h@{singleMode.h}}
+\doxysubsubsection{\texorpdfstring{create\_singleMode()}{create\_singleMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*} create\+\_\+single\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}}]{loader }\end{DoxyParamCaption})}
+
+
+
+Creates a new Single\+Mode object, which contains a player and a grid of walls. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loader} & Pointer to the Sprite\+Loader object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created Single\+Mode object, or NULL if the creation failed 
+\end{DoxyReturn}
+\Hypertarget{singleMode_8h_a45a10429ddcdd5099951fccb6488e6ab}\label{singleMode_8h_a45a10429ddcdd5099951fccb6488e6ab} 
+\index{singleMode.h@{singleMode.h}!destroy\_singleMode@{destroy\_singleMode}}
+\index{destroy\_singleMode@{destroy\_singleMode}!singleMode.h@{singleMode.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_singleMode()}{destroy\_singleMode()}}
+{\footnotesize\ttfamily void destroy\+\_\+single\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*}}]{sm }\end{DoxyParamCaption})}
+
+
+
+Destroys a Single\+Mode object, freeing all allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & Pointer to the Single\+Mode object to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{singleMode_8h_a6eb2c6b6cf714498d45679010212202d}\label{singleMode_8h_a6eb2c6b6cf714498d45679010212202d} 
+\index{singleMode.h@{singleMode.h}!draw\_singleMode@{draw\_singleMode}}
+\index{draw\_singleMode@{draw\_singleMode}!singleMode.h@{singleMode.h}}
+\doxysubsubsection{\texorpdfstring{draw\_singleMode()}{draw\_singleMode()}}
+{\footnotesize\ttfamily void draw\+\_\+single\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*}}]{sm }\end{DoxyParamCaption})}
+
+
+
+Draws the Single\+Mode object on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & Pointer to the Single\+Mode object to be drawn \\
+\hline
+\end{DoxyParams}
+\Hypertarget{singleMode_8h_a9ccde52b5eb9cb5a828fcde4c3de3e1b}\label{singleMode_8h_a9ccde52b5eb9cb5a828fcde4c3de3e1b} 
+\index{singleMode.h@{singleMode.h}!process\_single\_mode\_kbd@{process\_single\_mode\_kbd}}
+\index{process\_single\_mode\_kbd@{process\_single\_mode\_kbd}!singleMode.h@{singleMode.h}}
+\doxysubsubsection{\texorpdfstring{process\_single\_mode\_kbd()}{process\_single\_mode\_kbd()}}
+{\footnotesize\ttfamily int process\+\_\+single\+\_\+mode\+\_\+kbd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*}}]{sm,  }\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the keyboard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & Pointer to the Single\+Mode object \\
+\hline
+{\em key} & Pointer to the Key\+Pressed object containing the state of the keys \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{singleMode_8h_a622126ade9d05c484c3df12e11c0b7ea}\label{singleMode_8h_a622126ade9d05c484c3df12e11c0b7ea} 
+\index{singleMode.h@{singleMode.h}!process\_single\_mode\_mouse@{process\_single\_mode\_mouse}}
+\index{process\_single\_mode\_mouse@{process\_single\_mode\_mouse}!singleMode.h@{singleMode.h}}
+\doxysubsubsection{\texorpdfstring{process\_single\_mode\_mouse()}{process\_single\_mode\_mouse()}}
+{\footnotesize\ttfamily int process\+\_\+single\+\_\+mode\+\_\+mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*}}]{sm,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & Pointer to the Single\+Mode object \\
+\hline
+{\em c} & Pointer to the Cursor object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{singleMode_8h_a907e0e6a45a6a2e5849ae75c92f322bd}\label{singleMode_8h_a907e0e6a45a6a2e5849ae75c92f322bd} 
+\index{singleMode.h@{singleMode.h}!process\_single\_mode\_timer@{process\_single\_mode\_timer}}
+\index{process\_single\_mode\_timer@{process\_single\_mode\_timer}!singleMode.h@{singleMode.h}}
+\doxysubsubsection{\texorpdfstring{process\_single\_mode\_timer()}{process\_single\_mode\_timer()}}
+{\footnotesize\ttfamily int process\+\_\+single\+\_\+mode\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsingleMode__imp}{Single\+Mode}} \texorpdfstring{$\ast$}{*}}]{sm }\end{DoxyParamCaption})}
+
+
+
+Processes the timer events in the Single\+Mode object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & Pointer to the Single\+Mode object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 go back to the menu 
+\end{DoxyReturn}

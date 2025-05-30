@@ -1,0 +1,141 @@
+\doxysection{model/single\+Mode/died\+\_\+state/sm\+\_\+died.h File Reference}
+\hypertarget{sm__died_8h}{}\label{sm__died_8h}\index{model/singleMode/died\_state/sm\_died.h@{model/singleMode/died\_state/sm\_died.h}}
+
+
+Single Mode died state management.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+{\ttfamily \#include "{}sprite\+Loader.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+pressed.\+h"{}}\newline
+{\ttfamily \#include "{}score.\+h"{}}\newline
+{\ttfamily \#include "{}button.\+h"{}}\newline
+Include dependency graph for sm\+\_\+died.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sm__died_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{sm__died_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sm__died_8h_a3f8eb6eacb5ad45d60a0287669e071f7}\label{sm__died_8h_a3f8eb6eacb5ad45d60a0287669e071f7} 
+typedef struct \mbox{\hyperlink{structSmDied__imp}{Sm\+Died\+\_\+imp}} {\bfseries Sm\+Died}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSmDied__imp}{Sm\+Died}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sm__died_8h_a0016d4ff877e6eecfef9f8da639e8805}{create\+\_\+sm\+\_\+died}} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader, \mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*}score)
+\begin{DoxyCompactList}\small\item\em Creates a new Sm\+Died object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sm__died_8h_ab4e4ea8afe111a6f6bbf0b2bf21a9d1a}{destroy\+\_\+sm\+\_\+died}} (\mbox{\hyperlink{structSmDied__imp}{Sm\+Died}} \texorpdfstring{$\ast$}{*}d)
+\begin{DoxyCompactList}\small\item\em Destroys a Sm\+Died object, freeing all allocated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sm__died_8h_a2b9f45a7792f7aee64cd133bbb7a2c3b}{draw\+\_\+sm\+\_\+died}} (\mbox{\hyperlink{structSmDied__imp}{Sm\+Died}} \texorpdfstring{$\ast$}{*}d)
+\begin{DoxyCompactList}\small\item\em Draws the Sm\+Died screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sm__died_8h_aeefcef0229183e46577cd60b38f2087b}{process\+\_\+sm\+\_\+died\+\_\+mouse}} (\mbox{\hyperlink{structSmDied__imp}{Sm\+Died}} \texorpdfstring{$\ast$}{*}d, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Processes the input from the cursor in the Sm\+Died state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sm__died_8h_ad00ecd693b9d8ec1ee5e7fb9b643dfb9}{process\+\_\+sm\+\_\+died\+\_\+kbd}} (\mbox{\hyperlink{structSmDied__imp}{Sm\+Died}} \texorpdfstring{$\ast$}{*}d, \mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Processes the input from the keyboard in the Sm\+Died state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Single Mode died state management. 
+
+This module provides functions to create, destroy, draw, and process input for the Single Mode died state. It manages the display of the "{}\+You Died"{} screen, including the title, score, and buttons to play again or return to the menu. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sm__died_8h_a0016d4ff877e6eecfef9f8da639e8805}\label{sm__died_8h_a0016d4ff877e6eecfef9f8da639e8805} 
+\index{sm\_died.h@{sm\_died.h}!create\_sm\_died@{create\_sm\_died}}
+\index{create\_sm\_died@{create\_sm\_died}!sm\_died.h@{sm\_died.h}}
+\doxysubsubsection{\texorpdfstring{create\_sm\_died()}{create\_sm\_died()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSmDied__imp}{Sm\+Died}} \texorpdfstring{$\ast$}{*} create\+\_\+sm\+\_\+died (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}}]{loader,  }\item[{\mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*}}]{score }\end{DoxyParamCaption})}
+
+
+
+Creates a new Sm\+Died object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loader} & Pointer to the Sprite\+Loader object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created Sm\+Died object, or NULL if the creation failed 
+\end{DoxyReturn}
+\Hypertarget{sm__died_8h_ab4e4ea8afe111a6f6bbf0b2bf21a9d1a}\label{sm__died_8h_ab4e4ea8afe111a6f6bbf0b2bf21a9d1a} 
+\index{sm\_died.h@{sm\_died.h}!destroy\_sm\_died@{destroy\_sm\_died}}
+\index{destroy\_sm\_died@{destroy\_sm\_died}!sm\_died.h@{sm\_died.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_sm\_died()}{destroy\_sm\_died()}}
+{\footnotesize\ttfamily void destroy\+\_\+sm\+\_\+died (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSmDied__imp}{Sm\+Died}} \texorpdfstring{$\ast$}{*}}]{d }\end{DoxyParamCaption})}
+
+
+
+Destroys a Sm\+Died object, freeing all allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Pointer to the Sm\+Died object to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sm__died_8h_a2b9f45a7792f7aee64cd133bbb7a2c3b}\label{sm__died_8h_a2b9f45a7792f7aee64cd133bbb7a2c3b} 
+\index{sm\_died.h@{sm\_died.h}!draw\_sm\_died@{draw\_sm\_died}}
+\index{draw\_sm\_died@{draw\_sm\_died}!sm\_died.h@{sm\_died.h}}
+\doxysubsubsection{\texorpdfstring{draw\_sm\_died()}{draw\_sm\_died()}}
+{\footnotesize\ttfamily void draw\+\_\+sm\+\_\+died (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSmDied__imp}{Sm\+Died}} \texorpdfstring{$\ast$}{*}}]{d }\end{DoxyParamCaption})}
+
+
+
+Draws the Sm\+Died screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Pointer to the Sm\+Died object to be drawn \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sm__died_8h_ad00ecd693b9d8ec1ee5e7fb9b643dfb9}\label{sm__died_8h_ad00ecd693b9d8ec1ee5e7fb9b643dfb9} 
+\index{sm\_died.h@{sm\_died.h}!process\_sm\_died\_kbd@{process\_sm\_died\_kbd}}
+\index{process\_sm\_died\_kbd@{process\_sm\_died\_kbd}!sm\_died.h@{sm\_died.h}}
+\doxysubsubsection{\texorpdfstring{process\_sm\_died\_kbd()}{process\_sm\_died\_kbd()}}
+{\footnotesize\ttfamily int process\+\_\+sm\+\_\+died\+\_\+kbd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSmDied__imp}{Sm\+Died}} \texorpdfstring{$\ast$}{*}}]{d,  }\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the keyboard in the Sm\+Died state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Pointer to the Sm\+Died object \\
+\hline
+{\em key} & Pointer to the Key\+Pressed object containing the state of the keys \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the game should exit, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{sm__died_8h_aeefcef0229183e46577cd60b38f2087b}\label{sm__died_8h_aeefcef0229183e46577cd60b38f2087b} 
+\index{sm\_died.h@{sm\_died.h}!process\_sm\_died\_mouse@{process\_sm\_died\_mouse}}
+\index{process\_sm\_died\_mouse@{process\_sm\_died\_mouse}!sm\_died.h@{sm\_died.h}}
+\doxysubsubsection{\texorpdfstring{process\_sm\_died\_mouse()}{process\_sm\_died\_mouse()}}
+{\footnotesize\ttfamily int process\+\_\+sm\+\_\+died\+\_\+mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSmDied__imp}{Sm\+Died}} \texorpdfstring{$\ast$}{*}}]{d,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the cursor in the Sm\+Died state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Pointer to the Cursor object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the game should exit, 0 otherwise, 2 to play again 
+\end{DoxyReturn}

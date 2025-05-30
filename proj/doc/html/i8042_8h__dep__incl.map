@@ -1,0 +1,38 @@
+<map id="controllers/keyboard_mouse/i8042.h" name="controllers/keyboard_mouse/i8042.h">
+<area shape="rect" id="Node000001" title="Constants and macros for the i8042 keyboard and mouse controller." alt="" coords="503,5,641,45"/>
+<area shape="rect" id="Node000002" href="$kbc_8h.html" title=" " alt="" coords="503,93,641,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="575,59,575,93,569,93,569,59"/>
+<area shape="rect" id="Node000003" href="$kbd_8h.html" title="Keyboard management Functions to interact with the keyboard." alt="" coords="396,181,535,221"/>
+<area shape="poly" id="edge22_Node000001_Node000003" title=" " alt="" coords="531,55,510,73,493,95,482,116,475,140,469,182,464,181,470,139,477,115,488,92,506,70,527,51"/>
+<area shape="rect" id="Node000013" href="$mouse_8h.html" title="Mouse management." alt="" coords="609,181,748,221"/>
+<area shape="poly" id="edge23_Node000001_Node000013" title=" " alt="" coords="617,51,638,70,656,92,667,115,674,139,680,181,675,182,669,140,662,116,651,95,634,73,613,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="539,144,491,183,487,179,536,140"/>
+<area shape="poly" id="edge20_Node000002_Node000013" title=" " alt="" coords="608,140,657,179,653,183,605,144"/>
+<area shape="rect" id="Node000004" href="$main_8c.html" title=" " alt="" coords="192,592,253,617"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="383,219,269,243,145,278,91,299,47,323,18,349,11,362,8,376,8,459,13,489,28,515,50,537,77,555,138,581,193,595,191,600,137,586,75,559,47,541,24,518,8,491,3,460,3,376,6,360,14,346,44,319,89,294,144,273,267,238,382,214"/>
+<area shape="rect" id="Node000005" href="$key__pressed_8h.html" title="KeyPressed management." alt="" coords="385,269,545,309"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="468,235,468,269,463,269,463,235"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="372,296,289,302,203,314,129,332,101,345,83,359,73,374,68,389,68,422,81,456,102,489,129,521,158,549,208,590,205,594,155,553,125,525,98,493,76,458,63,423,63,389,69,372,79,356,99,340,127,327,202,309,288,297,371,291"/>
+<area shape="rect" id="Node000006" href="$mm__game_8h.html" title="Multiplayer mode game state management." alt="" coords="93,357,251,397"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="389,316,237,360,235,355,387,311"/>
+<area shape="rect" id="Node000007" href="$multiMode_8h.html" title="Multiplayer mode management." alt="" coords="241,445,437,471"/>
+<area shape="poly" id="edge10_Node000005_Node000007" title=" " alt="" coords="374,314,341,333,316,359,309,380,313,404,322,426,333,444,328,447,317,428,308,405,304,380,311,356,338,328,371,310"/>
+<area shape="rect" id="Node000008" href="$state_8h.html" title="State management for the game." alt="" coords="365,519,499,544"/>
+<area shape="poly" id="edge19_Node000005_Node000008" title=" " alt="" coords="487,320,503,357,506,377,503,398,490,434,474,469,443,520,438,517,469,466,485,432,497,397,500,377,497,358,483,322"/>
+<area shape="rect" id="Node000009" href="$mm__winner_8h.html" title="Multiplayer mode winner state management." alt="" coords="325,357,488,397"/>
+<area shape="poly" id="edge11_Node000005_Node000009" title=" " alt="" coords="447,322,422,359,417,356,443,319"/>
+<area shape="rect" id="Node000010" href="$sm__died_8h.html" title="Single Mode died state management." alt="" coords="563,357,717,397"/>
+<area shape="poly" id="edge13_Node000005_Node000010" title=" " alt="" coords="517,313,603,355,601,360,515,318"/>
+<area shape="rect" id="Node000011" href="$singleMode_8h.html" title="Single player mode management." alt="" coords="607,445,815,471"/>
+<area shape="poly" id="edge18_Node000005_Node000011" title=" " alt="" coords="559,299,662,321,704,336,731,356,740,379,738,404,730,427,721,446,716,444,725,425,733,403,735,380,727,359,702,341,660,326,558,305"/>
+<area shape="rect" id="Node000012" href="$sm__game_8h.html" title="Single Mode game state management." alt="" coords="792,357,955,397"/>
+<area shape="poly" id="edge16_Node000005_Node000012" title=" " alt="" coords="559,308,792,356,791,362,558,313"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="225,401,315,443,313,448,223,406"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="366,477,418,516,415,521,363,481"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="386,551,254,595,253,590,385,546"/>
+<area shape="poly" id="edge12_Node000009_Node000007" title=" " alt="" coords="383,410,351,447,347,443,379,406"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="668,406,702,443,698,447,664,409"/>
+<area shape="poly" id="edge15_Node000011_Node000008" title=" " alt="" coords="653,477,478,521,476,516,652,471"/>
+<area shape="poly" id="edge17_Node000012_Node000011" title=" " alt="" coords="823,406,736,448,734,443,821,401"/>
+<area shape="poly" id="edge21_Node000013_Node000004" title=" " alt="" coords="762,210,837,228,876,241,913,258,945,280,971,307,988,338,995,376,995,460,987,475,967,489,898,515,797,537,677,557,430,587,254,604,254,598,430,582,676,552,796,532,896,509,965,485,983,472,989,459,989,376,983,340,967,310,942,284,910,263,874,246,836,233,761,215"/>
+</map>

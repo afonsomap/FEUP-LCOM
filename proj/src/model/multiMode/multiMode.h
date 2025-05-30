@@ -11,8 +11,7 @@
 #include "mm_winner.h"
 
 /**
- * @defgroup multiMode multiMode
- * 
+ * @file multiMode.h
  * @brief Multiplayer mode management
  * 
  * This module provides functions to create, manage, and draw the multiplayer mode in the game.

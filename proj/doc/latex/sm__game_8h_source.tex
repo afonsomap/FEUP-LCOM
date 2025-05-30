@@ -1,0 +1,42 @@
+\doxysection{sm\+\_\+game.\+h}
+\hypertarget{sm__game_8h_source}{}\label{sm__game_8h_source}\index{model/singleMode/game\_state/sm\_game.h@{model/singleMode/game\_state/sm\_game.h}}
+\mbox{\hyperlink{sm__game_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_SM\_GAME\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_SM\_GAME\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bomb_8h}{bomb.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{wall_8h}{wall.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{spriteLoader_8h}{spriteLoader.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{animatedSprite_8h}{animatedSprite.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{sprite.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cursor_8h}{cursor.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{explosion_8h}{explosion.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bomb__options_8h}{bomb\_options.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{key__pressed_8h}{key\_pressed.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{score_8h}{score.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{button_8h}{button.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsm__game__imp}{sm\_game\_imp}};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsm__game__imp}{sm\_game\_imp}}\ \mbox{\hyperlink{structsm__game__imp}{SmGame}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00036\ \mbox{\hyperlink{structsm__game__imp}{SmGame}}\ *\mbox{\hyperlink{sm__game_8h_a99cea13ad1079c1476531fe19dedee5a}{create\_sm\_game}}(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader,\ \mbox{\hyperlink{structscore__imp}{Score}}*\ score);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sm__game_8h_a4b3cc19b6d023a474033b0a04b4c419d}{destroy\_sm\_game}}(\mbox{\hyperlink{structsm__game__imp}{SmGame}}\ *smg);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sm__game_8h_a28ea17c212993690d1c2b00938a3b1a4}{draw\_sm\_game}}(\mbox{\hyperlink{structsm__game__imp}{SmGame}}\ *smg);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sm__game_8h_ac3c0b9a7510a8d281e37206d7fe8d89d}{process\_sm\_game\_kbd}}(\mbox{\hyperlink{structsm__game__imp}{SmGame}}\ *smg,\ \mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *key);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sm__game_8h_a15add52fe7ad38c817ee57e98d60b6a5}{process\_sm\_game\_mouse}}(\mbox{\hyperlink{structsm__game__imp}{SmGame}}\ *smg,\ \mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sm__game_8h_a5a7786cab7fe8e3ef6f5ca671fb56e42}{process\_sm\_game\_timer}}(\mbox{\hyperlink{structsm__game__imp}{SmGame}}\ *smg);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif\ }}
+\DoxyCodeLine{00080\ }
+
+\end{DoxyCode}

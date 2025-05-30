@@ -3,12 +3,12 @@
 
 #include <lcom/lcf.h>
 
-/** @defgroup timer timer
- * @{
- *
- * Functions to interact with the count variable of the timer.c
+/** 
+ * @file timer_count.h
+ * @brief Timer count management
  * 
- * This file contains the functions that allow the lab2.c to interact with the count variable of    the timer.c file, instead of directly accessing it using the extern keyword.
+ * This module provides functions to manage the timer count in the game.
+ * It allows getting the current count value and resetting it to zero.
  */
 
 

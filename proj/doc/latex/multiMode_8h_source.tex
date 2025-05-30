@@ -1,0 +1,43 @@
+\doxysection{multi\+Mode.\+h}
+\hypertarget{multiMode_8h_source}{}\label{multiMode_8h_source}\index{model/multiMode/multiMode.h@{model/multiMode/multiMode.h}}
+\mbox{\hyperlink{multiMode_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_MULTIMODE\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_MULTIMODE\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{spriteLoader_8h}{spriteLoader.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cursor_8h}{cursor.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{key__pressed_8h}{key\_pressed.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mm__connection_8h}{mm\_connection.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mm__game_8h}{mm\_game.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mm__winner_8h}{mm\_winner.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmultiMode__imp}{multiMode\_imp}};}
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmultiMode__imp}{multiMode\_imp}}\ \mbox{\hyperlink{structmultiMode__imp}{MultiMode}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00025\ \ \ MM\_CONNECTION,}
+\DoxyCodeLine{00026\ \ \ MM\_GAME,}
+\DoxyCodeLine{00027\ \ \ MM\_WINNER}
+\DoxyCodeLine{00028\ \}\ Mm\_State;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00036\ \mbox{\hyperlink{structmultiMode__imp}{MultiMode}}\ *\mbox{\hyperlink{multiMode_8h_a6afa1f2bbc77bc85e89923fdde76ef60}{create\_multiMode}}(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{multiMode_8h_a7de976f7e5d9c5effeb5e1ed42dfab11}{destroy\_multiMode}}(\mbox{\hyperlink{structmultiMode__imp}{MultiMode}}\ *mm);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{multiMode_8h_a94d334d6db9302054aee4fa530d3b5fd}{draw\_multiMode}}(\mbox{\hyperlink{structmultiMode__imp}{MultiMode}}\ *mm);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{multiMode_8h_af144bfe94337324a4c028ae60a9c554f}{process\_multi\_mode\_kbd}}(\mbox{\hyperlink{structmultiMode__imp}{MultiMode}}\ *mm,\ \mbox{\hyperlink{structkey__pressed__imp}{KeyPressed}}\ *key);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{multiMode_8h_aaaeb197770cdb3a07f3fdf1385562e73}{process\_multi\_mode\_mouse}}(\mbox{\hyperlink{structmultiMode__imp}{MultiMode}}\ *mm,\ \mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{multiMode_8h_a8a0c2b91d08f9a900700772df91d00c7}{process\_multi\_mode\_timer}}(\mbox{\hyperlink{structmultiMode__imp}{MultiMode}}\ *mm);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{multiMode_8h_a0dff6d1e1ddf014d7766206a8f9c7265}{process\_multi\_mode\_sp}}(\mbox{\hyperlink{structmultiMode__imp}{MultiMode}}\ *mm,\ uint8\_t\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_MULTIMODE\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

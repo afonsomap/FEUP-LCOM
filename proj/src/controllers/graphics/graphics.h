@@ -4,10 +4,12 @@
 #include "vbe.h"
 
 /**
- * @defgroup graphics graphics 
- * @{
+ * @file graphics.h
  * 
- * Functions to interact with the graphics card.
+ * @brief Graphics management
+ * 
+ * This module provides functions to manage graphics in the game, including setting video modes, drawing pixels, and handling frame buffers.
+ * It allows for double buffering to enable smooth rendering and page flipping.
  */
 
 /**

@@ -1,0 +1,213 @@
+\doxysection{model/multi\+Mode/game\+\_\+state/mm\+\_\+game.h File Reference}
+\hypertarget{mm__game_8h}{}\label{mm__game_8h}\index{model/multiMode/game\_state/mm\_game.h@{model/multiMode/game\_state/mm\_game.h}}
+
+
+Multiplayer mode game state management.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}sprite\+Loader.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+pressed.\+h"{}}\newline
+{\ttfamily \#include "{}serial\+\_\+port.\+h"{}}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
+{\ttfamily \#include "{}bomb.\+h"{}}\newline
+{\ttfamily \#include "{}wall.\+h"{}}\newline
+{\ttfamily \#include "{}explosion.\+h"{}}\newline
+{\ttfamily \#include "{}bomb\+\_\+options.\+h"{}}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+{\ttfamily \#include "{}animated\+Sprite.\+h"{}}\newline
+{\ttfamily \#include "{}button.\+h"{}}\newline
+Include dependency graph for mm\+\_\+game.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mm__game_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{mm__game_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{mm__game_8h_aea5fd5db147700a778791ea2b1bb9c7c}\label{mm__game_8h_aea5fd5db147700a778791ea2b1bb9c7c} 
+typedef struct \mbox{\hyperlink{structmm__game__imp}{mm\+\_\+game\+\_\+imp}} {\bfseries Mm\+Game}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{mm__game_8h_ad20c7a918e087381b2a430f4306a6579}{create\+\_\+mm\+\_\+game}} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader, uint8\+\_\+t player\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Creates a new Mm\+Game object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mm__game_8h_a9a3c0990aeb27d19e50292c8b9c370b5}{destroy\+\_\+mm\+\_\+game}} (\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}mm\+\_\+game)
+\begin{DoxyCompactList}\small\item\em Destroys a Mm\+Game object, freeing all allocated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mm__game_8h_a05e46569d62d8f4fcbab6a45f05f1e5c}{draw\+\_\+mm\+\_\+game}} (\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}mm\+\_\+game)
+\begin{DoxyCompactList}\small\item\em Draws the Mm\+Game object on the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mm__game_8h_a5ce8720385cc3353f8366b81abc0169a}{process\+\_\+mm\+\_\+game\+\_\+mouse}} (\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}mm\+\_\+game, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Processes the input from the mouse in the Mm\+Game state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mm__game_8h_ae01d96db6122612035b93d05715f65f4}{process\+\_\+mm\+\_\+game\+\_\+kbd}} (\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}mm\+\_\+game, \mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}kp)
+\begin{DoxyCompactList}\small\item\em Processes the input from the keyboard in the Mm\+Game state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mm__game_8h_aa8b3c4347efc48edd4a0246b85aea557}{process\+\_\+mm\+\_\+game\+\_\+timer}} (\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}mm\+\_\+game)
+\begin{DoxyCompactList}\small\item\em Processes the game timer in the Mm\+Game state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mm__game_8h_a30933824a3b7652012f03e1dfb1da244}{process\+\_\+mm\+\_\+game\+\_\+sp}} (\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}mm\+\_\+game, uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Processes the input from the serial port in the Mm\+Game state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mm__game_8h_a4dcc9770ec7442a167a38a46c51e691d}{get\+\_\+winner}} (\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}mm\+\_\+game)
+\begin{DoxyCompactList}\small\item\em Gets the winner of the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Multiplayer mode game state management. 
+
+This module provides functions to create, manage, and draw the multiplayer game state. It handles the players, walls, bombs, explosions, and the game timer. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mm__game_8h_ad20c7a918e087381b2a430f4306a6579}\label{mm__game_8h_ad20c7a918e087381b2a430f4306a6579} 
+\index{mm\_game.h@{mm\_game.h}!create\_mm\_game@{create\_mm\_game}}
+\index{create\_mm\_game@{create\_mm\_game}!mm\_game.h@{mm\_game.h}}
+\doxysubsubsection{\texorpdfstring{create\_mm\_game()}{create\_mm\_game()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*} create\+\_\+mm\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}}]{loader,  }\item[{uint8\+\_\+t}]{player\+\_\+number }\end{DoxyParamCaption})}
+
+
+
+Creates a new Mm\+Game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loader} & Pointer to the Sprite\+Loader object \\
+\hline
+{\em player\+\_\+number} & The player number (1 or 2) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created Mm\+Game object, or NULL if the creation failed 
+\end{DoxyReturn}
+\Hypertarget{mm__game_8h_a9a3c0990aeb27d19e50292c8b9c370b5}\label{mm__game_8h_a9a3c0990aeb27d19e50292c8b9c370b5} 
+\index{mm\_game.h@{mm\_game.h}!destroy\_mm\_game@{destroy\_mm\_game}}
+\index{destroy\_mm\_game@{destroy\_mm\_game}!mm\_game.h@{mm\_game.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_mm\_game()}{destroy\_mm\_game()}}
+{\footnotesize\ttfamily void destroy\+\_\+mm\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+game }\end{DoxyParamCaption})}
+
+
+
+Destroys a Mm\+Game object, freeing all allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+game} & Pointer to the Mm\+Game object to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mm__game_8h_a05e46569d62d8f4fcbab6a45f05f1e5c}\label{mm__game_8h_a05e46569d62d8f4fcbab6a45f05f1e5c} 
+\index{mm\_game.h@{mm\_game.h}!draw\_mm\_game@{draw\_mm\_game}}
+\index{draw\_mm\_game@{draw\_mm\_game}!mm\_game.h@{mm\_game.h}}
+\doxysubsubsection{\texorpdfstring{draw\_mm\_game()}{draw\_mm\_game()}}
+{\footnotesize\ttfamily void draw\+\_\+mm\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+game }\end{DoxyParamCaption})}
+
+
+
+Draws the Mm\+Game object on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+game} & Pointer to the Mm\+Game object to be drawn \\
+\hline
+\end{DoxyParams}
+\Hypertarget{mm__game_8h_a4dcc9770ec7442a167a38a46c51e691d}\label{mm__game_8h_a4dcc9770ec7442a167a38a46c51e691d} 
+\index{mm\_game.h@{mm\_game.h}!get\_winner@{get\_winner}}
+\index{get\_winner@{get\_winner}!mm\_game.h@{mm\_game.h}}
+\doxysubsubsection{\texorpdfstring{get\_winner()}{get\_winner()}}
+{\footnotesize\ttfamily int get\+\_\+winner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+game }\end{DoxyParamCaption})}
+
+
+
+Gets the winner of the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+game} & Pointer to the Mm\+Game object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if no winner, 1 if the current player wins, 2 if the other player wins 
+\end{DoxyReturn}
+\Hypertarget{mm__game_8h_ae01d96db6122612035b93d05715f65f4}\label{mm__game_8h_ae01d96db6122612035b93d05715f65f4} 
+\index{mm\_game.h@{mm\_game.h}!process\_mm\_game\_kbd@{process\_mm\_game\_kbd}}
+\index{process\_mm\_game\_kbd@{process\_mm\_game\_kbd}!mm\_game.h@{mm\_game.h}}
+\doxysubsubsection{\texorpdfstring{process\_mm\_game\_kbd()}{process\_mm\_game\_kbd()}}
+{\footnotesize\ttfamily int process\+\_\+mm\+\_\+game\+\_\+kbd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+game,  }\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{kp }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the keyboard in the Mm\+Game state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+game} & Pointer to the Mm\+Game object \\
+\hline
+{\em kp} & Pointer to the Key\+Pressed object containing the state of the keys \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 to go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{mm__game_8h_a5ce8720385cc3353f8366b81abc0169a}\label{mm__game_8h_a5ce8720385cc3353f8366b81abc0169a} 
+\index{mm\_game.h@{mm\_game.h}!process\_mm\_game\_mouse@{process\_mm\_game\_mouse}}
+\index{process\_mm\_game\_mouse@{process\_mm\_game\_mouse}!mm\_game.h@{mm\_game.h}}
+\doxysubsubsection{\texorpdfstring{process\_mm\_game\_mouse()}{process\_mm\_game\_mouse()}}
+{\footnotesize\ttfamily int process\+\_\+mm\+\_\+game\+\_\+mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+game,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the mouse in the Mm\+Game state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+game} & Pointer to the Mm\+Game object \\
+\hline
+{\em c} & Pointer to the Cursor object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 to go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{mm__game_8h_a30933824a3b7652012f03e1dfb1da244}\label{mm__game_8h_a30933824a3b7652012f03e1dfb1da244} 
+\index{mm\_game.h@{mm\_game.h}!process\_mm\_game\_sp@{process\_mm\_game\_sp}}
+\index{process\_mm\_game\_sp@{process\_mm\_game\_sp}!mm\_game.h@{mm\_game.h}}
+\doxysubsubsection{\texorpdfstring{process\_mm\_game\_sp()}{process\_mm\_game\_sp()}}
+{\footnotesize\ttfamily int process\+\_\+mm\+\_\+game\+\_\+sp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+game,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the serial port in the Mm\+Game state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+game} & Pointer to the Mm\+Game object \\
+\hline
+{\em byte} & Byte received from the serial port \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 to go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{mm__game_8h_aa8b3c4347efc48edd4a0246b85aea557}\label{mm__game_8h_aa8b3c4347efc48edd4a0246b85aea557} 
+\index{mm\_game.h@{mm\_game.h}!process\_mm\_game\_timer@{process\_mm\_game\_timer}}
+\index{process\_mm\_game\_timer@{process\_mm\_game\_timer}!mm\_game.h@{mm\_game.h}}
+\doxysubsubsection{\texorpdfstring{process\_mm\_game\_timer()}{process\_mm\_game\_timer()}}
+{\footnotesize\ttfamily int process\+\_\+mm\+\_\+game\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmm__game__imp}{Mm\+Game}} \texorpdfstring{$\ast$}{*}}]{mm\+\_\+game }\end{DoxyParamCaption})}
+
+
+
+Processes the game timer in the Mm\+Game state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mm\+\_\+game} & Pointer to the Mm\+Game object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 to go back to the menu, 2 to go to the winner state 
+\end{DoxyReturn}

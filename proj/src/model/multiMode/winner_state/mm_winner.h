@@ -9,8 +9,7 @@
 #include "button.h"
 
 /**
- * @defgroup mm_winner mm_winner
- * 
+ * @file mm_winner.h
  *  @brief Multiplayer mode winner state management
  * 
  * This module provides functions to create, manage, and draw the winner state in the multiplayer mode.

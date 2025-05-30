@@ -1,0 +1,164 @@
+\doxysection{controllers/serial\+\_\+port/serial\+\_\+port.h File Reference}
+\hypertarget{serial__port_8h}{}\label{serial__port_8h}\index{controllers/serial\_port/serial\_port.h@{controllers/serial\_port/serial\_port.h}}
+
+
+Serial port management for the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}UART.\+h"{}}\newline
+{\ttfamily \#include "{}queue.\+h"{}}\newline
+Include dependency graph for serial\+\_\+port.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{serial__port_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{serial__port_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{serial__port_8h_a91109afddc86957b554ce7ec799bd41b}{sp\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bitno)
+\begin{DoxyCompactList}\small\item\em Subscribes to serial port interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8h_ad9cfa399df9032ec99f760195d457e9a}{sp\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes from serial port interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8h_a345aef3f6a10f62322b353279a08d690}{sp\+\_\+get\+\_\+status}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}status)
+\begin{DoxyCompactList}\small\item\em Gets the status of the serial port. \end{DoxyCompactList}\item 
+\Hypertarget{serial__port_8h_a413c45b134b03a909b49aa3b5b2bd003}\label{serial__port_8h_a413c45b134b03a909b49aa3b5b2bd003} 
+void {\bfseries sp\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Initializes the serial port. \end{DoxyCompactList}\item 
+\Hypertarget{serial__port_8h_aa760312b9a669254363ace4228c95441}\label{serial__port_8h_aa760312b9a669254363ace4228c95441} 
+void {\bfseries sp\+\_\+exit} ()
+\begin{DoxyCompactList}\small\item\em Exits the serial port, clearing any buffers. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8h_af26804966e7098d673255be2b3985449}{send\+\_\+byte}} (uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Sends a byte to the serial port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8h_a0f2fa0bd6d33cf6b49390a96ff0192e5}{read\+\_\+byte}} ()
+\begin{DoxyCompactList}\small\item\em Reads a byte from the serial port and stores it in the input queue. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{serial__port_8h_aa9662a2ed32471a6600f6999ae967fc8}{sp\+\_\+clear\+\_\+buffers}} ()
+\begin{DoxyCompactList}\small\item\em Clears the input and output buffers of the serial port. \end{DoxyCompactList}\item 
+\Hypertarget{serial__port_8h_af6cc263493df7caac7bd7d0be6b50635}\label{serial__port_8h_af6cc263493df7caac7bd7d0be6b50635} 
+void {\bfseries sp\+\_\+ih} ()
+\begin{DoxyCompactList}\small\item\em Interrupt handler for the serial port. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{serial__port_8h_af3b0874572abaf9bc0a7473ed79188ef}{get\+\_\+sp\+\_\+byte}} ()
+\begin{DoxyCompactList}\small\item\em returns the next byte to be processed from the input queue \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Serial port management for the game. 
+
+This module provides functions to manage the serial port for communication in the game. It handles subscribing to interrupts, reading and writing bytes, and managing the input queue. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{serial__port_8h_af3b0874572abaf9bc0a7473ed79188ef}\label{serial__port_8h_af3b0874572abaf9bc0a7473ed79188ef} 
+\index{serial\_port.h@{serial\_port.h}!get\_sp\_byte@{get\_sp\_byte}}
+\index{get\_sp\_byte@{get\_sp\_byte}!serial\_port.h@{serial\_port.h}}
+\doxysubsubsection{\texorpdfstring{get\_sp\_byte()}{get\_sp\_byte()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+sp\+\_\+byte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns the next byte to be processed from the input queue 
+
+\begin{DoxyReturn}{Returns}
+The next byte from the input queue, or 0 if the queue is empty 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8h_a0f2fa0bd6d33cf6b49390a96ff0192e5}\label{serial__port_8h_a0f2fa0bd6d33cf6b49390a96ff0192e5} 
+\index{serial\_port.h@{serial\_port.h}!read\_byte@{read\_byte}}
+\index{read\_byte@{read\_byte}!serial\_port.h@{serial\_port.h}}
+\doxysubsubsection{\texorpdfstring{read\_byte()}{read\_byte()}}
+{\footnotesize\ttfamily int read\+\_\+byte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads a byte from the serial port and stores it in the input queue. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8h_af26804966e7098d673255be2b3985449}\label{serial__port_8h_af26804966e7098d673255be2b3985449} 
+\index{serial\_port.h@{serial\_port.h}!send\_byte@{send\_byte}}
+\index{send\_byte@{send\_byte}!serial\_port.h@{serial\_port.h}}
+\doxysubsubsection{\texorpdfstring{send\_byte()}{send\_byte()}}
+{\footnotesize\ttfamily int send\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Sends a byte to the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & The byte to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8h_aa9662a2ed32471a6600f6999ae967fc8}\label{serial__port_8h_aa9662a2ed32471a6600f6999ae967fc8} 
+\index{serial\_port.h@{serial\_port.h}!sp\_clear\_buffers@{sp\_clear\_buffers}}
+\index{sp\_clear\_buffers@{sp\_clear\_buffers}!serial\_port.h@{serial\_port.h}}
+\doxysubsubsection{\texorpdfstring{sp\_clear\_buffers()}{sp\_clear\_buffers()}}
+{\footnotesize\ttfamily int sp\+\_\+clear\+\_\+buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the input and output buffers of the serial port. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8h_a345aef3f6a10f62322b353279a08d690}\label{serial__port_8h_a345aef3f6a10f62322b353279a08d690} 
+\index{serial\_port.h@{serial\_port.h}!sp\_get\_status@{sp\_get\_status}}
+\index{sp\_get\_status@{sp\_get\_status}!serial\_port.h@{serial\_port.h}}
+\doxysubsubsection{\texorpdfstring{sp\_get\_status()}{sp\_get\_status()}}
+{\footnotesize\ttfamily int sp\+\_\+get\+\_\+status (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{status }\end{DoxyParamCaption})}
+
+
+
+Gets the status of the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & Pointer to store the status \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8h_a91109afddc86957b554ce7ec799bd41b}\label{serial__port_8h_a91109afddc86957b554ce7ec799bd41b} 
+\index{serial\_port.h@{serial\_port.h}!sp\_subscribe\_int@{sp\_subscribe\_int}}
+\index{sp\_subscribe\_int@{sp\_subscribe\_int}!serial\_port.h@{serial\_port.h}}
+\doxysubsubsection{\texorpdfstring{sp\_subscribe\_int()}{sp\_subscribe\_int()}}
+{\footnotesize\ttfamily int sp\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bitno }\end{DoxyParamCaption})}
+
+
+
+Subscribes to serial port interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bitno} & Pointer to store the bit number for the interrupt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure 
+\end{DoxyReturn}
+\Hypertarget{serial__port_8h_ad9cfa399df9032ec99f760195d457e9a}\label{serial__port_8h_ad9cfa399df9032ec99f760195d457e9a} 
+\index{serial\_port.h@{serial\_port.h}!sp\_unsubscribe\_int@{sp\_unsubscribe\_int}}
+\index{sp\_unsubscribe\_int@{sp\_unsubscribe\_int}!serial\_port.h@{serial\_port.h}}
+\doxysubsubsection{\texorpdfstring{sp\_unsubscribe\_int()}{sp\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int sp\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes from serial port interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on failure 
+\end{DoxyReturn}

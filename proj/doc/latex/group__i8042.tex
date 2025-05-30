@@ -1,0 +1,123 @@
+\doxysection{i8042}
+\hypertarget{group__i8042}{}\label{group__i8042}\index{i8042@{i8042}}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__i8042_ga5c1072213ce8d8cd43628c4319ae0391}\label{group__i8042_ga5c1072213ce8d8cd43628c4319ae0391} 
+\#define {\bfseries KBD\+\_\+\+IRQ}~1
+\begin{DoxyCompactList}\small\item\em Keyboard IRQ line. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga85964cb90343bb1a029b1d1b4229f910}\label{group__i8042_ga85964cb90343bb1a029b1d1b4229f910} 
+\#define {\bfseries MOUSE\+\_\+\+IRQ}~12
+\begin{DoxyCompactList}\small\item\em Mouse IRQ line. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga6f977b36b770dca3092d0bdf8c949cfe}\label{group__i8042_ga6f977b36b770dca3092d0bdf8c949cfe} 
+\#define {\bfseries KBC\+\_\+\+ST\+\_\+\+REG}~0x64
+\begin{DoxyCompactList}\small\item\em Status Register. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga6d57c7927a10f638c83046b52c8caac9}\label{group__i8042_ga6d57c7927a10f638c83046b52c8caac9} 
+\#define {\bfseries KBC\+\_\+\+CMD\+\_\+\+REG}~0x64
+\begin{DoxyCompactList}\small\item\em Command Register. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga1ccde68b2b6d4e45b50eef1403e10bb7}\label{group__i8042_ga1ccde68b2b6d4e45b50eef1403e10bb7} 
+\#define {\bfseries KBC\+\_\+\+OUT\+\_\+\+BUF}~0x60
+\begin{DoxyCompactList}\small\item\em Output Buffer. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gaac9289c99cf0a693a211da6d6cb1bb65}\label{group__i8042_gaac9289c99cf0a693a211da6d6cb1bb65} 
+\#define {\bfseries KBC\+\_\+\+IN\+\_\+\+BUF}~0x60 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}$<$ @brief Input Buffer \texorpdfstring{$\ast$}{*}/ /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}Not used in lab3 \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{group__i8042_ga36930de8a703505c95fe133095dcfe06}\label{group__i8042_ga36930de8a703505c95fe133095dcfe06} 
+\#define {\bfseries KBC\+\_\+\+OBF}~BIT(0)
+\begin{DoxyCompactList}\small\item\em Output Buffer Full. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gac1649d41f8ba9a02fa70ec4e600d5e4a}\label{group__i8042_gac1649d41f8ba9a02fa70ec4e600d5e4a} 
+\#define {\bfseries KBC\+\_\+\+IBF}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Input Buffer Full. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gaea2ef6dda1aabebf291eeee29b66c04a}\label{group__i8042_gaea2ef6dda1aabebf291eeee29b66c04a} 
+\#define {\bfseries KBC\+\_\+\+PAR\+\_\+\+ERR}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Parity Error. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gae31c3653f5881b02cbfdd4ccbb7ccf50}\label{group__i8042_gae31c3653f5881b02cbfdd4ccbb7ccf50} 
+\#define {\bfseries KBC\+\_\+\+TO\+\_\+\+ERR}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Timeout Error. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gaaa796d09d1e94025da456738295342f2}\label{group__i8042_gaaa796d09d1e94025da456738295342f2} 
+\#define {\bfseries KBC\+\_\+\+AUX}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Mouse Data. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gaa554763d6a066605edecacdea834da9b}\label{group__i8042_gaa554763d6a066605edecacdea834da9b} 
+\#define {\bfseries WAIT\+\_\+\+KBC}~20000
+\begin{DoxyCompactList}\small\item\em Delay in microseconds. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gafd63d23830ad86d01b6fff2e6c615f7e}\label{group__i8042_gafd63d23830ad86d01b6fff2e6c615f7e} 
+\#define {\bfseries MAX\+\_\+\+TRIES}~10
+\begin{DoxyCompactList}\small\item\em Maximum number of tries. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga592dfdf397b21913348b4dd6b7759b2d}\label{group__i8042_ga592dfdf397b21913348b4dd6b7759b2d} 
+\#define {\bfseries ESC\+\_\+\+BREAK\+\_\+\+CODE}~0x81
+\begin{DoxyCompactList}\small\item\em Breakcode of the ESC key. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gae2326ef6adfa52b808ff427fac5c7edf}\label{group__i8042_gae2326ef6adfa52b808ff427fac5c7edf} 
+\#define {\bfseries ESC\+\_\+\+MAKE\+\_\+\+CODE}~0x01
+\begin{DoxyCompactList}\small\item\em Makecode of the ESC key. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gacb777c7c7af1e6859732e4ab59adf681}\label{group__i8042_gacb777c7c7af1e6859732e4ab59adf681} 
+\#define {\bfseries W\+\_\+\+MAKE\+\_\+\+CODE}~0x11
+\begin{DoxyCompactList}\small\item\em Makecode of the W key. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga45fda238c36661e22a2bda60110aed09}\label{group__i8042_ga45fda238c36661e22a2bda60110aed09} 
+\#define {\bfseries W\+\_\+\+BREAK\+\_\+\+CODE}~0x91
+\begin{DoxyCompactList}\small\item\em Breakcode of the W key. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga05c2d71abe8bdd210f3424fd7615a59e}\label{group__i8042_ga05c2d71abe8bdd210f3424fd7615a59e} 
+\#define {\bfseries S\+\_\+\+MAKE\+\_\+\+CODE}~0x1F
+\begin{DoxyCompactList}\small\item\em Makecode of the S key. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gaec37aea52a2989fbb1da1f848206997e}\label{group__i8042_gaec37aea52a2989fbb1da1f848206997e} 
+\#define {\bfseries S\+\_\+\+BREAK\+\_\+\+CODE}~0x9F
+\begin{DoxyCompactList}\small\item\em Breakcode of the S key. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga33aa421fd3c2491284a71ad577933fd0}\label{group__i8042_ga33aa421fd3c2491284a71ad577933fd0} 
+\#define {\bfseries A\+\_\+\+MAKE\+\_\+\+CODE}~0x1E
+\begin{DoxyCompactList}\small\item\em Makecode of the A key. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga6b3bc710b60263bd76130540a24b74b6}\label{group__i8042_ga6b3bc710b60263bd76130540a24b74b6} 
+\#define {\bfseries A\+\_\+\+BREAK\+\_\+\+CODE}~0x9E
+\begin{DoxyCompactList}\small\item\em Breakcode of the A key. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga23f867dcf757da71f03cbe28e41ed98d}\label{group__i8042_ga23f867dcf757da71f03cbe28e41ed98d} 
+\#define {\bfseries D\+\_\+\+MAKE\+\_\+\+CODE}~0x20
+\begin{DoxyCompactList}\small\item\em Makecode of the D key. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gaeb7fb0b62eabc29ca24eb9ce77b07152}\label{group__i8042_gaeb7fb0b62eabc29ca24eb9ce77b07152} 
+\#define {\bfseries D\+\_\+\+BREAK\+\_\+\+CODE}~0x\+A0
+\begin{DoxyCompactList}\small\item\em Breakcode of the D key. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga2877405e9b042d1e29cc09bcc8daccfa}\label{group__i8042_ga2877405e9b042d1e29cc09bcc8daccfa} 
+\#define {\bfseries TWO\+\_\+\+BYTE\+\_\+\+CODE}~0x\+E0
+\begin{DoxyCompactList}\small\item\em First byte of a two byte scancode. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga1de2ddcc7175aa2979a5a4dc772aa317}\label{group__i8042_ga1de2ddcc7175aa2979a5a4dc772aa317} 
+\#define {\bfseries MAKECODE}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Breakcode bit. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga595a5cad2d3c793963da50865b2c1b47}\label{group__i8042_ga595a5cad2d3c793963da50865b2c1b47} 
+\#define {\bfseries KBC\+\_\+\+READ\+\_\+\+CMD}~0x20
+\begin{DoxyCompactList}\small\item\em Read Command Byte. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gaaa62a6987753a109d2f7a609ce8b7334}\label{group__i8042_gaaa62a6987753a109d2f7a609ce8b7334} 
+\#define {\bfseries KBC\+\_\+\+WRITE\+\_\+\+CMD}~0x60
+\begin{DoxyCompactList}\small\item\em Write Command Byte. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gabeafeb775d204aefcb550d2577c52593}\label{group__i8042_gabeafeb775d204aefcb550d2577c52593} 
+\#define {\bfseries KBC\+\_\+\+ENABLE\+\_\+\+DATA\+\_\+\+REPORT}~0x\+F4
+\begin{DoxyCompactList}\small\item\em Enable Data Reporting. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga63e69a72eeaaeb2642b92af0af52fe41}\label{group__i8042_ga63e69a72eeaaeb2642b92af0af52fe41} 
+\#define {\bfseries KBC\+\_\+\+DISABLE\+\_\+\+DATA\+\_\+\+REPORT}~0x\+F5
+\begin{DoxyCompactList}\small\item\em Disable Data Reporting. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gaab963441b4def6316c334b9061af3f99}\label{group__i8042_gaab963441b4def6316c334b9061af3f99} 
+\#define {\bfseries KBC\+\_\+\+ACK}~0x\+FA
+\begin{DoxyCompactList}\small\item\em Acknowledgment. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga0fcdbd39ed7dcf62fede44082d09cb7a}\label{group__i8042_ga0fcdbd39ed7dcf62fede44082d09cb7a} 
+\#define {\bfseries WRITE\+\_\+\+BYTE\+\_\+\+TO\+\_\+\+MOUSE}~0x\+D4
+\begin{DoxyCompactList}\small\item\em Write Byte to Mouse. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga81c0f94add844b0761bd142f7f708431}\label{group__i8042_ga81c0f94add844b0761bd142f7f708431} 
+\#define {\bfseries MOUSE\+\_\+\+LB}~BIT(0)
+\begin{DoxyCompactList}\small\item\em Left Button. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga5f47c1d60579c8691054c939c1d7c20e}\label{group__i8042_ga5f47c1d60579c8691054c939c1d7c20e} 
+\#define {\bfseries MOUSE\+\_\+\+RB}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Right Button. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga5a934eaadd3536aabe6df0adf6728e8e}\label{group__i8042_ga5a934eaadd3536aabe6df0adf6728e8e} 
+\#define {\bfseries MOUSE\+\_\+\+MB}~BIT(2)
+\begin{DoxyCompactList}\small\item\em Middle Button. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_ga7a3e5c0df014d93f5a03d9643e189840}\label{group__i8042_ga7a3e5c0df014d93f5a03d9643e189840} 
+\#define {\bfseries MOUSE\+\_\+\+XOVF}~BIT(6)
+\begin{DoxyCompactList}\small\item\em X Overflow. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gaf32ec622f30c08294a5395a94eb86ba5}\label{group__i8042_gaf32ec622f30c08294a5395a94eb86ba5} 
+\#define {\bfseries MOUSE\+\_\+\+YOVF}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Y Overflow. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gaf2b11758f02224a6ee0af9580da0ec91}\label{group__i8042_gaf2b11758f02224a6ee0af9580da0ec91} 
+\#define {\bfseries MOUSE\+\_\+\+XSIGN}~BIT(4)
+\begin{DoxyCompactList}\small\item\em X Sign. \end{DoxyCompactList}\item 
+\Hypertarget{group__i8042_gade58ae219dbf8a1973e050873a3b15a2}\label{group__i8042_gade58ae219dbf8a1973e050873a3b15a2} 
+\#define {\bfseries MOUSE\+\_\+\+YSIGN}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Y Sign. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Constants for programming the i8042 KBC. 

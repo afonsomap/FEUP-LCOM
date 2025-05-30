@@ -1,0 +1,22 @@
+<map id="model/animSprite/animatedSprite.h" name="model/animSprite/animatedSprite.h">
+<area shape="rect" id="Node000001" title="Animated sprite management for the game." alt="" coords="128,5,308,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="8,313,87,339"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,48,125,67,83,93,45,127,29,146,17,168,8,202,12,238,23,272,36,300,31,302,18,274,7,239,3,202,12,166,25,143,41,123,80,89,123,62,163,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="183,167,253,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,46,221,153,215,153,215,46"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="277,167,341,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="232,44,297,153,292,156,227,47"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="306,93,375,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="249,43,312,84,310,88,246,48"/>
+<area shape="rect" id="Node000006" href="$sprite_8h.html" title="Sprite management for the game This module provides functions to create, destroy, and draw sprites." alt="" coords="115,93,180,119"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="203,47,169,85,165,81,199,44"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="151,119,147,185,138,227,122,267,103,290,81,308,78,304,99,286,117,264,133,225,142,184,145,119"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="161,117,199,155,195,159,157,121"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="174,116,271,159,269,163,172,121"/>
+<area shape="rect" id="Node000007" href="$graphics_8h.html" title="Graphics management." alt="" coords="26,167,109,192"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="136,121,92,160,89,156,133,117"/>
+<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="63,194,52,215,43,241,41,271,44,300,39,300,36,271,38,239,47,213,58,191"/>
+<area shape="rect" id="Node000008" href="$vbe_8h.html" title="VBE (VESA BIOS Extensions) management." alt="" coords="53,240,108,265"/>
+<area shape="poly" id="edge11_Node000007_Node000008" title=" " alt="" coords="72,192,79,226,73,227,67,193"/>
+<area shape="poly" id="edge12_Node000008_Node000002" title=" " alt="" coords="78,267,61,302,56,300,73,265"/>
+</map>

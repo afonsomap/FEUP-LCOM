@@ -1,0 +1,121 @@
+\doxysection{model/button/button.h File Reference}
+\hypertarget{button_8h}{}\label{button_8h}\index{model/button/button.h@{model/button/button.h}}
+
+
+Button management in the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+Include dependency graph for button.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{button_8h_a0fc9a7abec75251685a3eac5f3f537f7}\label{button_8h_a0fc9a7abec75251685a3eac5f3f537f7} 
+typedef struct \mbox{\hyperlink{structbutton__imp}{button\+\_\+imp}} {\bfseries Button}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structbutton__imp}{Button}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{button_8h_ac1f9e52ba4c773a6c8217341ce8fad67}{create\+\_\+button}} (uint16\+\_\+t x, uint16\+\_\+t y, \mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}sprite)
+\begin{DoxyCompactList}\small\item\em Creates a new button with the specified position and sprite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{button_8h_a6b75c612ee123b9b3261a831fd6d805b}{destroy\+\_\+button}} (\mbox{\hyperlink{structbutton__imp}{Button}} \texorpdfstring{$\ast$}{*}button)
+\begin{DoxyCompactList}\small\item\em Destroys a Button object, freeing all allocated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{button_8h_a8cffe5189a594e49e7510d739e186fa0}{draw\+\_\+button}} (\mbox{\hyperlink{structbutton__imp}{Button}} \texorpdfstring{$\ast$}{*}button)
+\begin{DoxyCompactList}\small\item\em Draws the button on the screen. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{button_8h_aa07e1e93e9e1c59d59ca8934c89b8c04}{is\+\_\+button\+\_\+clicked}} (\mbox{\hyperlink{structbutton__imp}{Button}} \texorpdfstring{$\ast$}{*}button, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}cursor)
+\begin{DoxyCompactList}\small\item\em Checks if the button is clicked by the cursor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Button management in the game. 
+
+This module provides functions to create, manage, and draw buttons in the game. It handles button creation, drawing, and checking if a button is clicked. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{button_8h_ac1f9e52ba4c773a6c8217341ce8fad67}\label{button_8h_ac1f9e52ba4c773a6c8217341ce8fad67} 
+\index{button.h@{button.h}!create\_button@{create\_button}}
+\index{create\_button@{create\_button}!button.h@{button.h}}
+\doxysubsubsection{\texorpdfstring{create\_button()}{create\_button()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structbutton__imp}{Button}} \texorpdfstring{$\ast$}{*} create\+\_\+button (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sprite }\end{DoxyParamCaption})}
+
+
+
+Creates a new button with the specified position and sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the button \\
+\hline
+{\em y} & The y-\/coordinate of the button\\
+\hline
+{\em sprite} & Pointer to the sprite associated with the button \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created Button object, or NULL if memory allocation fails 
+\end{DoxyReturn}
+\Hypertarget{button_8h_a6b75c612ee123b9b3261a831fd6d805b}\label{button_8h_a6b75c612ee123b9b3261a831fd6d805b} 
+\index{button.h@{button.h}!destroy\_button@{destroy\_button}}
+\index{destroy\_button@{destroy\_button}!button.h@{button.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_button()}{destroy\_button()}}
+{\footnotesize\ttfamily void destroy\+\_\+button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbutton__imp}{Button}} \texorpdfstring{$\ast$}{*}}]{button }\end{DoxyParamCaption})}
+
+
+
+Destroys a Button object, freeing all allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & Pointer to the Button object to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{button_8h_a8cffe5189a594e49e7510d739e186fa0}\label{button_8h_a8cffe5189a594e49e7510d739e186fa0} 
+\index{button.h@{button.h}!draw\_button@{draw\_button}}
+\index{draw\_button@{draw\_button}!button.h@{button.h}}
+\doxysubsubsection{\texorpdfstring{draw\_button()}{draw\_button()}}
+{\footnotesize\ttfamily void draw\+\_\+button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbutton__imp}{Button}} \texorpdfstring{$\ast$}{*}}]{button }\end{DoxyParamCaption})}
+
+
+
+Draws the button on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & Pointer to the Button object to be drawn \\
+\hline
+\end{DoxyParams}
+\Hypertarget{button_8h_aa07e1e93e9e1c59d59ca8934c89b8c04}\label{button_8h_aa07e1e93e9e1c59d59ca8934c89b8c04} 
+\index{button.h@{button.h}!is\_button\_clicked@{is\_button\_clicked}}
+\index{is\_button\_clicked@{is\_button\_clicked}!button.h@{button.h}}
+\doxysubsubsection{\texorpdfstring{is\_button\_clicked()}{is\_button\_clicked()}}
+{\footnotesize\ttfamily bool is\+\_\+button\+\_\+clicked (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structbutton__imp}{Button}} \texorpdfstring{$\ast$}{*}}]{button,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{cursor }\end{DoxyParamCaption})}
+
+
+
+Checks if the button is clicked by the cursor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & Pointer to the Button object \\
+\hline
+{\em cursor} & Pointer to the Cursor object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the button is clicked, false otherwise 
+\end{DoxyReturn}

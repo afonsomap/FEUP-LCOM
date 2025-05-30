@@ -1,18 +1,19 @@
 #ifndef __ANIMATED_SPRITE_H
 #define __ANIMATED_SPRITE_H
 
-/**
- * @defgroup animatedSprite Animated Sprite
- * @{
- * 
- * Animated sprite related functions
- */
-
 #include <lcom/lcf.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include "sprite.h"
+
+/**
+ * @file animatedSprite.h
+ * @brief Animated sprite management for the game
+ * 
+ * This module provides functions to create, destroy, and draw animated sprites.
+ * It allows for the management of multiple frames of animation, including their dimensions and speed.
+ */
 
 struct animatedSprite_imp;
 typedef struct animatedSprite_imp AnimSprite;

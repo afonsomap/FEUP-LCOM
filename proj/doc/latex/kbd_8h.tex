@@ -1,0 +1,149 @@
+\doxysection{controllers/keyboard\+\_\+mouse/kbd.h File Reference}
+\hypertarget{kbd_8h}{}\label{kbd_8h}\index{controllers/keyboard\_mouse/kbd.h@{controllers/keyboard\_mouse/kbd.h}}
+
+
+Keyboard management Functions to interact with the keyboard.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+{\ttfamily \#include "{}kbc.\+h"{}}\newline
+Include dependency graph for kbd.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{kbd_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbd_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{kbd_8h_ab74dfc8cf2410860a157bc07cb09fba8}{get\+\_\+scancode}} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the scancode byte read. \end{DoxyCompactList}\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{kbd_8h_a2e8899a43c96e570561fcb02f9ab91d9}{get\+\_\+scancode\+\_\+array}} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the scancode array. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{kbd_8h_addc1759ee6b0ac530fc12b576969a0ba}{get\+\_\+scancode\+\_\+index}} ()
+\begin{DoxyCompactList}\small\item\em Returns the index of the scancode array. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbd_8h_a4ac9231a99a664d6a9f0b69767e0d707}{kbd\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes keyboard interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbd_8h_aee0a7b54ee426fade9c780418d110fe0}{kbd\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes keyboard interrupts. \end{DoxyCompactList}\item 
+\Hypertarget{kbd_8h_aea970a154161a35f6894898a092ed70a}\label{kbd_8h_aea970a154161a35f6894898a092ed70a} 
+void() {\bfseries kbc\+\_\+ih} ()
+\begin{DoxyCompactList}\small\item\em Keyboard interrupt handler. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbd_8h_a757b2678cfdf6b0ef28495dca1e6ba40}{check\+\_\+scancode\+\_\+complete}} ()
+\begin{DoxyCompactList}\small\item\em Checks if a scancode is complete. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{kbd_8h_aa55bcee31ec8144c0add0d8a79523edd}{kbd\+\_\+enable\+\_\+interrupts}} ()
+\begin{DoxyCompactList}\small\item\em Enables keyboard interrupts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Keyboard management Functions to interact with the keyboard. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kbd_8h_a757b2678cfdf6b0ef28495dca1e6ba40}\label{kbd_8h_a757b2678cfdf6b0ef28495dca1e6ba40} 
+\index{kbd.h@{kbd.h}!check\_scancode\_complete@{check\_scancode\_complete}}
+\index{check\_scancode\_complete@{check\_scancode\_complete}!kbd.h@{kbd.h}}
+\doxysubsubsection{\texorpdfstring{check\_scancode\_complete()}{check\_scancode\_complete()}}
+{\footnotesize\ttfamily int() check\+\_\+scancode\+\_\+complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if a scancode is complete. 
+
+\begin{DoxyReturn}{Returns}
+0 if the scancode is complete, 1 otherwise 
+\end{DoxyReturn}
+\Hypertarget{kbd_8h_ab74dfc8cf2410860a157bc07cb09fba8}\label{kbd_8h_ab74dfc8cf2410860a157bc07cb09fba8} 
+\index{kbd.h@{kbd.h}!get\_scancode@{get\_scancode}}
+\index{get\_scancode@{get\_scancode}!kbd.h@{kbd.h}}
+\doxysubsubsection{\texorpdfstring{get\_scancode()}{get\_scancode()}}
+{\footnotesize\ttfamily uint8\+\_\+t \texorpdfstring{$\ast$}{*} get\+\_\+scancode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a pointer to the scancode byte read. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the scancode byte 
+\end{DoxyReturn}
+\Hypertarget{kbd_8h_a2e8899a43c96e570561fcb02f9ab91d9}\label{kbd_8h_a2e8899a43c96e570561fcb02f9ab91d9} 
+\index{kbd.h@{kbd.h}!get\_scancode\_array@{get\_scancode\_array}}
+\index{get\_scancode\_array@{get\_scancode\_array}!kbd.h@{kbd.h}}
+\doxysubsubsection{\texorpdfstring{get\_scancode\_array()}{get\_scancode\_array()}}
+{\footnotesize\ttfamily uint8\+\_\+t \texorpdfstring{$\ast$}{*} get\+\_\+scancode\+\_\+array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a pointer to the scancode array. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the scancode array 
+\end{DoxyReturn}
+\Hypertarget{kbd_8h_addc1759ee6b0ac530fc12b576969a0ba}\label{kbd_8h_addc1759ee6b0ac530fc12b576969a0ba} 
+\index{kbd.h@{kbd.h}!get\_scancode\_index@{get\_scancode\_index}}
+\index{get\_scancode\_index@{get\_scancode\_index}!kbd.h@{kbd.h}}
+\doxysubsubsection{\texorpdfstring{get\_scancode\_index()}{get\_scancode\_index()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+scancode\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the index of the scancode array. 
+
+\begin{DoxyReturn}{Returns}
+Index of the scancode array 
+\end{DoxyReturn}
+\Hypertarget{kbd_8h_aa55bcee31ec8144c0add0d8a79523edd}\label{kbd_8h_aa55bcee31ec8144c0add0d8a79523edd} 
+\index{kbd.h@{kbd.h}!kbd\_enable\_interrupts@{kbd\_enable\_interrupts}}
+\index{kbd\_enable\_interrupts@{kbd\_enable\_interrupts}!kbd.h@{kbd.h}}
+\doxysubsubsection{\texorpdfstring{kbd\_enable\_interrupts()}{kbd\_enable\_interrupts()}}
+{\footnotesize\ttfamily int() kbd\+\_\+enable\+\_\+interrupts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables keyboard interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{kbd_8h_a4ac9231a99a664d6a9f0b69767e0d707}\label{kbd_8h_a4ac9231a99a664d6a9f0b69767e0d707} 
+\index{kbd.h@{kbd.h}!kbd\_subscribe\_int@{kbd\_subscribe\_int}}
+\index{kbd\_subscribe\_int@{kbd\_subscribe\_int}!kbd.h@{kbd.h}}
+\doxysubsubsection{\texorpdfstring{kbd\_subscribe\_int()}{kbd\_subscribe\_int()}}
+{\footnotesize\ttfamily int() kbd\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribes keyboard interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Pointer to store the bit number set in the interrupt mask \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}
+\Hypertarget{kbd_8h_aee0a7b54ee426fade9c780418d110fe0}\label{kbd_8h_aee0a7b54ee426fade9c780418d110fe0} 
+\index{kbd.h@{kbd.h}!kbd\_unsubscribe\_int@{kbd\_unsubscribe\_int}}
+\index{kbd\_unsubscribe\_int@{kbd\_unsubscribe\_int}!kbd.h@{kbd.h}}
+\doxysubsubsection{\texorpdfstring{kbd\_unsubscribe\_int()}{kbd\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() kbd\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes keyboard interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on failure 
+\end{DoxyReturn}

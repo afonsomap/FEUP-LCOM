@@ -1,0 +1,77 @@
+\doxysection{kbc}
+\hypertarget{group__kbc}{}\label{group__kbc}\index{kbc@{kbc}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group__kbc_ga478e9d9e6e396379599060715e26730a}{kbc\+\_\+get\+\_\+status}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}st)
+\begin{DoxyCompactList}\small\item\em Reads the status of the kbc. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{group__kbc_gacd2c5cb102a113e125a6366dca8bea10}{kbc\+\_\+read\+\_\+data}} (uint8\+\_\+t port, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint8\+\_\+t mouse\+Data)
+\begin{DoxyCompactList}\small\item\em Reads data from a given port of the kbc. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{group__kbc_ga701494334dc0d5d6eb91e31d299a322c}{kbc\+\_\+write\+\_\+command}} (uint8\+\_\+t port, uint8\+\_\+t cmd)
+\begin{DoxyCompactList}\small\item\em Writes a command to a given port of the kbc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions to interact with the i8042 KBC. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__kbc_ga478e9d9e6e396379599060715e26730a}\label{group__kbc_ga478e9d9e6e396379599060715e26730a} 
+\index{kbc@{kbc}!kbc\_get\_status@{kbc\_get\_status}}
+\index{kbc\_get\_status@{kbc\_get\_status}!kbc@{kbc}}
+\doxysubsubsection{\texorpdfstring{kbc\_get\_status()}{kbc\_get\_status()}}
+{\footnotesize\ttfamily int() kbc\+\_\+get\+\_\+status (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{st }\end{DoxyParamCaption})}
+
+
+
+Reads the status of the kbc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em st} & Variable to store the status \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\Hypertarget{group__kbc_gacd2c5cb102a113e125a6366dca8bea10}\label{group__kbc_gacd2c5cb102a113e125a6366dca8bea10} 
+\index{kbc@{kbc}!kbc\_read\_data@{kbc\_read\_data}}
+\index{kbc\_read\_data@{kbc\_read\_data}!kbc@{kbc}}
+\doxysubsubsection{\texorpdfstring{kbc\_read\_data()}{kbc\_read\_data()}}
+{\footnotesize\ttfamily int() kbc\+\_\+read\+\_\+data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data,  }\item[{uint8\+\_\+t}]{mouse\+Data }\end{DoxyParamCaption})}
+
+
+
+Reads data from a given port of the kbc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Port to read from \\
+\hline
+{\em data} & Variable to store the read byte \\
+\hline
+{\em mouse\+Data} & Flag to check if the data is from the mouse or the keyboard \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\Hypertarget{group__kbc_ga701494334dc0d5d6eb91e31d299a322c}\label{group__kbc_ga701494334dc0d5d6eb91e31d299a322c} 
+\index{kbc@{kbc}!kbc\_write\_command@{kbc\_write\_command}}
+\index{kbc\_write\_command@{kbc\_write\_command}!kbc@{kbc}}
+\doxysubsubsection{\texorpdfstring{kbc\_write\_command()}{kbc\_write\_command()}}
+{\footnotesize\ttfamily int() kbc\+\_\+write\+\_\+command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Writes a command to a given port of the kbc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Port to write to \\
+\hline
+{\em cmd} & Command to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}

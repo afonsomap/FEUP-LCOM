@@ -1,0 +1,291 @@
+\doxysection{model/player/player.h File Reference}
+\hypertarget{player_8h}{}\label{player_8h}\index{model/player/player.h@{model/player/player.h}}
+
+
+Player management for the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+{\ttfamily \#include "{}animated\+Sprite.\+h"{}}\newline
+Include dependency graph for player.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{player_8h_a7399b518f464eaccfdd7bacb0f1ab38f}\label{player_8h_a7399b518f464eaccfdd7bacb0f1ab38f} 
+typedef struct \mbox{\hyperlink{structplayer__imp}{player\+\_\+imp}} {\bfseries Player}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aa}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+enum {\bfseries Direction} \{ \newline
+{\bfseries LEFT}
+, {\bfseries RIGHT}
+, {\bfseries UP}
+, {\bfseries DOWN}
+, \newline
+{\bfseries STANDING}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{player_8h_a356645aadafc58a0e937d6c3bfea1844}{get\+\_\+player\+\_\+\+Xpos}} (\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Returns the X coordinate of the player. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{player_8h_a154e00944f2f76a0c5e1d291d389930a}{get\+\_\+player\+\_\+\+Ypos}} (\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Returns the Y coordinate of the player. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{player_8h_af5edbc2cb3a74807fceb66c566ed6244}{get\+\_\+player\+\_\+speed}} (\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Returns the speed of the player. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8h_af286e728a7fc185eb5d7fdbcbda1296e}{get\+\_\+player\+\_\+standing}} (\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Returns the sprite of the player standing. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8h_acec30ce11ed464f300a5f73ef7c8db53}{create\+\_\+player}} (uint16\+\_\+t x, uint16\+\_\+t y, \mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}left\+\_\+movement, \mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}right\+\_\+movement, \mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}up\+\_\+movement, \mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}down\+\_\+movement, \mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}standing)
+\begin{DoxyCompactList}\small\item\em Creates a new player with the specified sprite and animations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_af8545b7bf366427e84ccd6b24c9786c2}{destroy\+\_\+player}} (\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a061284666dc516490bcb151d0d47c512}{draw\+\_\+player}} (\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}p, uint16\+\_\+t x\+\_\+initial\+\_\+grid, uint16\+\_\+t y\+\_\+initial\+\_\+grid)
+\begin{DoxyCompactList}\small\item\em Draws the player on the screen at the specified coordinates, acording to the current direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a19e7bf710f8317ebec169373d69d83b6}{player\+\_\+move\+\_\+up}} (\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Moves the player up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a25868833e65e9c535f67f275c04bf96c}{player\+\_\+move\+\_\+down}} (\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Moves the player down. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a72066b7559fffdacd85ac142a7cfd804}{player\+\_\+move\+\_\+left}} (\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Moves the player left. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a8a90cb4b1b4ae9ce8d89af33be2bfecf}{player\+\_\+move\+\_\+right}} (\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Moves the player right. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_aeb4fe3c88eff5b740c86ab23974ec5e3}{player\+\_\+stand}} (\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Updates the direction of the player if it has changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Player management for the game. 
+
+This module provides functions to create, manage, and draw the player in the game. It handles the player\textquotesingle{}s position, speed, animations, and movement. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{player_8h_acec30ce11ed464f300a5f73ef7c8db53}\label{player_8h_acec30ce11ed464f300a5f73ef7c8db53} 
+\index{player.h@{player.h}!create\_player@{create\_player}}
+\index{create\_player@{create\_player}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{create\_player()}{create\_player()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*} create\+\_\+player (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}}]{left\+\_\+movement,  }\item[{\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}}]{right\+\_\+movement,  }\item[{\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}}]{up\+\_\+movement,  }\item[{\mbox{\hyperlink{structanimatedSprite__imp}{Anim\+Sprite}} \texorpdfstring{$\ast$}{*}}]{down\+\_\+movement,  }\item[{\mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*}}]{standing }\end{DoxyParamCaption})}
+
+
+
+Creates a new player with the specified sprite and animations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the player \\
+\hline
+{\em y} & The y-\/coordinate of the player \\
+\hline
+{\em standing} & The sprite for the standing animation \\
+\hline
+{\em left\+\_\+movement} & The animated sprite for the left movement \\
+\hline
+{\em right\+\_\+movement} & The animated sprite for the right movement \\
+\hline
+{\em up\+\_\+movement} & The animated sprite for the up movement \\
+\hline
+{\em down\+\_\+movement} & The animated sprite for the down movement \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created player, or NULL if the pixmap is invalid 
+\end{DoxyReturn}
+\Hypertarget{player_8h_af8545b7bf366427e84ccd6b24c9786c2}\label{player_8h_af8545b7bf366427e84ccd6b24c9786c2} 
+\index{player.h@{player.h}!destroy\_player@{destroy\_player}}
+\index{destroy\_player@{destroy\_player}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_player()}{destroy\_player()}}
+{\footnotesize\ttfamily void destroy\+\_\+player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated for the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the player to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{player_8h_a061284666dc516490bcb151d0d47c512}\label{player_8h_a061284666dc516490bcb151d0d47c512} 
+\index{player.h@{player.h}!draw\_player@{draw\_player}}
+\index{draw\_player@{draw\_player}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{draw\_player()}{draw\_player()}}
+{\footnotesize\ttfamily void draw\+\_\+player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}}]{p,  }\item[{uint16\+\_\+t}]{x\+\_\+initial\+\_\+grid,  }\item[{uint16\+\_\+t}]{y\+\_\+initial\+\_\+grid }\end{DoxyParamCaption})}
+
+
+
+Draws the player on the screen at the specified coordinates, acording to the current direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the player to be drawn \\
+\hline
+{\em x\+\_\+initial\+\_\+grid} & The initial X coordinate of the grid \\
+\hline
+{\em y\+\_\+initial\+\_\+grid} & The initial Y coordinate of the grid \\
+\hline
+\end{DoxyParams}
+\Hypertarget{player_8h_af5edbc2cb3a74807fceb66c566ed6244}\label{player_8h_af5edbc2cb3a74807fceb66c566ed6244} 
+\index{player.h@{player.h}!get\_player\_speed@{get\_player\_speed}}
+\index{get\_player\_speed@{get\_player\_speed}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{get\_player\_speed()}{get\_player\_speed()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+player\+\_\+speed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+
+
+Returns the speed of the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The speed of the player 
+\end{DoxyReturn}
+\Hypertarget{player_8h_af286e728a7fc185eb5d7fdbcbda1296e}\label{player_8h_af286e728a7fc185eb5d7fdbcbda1296e} 
+\index{player.h@{player.h}!get\_player\_standing@{get\_player\_standing}}
+\index{get\_player\_standing@{get\_player\_standing}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{get\_player\_standing()}{get\_player\_standing()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsprite__imp}{Sprite}} \texorpdfstring{$\ast$}{*} get\+\_\+player\+\_\+standing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+
+
+Returns the sprite of the player standing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The sprite of the player standing 
+\end{DoxyReturn}
+\Hypertarget{player_8h_a356645aadafc58a0e937d6c3bfea1844}\label{player_8h_a356645aadafc58a0e937d6c3bfea1844} 
+\index{player.h@{player.h}!get\_player\_Xpos@{get\_player\_Xpos}}
+\index{get\_player\_Xpos@{get\_player\_Xpos}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{get\_player\_Xpos()}{get\_player\_Xpos()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+\_\+player\+\_\+\+Xpos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+
+
+Returns the X coordinate of the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The X coordinate of the player 
+\end{DoxyReturn}
+\Hypertarget{player_8h_a154e00944f2f76a0c5e1d291d389930a}\label{player_8h_a154e00944f2f76a0c5e1d291d389930a} 
+\index{player.h@{player.h}!get\_player\_Ypos@{get\_player\_Ypos}}
+\index{get\_player\_Ypos@{get\_player\_Ypos}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{get\_player\_Ypos()}{get\_player\_Ypos()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+\_\+player\+\_\+\+Ypos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+
+
+Returns the Y coordinate of the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Y coordinate of the player 
+\end{DoxyReturn}
+\Hypertarget{player_8h_a25868833e65e9c535f67f275c04bf96c}\label{player_8h_a25868833e65e9c535f67f275c04bf96c} 
+\index{player.h@{player.h}!player\_move\_down@{player\_move\_down}}
+\index{player\_move\_down@{player\_move\_down}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_move\_down()}{player\_move\_down()}}
+{\footnotesize\ttfamily void player\+\_\+move\+\_\+down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+
+
+Moves the player down. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the player to be updated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{player_8h_a72066b7559fffdacd85ac142a7cfd804}\label{player_8h_a72066b7559fffdacd85ac142a7cfd804} 
+\index{player.h@{player.h}!player\_move\_left@{player\_move\_left}}
+\index{player\_move\_left@{player\_move\_left}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_move\_left()}{player\_move\_left()}}
+{\footnotesize\ttfamily void player\+\_\+move\+\_\+left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+
+
+Moves the player left. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the player to be updated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{player_8h_a8a90cb4b1b4ae9ce8d89af33be2bfecf}\label{player_8h_a8a90cb4b1b4ae9ce8d89af33be2bfecf} 
+\index{player.h@{player.h}!player\_move\_right@{player\_move\_right}}
+\index{player\_move\_right@{player\_move\_right}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_move\_right()}{player\_move\_right()}}
+{\footnotesize\ttfamily void player\+\_\+move\+\_\+right (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+
+
+Moves the player right. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the player to be updated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{player_8h_a19e7bf710f8317ebec169373d69d83b6}\label{player_8h_a19e7bf710f8317ebec169373d69d83b6} 
+\index{player.h@{player.h}!player\_move\_up@{player\_move\_up}}
+\index{player\_move\_up@{player\_move\_up}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_move\_up()}{player\_move\_up()}}
+{\footnotesize\ttfamily void player\+\_\+move\+\_\+up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+
+
+Moves the player up. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the player to be updated \\
+\hline
+\end{DoxyParams}
+\Hypertarget{player_8h_aeb4fe3c88eff5b740c86ab23974ec5e3}\label{player_8h_aeb4fe3c88eff5b740c86ab23974ec5e3} 
+\index{player.h@{player.h}!player\_stand@{player\_stand}}
+\index{player\_stand@{player\_stand}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_stand()}{player\_stand()}}
+{\footnotesize\ttfamily void player\+\_\+stand (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer__imp}{Player}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+
+
+Updates the direction of the player if it has changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the player to be updated \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,169 @@
+\doxysection{model/single\+Mode/game\+\_\+state/sm\+\_\+game.h File Reference}
+\hypertarget{sm__game_8h}{}\label{sm__game_8h}\index{model/singleMode/game\_state/sm\_game.h@{model/singleMode/game\_state/sm\_game.h}}
+
+
+Single Mode game state management.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
+{\ttfamily \#include "{}bomb.\+h"{}}\newline
+{\ttfamily \#include "{}wall.\+h"{}}\newline
+{\ttfamily \#include "{}sprite\+Loader.\+h"{}}\newline
+{\ttfamily \#include "{}animated\+Sprite.\+h"{}}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}explosion.\+h"{}}\newline
+{\ttfamily \#include "{}bomb\+\_\+options.\+h"{}}\newline
+{\ttfamily \#include "{}key\+\_\+pressed.\+h"{}}\newline
+{\ttfamily \#include "{}score.\+h"{}}\newline
+{\ttfamily \#include "{}button.\+h"{}}\newline
+Include dependency graph for sm\+\_\+game.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sm__game_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{sm__game_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sm__game_8h_a14351e3225f1428449350d9b6bfc8cdc}\label{sm__game_8h_a14351e3225f1428449350d9b6bfc8cdc} 
+typedef struct \mbox{\hyperlink{structsm__game__imp}{sm\+\_\+game\+\_\+imp}} {\bfseries Sm\+Game}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sm__game_8h_a99cea13ad1079c1476531fe19dedee5a}{create\+\_\+sm\+\_\+game}} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader, \mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*}score)
+\begin{DoxyCompactList}\small\item\em Creates a new Single\+Mode object, which contains a player and a grid of walls. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sm__game_8h_a4b3cc19b6d023a474033b0a04b4c419d}{destroy\+\_\+sm\+\_\+game}} (\mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*}smg)
+\begin{DoxyCompactList}\small\item\em Destroys a Single\+Mode object, freeing all allocated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sm__game_8h_a28ea17c212993690d1c2b00938a3b1a4}{draw\+\_\+sm\+\_\+game}} (\mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*}smg)
+\begin{DoxyCompactList}\small\item\em Draws the Single\+Mode object on the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sm__game_8h_ac3c0b9a7510a8d281e37206d7fe8d89d}{process\+\_\+sm\+\_\+game\+\_\+kbd}} (\mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*}smg, \mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Processes the input from the keyboard. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sm__game_8h_a15add52fe7ad38c817ee57e98d60b6a5}{process\+\_\+sm\+\_\+game\+\_\+mouse}} (\mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*}smg, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Processes the input from the mouse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sm__game_8h_a5a7786cab7fe8e3ef6f5ca671fb56e42}{process\+\_\+sm\+\_\+game\+\_\+timer}} (\mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*}smg)
+\begin{DoxyCompactList}\small\item\em Processes the game timer, checking for bomb spawning and explosions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Single Mode game state management. 
+
+This module provides functions to create, destroy, draw, and process input for the Single Mode game state. It manages the player, walls, bombs, explosions, and the game timer. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sm__game_8h_a99cea13ad1079c1476531fe19dedee5a}\label{sm__game_8h_a99cea13ad1079c1476531fe19dedee5a} 
+\index{sm\_game.h@{sm\_game.h}!create\_sm\_game@{create\_sm\_game}}
+\index{create\_sm\_game@{create\_sm\_game}!sm\_game.h@{sm\_game.h}}
+\doxysubsubsection{\texorpdfstring{create\_sm\_game()}{create\_sm\_game()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*} create\+\_\+sm\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}}]{loader,  }\item[{\mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*}}]{score }\end{DoxyParamCaption})}
+
+
+
+Creates a new Single\+Mode object, which contains a player and a grid of walls. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loader} & Pointer to the Sprite\+Loader object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created Single\+Mode object, or NULL if the creation failed 
+\end{DoxyReturn}
+\Hypertarget{sm__game_8h_a4b3cc19b6d023a474033b0a04b4c419d}\label{sm__game_8h_a4b3cc19b6d023a474033b0a04b4c419d} 
+\index{sm\_game.h@{sm\_game.h}!destroy\_sm\_game@{destroy\_sm\_game}}
+\index{destroy\_sm\_game@{destroy\_sm\_game}!sm\_game.h@{sm\_game.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_sm\_game()}{destroy\_sm\_game()}}
+{\footnotesize\ttfamily void destroy\+\_\+sm\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*}}]{smg }\end{DoxyParamCaption})}
+
+
+
+Destroys a Single\+Mode object, freeing all allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & Pointer to the Single\+Mode object to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sm__game_8h_a28ea17c212993690d1c2b00938a3b1a4}\label{sm__game_8h_a28ea17c212993690d1c2b00938a3b1a4} 
+\index{sm\_game.h@{sm\_game.h}!draw\_sm\_game@{draw\_sm\_game}}
+\index{draw\_sm\_game@{draw\_sm\_game}!sm\_game.h@{sm\_game.h}}
+\doxysubsubsection{\texorpdfstring{draw\_sm\_game()}{draw\_sm\_game()}}
+{\footnotesize\ttfamily void draw\+\_\+sm\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*}}]{smg }\end{DoxyParamCaption})}
+
+
+
+Draws the Single\+Mode object on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & Pointer to the Single\+Mode object to be drawn \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sm__game_8h_ac3c0b9a7510a8d281e37206d7fe8d89d}\label{sm__game_8h_ac3c0b9a7510a8d281e37206d7fe8d89d} 
+\index{sm\_game.h@{sm\_game.h}!process\_sm\_game\_kbd@{process\_sm\_game\_kbd}}
+\index{process\_sm\_game\_kbd@{process\_sm\_game\_kbd}!sm\_game.h@{sm\_game.h}}
+\doxysubsubsection{\texorpdfstring{process\_sm\_game\_kbd()}{process\_sm\_game\_kbd()}}
+{\footnotesize\ttfamily int process\+\_\+sm\+\_\+game\+\_\+kbd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*}}]{smg,  }\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the keyboard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & Pointer to the Single\+Mode object \\
+\hline
+{\em key} & Pointer to the Key\+Pressed object containing the state of the keys \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{sm__game_8h_a15add52fe7ad38c817ee57e98d60b6a5}\label{sm__game_8h_a15add52fe7ad38c817ee57e98d60b6a5} 
+\index{sm\_game.h@{sm\_game.h}!process\_sm\_game\_mouse@{process\_sm\_game\_mouse}}
+\index{process\_sm\_game\_mouse@{process\_sm\_game\_mouse}!sm\_game.h@{sm\_game.h}}
+\doxysubsubsection{\texorpdfstring{process\_sm\_game\_mouse()}{process\_sm\_game\_mouse()}}
+{\footnotesize\ttfamily int process\+\_\+sm\+\_\+game\+\_\+mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*}}]{smg,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Processes the input from the mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & Pointer to the Single\+Mode object \\
+\hline
+{\em c} & Pointer to the Cursor object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 go back to the menu 
+\end{DoxyReturn}
+\Hypertarget{sm__game_8h_a5a7786cab7fe8e3ef6f5ca671fb56e42}\label{sm__game_8h_a5a7786cab7fe8e3ef6f5ca671fb56e42} 
+\index{sm\_game.h@{sm\_game.h}!process\_sm\_game\_timer@{process\_sm\_game\_timer}}
+\index{process\_sm\_game\_timer@{process\_sm\_game\_timer}!sm\_game.h@{sm\_game.h}}
+\doxysubsubsection{\texorpdfstring{process\_sm\_game\_timer()}{process\_sm\_game\_timer()}}
+{\footnotesize\ttfamily int process\+\_\+sm\+\_\+game\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsm__game__imp}{Sm\+Game}} \texorpdfstring{$\ast$}{*}}]{smg }\end{DoxyParamCaption})}
+
+
+
+Processes the game timer, checking for bomb spawning and explosions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sm} & Pointer to the Single\+Mode object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 go back to the menu, 2 go to died state 
+\end{DoxyReturn}

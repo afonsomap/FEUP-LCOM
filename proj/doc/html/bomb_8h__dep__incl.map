@@ -1,0 +1,20 @@
+<map id="model/bomb/bomb.h" name="model/bomb/bomb.h">
+<area shape="rect" id="Node000001" title="Bomb management in the game." alt="" coords="147,5,287,31"/>
+<area shape="rect" id="Node000002" href="$bomb__options_8h.html" title="Bomb options management in the game." alt="" coords="145,79,288,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,44,219,79,214,79,214,44"/>
+<area shape="rect" id="Node000003" href="$mm__game_8h.html" title="Multiplayer mode game state management." alt="" coords="29,167,186,207"/>
+<area shape="poly" id="edge9_Node000001_Node000003" title=" " alt="" coords="181,40,156,57,135,80,124,102,117,125,110,167,105,166,111,123,119,99,130,77,153,53,178,35"/>
+<area shape="rect" id="Node000007" href="$sm__game_8h.html" title="Single Mode game state management." alt="" coords="245,167,407,207"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="255,35,280,53,302,77,313,99,321,123,328,166,323,167,316,125,308,102,297,80,276,57,251,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="183,129,133,169,130,164,180,125"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="253,125,303,164,300,169,250,129"/>
+<area shape="rect" id="Node000004" href="$multiMode_8h.html" title="Multiplayer mode management." alt="" coords="5,255,201,280"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="108,220,107,254,101,254,103,220"/>
+<area shape="rect" id="Node000005" href="$state_8h.html" title="State management for the game." alt="" coords="149,328,284,353"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="135,285,200,326,197,330,132,290"/>
+<area shape="rect" id="Node000006" href="$main_8c.html" title=" " alt="" coords="186,401,247,427"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="219,367,219,401,214,401,214,367"/>
+<area shape="rect" id="Node000008" href="$singleMode_8h.html" title="Single player mode management." alt="" coords="226,255,434,280"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="330,220,332,254,327,254,325,220"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="301,290,237,330,234,326,298,285"/>
+</map>

@@ -1,0 +1,35 @@
+\doxysection{mm\+\_\+connection.\+h}
+\hypertarget{mm__connection_8h_source}{}\label{mm__connection_8h_source}\index{model/multiMode/connection\_state/mm\_connection.h@{model/multiMode/connection\_state/mm\_connection.h}}
+\mbox{\hyperlink{mm__connection_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MM\_CONNECTION\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MM\_CONNECTION\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{spriteLoader_8h}{spriteLoader.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cursor_8h}{cursor.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{serial__port_8h}{serial\_port.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{sprite.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{button_8h}{button.h}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmm__connection__imp}{mm\_connection\_imp}};}
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmm__connection__imp}{mm\_connection\_imp}}\ \mbox{\hyperlink{structmm__connection__imp}{MmConnection}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ HANDSHAKE\_HELLO\ \ 0xC1}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ HANDSHAKE\_REPLY\ \ 0xC2}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00034\ \mbox{\hyperlink{structmm__connection__imp}{MmConnection}}\ *\mbox{\hyperlink{mm__connection_8h_aea37dba470794e5f319909df50856226}{create\_mm\_connection}}(\mbox{\hyperlink{structsprite__loader__imp}{SpriteLoader}}\ *loader);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mm__connection_8h_a7b0021db5ef2574a59042faa73f0bb1f}{destroy\_mm\_connection}}(\mbox{\hyperlink{structmm__connection__imp}{MmConnection}}\ *mm\_connection);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{mm__connection_8h_a90d039107ae2487e2360376508cc221b}{draw\_mm\_connection}}(\mbox{\hyperlink{structmm__connection__imp}{MmConnection}}\ *mm\_connection);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mm__connection_8h_ad723ffaf8cdf1fa67a9d43fd587e4bf1}{process\_mm\_connection\_mouse}}(\mbox{\hyperlink{structmm__connection__imp}{MmConnection}}\ *mm\_connection,\ \mbox{\hyperlink{structcursor__imp}{Cursor}}\ *c);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mm__connection_8h_ac1661fcd11bdfd25a7618a55d43ddcd1}{process\_mm\_connection\_timer}}(\mbox{\hyperlink{structmm__connection__imp}{MmConnection}}\ *mm\_connection);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{mm__connection_8h_a43d220b8036d09fcd4edc46ac3da1a89}{process\_mm\_connection\_sp}}(\mbox{\hyperlink{structmm__connection__imp}{MmConnection}}\ *mm\_connection,\ uint8\_t\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MM\_CONNECTION\_H}}
+
+\end{DoxyCode}

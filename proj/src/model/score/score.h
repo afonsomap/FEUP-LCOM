@@ -8,7 +8,7 @@
 #include "spriteLoader.h"
 
 /**
- * @defgroup score score
+ * @file score.h
  * @brief Score management in the game
  * 
  * This module provides functions to create, manage, and draw the score in the game.

@@ -1,0 +1,119 @@
+\doxysection{model/score/score.h File Reference}
+\hypertarget{score_8h}{}\label{score_8h}\index{model/score/score.h@{model/score/score.h}}
+
+
+Score management in the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}sprite.\+h"{}}\newline
+{\ttfamily \#include "{}sprite\+Loader.\+h"{}}\newline
+Include dependency graph for score.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{score_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{score_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{score_8h_affda387b0f6622890f7b23b33e4a2831}\label{score_8h_affda387b0f6622890f7b23b33e4a2831} 
+typedef struct \mbox{\hyperlink{structscore__imp}{score\+\_\+imp}} {\bfseries Score}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{score_8h_a1a9811412288fc977a06d9723f94b2f5}{create\+\_\+score}} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader)
+\begin{DoxyCompactList}\small\item\em Creates a new Score object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{score_8h_a3a6f41fa568c40448661bade0e512f84}{destroy\+\_\+score}} (\mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*}score)
+\begin{DoxyCompactList}\small\item\em Destroys a Score object, freeing all allocated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{score_8h_ac1c6bd862d852430179da1335cef0759}{increment\+\_\+score}} (\mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*}score)
+\begin{DoxyCompactList}\small\item\em Increments the score by 1. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{score_8h_ad2a2e58badbcd6f2ec8ae9a1f26c3778}{get\+\_\+score\+\_\+value}} (\mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*}score)
+\begin{DoxyCompactList}\small\item\em Gets the current score value. \end{DoxyCompactList}\item 
+\Hypertarget{score_8h_a9994e3b4b3da4e94ea1ccba9ebe298bd}\label{score_8h_a9994e3b4b3da4e94ea1ccba9ebe298bd} 
+void {\bfseries draw\+\_\+score} (\mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*}score, int x, int y)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Score management in the game. 
+
+This module provides functions to create, manage, and draw the score in the game. It handles the current score, increments it, and draws the score on the screen. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{score_8h_a1a9811412288fc977a06d9723f94b2f5}\label{score_8h_a1a9811412288fc977a06d9723f94b2f5} 
+\index{score.h@{score.h}!create\_score@{create\_score}}
+\index{create\_score@{create\_score}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{create\_score()}{create\_score()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*} create\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}}]{loader }\end{DoxyParamCaption})}
+
+
+
+Creates a new Score object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the score \\
+\hline
+{\em y} & The y-\/coordinate of the score \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created Score object, or NULL if the creation failed 
+\end{DoxyReturn}
+\Hypertarget{score_8h_a3a6f41fa568c40448661bade0e512f84}\label{score_8h_a3a6f41fa568c40448661bade0e512f84} 
+\index{score.h@{score.h}!destroy\_score@{destroy\_score}}
+\index{destroy\_score@{destroy\_score}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_score()}{destroy\_score()}}
+{\footnotesize\ttfamily void destroy\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*}}]{score }\end{DoxyParamCaption})}
+
+
+
+Destroys a Score object, freeing all allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score} & Pointer to the Score object to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{score_8h_ad2a2e58badbcd6f2ec8ae9a1f26c3778}\label{score_8h_ad2a2e58badbcd6f2ec8ae9a1f26c3778} 
+\index{score.h@{score.h}!get\_score\_value@{get\_score\_value}}
+\index{get\_score\_value@{get\_score\_value}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{get\_score\_value()}{get\_score\_value()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+\_\+score\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*}}]{score }\end{DoxyParamCaption})}
+
+
+
+Gets the current score value. 
+
+\begin{DoxyReturn}{Returns}
+The current score value, or 0 if the score is NULL 
+\end{DoxyReturn}
+\Hypertarget{score_8h_ac1c6bd862d852430179da1335cef0759}\label{score_8h_ac1c6bd862d852430179da1335cef0759} 
+\index{score.h@{score.h}!increment\_score@{increment\_score}}
+\index{increment\_score@{increment\_score}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{increment\_score()}{increment\_score()}}
+{\footnotesize\ttfamily void increment\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structscore__imp}{Score}} \texorpdfstring{$\ast$}{*}}]{score }\end{DoxyParamCaption})}
+
+
+
+Increments the score by 1. 
+
+The score is incremented every 30 frames.
+
+
+\begin{DoxyParams}{Parameters}
+{\em score} & Pointer to the Score object \\
+\hline
+\end{DoxyParams}

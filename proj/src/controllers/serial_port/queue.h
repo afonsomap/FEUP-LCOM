@@ -5,7 +5,7 @@
 #include <lcom/lcf.h>
 
 /**
- * @defgroup queue queue
+ * @file queue.h
  * @brief Queue implementation for handling serial port data
  * 
  * This module provides a simple queue implementation to manage data received from the serial port.

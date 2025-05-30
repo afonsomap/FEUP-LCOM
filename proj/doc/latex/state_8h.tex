@@ -1,0 +1,232 @@
+\doxysection{model/state/state.h File Reference}
+\hypertarget{state_8h}{}\label{state_8h}\index{model/state/state.h@{model/state/state.h}}
+
+
+State management for the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}key\+\_\+pressed.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}multi\+Mode.\+h"{}}\newline
+{\ttfamily \#include "{}single\+Mode.\+h"{}}\newline
+{\ttfamily \#include "{}menu.\+h"{}}\newline
+{\ttfamily \#include "{}sprite\+Loader.\+h"{}}\newline
+Include dependency graph for state.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{state_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{state_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{state_8h_aef3282b1ef11faf703aa104c78833ad6}\label{state_8h_aef3282b1ef11faf703aa104c78833ad6} 
+typedef struct \mbox{\hyperlink{structstate__imp}{state\+\_\+imp}} {\bfseries State}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{state_8h_a7899b65f1ea0f655e4bbf8d2a5714285}\label{state_8h_a7899b65f1ea0f655e4bbf8d2a5714285} 
+enum {\bfseries Game\+State} \{ {\bfseries MENU}
+, {\bfseries SINGLE\+\_\+\+MODE}
+, {\bfseries MULTI\+\_\+\+MODE}
+, {\bfseries EXIT}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{state_8h_a0b21adf3ec69eef0558f6492264bb384}{create\+\_\+state}} (\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}loader, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Creates a new State object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_ad708c19722a92accc4fb5984b9ca7a58}{destroy\+\_\+state}} (\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Destroys a State object, freeing all allocated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_af1e3f46ceafc910f31f3549d67dbfb7f}{update\+\_\+state}} (\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}key, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c, uint8\+\_\+t sp\+\_\+byte)
+\begin{DoxyCompactList}\small\item\em Updates the state of the game based on keyboard and mouse input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_a401218ce955f11d0f4b0496dbbc5b413}{update\+\_\+state\+\_\+sp}} (\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}state, uint8\+\_\+t sp\+\_\+byte)
+\begin{DoxyCompactList}\small\item\em Updates the state of the game based on the serial port input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_ab7425c1f167848e5bdea8574139396d3}{update\+\_\+state\+\_\+kbd}} (\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Updates the state of the game based on the input from the keyboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_a610d2b5cd855910df384798476787803}{update\+\_\+state\+\_\+mouse}} (\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}state, \mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em Updates the state of the game based on the input from the mouse. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_a37b5acd0464dc1b20bd5d410b43c5228}{update\+\_\+state\+\_\+timer}} (\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Updates the state based on the game logic for other entities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{state_8h_ad2ee8a97db339e4ca7dfd2f3eba92fa2}{draw\+\_\+state}} (\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Draws the current state of the game on the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{state_8h_af181b310951b01a2d61eb48fa2a21359}{is\+\_\+game\+\_\+over}} (\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Checks if the game is over. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+State management for the game. 
+
+This module provides functions to manage the game state, including creating, updating, and drawing the current state of the game. It handles transitions between different game modes such as menu, single player mode, and multiplayer mode. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{state_8h_a0b21adf3ec69eef0558f6492264bb384}\label{state_8h_a0b21adf3ec69eef0558f6492264bb384} 
+\index{state.h@{state.h}!create\_state@{create\_state}}
+\index{create\_state@{create\_state}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{create\_state()}{create\_state()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*} create\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structsprite__loader__imp}{Sprite\+Loader}} \texorpdfstring{$\ast$}{*}}]{loader,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Creates a new State object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loader} & Pointer to the Sprite\+Loader object \\
+\hline
+{\em c} & Pointer to the Cursor object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the created State object, or NULL if the creation failed 
+\end{DoxyReturn}
+\Hypertarget{state_8h_ad708c19722a92accc4fb5984b9ca7a58}\label{state_8h_ad708c19722a92accc4fb5984b9ca7a58} 
+\index{state.h@{state.h}!destroy\_state@{destroy\_state}}
+\index{destroy\_state@{destroy\_state}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_state()}{destroy\_state()}}
+{\footnotesize\ttfamily void destroy\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Destroys a State object, freeing all allocated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the State object to be destroyed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_ad2ee8a97db339e4ca7dfd2f3eba92fa2}\label{state_8h_ad2ee8a97db339e4ca7dfd2f3eba92fa2} 
+\index{state.h@{state.h}!draw\_state@{draw\_state}}
+\index{draw\_state@{draw\_state}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{draw\_state()}{draw\_state()}}
+{\footnotesize\ttfamily void draw\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Draws the current state of the game on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the State object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_af181b310951b01a2d61eb48fa2a21359}\label{state_8h_af181b310951b01a2d61eb48fa2a21359} 
+\index{state.h@{state.h}!is\_game\_over@{is\_game\_over}}
+\index{is\_game\_over@{is\_game\_over}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{is\_game\_over()}{is\_game\_over()}}
+{\footnotesize\ttfamily int is\+\_\+game\+\_\+over (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Checks if the game is over. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the State object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the game is over, 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{state_8h_af1e3f46ceafc910f31f3549d67dbfb7f}\label{state_8h_af1e3f46ceafc910f31f3549d67dbfb7f} 
+\index{state.h@{state.h}!update\_state@{update\_state}}
+\index{update\_state@{update\_state}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{update\_state()}{update\_state()}}
+{\footnotesize\ttfamily void update\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{key,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{uint8\+\_\+t}]{sp\+\_\+byte }\end{DoxyParamCaption})}
+
+
+
+Updates the state of the game based on keyboard and mouse input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the State object \\
+\hline
+{\em keys} & Array of boolean values representing the state of the keys \\
+\hline
+{\em c} & Pointer to the Cursor object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_ab7425c1f167848e5bdea8574139396d3}\label{state_8h_ab7425c1f167848e5bdea8574139396d3} 
+\index{state.h@{state.h}!update\_state\_kbd@{update\_state\_kbd}}
+\index{update\_state\_kbd@{update\_state\_kbd}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{update\_state\_kbd()}{update\_state\_kbd()}}
+{\footnotesize\ttfamily void update\+\_\+state\+\_\+kbd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{structkey__pressed__imp}{Key\+Pressed}} \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
+
+
+Updates the state of the game based on the input from the keyboard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the State object \\
+\hline
+{\em keys} & Array of boolean values representing the state of the keys \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 if the game should exit 
+\end{DoxyReturn}
+\Hypertarget{state_8h_a610d2b5cd855910df384798476787803}\label{state_8h_a610d2b5cd855910df384798476787803} 
+\index{state.h@{state.h}!update\_state\_mouse@{update\_state\_mouse}}
+\index{update\_state\_mouse@{update\_state\_mouse}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{update\_state\_mouse()}{update\_state\_mouse()}}
+{\footnotesize\ttfamily void update\+\_\+state\+\_\+mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{\mbox{\hyperlink{structcursor__imp}{Cursor}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+
+
+
+Updates the state of the game based on the input from the mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the State object \\
+\hline
+{\em c} & Pointer to the Cursor object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the game should continue, 1 if the game should exit 
+\end{DoxyReturn}
+\Hypertarget{state_8h_a401218ce955f11d0f4b0496dbbc5b413}\label{state_8h_a401218ce955f11d0f4b0496dbbc5b413} 
+\index{state.h@{state.h}!update\_state\_sp@{update\_state\_sp}}
+\index{update\_state\_sp@{update\_state\_sp}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{update\_state\_sp()}{update\_state\_sp()}}
+{\footnotesize\ttfamily void update\+\_\+state\+\_\+sp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}}]{state,  }\item[{uint8\+\_\+t}]{sp\+\_\+byte }\end{DoxyParamCaption})}
+
+
+
+Updates the state of the game based on the serial port input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the State object \\
+\hline
+{\em sp\+\_\+byte} & Byte received from the serial port \\
+\hline
+\end{DoxyParams}
+\Hypertarget{state_8h_a37b5acd0464dc1b20bd5d410b43c5228}\label{state_8h_a37b5acd0464dc1b20bd5d410b43c5228} 
+\index{state.h@{state.h}!update\_state\_timer@{update\_state\_timer}}
+\index{update\_state\_timer@{update\_state\_timer}!state.h@{state.h}}
+\doxysubsubsection{\texorpdfstring{update\_state\_timer()}{update\_state\_timer()}}
+{\footnotesize\ttfamily void update\+\_\+state\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstate__imp}{State}} \texorpdfstring{$\ast$}{*}}]{state }\end{DoxyParamCaption})}
+
+
+
+Updates the state based on the game logic for other entities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the State object \\
+\hline
+\end{DoxyParams}

@@ -8,7 +8,7 @@
 
 
 /**
- * @defgroup explosion explosion
+ * @file explosion.h
  * @brief Explosion management in the game
  * 
  * This module provides functions to create, manage, and draw explosions in the game.

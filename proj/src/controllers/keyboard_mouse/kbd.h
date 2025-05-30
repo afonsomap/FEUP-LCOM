@@ -7,9 +7,9 @@
 #include "kbc.h"
 
 /**
- * @defgroup KBD Keyboard
- * @{
+ * @file kbd.h
  * 
+ * @brief Keyboard management
  * Functions to interact with the keyboard.
  */
 
