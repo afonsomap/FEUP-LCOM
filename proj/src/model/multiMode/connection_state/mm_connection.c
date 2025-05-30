@@ -3,6 +3,8 @@
 struct mm_connection_imp {
   SpriteLoader *loader; // Pointer to the sprite loader
   Sprite *background; // Background image for the connection state
+  Sprite *waiting_connection; // Sprite for waiting connection
+  Sprite *warning_connection; // Sprite for warning connection
   Sprite *leave_button;
   uint16_t leave_button_x; // X coordinate of the leave button
   uint16_t leave_button_y; // Y coordinate of the leave button
@@ -19,11 +21,15 @@ MmConnection *create_mm_connection(SpriteLoader *loader) {
 
   sp_clear_buffers(); // Clear the serial port buffer
   mm_connection->loader = loader;
-  mm_connection->background = get_menu_background(loader);
+  mm_connection->background = get_died_background(loader);
   mm_connection->leave_button = get_exit_button(loader);
   mm_connection->received_hello = false;
-  mm_connection->time_until_failure = 300; //10 seconds until failure
+  mm_connection->time_until_failure = 900; //30 seconds until failure
   mm_connection->delay = 15; // Delay for sending hello
+  mm_connection->leave_button_x = (get_sprite_width(mm_connection->background) - get_sprite_width(mm_connection->leave_button)) / 2;
+  mm_connection->leave_button_y = 800;
+  mm_connection->waiting_connection = get_waiting_connection(loader);
+  mm_connection->warning_connection = get_warning_connection(loader);
   return mm_connection;
 }
 
@@ -41,6 +47,11 @@ void draw_mm_connection(MmConnection *mm_connection) {
   
   draw_sprite(mm_connection->background, 0, 0);
   draw_sprite(mm_connection->leave_button, mm_connection->leave_button_x, mm_connection->leave_button_y);
+  draw_sprite(mm_connection->waiting_connection, 
+              (get_sprite_width(mm_connection->background) - get_sprite_width(mm_connection->waiting_connection)) / 2, 200);
+  draw_sprite(mm_connection->warning_connection, 
+              (get_sprite_width(mm_connection->background) - get_sprite_width(mm_connection->warning_connection)) / 2, 500);
+              
 }
 
 int process_mm_connection_mouse(MmConnection *mm_connection, Cursor *c) {

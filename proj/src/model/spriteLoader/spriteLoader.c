@@ -41,7 +41,8 @@ struct sprite_loader_imp {
   Sprite *number_7;
   Sprite *number_8;
   Sprite *number_9;
-
+  Sprite *waiting_connection;
+  Sprite *warning_connection;
   Sprite *winners_background;
   Sprite *you_won;
   Sprite *you_lost;
@@ -150,7 +151,8 @@ SpriteLoader* load_sprites() {
   loader->number_7 = create_sprite((xpm_map_t)number_7_xpm, BY_PIXEL);
   loader->number_8 = create_sprite((xpm_map_t)number_8_xpm, BY_PIXEL);
   loader->number_9 = create_sprite((xpm_map_t)number_9_xpm, BY_PIXEL);
-
+  loader->warning_connection = create_sprite((xpm_map_t)warning_connection_xpm, BY_PIXEL);
+  loader->waiting_connection = create_sprite((xpm_map_t)waiting_connection_xpm, BY_PIXEL);
   loader->winners_background = create_sprite((xpm_map_t)died_background_xpm, BY_LINE);
   loader->you_won = create_sprite((xpm_map_t)you_won_xpm, BY_PIXEL);
   loader->you_lost = create_sprite((xpm_map_t)you_lost_xpm, BY_PIXEL);
@@ -329,6 +331,12 @@ Sprite* get_number_sprite(SpriteLoader* loader, int number) {
   }
 }
 
+Sprite* get_warning_connection(SpriteLoader *loader) {
+  return loader->warning_connection;
+}
+Sprite* get_waiting_connection(SpriteLoader *loader) {
+  return loader->waiting_connection;
+}
 Sprite* get_winners_background(SpriteLoader *loader) {
   return loader->winners_background;
 }
