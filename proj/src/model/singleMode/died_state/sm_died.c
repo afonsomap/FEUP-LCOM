@@ -69,7 +69,7 @@ void draw_sm_died(SmDied *d) {
   int start_x = screen_center_x - total_width / 2;
 
   int y_title = 150;
-  int y_your_score = y_title + get_sprite_height(d->died_title);
+  int y_your_score = y_title + get_sprite_height(d->died_title) + 10;
   int y_score_line = y_your_score + ((get_sprite_height(d->your_score)/2) - 36/2); //36/2 is the height / 2
 
   // Draw everything
