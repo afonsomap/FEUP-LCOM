@@ -16,6 +16,7 @@ struct sm_game_imp {
   BombOptions *bomb_options; 
   BombType player1_bomb_option;
   Button* exit;
+  Sprite* your_score;
   Score* score;
 };
 
@@ -103,6 +104,7 @@ void draw_sm_game(SmGame *smg) {
   }
   draw_button(smg->exit);
   draw_bomb_options(smg->bomb_options, smg->player1_bomb_option);
+  draw_sprite(smg->your_score, 1110- get_sprite_width(smg->your_score), 7);
   draw_score(smg->score, 1190, 5);
 }
 
