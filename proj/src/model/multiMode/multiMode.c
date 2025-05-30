@@ -234,7 +234,11 @@ int process_multi_mode_sp(MultiMode *mm, uint8_t byte){
       if (process_mm_game_sp(mm->mm_game, byte) == 1) {
         destroy_mm_game(mm->mm_game);
         mm->mm_game = NULL;
-        return 1; // Go back to menu
+        mm->current_state = MM_CONNECTION; // Go back to connection state
+        mm->mm_connection = create_mm_connection(mm->loader);
+        if (mm->mm_connection == NULL) {
+          return 1; // Go back to menu if connection creation failed
+        }
       }
       break;
 
