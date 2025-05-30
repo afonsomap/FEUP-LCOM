@@ -42,6 +42,9 @@
 #include "images/bomb/bomb9.xpm"
 #include "images/bomb/bomb10.xpm"
 
+#include "images/connection/waiting_connection.xpm"
+#include "images/connection/warning_connection.xpm"
+
 #include "images/explosion/explosion1.xpm"
 #include "images/explosion/explosion2.xpm"  
 #include "images/explosion/explosion3.xpm"
@@ -135,10 +138,10 @@ Sprite* get_play_again(SpriteLoader *loader);
 Sprite* get_back_to_menu(SpriteLoader *loader);
 Sprite* get_number_sprite(SpriteLoader *loader, int number);
 Sprite* get_your_score_text(SpriteLoader *loader);
-
+Sprite* get_warning_connection(SpriteLoader *loader);
+Sprite* get_waiting_connection(SpriteLoader *loader);
 Sprite* get_winners_background(SpriteLoader *loader);
 Sprite* get_winners_you_won(SpriteLoader *loader);
 Sprite* get_winners_you_lost(SpriteLoader *loader);
 Sprite* get_winners_draw(SpriteLoader *loader);
-
 #endif
