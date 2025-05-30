@@ -5,9 +5,14 @@
 #include "spriteLoader.h"
 #include "cursor.h"
 #include "serial_port.h"
+#include "sprite.h"
+#include "button.h"
 
 struct mm_connection_imp;
 typedef struct mm_connection_imp MmConnection;
+
+#define HANDSHAKE_HELLO  0xC1
+#define HANDSHAKE_REPLY  0xC2
 
 MmConnection *create_mm_connection(SpriteLoader *loader);
 void destroy_mm_connection(MmConnection *mm_connection);

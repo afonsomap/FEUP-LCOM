@@ -1,5 +1,14 @@
 #include "mm_game.h"
 
+#define BIT(n) (1 << (n))
+
+#define GRID_WIDTH 17
+#define GRID_HEIGHT 15
+#define BOMB_TYPE_NONE        0x00
+#define BOMB_TYPE_NORMAL      0x01
+#define BOMB_TYPE_FULL_LINE   0x02
+#define BOMB_TYPE_CONSTRUCTIVE 0x03
+
 struct mm_game_imp {
   Player *other_player; 
   Player *my_player;
@@ -17,7 +26,7 @@ struct mm_game_imp {
   Sprite *grid_background; 
   BombOptions *bomb_options; 
   BombType player_bomb_option;
-  Sprite* exit_button_sprite;
+  Button* exit;
 
   uint8_t byte_to_send; // Byte to send over serial port
   // Bit 0 & 1 - 00 No bomb, 01 Normal, 10 Line, 11 Construction
@@ -43,7 +52,7 @@ MmGame *create_mm_game(SpriteLoader *loader, uint8_t player_number) {
   mm_game->grid_square_width = get_sprite_width(get_wall(loader));
   mm_game->grid_background = get_grid_background(loader); 
   mm_game->game_background = get_game_background(loader);
-  mm_game->exit_button_sprite = get_exit(loader);
+  mm_game->exit = create_button(0, 0, get_exit(loader));
 
   if (player_number == 1) {
     mm_game->my_player = create_player(1 * mm_game->grid_square_width, 1 * mm_game->grid_square_width, get_player1_left(loader), get_player1_right(loader), get_player1_up(loader), get_player1_down(loader), get_player1_standing(loader));
@@ -54,6 +63,7 @@ MmGame *create_mm_game(SpriteLoader *loader, uint8_t player_number) {
   }
   if (mm_game->my_player == NULL || mm_game->other_player == NULL) {
     free(mm_game);
+    printf("Error creating players in mm_game\n");
     return NULL;
   }
 
@@ -94,6 +104,7 @@ void destroy_mm_game(MmGame *mm_game) {
     }
   }
 
+  destroy_button(mm_game->exit);
   destroy_bomb_options(mm_game->bomb_options);
   free(mm_game);
 }
@@ -103,7 +114,7 @@ void draw_mm_game(MmGame *mm_game) {
     return;
   }
   draw_sprite(mm_game->grid_background, mm_game->x_initial_grid + 33, mm_game->y_initial_grid + 50);
-  draw_sprite(mm_game->exit_button_sprite, EXIT_BTN_X_MM, EXIT_BTN_Y_MM);
+  draw_button(mm_game->exit);
 
   for (int i = 0; i < GRID_HEIGHT; i++) {
     for (int j = 0; j < GRID_WIDTH; j++) {
@@ -544,17 +555,9 @@ int process_mm_game_mouse(MmGame *mm_game, Cursor *c) {
   // Left mouse button pressed
   if (get_cursor_button_pressed(c, 0)) {
 
-    // --- Exit button check ---
-    uint16_t exit_x_min = EXIT_BTN_X_MM;
-    uint16_t exit_x_max = EXIT_BTN_X_MM + get_sprite_width(mm_game->exit_button_sprite);
-    uint16_t exit_y_min = EXIT_BTN_Y_MM;
-    uint16_t exit_y_max = EXIT_BTN_Y_MM + get_sprite_height(mm_game->exit_button_sprite);
-
-    if (get_cursor_Xpos(c) > exit_x_min && get_cursor_Xpos(c) < exit_x_max &&
-        get_cursor_Ypos(c) > exit_y_min && get_cursor_Ypos(c) < exit_y_max) {
+    if (is_button_clicked(mm_game->exit, c)){
       mm_game->byte_to_send |= (1 << 7); // Set bit 7 for exit
       send_byte(mm_game->byte_to_send);
-      mm_game->byte_to_send = 0;
       return 1; // Go back to menu
     }
 
@@ -650,7 +653,6 @@ int process_mm_game_timer(MmGame *mm_game) {
     return -1; // Error
   }
 
-  printf("Sending byte: 0x%02X\n", mm_game->byte_to_send);
   send_byte(mm_game->byte_to_send); 
   mm_game->byte_to_send = 0x00; // Reset byte to send
 
@@ -715,8 +717,7 @@ int process_mm_game_sp(MmGame *mm_game, uint8_t byte) {
       }
     }
   }
-  if (!is_some_key_pressed) {
-    printf("No movement key pressed, standing still.\n"); 
+  if (!is_some_key_pressed) { 
     player_stand(mm_game->other_player);
   }
 

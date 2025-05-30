@@ -2,13 +2,12 @@
 #define _SM_DIED_H
 
 #include <lcom/lcf.h>
-#include <stddef.h>
-#include <stdlib.h>
 #include "sprite.h"
 #include "spriteLoader.h"
 #include "cursor.h"
 #include "key_pressed.h"
 #include "score.h"
+#include "button.h"
 
 
 struct SmDied_imp;

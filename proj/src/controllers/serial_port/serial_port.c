@@ -89,6 +89,15 @@ int read_byte(){
 
 int sp_clear_buffers(){
     if(sys_outb(UART_BASE + FIFO_CONTROL_R, FCR_CLEAR)) return 1;
+    uint8_t status, dummy;
+    while (1) {
+        if (sp_get_status(&status)) break;
+        if (status & LSR_DATA_READY) {
+            util_sys_inb(UART_BASE + RECEIVED_BUFFER_R, &dummy);
+        } else {
+            break;
+        }
+    }
     while(!isEmpty(inQueue)) {
         pop(inQueue);
     }   

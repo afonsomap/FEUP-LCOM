@@ -1,11 +1,12 @@
 #include "menu.h"
 
 struct menu_imp {
-  Sprite *background;     // Background image of the menu
-  Sprite *menu_title;   // Title image of the menu
-  Sprite *single_mode_button;  // "Single mode" button sprite
-  Sprite *multi_mode_button;   // "Multiplayer mode" button sprite
-  Sprite *exit_button;    // "Exit" button sprite
+  Sprite *background;    
+  Sprite *menu_title; 
+  uint16_t title_xpos; 
+  Button *single_mode;  
+  Button *multi_mode;   
+  Button *exit;    
 };
 
 
@@ -17,14 +18,14 @@ Menu* create_menu(SpriteLoader *loader) {
 
   m->background = get_menu_background(loader);
   m->menu_title = get_menu_title(loader);
-  m->single_mode_button = get_single_mode_button(loader);
-  m->multi_mode_button = get_multi_mode_button(loader);
-  m->exit_button = get_exit_button(loader);
+  m->title_xpos = get_sprite_width(m->background) / 2 - get_sprite_width(m->menu_title) / 2;
 
-  if (m->background == NULL || m->single_mode_button == NULL || m->exit_button == NULL) {
-    destroy_menu(m);
-    return NULL;
-  }
+  uint16_t x_pos = get_sprite_width(m->background) / 2 - get_sprite_width(get_exit_button(loader)) / 2;
+  uint16_t y_pos = get_sprite_height(m->background) - get_sprite_height(get_exit_button(loader));
+
+  m->single_mode = create_button( x_pos , y_pos - 400 , get_single_mode_button(loader));
+  m->multi_mode = create_button( x_pos , y_pos - 250 , get_multi_mode_button(loader));
+  m->exit = create_button( x_pos , y_pos - 100 , get_exit_button(loader));
 
   return m;
 }
@@ -44,11 +45,11 @@ void draw_menu(Menu *m) {
 
   draw_sprite(m->background, 0, 0);
 
-  draw_sprite(m->menu_title, TITLE_X_POSITION, TITLE_Y_POSITION);
+  draw_sprite(m->menu_title, m->title_xpos, 100);
 
-  draw_sprite(m->single_mode_button, BUTTONS_X_POSITION, SINGLE_MODE_BUTTON_Y_POSITION); 
-  draw_sprite(m->multi_mode_button, BUTTONS_X_POSITION, MULTI_MODE_BUTTON_Y_POSITION); 
-  draw_sprite(m->exit_button, BUTTONS_X_POSITION, EXIT_BUTTON_Y_POSITION);   
+  draw_button(m->single_mode);
+  draw_button(m->multi_mode);
+  draw_button(m->exit); 
 }
 
 
@@ -57,27 +58,16 @@ void draw_menu(Menu *m) {
 // 2 Single mode game
 // 3 Multiplayer mode game
 int process_menu_mouse(Menu *m, Cursor *cursor) {
-  if (get_cursor_button_pressed(cursor, 0)) { // Left mouse button pressed
-    uint16_t cursor_x = get_cursor_Xpos(cursor);
-    uint16_t cursor_y = get_cursor_Ypos(cursor);
+  if (m == NULL || cursor == NULL) {
+    return 1; // Exit the game
+  }
 
-    // Check if the cursor is over the "Single Mode" button
-    if (cursor_x >= CURSOR_BUTTON_LEFT_X_POSITION && cursor_x <= CURSOR_BUTTON_RIGHT_X_POSITION &&
-        cursor_y >= CURSOR_BUTTON_TOP_SINGLE_Y_POSITION && cursor_y <= CURSOR_BUTTON_BOTTOM_SINGLE_Y_POSITION) {
-      return 2; // Goes to single mode
-    }
-
-    // Check if the cursor is over the "Multiplayer Mode" button
-    if (cursor_x >= CURSOR_BUTTON_LEFT_X_POSITION && cursor_x <= CURSOR_BUTTON_RIGHT_X_POSITION &&
-        cursor_y >= CURSOR_BUTTON_TOP_MULTI_Y_POSITION && cursor_y <= CURSOR_BUTTON_BOTTOM_MULTI_Y_POSITION) {
-      return 3; // Goes to multiplayer mode
-    }
-
-    // Check if the cursor is over the "Exit" button
-    if (cursor_x >= CURSOR_BUTTON_LEFT_X_POSITION && cursor_x <= CURSOR_BUTTON_RIGHT_X_POSITION &&
-        cursor_y >= CURSOR_BUTTON_TOP_EXIT_Y_POSITION && cursor_y <= CURSOR_BUTTON_BOTTOM_EXIT_Y_POSITION) {
-      return 1; // Exit the game
-    }
+  if ( is_button_clicked(m->exit, cursor) ) {
+    return 1; // Exit the game
+  }else if ( is_button_clicked(m->single_mode, cursor) ) {
+    return 2; // Go to single mode
+  }else if ( is_button_clicked(m->multi_mode, cursor) ) {
+    return 3; // Go to multiplayer mode
   }
 
   return 0; // Continue the game
