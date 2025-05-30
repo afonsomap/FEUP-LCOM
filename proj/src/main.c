@@ -1,3 +1,10 @@
+/**
+ * @file main.c
+ * 
+ * This file contains the main function and the interrupt loop for the game.
+ * It initializes the graphics mode, subscribes to interrupts, and handles the game state.
+ */
+
 #include <lcom/lcf.h>
 #include "graphics.h"
 #include "kbd.h"
@@ -27,6 +34,13 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
+
+/**
+ * @brief Main loop that handles interrupts and updates the game state.
+ * 
+ * This function subscribes to keyboard, mouse, timer, and serial port interrupts,
+ * processes the input, updates the game state, and draws the current state on the screen.
+ */
 void interrups_loop() {
   if ( mouse_write_command(KBC_ENABLE_DATA_REPORT) != 0 ) {
     printf("Error enabling data reporting\n");
@@ -136,6 +150,16 @@ void interrups_loop() {
 }
 
 
+/**
+ * @brief Main function that initializes the game and starts the main loop.
+ * 
+ * This function sets up the graphics mode, initializes the sprite loader, cursor, and state,
+ * and then enters the interrupt loop to handle input and update the game state.
+ * 
+ * @param argc Number of command line arguments
+ * @param argv Array of command line arguments
+ * @return 0 on success
+ */
 int (proj_main_loop)(int argc, char *argv[]) {
 
   map_graphics_vram(VBE_1024p_DC);

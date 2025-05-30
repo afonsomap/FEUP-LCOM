@@ -1,7 +1,7 @@
 #include "score.h"
 
 struct score_imp {
-  uint8_t score; // Current score
+  uint16_t score; // Current score
   uint8_t frames_until_next_increment; // Frames until the next score increment
   Sprite *number_sprites[10]; // Array of sprites for digits 0-9
 };
@@ -48,7 +48,7 @@ void increment_score(Score *score) {
   return;
 }
 
-uint8_t get_score_value(Score *score) {
+uint16_t get_score_value(Score *score) {
   if (score == NULL) {
     return 0;
   }
@@ -61,7 +61,7 @@ void draw_score(Score *score, int x, int y) {
     return; 
   }
 
-  uint8_t value = score->score;
+  uint16_t value = score->score;
   if (value == 0) {
     draw_sprite(score->number_sprites[0], x, y);
     return;

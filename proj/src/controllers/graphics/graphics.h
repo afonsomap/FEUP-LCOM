@@ -77,8 +77,32 @@ void draw_pixel(uint16_t x, uint16_t y, uint32_t color);
  */
 int vg_draw_xpm(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
 
+/**
+ * @brief Draws an xpm image on the current back buffer copying the whole image at once
+ * 
+ * This function draws the xpm image interely, which can be useful for large images.
+ * 
+ * @param xpm_map XPM image pixel map to draw
+ * @param x X coordinate of the top left corner
+ * @param y Y coordinate of the top left corner
+ * @param width Width of the image
+ * @param height Height of the image
+ * @return 0 on success, 1 on failure
+ */
 int vg_draw_xpm_by_image(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
 
+/**
+ * @brief Draws an xpm image on the current back buffer by line
+ * 
+ * This function draws the xpm image line by line, which can be useful for large images.
+ * 
+ * @param xpm_map XPM image pixel map to draw
+ * @param x X coordinate of the top left corner
+ * @param y Y coordinate of the top left corner
+ * @param width Width of the image
+ * @param height Height of the image
+ * @return 0 on success, 1 on failure
+ */
 int vg_draw_xpm_by_line(uint8_t* xpm_map, uint16_t x, uint16_t y, uint16_t width, uint16_t height);
 
 

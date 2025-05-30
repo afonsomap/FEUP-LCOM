@@ -10,6 +10,14 @@
 #include "sm_died.h"
 #include "score.h"
 
+/**
+ * @defgroup singleMode singleMode
+ * 
+ * @brief Single player mode management
+ * 
+ * This module provides functions to create, manage, and draw the single player mode in the game.
+ * It handles the changes between the game state and the died state, as well as processing input from the keyboard, mouse and timer.
+ */
 
 struct singleMode_imp;
 typedef struct singleMode_imp SingleMode;

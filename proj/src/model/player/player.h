@@ -7,6 +7,14 @@
 #include "sprite.h"
 #include "animatedSprite.h"
 
+/**
+ * @defgroup player player
+ * @brief Player management for the game
+ * 
+ * This module provides functions to create, manage, and draw the player in the game.
+ * It handles the player's position, speed, animations, and movement.
+ * 
+ */
 struct player_imp;
 typedef struct player_imp Player;
 

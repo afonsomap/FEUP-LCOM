@@ -9,6 +9,14 @@
 #include "cursor.h"
 #include "button.h"
 
+/**
+ * @defgroup menu menu
+ * @brief Menu management in the game
+ * 
+ * This module provides functions to create, manage, and draw the main menu of the game.
+ * It handles the background, buttons, and input processing for starting the game or exiting.
+ */
+
 struct menu_imp;
 typedef struct menu_imp Menu;
 

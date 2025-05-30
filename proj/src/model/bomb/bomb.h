@@ -6,6 +6,15 @@
 #include <stdlib.h>
 #include "animatedSprite.h"
 
+/**
+ * @defgroup bomb bomb
+ * 
+ * @brief Bomb management in the game
+ * 
+ * This module provides functions to create, manage, and draw bombs in the game.
+ * It handles the bomb's position, active status, explosion status, and type.
+ */
+
 struct bomb_imp;
 typedef struct bomb_imp Bomb;
 

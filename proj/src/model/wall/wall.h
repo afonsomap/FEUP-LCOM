@@ -6,6 +6,13 @@
 #include <stdlib.h>
 #include "sprite.h"
 
+/**
+ * @defgroup wall wall
+ * @brief Wall management in the game
+ * 
+ * This module provides functions to create, manage, and draw walls in the game.
+ */
+
 struct wall_imp;
 typedef struct wall_imp Wall;
 

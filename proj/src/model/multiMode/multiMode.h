@@ -10,6 +10,14 @@
 #include "mm_game.h"
 #include "mm_winner.h"
 
+/**
+ * @defgroup multiMode multiMode
+ * 
+ * @brief Multiplayer mode management
+ * 
+ * This module provides functions to create, manage, and draw the multiplayer mode in the game.
+ * It handles the connection state, game state, and winner state, as well as processing input from the keyboard, mouse, timer, and serial port.
+ */
 
 struct multiMode_imp;
 typedef struct multiMode_imp MultiMode;

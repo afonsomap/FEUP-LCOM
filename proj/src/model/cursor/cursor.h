@@ -6,6 +6,15 @@
 #include <stdlib.h>
 #include "sprite.h"
 
+/**
+ * @defgroup cursor cursor
+ * 
+ * @brief Cursor management
+ * 
+ * This module provides functions to create, manage, and draw the cursor in the game.
+ * It handles the cursor's position, button states, and rendering on the screen.
+ */
+
 struct cursor_imp;
 typedef struct cursor_imp Cursor;
 

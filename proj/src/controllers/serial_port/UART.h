@@ -16,10 +16,6 @@
 #define MCR 0x04
 #define LINE_STATUS_R 0x05
 #define MSR 0x06
-#define SR	 0x07 	// Scratchpad Register (Read/Write)
-
-#define DLL	 0x00  // Divisor Latch (Read/Write)                   (DLAB=1)
-#define DLM	 0x01  // Divisor Latch (Read/Write)                   (DLAB=1)
 
 #define LSR_DATA_READY BIT(0)
 #define LSR_OVERRUN_ERROR BIT(1)

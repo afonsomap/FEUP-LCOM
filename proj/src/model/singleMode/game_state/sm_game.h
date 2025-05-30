@@ -16,6 +16,13 @@
 #include "score.h"
 #include "button.h"
 
+/**
+ * @defgroup sm_game sm_game
+ * @brief Single Mode game state management
+ * 
+ * This module provides functions to create, destroy, draw, and process input for the Single Mode game state.
+ * It manages the player, walls, bombs, explosions, and the game timer.
+ */
 
 struct sm_game_imp;
 typedef struct sm_game_imp SmGame;

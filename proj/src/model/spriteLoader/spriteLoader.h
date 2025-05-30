@@ -100,11 +100,19 @@
 #include "images/winners/you_lost.xpm"
 #include "images/winners/draw.xpm"
 
+/**
+ * @defgroup sprite_loader sprite_loader
+ * @brief Sprite loader for the game
+ * 
+ * This module provides functions to load and manage sprites used in the game.
+ * It includes functions to load player sprites, bomb sprites, wall sprites, background sprites, and menu sprites.
+ * It also provides functions to retrieve specific sprites for different game elements.
+ */
+
 struct sprite_loader_imp;
 typedef struct sprite_loader_imp SpriteLoader;
 
 SpriteLoader* load_sprites();
-
 void destroy_sprites(SpriteLoader *loader);
 
 Sprite* get_player1_standing(SpriteLoader *loader);
