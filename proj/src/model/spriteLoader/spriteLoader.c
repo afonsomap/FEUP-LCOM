@@ -151,7 +151,7 @@ SpriteLoader* load_sprites() {
   loader->number_8 = create_sprite((xpm_map_t)number_8_xpm, BY_PIXEL);
   loader->number_9 = create_sprite((xpm_map_t)number_9_xpm, BY_PIXEL);
 
-  loader->winners_background = reate_sprite((xpm_map_t)died_background_xpm, BY_LINE);
+  loader->winners_background = create_sprite((xpm_map_t)died_background_xpm, BY_LINE);
   loader->you_won = create_sprite((xpm_map_t)you_won_xpm, BY_PIXEL);
   loader->you_lost = create_sprite((xpm_map_t)you_lost_xpm, BY_PIXEL);
   loader->draw = create_sprite((xpm_map_t)draw_xpm, BY_PIXEL);

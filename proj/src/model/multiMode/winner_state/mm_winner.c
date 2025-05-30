@@ -45,7 +45,7 @@ void draw_mm_winner(MmWinner *mm_winner) {
     draw_sprite(mm_winner->you_won, get_sprite_width(mm_winner->background) / 2, get_sprite_height(mm_winner->background) / 2); // Draw the "You Won" sprite
     printf("Current player wins!\n");
   } else if (mm_winner->winner == 2) {
-    draw(mm_winner->you_lost, get_sprite_width(mm_winner->background) / 2, get_sprite_height(mm_winner->background) / 2); // Draw the "You Lost" sprite
+    draw_sprite(mm_winner->you_lost, get_sprite_width(mm_winner->background) / 2, get_sprite_height(mm_winner->background) / 2); // Draw the "You Lost" sprite
     printf("Other player wins!\n");
   } 
   draw_sprite(mm_winner->background, 0, 0); // Draw the background

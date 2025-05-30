@@ -93,9 +93,9 @@
 #include "images/numbers/number_8.xpm"
 #include "images/numbers/number_9.xpm"
 
-#include "images/winner/you_won.xpm"
-#include "images/winner/you_lost.xpm"
-#include "images/winner/draw.xpm"
+#include "images/winners/you_won.xpm"
+#include "images/winners/you_lost.xpm"
+#include "images/winners/draw.xpm"
 
 struct sprite_loader_imp;
 typedef struct sprite_loader_imp SpriteLoader;
