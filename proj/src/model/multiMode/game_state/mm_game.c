@@ -553,6 +553,8 @@ int process_mm_game_mouse(MmGame *mm_game, Cursor *c) {
     if (get_cursor_Xpos(c) > exit_x_min && get_cursor_Xpos(c) < exit_x_max &&
         get_cursor_Ypos(c) > exit_y_min && get_cursor_Ypos(c) < exit_y_max) {
       mm_game->byte_to_send |= (1 << 7); // Set bit 7 for exit
+      send_byte(mm_game->byte_to_send);
+      mm_game->byte_to_send = 0;
       return 1; // Go back to menu
     }
 
@@ -635,6 +637,8 @@ int process_mm_game_kbd(MmGame *mm_game, KeyPressed *key) {
   } 
   if ( is_esc_pressed(key) ) { 
     mm_game->byte_to_send |= (1 << 7); // Set bit 7 for exit
+    send_byte(mm_game->byte_to_send);
+    mm_game->byte_to_send = 0; // Reset byte to send
     return 1; 
   }
   return 0; // Continue game
@@ -659,17 +663,18 @@ int process_mm_game_timer(MmGame *mm_game) {
   return 0; // Continue game
 }
 
-
 int process_mm_game_sp(MmGame *mm_game, uint8_t byte) {
   if (mm_game == NULL) {
     return 1; // Menu
   }
 
-  if (byte & (1 << 7)) { // Exit bit
+  if (byte & BIT(7)) { // Exit bit
     return 1; // Go back to menu
   }
   
-  if (byte & (1 << 2)) { // Up movement bit
+  bool is_some_key_pressed = false; 
+  if (byte & BIT(2)) { // Up movement bit
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(mm_game->other_player); i++) {
       if (!check_wall_collision(mm_game, get_player_Xpos(mm_game->other_player), get_player_Ypos(mm_game->other_player) - 1)) {
         player_move_up(mm_game->other_player);
@@ -678,7 +683,8 @@ int process_mm_game_sp(MmGame *mm_game, uint8_t byte) {
       }
     }
   }
-  if (byte & (1 << 3)) { // Down movement bit
+  if (byte & BIT(3)) { // Down movement bit
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(mm_game->other_player); i++) {
       if (!check_wall_collision(mm_game, get_player_Xpos(mm_game->other_player), get_player_Ypos(mm_game->other_player) + 1)) {
         player_move_down(mm_game->other_player);
@@ -687,7 +693,8 @@ int process_mm_game_sp(MmGame *mm_game, uint8_t byte) {
       }
     }
   }
-  if (byte & (1 << 4)) { // Left movement bit
+  if (byte & BIT(4)) { // Left movement bit
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(mm_game->other_player); i++) {
       if (!check_wall_collision(mm_game, get_player_Xpos(mm_game->other_player) - 1, get_player_Ypos(mm_game->other_player))) {
         player_move_left(mm_game->other_player);
@@ -696,7 +703,8 @@ int process_mm_game_sp(MmGame *mm_game, uint8_t byte) {
       }
     }
   }
-  if (byte & (1 << 5)) { // Right movement bit
+  if (byte & BIT(5)) { // Right movement bit
+    is_some_key_pressed = true;
     for (int i = 0; i < get_player_speed(mm_game->other_player); i++) {
       if (!check_wall_collision(mm_game, get_player_Xpos(mm_game->other_player) + 1, get_player_Ypos(mm_game->other_player))) {
         player_move_right(mm_game->other_player);
@@ -705,8 +713,12 @@ int process_mm_game_sp(MmGame *mm_game, uint8_t byte) {
       }
     }
   }
+  if (!is_some_key_pressed) {
+    printf("No movement key pressed, standing still.\n"); 
+    player_stand(mm_game->other_player);
+  }
 
-  uint8_t bomb_type_bits = (byte & 0x03); // Get the bomb type bits
+  uint8_t bomb_type_bits = (byte & (BIT(0) | BIT(1))); // Get the bomb type bits
   BombType bomb_type;
   switch (bomb_type_bits) {
     case BOMB_TYPE_NORMAL: bomb_type = NORMAL; break;

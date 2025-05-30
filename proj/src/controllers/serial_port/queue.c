@@ -72,7 +72,7 @@ uint8_t back(Queue* queue) {
     return queue->data[queue->back];
 }
 
-void clear(Queue* queue) {
+void destroyQueue(Queue* queue) {
     if (!queue) {
         printf("Queue is NULL, cannot clear.\n");
         return;

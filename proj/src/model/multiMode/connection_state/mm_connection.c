@@ -8,6 +8,7 @@ struct mm_connection_imp {
   uint16_t leave_button_y; // Y coordinate of the leave button
   bool received_hello;
   int time_until_failure; // Time until the connection fails
+  int delay;
 };
 
 MmConnection *create_mm_connection(SpriteLoader *loader) {
@@ -22,6 +23,7 @@ MmConnection *create_mm_connection(SpriteLoader *loader) {
   mm_connection->leave_button = get_exit_button(loader);
   mm_connection->received_hello = false;
   mm_connection->time_until_failure = 300; //10 seconds until failure
+  mm_connection->delay = 15; // Delay for sending hello
   return mm_connection;
 }
 
@@ -65,7 +67,12 @@ int process_mm_connection_timer(MmConnection *mm_connection) {
   }
 
   if (!mm_connection->received_hello) {
-    send_byte(0xFF);
+    if (mm_connection->delay > 0) {
+      mm_connection->delay--;
+    } else {
+      send_byte(0xFF);
+      mm_connection->delay = 15; 
+    }
   }
   mm_connection->time_until_failure--;
   return 0; 

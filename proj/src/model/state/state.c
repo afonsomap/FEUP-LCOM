@@ -145,6 +145,7 @@ void update_state_mouse(State *state, Cursor *c) {
         state->sm = create_singleMode(state->loader);
         reset_cursor_button_pressed(c);
       } else if (process_menu_mouse(state->m, c) == 3) {
+        sp_clear_buffers(); 
         state->current_state = MULTI_MODE; // Go to multi mode
         destroy_menu(state->m);
         state->m = NULL;

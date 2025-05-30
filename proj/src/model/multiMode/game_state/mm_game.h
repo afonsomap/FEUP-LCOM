@@ -17,6 +17,8 @@
 struct mm_game_imp;
 typedef struct mm_game_imp MmGame;
 
+#define BIT(n) (1 << (n))
+
 #define GRID_WIDTH 17
 #define GRID_HEIGHT 15
 #define EXIT_BTN_X_MM 20

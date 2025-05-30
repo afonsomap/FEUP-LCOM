@@ -46,7 +46,8 @@ void sp_init(){
 }
 
 void sp_exit(){
-    clear(inQueue);
+    destroyQueue(inQueue);
+    inQueue = NULL;
 }
 
 int send_byte(uint8_t byte){
@@ -101,9 +102,10 @@ void sp_ih(){
         printf("Failed to read IIR register.\n");
         return;
     }
-    if(!(interrupt_iden & IIR_NO_INT_PENDING)){
-        if( (interrupt_iden & IIR_ID) == (IIR_FIFO_CT)){
-            while(read_byte());
+    if (!(interrupt_iden & IIR_NO_INT_PENDING)) {
+        uint8_t int_type = interrupt_iden & IIR_ID;
+        if (int_type == (IIR_FIFO_CT) || int_type == (IIR_OGN_RCVD_DATA_AVL)) {
+            while (read_byte() == 0);
         }
     }        
 }

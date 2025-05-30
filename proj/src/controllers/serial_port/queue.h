@@ -17,6 +17,6 @@ uint8_t front(Queue* queue);
 uint8_t back(Queue* queue);
 bool isEmpty(Queue* queue);
 bool isFull(Queue* queue);
-void clear(Queue* queue);
+void destroyQueue(Queue* queue);
 
 #endif

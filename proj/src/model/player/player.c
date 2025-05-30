@@ -60,7 +60,7 @@ Player *create_player(uint16_t x, uint16_t y, AnimSprite *left_movement, AnimSpr
   player->last_d = STANDING; // default last direction
   player->current_frame = 0; // default frame
   player->current_image = 0; // default image
-  player->speed = 5; // default speed
+  player->speed = 6; // default speed
 
   return player;
 }
