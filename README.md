@@ -8,3 +8,5 @@ Group members:
 2. Afonso Miguel Almeida Pereira (up202305652@up.pt)
 3. João Marques Gomes (up202306716@up.pt)
 4. Luis Andre Pinho Pinhal Moreira da Silva (up202304347@up.pt)
+
+## **[Report](https://docs.google.com/document/d/13ddsXIOvrWJj34Kyt5jeKtOwOoeXGtqJDEQPMKqyyhY/edit?usp=sharing)**
